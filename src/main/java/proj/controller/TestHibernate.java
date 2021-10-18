@@ -21,6 +21,7 @@ public class TestHibernate {
 			AllItemBean allItem = new AllItemBean();
 
 			System.out.println("test");
+			System.out.println("test2");
 
 			session.beginTransaction();
 //			packageItem.setQty(5);
