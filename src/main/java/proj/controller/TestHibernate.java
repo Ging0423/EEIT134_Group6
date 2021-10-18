@@ -14,13 +14,14 @@ public class TestHibernate {
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
-		
 
 		try {
 			UserItemBean userItem = new UserItemBean();
 			PackageItemBean packageItem = new PackageItemBean();
 			AllItemBean allItem = new AllItemBean();
-			
+
+			System.out.println("test");
+
 			session.beginTransaction();
 //			packageItem.setQty(5);
 //			packageItem.setPrice(5);
@@ -41,16 +42,8 @@ public class TestHibernate {
 			allItem.setCategoryId(5);
 			allItem.setId(userItem.getItemId());
 			allItem.setUserItem(userItem);
-			
-			
-			
-			
-			
-			
+
 			session.save(allItem);
-			
-			
-			
 
 			session.getTransaction().commit();
 
@@ -60,7 +53,6 @@ public class TestHibernate {
 		} finally {
 			HibernateUtil.closeSessionFatcory();
 		}
-
 
 	}
 
