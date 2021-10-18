@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proj.models.CtoCItemBean;
-import proj.models.CtoCItemService;
+import proj.models.UserItemBean;
+import proj.models.UserItemService;
 
 /**
  * Servlet implementation class SearchCtoCItem
@@ -24,8 +24,8 @@ public class SearchCtoCItem extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String keyword = request.getParameter("search");
 		String select = request.getParameter("select");
-		CtoCItemService service = new CtoCItemService();
-		List<CtoCItemBean> item = service.search(keyword, select);
+		UserItemService service = new UserItemService();
+		List<UserItemBean> item = service.search(keyword, select);
 		request.setAttribute("allItem", item);
 		RequestDispatcher rd = request.getRequestDispatcher("/proj/ShowItems.do");	
 		rd.forward(request, response);

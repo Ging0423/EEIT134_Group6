@@ -10,15 +10,23 @@
 .img1 {
 	width: 30%;
 }
-
+.container {
+  display: flex; /* or inline-flex */
+}
 .fs {
 	width: 500px;
 	border: 2px solid black;
 }
 </style>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 </head>
 <body>
-	<a href="CreateItems.jsp">新增拍賣</a><p/>
+	<a href="CreateItems.jsp">新增拍賣</a>
+	<p />
 	<form action="<c:url value='/proj/SearchCtoCItem'/>" method="POST">
 		<select name="select">
 			<option value="memberId">會員名稱</option>
@@ -35,9 +43,10 @@
 		<input type='hidden' id='hiddenField' name='array' />
 		<button type="submit" onclick="d();">多個刪除</button>
 	</form>
-	<c:forEach var="item" items='${allItem}'>
-		<div>
-			<fieldset class="fs">
+	<div class="container">
+		<div class="row">
+			<c:forEach var="item" items='${allItem}'>
+				<div class="col">
 				<input type="checkbox" name="check" value="${item.itemId}" />
 				<form name="multiple"
 					action="<c:url value='/proj/UpdateCtoCItem.do'/>" method="POST">
@@ -58,17 +67,21 @@
 					<input name="itemId" value="${item.itemId}" type="hidden">
 					<button type="submit">刪除資料</button>
 				</form>
-			</fieldset>
-
+				</div>
+			</c:forEach>
+			
 		</div>
+	</div>
 
-	</c:forEach>
+
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		function d() {
 			var array = [];
-			var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+			var checkboxes = document
+					.querySelectorAll('input[type=checkbox]:checked');
 			for (var i = 0; i < checkboxes.length; i++) {
 				array.push(checkboxes[i].value);
 			}

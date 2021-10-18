@@ -19,8 +19,8 @@ public class ReadCtoC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		if(request.getAttribute("allItem") == null) {
-			CtoCItemService itemService = new CtoCItemService();
-		List<CtoCItemBean> Item = itemService.selectAll();
+			UserItemService itemService = new UserItemService();
+		List<UserItemBean> Item = itemService.selectAll();
 		request.setAttribute("allItem", Item);
 		RequestDispatcher rd = request.getRequestDispatcher("/proj/ShowItems.jsp");	
 		rd.forward(request, response);

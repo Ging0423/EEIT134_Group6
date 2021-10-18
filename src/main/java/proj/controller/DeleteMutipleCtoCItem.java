@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proj.models.CtoCItemService;
+import proj.models.UserItemService;
 
 /**
  * Servlet implementation class deleteMutipleCtoCItem
@@ -22,7 +22,7 @@ public class DeleteMutipleCtoCItem extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] id = request.getParameterValues("array");
 		String array[] = id[0].split(",");
-		CtoCItemService service = new CtoCItemService();
+		UserItemService service = new UserItemService();
 		service.deleteMultiItem(array);
 		String context = request.getContextPath();
 		response.sendRedirect(response.encodeRedirectURL(context+"/proj/ShowItems.do"));

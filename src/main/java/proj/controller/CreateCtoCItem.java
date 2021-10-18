@@ -34,7 +34,7 @@ public class CreateCtoCItem extends HttpServlet {
 			throws ServletException, IOException {
 		// 定義存放錯誤訊息的 Collection物件
 		Collection<String> errorMessage = new ArrayList<String>();
-		CtoCItemDao cd = new CtoCItemDao();
+		UserItemDao cd = new UserItemDao();
 		request.setAttribute("ErrorMsg", errorMessage);
 
 		// 設定輸入資料的編碼
@@ -68,7 +68,7 @@ public class CreateCtoCItem extends HttpServlet {
 
 		String path = this.getServletContext().getRealPath("./") + "img\\";
 		
-		CtoCItemService service = new CtoCItemService();
+		UserItemService service = new UserItemService();
 
 		Part filePart = request.getPart("img");
         String header = filePart.getHeader("Content-Disposition");
@@ -94,7 +94,7 @@ public class CreateCtoCItem extends HttpServlet {
 		
 
 		// MemberBean 扮演封裝輸入資料的角色
-		CtoCItemBean cb = new CtoCItemBean(itemId, memberId, name, qty, price, description, img);
+		UserItemBean cb = new UserItemBean(itemId, memberId, name, description, qty, price, img);
 		try {
 
 			service.createItem(cb);

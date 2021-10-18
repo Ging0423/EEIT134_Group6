@@ -12,12 +12,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class CtoCItemDao {
+public class UserItemDao {
 
 	Context context;
 	DataSource ds = null;
 
-	public CtoCItemDao() {
+	public UserItemDao() {
 		try {
 			context = new InitialContext();
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/MemberDB");
@@ -30,7 +30,7 @@ public class CtoCItemDao {
 		String id = "";
 		try {
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/MemberDB");
-			String sql = "select count(*) from CtoCItem";
+			String sql = "select count(*) from userItem";
 			try (Connection connection = dataSource.getConnection();
 					PreparedStatement stmt = connection.prepareStatement(sql);
 					ResultSet rs = stmt.executeQuery();) {
@@ -45,17 +45,17 @@ public class CtoCItemDao {
 		return id;
 	}
 
-	private static final String INSERT = "Insert into CtoCItem (itemId, memberId, name, qty, price, description, img) values (?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT = "Insert into userItem (itemId, userId, itemName, qty, price, itemDescription, img) values (?, ?, ?, ?, ?, ?, ?)";
 
-	public CtoCItemBean createItem(CtoCItemBean bean) {
-		CtoCItemBean result = null;
+	public UserItemBean createItem(UserItemBean bean) {
+		UserItemBean result = null;
 		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(INSERT);) {
-			stmt.setString(1, bean.getItemId());
-			stmt.setString(2, bean.getMemberId());
-			stmt.setString(3, bean.getName());
+			stmt.setInt(1, bean.getItemId());
+			stmt.setInt(2, bean.getUserId());
+			stmt.setString(3, bean.getItemName());
 			stmt.setInt(4, bean.getQty());
 			stmt.setInt(5, bean.getPrice());
-			stmt.setString(6, bean.getDescription());
+			stmt.setString(6, bean.getItemDescription());
 			stmt.setString(7, bean.getImg());
 			int i = stmt.executeUpdate();
 
@@ -65,17 +65,17 @@ public class CtoCItemDao {
 		return result;
 	}
 
-	private static final String UPDATE = "Update CtoCItem  SET \"itemId \"= ? ,\"memberId\" = ?, "
-			+ "\"name\"=?, \"qty\"=?, \"price\"=?, \"description\"=?, \"img\"=? where \"itemId\"=?";
+	private static final String UPDATE = "Update userItem  SET \"itemId \"= ? ,\"userId\" = ?, "
+			+ "\"itemName\"=?, \"qty\"=?, \"price\"=?, \"ItemDescription\"=?, \"img\"=? where \"itemId\"=?";
 
-	public String update(CtoCItemBean bean, String id) {
+	public String update(UserItemBean bean, String id) {
 		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(UPDATE);) {
-			stmt.setString(1, bean.getItemId());
-			stmt.setString(2, bean.getMemberId());
-			stmt.setString(3, bean.getName());
+			stmt.setInt(1, bean.getItemId());
+			stmt.setInt(2, bean.getUserId());
+			stmt.setString(3, bean.getItemName());
 			stmt.setInt(4, bean.getQty());
 			stmt.setInt(5, bean.getPrice());
-			stmt.setString(6, bean.getDescription());
+			stmt.setString(6, bean.getItemDescription());
 			stmt.setString(7, bean.getImg());
 			stmt.setString(8, id);
 			stmt.executeUpdate();
@@ -86,7 +86,7 @@ public class CtoCItemDao {
 		return "";
 	}
 
-	private static final String DELETE = "DELETE FROM CtoCItem WHERE \"itemId\" = ?";
+	private static final String DELETE = "DELETE FROM userItem WHERE \"itemId\" = ?";
 
 	public String delete(String id) {
 		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(DELETE);) {
@@ -114,10 +114,10 @@ public class CtoCItemDao {
 		return "";
 	}
 
-	private static final String SELECT_ALL = "SELECT * FROM ctocItem";
+	private static final String SELECT_ALL = "SELECT * FROM userItem";
 
-	public List<CtoCItemBean> selectAll() {
-		List<CtoCItemBean> items = new ArrayList<>();
+	public List<UserItemBean> selectAll() {
+		List<UserItemBean> items = new ArrayList<>();
 		try {
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/MemberDB");
 
@@ -125,13 +125,13 @@ public class CtoCItemDao {
 					PreparedStatement stmt = connection.prepareStatement(SELECT_ALL);
 					ResultSet rs = stmt.executeQuery();) {
 				while (rs.next()) {
-					CtoCItemBean bean = new CtoCItemBean();
-					bean.setMemberId(rs.getString("memberId"));
-					bean.setName(rs.getString("name"));
-					bean.setItemId(rs.getString("itemId"));
+					UserItemBean bean = new UserItemBean();
+					bean.setUserId(rs.getInt("userId"));
+					bean.setItemName(rs.getString("Itemname"));
+					bean.setItemId(rs.getInt("itemId"));
 					bean.setQty(rs.getInt("qty"));
 					bean.setPrice(rs.getInt("price"));
-					bean.setDescription(rs.getString("description"));
+					bean.setItemDescription(rs.getString("itemDescription"));
 					bean.setImg(rs.getString("img"));
 					items.add(bean);
 				}
@@ -148,22 +148,22 @@ public class CtoCItemDao {
 
 	
 
-	public List<CtoCItemBean> search(String keyword, String select) {
-		List<CtoCItemBean> items = new ArrayList<>();
-		String SEARCH = "SELECT * FROM ctocItem where "+select+" LIKE '%"+keyword+"%'";
+	public List<UserItemBean> search(String keyword, String select) {
+		List<UserItemBean> items = new ArrayList<>();
+		String SEARCH = "SELECT * FROM userItem where "+select+" LIKE '%"+keyword+"%'";
 		try {
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/MemberDB");
 			try (Connection connection = dataSource.getConnection();
 					Statement stmt = connection.createStatement();
 					ResultSet rs = stmt.executeQuery(SEARCH);) {
 				while (rs.next()) {
-					CtoCItemBean bean = new CtoCItemBean();
-					bean.setMemberId(rs.getString("memberId"));
-					bean.setName(rs.getString("name"));
-					bean.setItemId(rs.getString("itemId"));
+					UserItemBean bean = new UserItemBean();
+					bean.setUserId(rs.getInt("userId"));
+					bean.setItemName(rs.getString("name"));
+					bean.setItemId(rs.getInt("itemId"));
 					bean.setQty(rs.getInt("qty"));
 					bean.setPrice(rs.getInt("price"));
-					bean.setDescription(rs.getString("description"));
+					bean.setItemDescription(rs.getString("itemDescription"));
 					bean.setImg(rs.getString("img"));
 					items.add(bean);
 				}

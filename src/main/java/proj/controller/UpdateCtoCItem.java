@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proj.models.CtoCItemBean;
-import proj.models.CtoCItemService;
+import proj.models.UserItemBean;
+import proj.models.UserItemService;
 
 /**
  * Servlet implementation class CtoCUpdate
@@ -29,8 +29,8 @@ public class UpdateCtoCItem extends HttpServlet {
 		String description = request.getParameter("description");
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		int price = Integer.parseInt(request.getParameter("price"));
-		CtoCItemBean bean = new CtoCItemBean(itemId, memberId, name, qty, price, description, img);
-		CtoCItemService service = new CtoCItemService();
+		UserItemBean bean = new UserItemBean(itemId, memberId, name, qty, price, description, img);
+		UserItemService service = new UserItemService();
 		service.updateItem(bean, itemId);
 		String context = request.getContextPath();
 		response.sendRedirect(response.encodeRedirectURL(context+"/proj/ShowItems.do"));

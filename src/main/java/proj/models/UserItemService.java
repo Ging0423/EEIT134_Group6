@@ -3,17 +3,17 @@ package proj.models;
 import java.util.List;
 import java.util.Random;
 
-public class CtoCItemService {
-	CtoCItemDao cDao;
+public class UserItemService {
+	UserItemDao cDao;
 	
-	public CtoCItemService() {
-		this.cDao = new CtoCItemDao();
+	public UserItemService() {
+		this.cDao = new UserItemDao();
 	}
-	public CtoCItemBean createItem(CtoCItemBean bean) {
+	public UserItemBean createItem(UserItemBean bean) {
 		return cDao.createItem(bean);
 	}
 	
-	public String updateItem(CtoCItemBean bean, String id) {
+	public String updateItem(UserItemBean bean, String id) {
 		return cDao.update(bean, id);
 	}
 	
@@ -34,11 +34,11 @@ public class CtoCItemService {
 		return sb.toString();
 		}  
 	
-	public List<CtoCItemBean> selectAll() {
+	public List<UserItemBean> selectAll() {
 		return cDao.selectAll();
 	}
 	
-	public List<CtoCItemBean> search(String keyword, String select) {
+	public List<UserItemBean> search(String keyword, String select) {
 		return cDao.search(keyword, select);
 	}
 	
