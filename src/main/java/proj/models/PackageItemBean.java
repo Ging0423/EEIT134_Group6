@@ -41,7 +41,7 @@ public class PackageItemBean implements Serializable {
 	
 	@OneToOne(mappedBy = "packageItem")
 	private AllItemBean allItem;
-//	
+
 	public PackageItemBean() {
 		// TODO Auto-generated constructor stub
 	}

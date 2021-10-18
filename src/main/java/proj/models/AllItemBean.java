@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,35 +24,30 @@ public class AllItemBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	
-	@Column(name="itemId")
-	@Transient
-	private int itemId;
 	
 	@Column(name="categoryId")
 	private int categoryId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="itemId", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
 	private UserItemBean userItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="itemId", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
 	private YarnItemBean yarnItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="itemId", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
 	private ToolsItemBean toolsItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="itemId", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
 	private BooksItemBean booksItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="itemId", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
 	private PackageItemBean packageItem;
 	
 	public AllItemBean() {
@@ -64,14 +60,6 @@ public class AllItemBean implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
 	}
 
 	public int getCategoryId() {

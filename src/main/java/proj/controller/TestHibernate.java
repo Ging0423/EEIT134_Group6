@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import proj.models.AllItemBean;
+import proj.models.PackageItemBean;
 import proj.models.UserItemBean;
 import proj.util.HibernateUtil;
 
@@ -17,21 +18,35 @@ public class TestHibernate {
 
 		try {
 			UserItemBean userItem = new UserItemBean();
-			
+			PackageItemBean packageItem = new PackageItemBean();
 			AllItemBean allItem = new AllItemBean();
 			
-			userItem.setItemName("test1");
+			session.beginTransaction();
+//			packageItem.setQty(5);
+//			packageItem.setPrice(5);
+//			packageItem.setItemName("test");
+//			packageItem.setItemDescription("test");
+//			packageItem.setImg("test");
+//			session.persist(packageItem);
+//			allItem.setCategoryId(4);
+//			allItem.setId(packageItem.getItemId());
+//			allItem.setPackageItem(packageItem);
+			userItem.setItemName("test2");
 			userItem.setUserId(123);
-			userItem.setItemDescription("test1");
+			userItem.setItemDescription("test2");
 			userItem.setQty(5);
 			userItem.setPrice(555);
-			userItem.setImg("test1");
+			userItem.setImg("test2");
+			session.persist(userItem);
 			allItem.setCategoryId(5);
+			allItem.setId(userItem.getItemId());
 			allItem.setUserItem(userItem);
 			
 			
 			
-			session.beginTransaction();
+			
+			
+			
 			session.save(allItem);
 			
 			
