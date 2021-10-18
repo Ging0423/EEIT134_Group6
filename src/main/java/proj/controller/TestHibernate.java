@@ -33,6 +33,7 @@ public class TestHibernate {
 //			allItem.setCategoryId(4);
 //			allItem.setId(packageItem.getItemId());
 //			allItem.setPackageItem(packageItem);
+<<<<<<< Updated upstream
 			userItem.setItemName("test2");
 			userItem.setUserId(123);
 			userItem.setItemDescription("test2");
@@ -45,6 +46,28 @@ public class TestHibernate {
 			allItem.setUserItem(userItem);
 
 			session.save(allItem);
+=======
+//			userItem.setItemName("test2");
+//			userItem.setUserId(123);
+//			userItem.setItemDescription("test2");
+//			userItem.setQty(5);
+//			userItem.setPrice(555);
+//			userItem.setImg("test2");
+//			session.persist(userItem);
+//			allItem.setCategoryId(5);
+//			allItem.setId(userItem.getItemId());
+//			allItem.setUserItem(userItem);
+			allItem = session.get(AllItemBean.class, 50004);
+			System.out.println(allItem.getUserItem().getItemId());
+			
+			
+			
+			
+//			session.save(allItem);
+			
+			
+			
+>>>>>>> Stashed changes
 
 			session.getTransaction().commit();
 
