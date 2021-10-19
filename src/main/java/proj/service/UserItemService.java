@@ -1,7 +1,10 @@
-package proj.models;
+package proj.service;
 
 import java.util.List;
 import java.util.Random;
+
+import proj.models.UserItemBean;
+import proj.models.UserItemDao;
 
 public class UserItemService {
 	UserItemDao cDao;

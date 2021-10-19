@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import proj.models.*;
+import proj.service.UserItemService;
 
 @WebServlet("/proj/ShowItems.do")
 public class ReadCtoC extends HttpServlet {

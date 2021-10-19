@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import proj.models.*;
+import proj.service.UserItemService;
 
 @WebServlet("/proj/CreateCtoCItem.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 10, // 10 KB

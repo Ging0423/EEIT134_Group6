@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import proj.models.UserItemBean;
-import proj.models.UserItemService;
+import proj.service.UserItemService;
 
 /**
  * Servlet implementation class CtoCUpdate
