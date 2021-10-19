@@ -14,8 +14,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'allItem')
     drop table allItem;
 
 create table allItem(
-	id int identity(1,1) not null,
-	itemId  int primary key not null, 
+	id  int primary key not null, 
 	categoryId int not null
 )
 

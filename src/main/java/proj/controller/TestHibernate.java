@@ -44,7 +44,7 @@ public class TestHibernate {
 //			allItem.setId(userItem.getItemId());
 //			allItem.setUserItem(userItem);
 			allItem = session.get(AllItemBean.class, 50004);
-			System.out.println(allItem.getUserItem().getItemId());
+			System.out.println(allItem.getUserItem().getItemName());
 			
 			
 			

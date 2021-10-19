@@ -53,7 +53,7 @@ public class UserItemBean implements Serializable{
 	}
 
 	public UserItemBean(int itemId, int userId, String itemName, String itemDescription, int qty, int price,
-			String img, AllItemBean allItem) {
+			String img) {
 		super();
 		this.itemId = itemId;
 		this.userId = userId;
@@ -62,7 +62,6 @@ public class UserItemBean implements Serializable{
 		this.qty = qty;
 		this.price = price;
 		this.img = img;
-		this.allItem = allItem;
 	}
 
 	
