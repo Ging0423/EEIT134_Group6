@@ -24,15 +24,15 @@ public class TestHibernate {
 			System.out.println("test2");
 
 			session.beginTransaction();
-//			packageItem.setQty(5);
-//			packageItem.setPrice(5);
-//			packageItem.setItemName("test");
-//			packageItem.setItemDescription("test");
-//			packageItem.setImg("test");
-//			session.persist(packageItem);
-//			allItem.setCategoryId(4);
-//			allItem.setId(packageItem.getItemId());
-//			allItem.setPackageItem(packageItem);
+			packageItem.setQty(5);
+			packageItem.setPrice(5);
+			packageItem.setItemName("test");
+			packageItem.setItemDescription("test");
+			packageItem.setImg("test");
+			session.persist(packageItem);
+			allItem.setCategoryId(4);
+			allItem.setId(packageItem.getItemId());
+			allItem.setPackageItem(packageItem);
 //			userItem.setItemName("test2");
 //			userItem.setUserId(123);
 //			userItem.setItemDescription("test2");

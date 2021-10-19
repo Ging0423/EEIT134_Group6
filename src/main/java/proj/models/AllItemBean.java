@@ -31,11 +31,11 @@ public class AllItemBean implements Serializable {
 	private int categoryId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
+	@JoinColumn(name="id", referencedColumnName="itemId")
 	private UserItemBean userItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
+	@JoinColumn(name="id", referencedColumnName="itemId")
 	private YarnItemBean yarnItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
