@@ -31,7 +31,7 @@ public class TestHibernate {
 			packageItem.setImg("test");
 			session.persist(packageItem);
 			allItem.setCategoryId(4);
-			allItem.setId(packageItem.getItemId());
+			allItem.setItemId(packageItem.getItemId());
 			allItem.setPackageItem(packageItem);
 //			userItem.setItemName("test2");
 //			userItem.setUserId(123);

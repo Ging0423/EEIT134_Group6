@@ -24,42 +24,42 @@ public class AllItemBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
-	private int id;
+	@Column(name="itemId")
+	private int itemId;
 	
 	@Column(name="categoryId")
 	private int categoryId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private UserItemBean userItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private YarnItemBean yarnItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private ToolsItemBean toolsItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private BooksItemBean booksItem;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id", referencedColumnName="itemId")
+	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private PackageItemBean packageItem;
 	
 	public AllItemBean() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
-		return id;
+	public int getItemId() {
+		return itemId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setItemId(int itemId) {
+		this.itemId= itemId;
 	}
 
 	public int getCategoryId() {

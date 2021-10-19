@@ -14,7 +14,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'allItem')
     drop table allItem;
 
 create table allItem(
-	id  int primary key not null, 
+	itemId  int primary key not null, 
 	categoryId int not null
 )
 
@@ -130,4 +130,5 @@ orderId int  references orderData(orderId) not null,
 itemId int references allItem(itemId) not null,
 qty int not null
 )
+
 
