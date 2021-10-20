@@ -28,9 +28,7 @@ public class TestHibernate {
 			packageItem.setPrice(5);
 			packageItem.setItemName("test");
 			packageItem.setItemDescription("test");
-			packageItem.setImg("test");
 			session.persist(packageItem);
-			allItem.setCategoryId(4);
 			allItem.setItemId(packageItem.getItemId());
 			allItem.setPackageItem(packageItem);
 //			userItem.setItemName("test2");

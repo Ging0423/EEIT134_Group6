@@ -1,6 +1,7 @@
 package proj.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,14 +37,14 @@ public class UserItemBean implements Serializable{
 	@Column(name="itemDescription")
 	private String itemDescription;
 	
+	@Column(name="addDate")
+	private Date addDate;
+	
 	@Column(name="qty")
 	private int qty;
 	
 	@Column(name="price")
 	private int price;
-	
-	@Column(name="img")
-	private String img;
 	
 	@OneToOne(mappedBy = "userItem")	
 	private AllItemBean allItem;
@@ -52,19 +53,16 @@ public class UserItemBean implements Serializable{
 		
 	}
 
-	public UserItemBean(int itemId, int userId, String itemName, String itemDescription, int qty, int price,
-			String img) {
+	public UserItemBean(int itemId, int userId, String itemName, String itemDescription, Date addDate, int qty, int price) {
 		super();
 		this.itemId = itemId;
 		this.userId = userId;
 		this.itemName = itemName;
 		this.itemDescription = itemDescription;
+		this.addDate = addDate;
 		this.qty = qty;
 		this.price = price;
-		this.img = img;
 	}
-
-	
 
 	public int getItemId() {
 		return itemId;
@@ -98,6 +96,14 @@ public class UserItemBean implements Serializable{
 		this.itemDescription = itemDescription;
 	}
 
+	public Date getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
 	public int getQty() {
 		return qty;
 	}
@@ -114,14 +120,6 @@ public class UserItemBean implements Serializable{
 		this.price = price;
 	}
 
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
-
 	public AllItemBean getAllItem() {
 		return allItem;
 	}
@@ -129,7 +127,7 @@ public class UserItemBean implements Serializable{
 	public void setAllItem(AllItemBean allItem) {
 		this.allItem = allItem;
 	}
-	
+
 	
 	
 	

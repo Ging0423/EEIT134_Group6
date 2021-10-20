@@ -1,6 +1,7 @@
 package proj.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,21 +38,36 @@ public class YarnItemBean implements Serializable {
 	@Column(name="itemDescription")
 	private String itemDescription;
 	
+	@Column(name="addDate")
+	private Date addDate;
+	
 	@Column(name="qty")
 	private int qty;
 	
 	@Column(name="price")
 	private int price;
 	
-	@Column(name="img")
-	private String img;
-	
 	
 	@OneToOne(mappedBy = "yarnItem")
 	private AllItemBean allItem;
 	
+	
 	public YarnItemBean() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public YarnItemBean(String itemName, String material, String size, String color, String itemDescription,
+			Date addDate, int qty, int price) {
+		super();
+		this.itemName = itemName;
+		this.material = material;
+		this.size = size;
+		this.color = color;
+		this.itemDescription = itemDescription;
+		this.addDate = addDate;
+		this.qty = qty;
+		this.price = price;
 	}
 
 
@@ -59,82 +75,99 @@ public class YarnItemBean implements Serializable {
 		return itemId;
 	}
 
+
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
+
 
 	public String getItemName() {
 		return itemName;
 	}
 
+
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+
 
 	public String getMaterial() {
 		return material;
 	}
 
+
 	public void setMaterial(String material) {
 		this.material = material;
 	}
+
 
 	public String getSize() {
 		return size;
 	}
 
+
 	public void setSize(String size) {
 		this.size = size;
 	}
+
 
 	public String getColor() {
 		return color;
 	}
 
+
 	public void setColor(String color) {
 		this.color = color;
 	}
+
 
 	public String getItemDescription() {
 		return itemDescription;
 	}
 
+
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
+
+
+	public Date getAddDate() {
+		return addDate;
+	}
+
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
 
 	public int getQty() {
 		return qty;
 	}
 
+
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
+
 
 	public int getPrice() {
 		return price;
 	}
 
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
 
 	public AllItemBean getAllItem() {
 		return allItem;
 	}
 
+
 	public void setAllItem(AllItemBean allItem) {
 		this.allItem = allItem;
 	}
-	
-	
 
 }

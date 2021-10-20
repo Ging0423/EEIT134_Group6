@@ -11,32 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import proj.models.*;
-import proj.service.UserItemService;
+import proj.service.YarnItemService;
 
-@WebServlet("/proj/ShowItems.do")
+@WebServlet("/item/yarn")
 public class ReadCtoC extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		if(request.getAttribute("allItem") == null) {
-			UserItemService itemService = new UserItemService();
-		List<UserItemBean> Item = itemService.selectAll();
+		System.out.println("test");
+		YarnItemService itemService = new YarnItemService();
+		List<YarnItemBean> Item = itemService.selectAll();
+//		for(YarnItemBean i:Item) {
+//			System.out.println(i.getItemName());
+//		}
 		request.setAttribute("allItem", Item);
-		RequestDispatcher rd = request.getRequestDispatcher("/proj/ShowItems.jsp");	
+		request.setAttribute("test", "test");
+		RequestDispatcher rd = request.getRequestDispatcher("/item/yarn.jsp");	
 		rd.forward(request, response);
 		return;
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("/proj/ShowItems.jsp");	
-			rd.forward(request, response);
-		}
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
 	}
 
 }

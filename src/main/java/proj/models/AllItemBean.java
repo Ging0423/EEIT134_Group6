@@ -27,9 +27,6 @@ public class AllItemBean implements Serializable {
 	@Column(name="itemId")
 	private int itemId;
 	
-	@Column(name="categoryId")
-	private int categoryId;
-	
 	@OneToOne(cascade=CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name="itemId", referencedColumnName="itemId")
 	private UserItemBean userItem;
@@ -60,14 +57,6 @@ public class AllItemBean implements Serializable {
 
 	public void setItemId(int itemId) {
 		this.itemId= itemId;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public UserItemBean getUserItem() {

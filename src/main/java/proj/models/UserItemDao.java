@@ -45,7 +45,7 @@ public class UserItemDao {
 		return id;
 	}
 
-	private static final String INSERT = "Insert into userItem (itemId, userId, itemName, qty, price, itemDescription, img) values (?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT = "Insert into userItem (itemId, userId, itemName, qty, price, itemDescription) values (?, ?, ?, ?, ?, ?, ?)";
 
 	public UserItemBean createItem(UserItemBean bean) {
 		UserItemBean result = null;
@@ -56,7 +56,6 @@ public class UserItemDao {
 			stmt.setInt(4, bean.getQty());
 			stmt.setInt(5, bean.getPrice());
 			stmt.setString(6, bean.getItemDescription());
-			stmt.setString(7, bean.getImg());
 			int i = stmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -76,7 +75,6 @@ public class UserItemDao {
 			stmt.setInt(4, bean.getQty());
 			stmt.setInt(5, bean.getPrice());
 			stmt.setString(6, bean.getItemDescription());
-			stmt.setString(7, bean.getImg());
 			stmt.setString(8, id);
 			stmt.executeUpdate();
 			return "success";
@@ -132,7 +130,6 @@ public class UserItemDao {
 					bean.setQty(rs.getInt("qty"));
 					bean.setPrice(rs.getInt("price"));
 					bean.setItemDescription(rs.getString("itemDescription"));
-					bean.setImg(rs.getString("img"));
 					items.add(bean);
 				}
 
@@ -164,7 +161,6 @@ public class UserItemDao {
 					bean.setQty(rs.getInt("qty"));
 					bean.setPrice(rs.getInt("price"));
 					bean.setItemDescription(rs.getString("itemDescription"));
-					bean.setImg(rs.getString("img"));
 					items.add(bean);
 				}
 			}
