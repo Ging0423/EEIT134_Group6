@@ -25,6 +25,11 @@ public class UserBean implements Serializable {
 	private String userEmail;
 	private int userPhone;
 	private String userAddress;
+	
+	public UserBean() {
+	
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
