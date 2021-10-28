@@ -19,7 +19,7 @@ import proj.util.HibernateUtil;
 /**
  * Servlet implementation class YarnItemRead
  */
-@WebServlet(urlPatterns="/yarnItem.jsp")
+@WebServlet("/item/yarnItem")
 public class YarnItemRead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private YarnItemService service;
@@ -36,8 +36,12 @@ public class YarnItemRead extends HttpServlet {
 		YarnItemBean bean = new YarnItemBean();
 		bean = service.selectById(itemId);		
 		request.setAttribute("allItem", bean);
+		System.out.println(bean.getItemName());
+		System.out.println(bean.getItemId());
+		System.out.println("test");
 		RequestDispatcher rd = request.getRequestDispatcher("/item/yarnItem.jsp");
 		rd.forward(request, response);
+		return;
 	}
 
 	

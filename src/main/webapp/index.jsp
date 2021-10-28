@@ -57,7 +57,7 @@
                                         shop
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="/project/item/yarn">線材</a>
+                                        <a class="dropdown-item" href="<c:url value='/item/yarn'/>">線材</a>
                                         <a class="dropdown-item" href="single-product.html">工具</a>
                                         <a class="dropdown-item" href="single-product.html">套組</a>
                                         <a class="dropdown-item" href="single-product.html">工具書</a>

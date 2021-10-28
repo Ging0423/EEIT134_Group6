@@ -19,12 +19,8 @@ public class ReadCtoC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("test");
 		YarnItemService itemService = new YarnItemService();
 		List<YarnItemBean> Item = itemService.selectAll();
-//		for(YarnItemBean i:Item) {
-//			System.out.println(i.getItemName());
-//		}
 		request.setAttribute("allItem", Item);
 		request.setAttribute("test", "test");
 		RequestDispatcher rd = request.getRequestDispatcher("/item/yarn.jsp");	

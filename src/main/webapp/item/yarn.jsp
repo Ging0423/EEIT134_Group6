@@ -57,8 +57,10 @@
                                         product
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="product_list.html"> product list</a>
-                                        <a class="dropdown-item" href="single-product.html">product details</a>
+                                        <a class="dropdown-item" href="<c:url value='/item/yarn'/>">線材</a>
+                                        <a class="dropdown-item" href="single-product.html">工具</a>
+                                        <a class="dropdown-item" href="single-product.html">套組</a>
+                                        <a class="dropdown-item" href="single-product.html">工具書</a>
                                         
                                     </div>
                                 </li>
@@ -174,7 +176,7 @@
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_item">
                                     <img src="" alt="#" class="img-fluid">
-                                    <h3> <a href='<c:url value="/yarnItem.jsp?itemId=${item.itemId}"/>'>${item.itemName}</a> </h3>
+                                    <h3> <a href='<c:url value="/item/yarnItem?itemId=${item.itemId}"/>'>${item.itemName}</a> </h3>
                                     <p>${item.material}</p>
                                     <p>${item.color}</p>
                                 </div>

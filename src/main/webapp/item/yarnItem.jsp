@@ -57,8 +57,10 @@
                                         product
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="product_list.html"> product list</a>
-                                        <a class="dropdown-item" href="single-product.html">product details</a>
+                                        <a class="dropdown-item" href="<c:url value='/item/yarn'/>">線材</a>
+                                        <a class="dropdown-item" href="single-product.html">工具</a>
+                                        <a class="dropdown-item" href="single-product.html">套組</a>
+                                        <a class="dropdown-item" href="single-product.html">工具書</a>
                                         
                                     </div>
                                 </li>
@@ -161,7 +163,7 @@
                         <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                     </div>
-                    <p>$5</p>
+                    <p>$${allItem.price}</p>
                 </div>
               <div class="add_to_cart">
                   <a href="#" class="btn_3">add to cart</a>

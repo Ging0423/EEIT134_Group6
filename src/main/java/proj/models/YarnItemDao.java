@@ -3,6 +3,7 @@ package proj.models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class YarnItemDao {
 			e.printStackTrace();
 		}
 	}
+
 	public YarnItemDao(Session session) {
 		try {
 			this.session = session;
@@ -74,7 +76,7 @@ public class YarnItemDao {
 //	}
 //
 //	private static final String UPDATE = "Update userItem  SET \"itemId \"= ? ,\"userId\" = ?, "
-//			+ "\"itemName\"=?, \"qty\"=?, \"price\"=?, \"ItemDescription\"=?, \"img\"=? where \"itemId\"=?";
+//			+ "\"itemName\"=?, \"qty\"=?, \"price\"=?, \"ItemDescription\"=?, where \"itemId\"=?";
 //
 //	public String update(YarnItemBean bean, String id) {
 //		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(UPDATE);) {
@@ -106,15 +108,15 @@ public class YarnItemDao {
 		}
 		return "";
 	}
-	
+
 	public String deleteMulti(String[] id) {
 		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(DELETE);) {
-			
-			for(String i : id) {
+
+			for (String i : id) {
 				stmt.setString(1, i);
 				stmt.executeUpdate();
 			}
-			
+
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,8 +158,6 @@ public class YarnItemDao {
 		return items;
 	}
 
-	
-
 //	public List<YarnItemBean> search(String keyword, String select) {
 //		List<YarnItemBean> items = new ArrayList<>();
 //		String SEARCH = "SELECT * FROM userItem where "+select+" LIKE '%"+keyword+"%'";
@@ -183,15 +183,35 @@ public class YarnItemDao {
 //		}
 //		return items;
 //	}
-	
-	public YarnItemBean selectById(int itemId)
-	{
-		AllItemBean bean = new AllItemBean();
-		YarnItemBean yarnBean = new YarnItemBean();
-		bean = session.get(AllItemBean.class, itemId);
-		yarnBean = bean.getYarnItem();
-		
-		
-		return yarnBean;
+
+	public YarnItemBean selectById(int itemId) {
+		AllItemBean allBean = new AllItemBean();
+		YarnItemBean bean = new YarnItemBean();
+		allBean = session.get(AllItemBean.class, itemId);
+		bean = allBean.getYarnItem();
+//		String SEARCHBYID = "SELECT * FROM yarnItem where itemId = " + itemId;
+//		YarnItemBean bean = new YarnItemBean();
+//		try {
+//			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/MemberDB");
+//			try (Connection connection = dataSource.getConnection();
+//					) {
+//				Statement stmt = connection.createStatement();
+//				ResultSet rs = stmt.executeQuery(SEARCHBYID);
+//				rs.next();
+//				bean.setItemId(rs.getInt("itemId"));
+//				bean.setItemName(rs.getString("itemName"));
+//				bean.setMaterial(rs.getString("material"));
+//				bean.setColor(rs.getString("color"));
+//				bean.setSize(rs.getString("size"));
+//				bean.setQty(rs.getInt("qty"));
+//				bean.setPrice(rs.getInt("price"));
+//				bean.setAddDate(rs.getDate("addDate"));
+//				bean.setItemDescription(rs.getString("itemDescription"));
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
+		return bean;
 	}
 }
