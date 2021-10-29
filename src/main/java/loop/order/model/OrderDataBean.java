@@ -1,4 +1,4 @@
-package proj.models;
+package loop.order.model;
 
 import java.io.Serializable;
 import java.util.Date;
