@@ -1,50 +1,71 @@
-package loop.order.model;
+package loop.order.orderData.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+import loop.order.orderItem.model.OrderItemBean;
+import loop.user.model.UsersBean;
+
+@Component
 @Entity
-@Table(name="orderData")
+@Table(name = "orderData")
 public class OrderDataBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="orderId")
+	@Column(name = "orderId")
 	private int orderId;
-	
-	@Column(name="userId")
+
+	@Column(name = "userId")
 	private int userId;
-	
-	@Column(name="recipient")
+
+	@Column(name = "recipient")
 	private String recipient;
-	
-	@Column(name="shippingAddress")
+
+	@Column(name = "shippingAddress")
 	private String shippingAddress;
-	
-	@Column(name="tel")
+
+	@Column(name = "tel")
 	private String tel;
-	
-	@Column(name="orderDate")
+
+	@Column(name = "orderDate")
 	private Date orderDate;
-	
-	@Column(name="payState")
+
+	@Column(name = "payState")
 	private String payState;
-	
-	@Column(name="orderState")
+
+	@Column(name = "orderState")
 	private String orderState;
-	
-	@Column(name="total")
-	private int total;	
+
+	@Column(name = "total")
+	private int total;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderData", cascade = CascadeType.ALL)
+	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId",insertable = false, updatable = false)
+	private UsersBean users;
 
 	public OrderDataBean() {
-		
+
 	}
 
 	public int getOrderId() {
@@ -119,6 +140,20 @@ public class OrderDataBean implements Serializable {
 		this.total = total;
 	}
 
-	
-	
+	public Set<OrderItemBean> getOrderItem() {
+		return orderItem;
+	}
+
+	public void setOrderItem(Set<OrderItemBean> orderItem) {
+		this.orderItem = orderItem;
+	}
+
+	public UsersBean getUsers() {
+		return users;
+	}
+
+	public void setUsers(UsersBean users) {
+		this.users = users;
+	}
+
 }

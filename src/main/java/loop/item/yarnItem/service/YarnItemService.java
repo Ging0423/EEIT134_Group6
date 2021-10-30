@@ -10,30 +10,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.yarnItem.model.YarnItemBean;
 import loop.item.yarnItem.model.YarnItemDao;
+
 @Service
 @Transactional
 public class YarnItemService {
+	
 	@Autowired
 	YarnItemDao Dao;
-	
-	public String getRandomString(int length){
-		String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		Random random=new Random();
-		StringBuffer sb=new StringBuffer();
-		for(int i=0; i < length; i++){
-		int number=random.nextInt(62);
-		sb.append(str.charAt(number));
+
+	public String getRandomString(int length) {
+		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		Random random = new Random();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < length; i++) {
+			int number = random.nextInt(62);
+			sb.append(str.charAt(number));
 		}
 		return sb.toString();
-		}  
-	
+	}
+
 	public List<YarnItemBean> selectAll() {
 		return Dao.selectAll();
 	}
-	
+
 	public YarnItemBean selectById(int itemId) {
 		return Dao.selectById(itemId);
 	}
 
-	
 }

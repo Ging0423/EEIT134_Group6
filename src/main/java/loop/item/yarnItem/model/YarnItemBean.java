@@ -58,7 +58,7 @@ public class YarnItemBean implements Serializable {
 	
 	
 	public YarnItemBean() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
