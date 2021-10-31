@@ -56,10 +56,10 @@ public class UsersBean implements Serializable {
 	@Column(name = "registerDate")
 	private Date registerDate;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 
 	public UsersBean() {

@@ -155,6 +155,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderItem
     drop table orderItem;
 
 create table orderItem(
+id int primary key identity(1,1) not null,
 orderId int  references orderData(orderId) not null,
 itemId int references allItem(itemId) not null,
 qty int not null
@@ -164,6 +165,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'shoppingC
     drop table shoppingCart;
 
 create table shoppingCart(
+id int primary key identity(1,1) not null,
 userId int  references users(userId) not null,
 itemId int references allItem(itemId) not null,
 qty int not null
@@ -173,6 +175,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemImg')
     drop table itemImg;
 
 create table itemImg(
+id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 img nvarchar(max) not null
 )
@@ -183,6 +186,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemKeywo
     drop table itemKeyword;
 
 create table itemKeyword(
+id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 keyword nvarchar(100)
 )

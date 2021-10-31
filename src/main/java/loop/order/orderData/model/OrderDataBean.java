@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -28,11 +29,16 @@ import loop.user.model.UsersBean;
 public class OrderDataBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
 	@Column(name = "orderId")
 	private int orderId;
-
+	
+	@Transient
 	@Column(name = "userId")
 	private int userId;
 
@@ -61,7 +67,7 @@ public class OrderDataBean implements Serializable {
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", referencedColumnName = "userId",insertable = false, updatable = false)
+	@JoinColumn(name = "userId")
 	private UsersBean users;
 
 	public OrderDataBean() {

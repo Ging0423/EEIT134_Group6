@@ -58,10 +58,10 @@ public class AllItemBean implements Serializable {
 	@PrimaryKeyJoinColumn(name = "itemId", referencedColumnName = "itemId")
 	private PackageItemBean packageItem;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "allItem", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL )
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "allItem", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 
 	public AllItemBean() {
