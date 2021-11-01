@@ -28,4 +28,9 @@ public class ShoppingCartService {
 		return dao.selectById(userId);
 	}
 	
+	public void isExist(int itemId, int userId) {
+		
+		
+	}
+	
 }

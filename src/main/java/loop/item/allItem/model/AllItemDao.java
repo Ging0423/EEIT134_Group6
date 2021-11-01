@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class AllItemDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory; 
 	
@@ -18,19 +19,41 @@ public class AllItemDao {
 		String itemName = "";
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);
-		if(Math.floor(itemId/10000) == 1) {
+		char id = Integer.toString(itemId).charAt(0);
+		System.out.println(id);
+		if(id == '1') {
 			itemName = allItem.getYarnItem().getItemName();
 		}
-		if(Math.floor(itemId/20000) == 1) {
+		else if(id == '2') {
 			itemName = allItem.getToolsItem().getItemName();
 		}
-		if(Math.floor(itemId/30000) == 1) {
+		else if(id == '3') {
 			itemName = allItem.getBooksItem().getItemName();
 		}
-		if(Math.floor(itemId/40000) == 1) {
+		else if(id == '4') {
 			itemName = allItem.getPackageItem().getItemName();
 		}		
 		return itemName;
+	}
+	
+	public int getItemPrice(int itemId) {
+		int price = 0;
+		Session session = sessionFactory.getCurrentSession();
+		AllItemBean allItem = session.get(AllItemBean.class, itemId);
+		char id = Integer.toString(itemId).charAt(0);
+		if(id == '1') {
+			price = allItem.getYarnItem().getPrice();
+		}
+		if(id == '2') {
+			price = allItem.getToolsItem().getPrice();
+		}
+		if(id == '3') {
+			price = allItem.getBooksItem().getPrice();
+		}
+		if(id == '4') {
+			price = allItem.getPackageItem().getPrice();
+		}		
+		return price;
 	}
 	
 }

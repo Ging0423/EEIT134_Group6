@@ -75,7 +75,7 @@
                                             
                                         </a>
                                         <a class="dropdown-item" href="checkout.jsp">商品結帳</a>
-                                        <a class="dropdown-item" href="cart.jsp">購物車</a>
+                                        <a class="dropdown-item" href="<c:url value='/cart'/>">購物車</a>
                                         <a class="dropdown-item" href="confirmation.jsp">我的訂單</a>
                                     </div>
                                 </li>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="hearer_icon d-flex align-items-center">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <a href="cart.jsp">
+                            <a href="<c:url value='/cart'/>">
                                 <i class="flaticon-shopping-cart-black-shape"></i>
                             </a>
                         </div>

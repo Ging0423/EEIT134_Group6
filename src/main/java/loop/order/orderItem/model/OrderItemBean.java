@@ -29,11 +29,9 @@ public class OrderItemBean implements Serializable {
 	@Column(name = "id")
 	private int id;
 	
-	@Transient
 	@Column(name = "orderId")
 	private int orderId;
 
-	@Transient
 	@Column(name = "itemId")
 	private int itemId;
 
@@ -41,11 +39,11 @@ public class OrderItemBean implements Serializable {
 	private int qty;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "itemId")
+	@JoinColumn(name = "itemId",insertable = false, updatable = false)
 	private AllItemBean allItem;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "orderId")
+	@JoinColumn(name = "orderId",insertable = false, updatable = false)
 	private OrderDataBean orderData;
 
 	public OrderItemBean() {

@@ -1,7 +1,7 @@
 package loop.shoppingCart.controller;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Query;
 
@@ -26,30 +26,34 @@ public class TestHibernate {
 			session.beginTransaction();
 			AllItemBean allItem = session.get(AllItemBean.class, 10001);
 			UsersBean user = session.get(UsersBean.class, 1);
-//			ShoppingCartBean bean = new ShoppingCartBean();
+			ShoppingCartBean bean = new ShoppingCartBean();
 			String sql = "from ShoppingCartBean where itemId =: id";
 			Query q = session.createQuery(sql);
 			q.setParameter("id", allItem.getItemId());
 			
-			List<ShoppingCartBean> bean = q.getResultList();
+//			List<ShoppingCartBean> bean = q.getResultList();
 			
-			for(ShoppingCartBean i : bean) {
-				System.out.println(i.getAllItem().getYarnItem().getItemName());
-			}
-			System.out.println();
-//			bean.setItemId(allItem.getItemId());
-//			bean.setUserId(1);
-//			bean.setQty(2);
-//			bean.setAllItem(allItem);
-//			bean.setUsers(user);
+//			for(ShoppingCartBean i : bean) {
+//				System.out.println(i.getUserId());
+//			}
+			
+			bean.setItemId(allItem.getItemId());
+			bean.setUserId(1);
+			bean.setQty(2);
+			bean.setAllItem(allItem);
+			bean.setUsers(user);			
 //			Set<ShoppingCartBean> sc = new LinkedHashSet<ShoppingCartBean>(); 
 //			sc.add(bean);
 //			allItem.setShoppingCart(sc);
 //			user.setShoppingCart(sc);
 			
-//			session.save(bean);
+			session.save(bean);
 			
-			//System.out.println(bean.getItemId());
+//			//System.out.println(bean.getItemId());
+//			AllItemService service = new AllItemService();
+//			String test = service.getItemName(10001);
+//			System.out.println(test);
+			
 			
 			session.getTransaction().commit();
 			

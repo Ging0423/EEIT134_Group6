@@ -22,33 +22,37 @@ public class ShoppingCartDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public void addToCart(int itemId, int userId, int qty) {
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);
 		UsersBean user = session.get(UsersBean.class, userId);
 		ShoppingCartBean bean = new ShoppingCartBean();
-		
+
 		bean.setItemId(allItem.getItemId());
 		bean.setUserId(user.getUserId());
 		bean.setQty(qty);
 		bean.setAllItem(allItem);
 		bean.setUsers(user);
-		Set<ShoppingCartBean> sc = new LinkedHashSet<ShoppingCartBean>(); 
-		sc.add(bean);
-		allItem.setShoppingCart(sc);
-		user.setShoppingCart(sc);
-		
+//		Set<ShoppingCartBean> sc = new LinkedHashSet<ShoppingCartBean>(); 
+//		sc.add(bean);
+//		allItem.setShoppingCart(sc);
+//		user.setShoppingCart(sc);
+
 		session.save(bean);
 	}
-	
+
 	public List<ShoppingCartBean> selectById(int userId) {
 		List<ShoppingCartBean> list = new ArrayList<ShoppingCartBean>();
 		Session session = sessionFactory.getCurrentSession();
-		String HQL = "from ShoppingCartBean where =: userId";
+		String HQL = "from ShoppingCartBean where userId =: id";
 		Query q = session.createQuery(HQL);
-		q.setParameter(1, "userId");
+		q.setParameter("id", 1);
 		list = q.getResultList();
 		return list;
+	}
+
+	public void isExist(int itemId, int userId) {
+
 	}
 }

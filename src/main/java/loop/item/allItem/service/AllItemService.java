@@ -12,7 +12,12 @@ public class AllItemService {
 	
 	@Autowired
 	AllItemDao Dao;
+	
 	public String getItemName(int itemId) {
 		return Dao.getItemName(itemId);
+	}
+	
+	public int getItemPrice(int itemId) {
+		return Dao.getItemPrice(itemId);
 	}
 }

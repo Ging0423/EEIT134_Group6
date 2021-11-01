@@ -139,27 +139,30 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
+                <th scope="col">商品</th>
+                <th scope="col">售價</th>
+                <th scope="col">數量</th>
+                <th scope="col">總額</th>
               </tr>
             </thead>
+            
             <tbody>
-            <c:forEach var="item" items='${item}'>
+            <form action="" method="POST">
+            <c:forEach var="item" items='${items}'>
             <tr>
                 <td>
                   <div class="media">
                     <div class="d-flex">
                       <img src="img/arrivel/arrivel_1.png" alt="" />
+                      <input type="hidden" name="itemId" value="${item.itemId}">
                     </div>
                     <div class="media-body">
-                      <p>${itemName}</p>
+                      <p>${item.itemName}</p>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <h5>$100</h5>
+                  <h5>$${item.price}</h5>
                 </td>
                 <td>
                   <div class="product_count">
@@ -174,7 +177,7 @@
                       <i class="ti-angle-down"></i>
                     </button> -->
                     <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
+                    <input class="input-number" type="text" name="qty" value="${item.qty}" min="0" max="10">
                     <span class="input-number-increment"> <i class="ti-plus"></i></span>
                   </div>
                 </td>
@@ -183,70 +186,11 @@
                 </td>
               </tr>
             </c:forEach>
-              <tr>
-                <td>
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="img/arrivel/arrivel_1.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <p>Minimalistic shop for multipurpose use</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <h5>$100</h5>
-                </td>
-                <td>
-                  <div class="product_count">
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-                <td>
-                  <h5>$720.00</h5>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="img/arrivel/arrivel_2.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <p>Minimalistic shop for multipurpose use</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <h5>$360.00</h5>
-                </td>
-                <td>
-                  <div class="product_count">
-                      <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                      <input class="input-number" type="text" value="1" min="0" max="10">
-                      <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-                <td>
-                  <h5>$720.00</h5>
-                </td>
-              </tr>
               <tr class="bottom_button">
                 <td>
-                  <a class="btn_1" href="#">Update Cart</a>
+                  <a class="btn_1" href="#">更新購物車</a>
                 </td>
+                </form>
                 <td></td>
                 <td></td>
                 <td>
@@ -398,6 +342,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    
 </body>
 
 </html>

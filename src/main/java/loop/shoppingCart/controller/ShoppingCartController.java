@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import loop.item.allItem.service.AllItemService;
 import loop.shoppingCart.model.ShoppingCartBean;
+import loop.shoppingCart.model.ShoppingCartDisplay;
 import loop.shoppingCart.service.ShoppingCartService;
 
 @Controller
@@ -24,25 +25,37 @@ public class ShoppingCartController {
 	@Autowired
 	AllItemService aservice;
 	
-	@PostMapping("myCart")
-	public String addToCart(HttpServletRequest request) {
+	@PostMapping("/cart")
+	public String addToCart(HttpServletRequest request, Model m) {
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		int userId = 1;
-		//service.addToCart(itemId, userId, qty);
+		service.addToCart(itemId, userId, qty);
+		List<ShoppingCartBean> list  = service.selectById(1);
+		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
+		for(ShoppingCartBean i:list) {
+			items.add(new ShoppingCartDisplay(i.getItemId(),
+					aservice.getItemName(i.getItemId()),
+					"test",
+					aservice.getItemPrice(i.getItemId()),
+					i.getQty()));
+		}
+		m.addAttribute("items", items);
 		return "cart";
 	}
 	
 	@RequestMapping("/cart")
 	public String cartDisplay(Model m) {
 		List<ShoppingCartBean> list  = service.selectById(1);
-		String[] array = new String[4]; 
-		List<ShoppingCartBean> itemName = new ArrayList<String>();
+		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for(ShoppingCartBean i:list) {
-			itemName.add(aservice.getItemName(i.getItemId()));
+			items.add(new ShoppingCartDisplay(i.getItemId(),
+					aservice.getItemName(i.getItemId()),
+					"test",
+					aservice.getItemPrice(i.getItemId()),
+					i.getQty()));
 		}
-		m.addAttribute("itemName", itemName);
-		m.addAttribute("item", list);
-		return "/cart";
+		m.addAttribute("items", items);
+		return "cart";
 	}
 }

@@ -38,7 +38,6 @@ public class OrderDataBean implements Serializable {
 	@Column(name = "orderId")
 	private int orderId;
 	
-	@Transient
 	@Column(name = "userId")
 	private int userId;
 
@@ -67,7 +66,7 @@ public class OrderDataBean implements Serializable {
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;
 
 	public OrderDataBean() {
