@@ -18,7 +18,7 @@ public class YarnItemService {
 	@Autowired
 	YarnItemDao Dao;
 
-	public String getRandomString(int length) {
+	public String getRandomString(Integer length) {
 		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random random = new Random();
 		StringBuffer sb = new StringBuffer();
@@ -33,7 +33,7 @@ public class YarnItemService {
 		return Dao.selectAll();
 	}
 
-	public YarnItemBean selectById(int itemId) {
+	public YarnItemBean selectById(Integer itemId) {
 		return Dao.selectById(itemId);
 	}
 

@@ -29,7 +29,7 @@ public class YarnItemDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public YarnItemBean selectById(int itemId) {
+	public YarnItemBean selectById(Integer itemId) {
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allBean = new AllItemBean();
 		YarnItemBean bean = new YarnItemBean();

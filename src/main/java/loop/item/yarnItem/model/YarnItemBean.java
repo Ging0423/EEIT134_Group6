@@ -25,7 +25,7 @@ public class YarnItemBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="itemId")
-	private int itemId;
+	private Integer itemId;
 	
 	@Column(name="itemName")
 	private String itemName;
@@ -47,10 +47,10 @@ public class YarnItemBean implements Serializable {
 	private Date addDate;
 	
 	@Column(name="qty")
-	private int qty;
+	private Integer qty;
 	
 	@Column(name="price")
-	private int price;
+	private Integer price;
 	
 	
 	@OneToOne(mappedBy = "yarnItem")
@@ -63,7 +63,7 @@ public class YarnItemBean implements Serializable {
 
 
 	public YarnItemBean(String itemName, String material, String size, String color, String itemDescription,
-			Date addDate, int qty, int price) {
+			Date addDate, Integer qty, Integer price) {
 		super();
 		this.itemName = itemName;
 		this.material = material;
@@ -76,12 +76,12 @@ public class YarnItemBean implements Serializable {
 	}
 
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 
@@ -146,22 +146,22 @@ public class YarnItemBean implements Serializable {
 	}
 
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 

@@ -18,7 +18,7 @@ public class ShoppingCartDisplay implements Serializable{
 
 	
 	
-	public ShoppingCartDisplay(int itemId, String itemName, String img, int price, int qty) {
+	public ShoppingCartDisplay(Integer itemId, String itemName, String img, Integer price, Integer qty) {
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.img = img;
@@ -26,11 +26,11 @@ public class ShoppingCartDisplay implements Serializable{
 		this.qty = qty;
 	}
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 
@@ -50,19 +50,19 @@ public class ShoppingCartDisplay implements Serializable{
 		this.img = img;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 	

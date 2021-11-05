@@ -26,7 +26,7 @@ public class PackageItemBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="itemId")
-	private int itemId;
+	private Integer itemId;
 	
 	@Column(name="itemName")
 	private String itemName;
@@ -38,10 +38,10 @@ public class PackageItemBean implements Serializable {
 	private Date addDate;
 	
 	@Column(name="qty")
-	private int qty;
+	private Integer qty;
 	
 	@Column(name="price")
-	private int price;
+	private Integer price;
 	
 	@OneToOne(mappedBy = "packageItem")
 	private AllItemBean allItem;
@@ -50,11 +50,11 @@ public class PackageItemBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 
@@ -82,19 +82,19 @@ public class PackageItemBean implements Serializable {
 		this.addDate = addDate;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 

@@ -36,7 +36,7 @@ public class AllItemBean implements Serializable {
 
 	@Id
 	@Column(name = "itemId")
-	private int itemId;
+	private Integer itemId;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name = "itemId", referencedColumnName = "itemId")
@@ -68,11 +68,11 @@ public class AllItemBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 

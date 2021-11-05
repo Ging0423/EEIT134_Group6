@@ -13,11 +13,11 @@ public class AllItemService {
 	@Autowired
 	AllItemDao Dao;
 	
-	public String getItemName(int itemId) {
+	public String getItemName(Integer itemId) {
 		return Dao.getItemName(itemId);
 	}
 	
-	public int getItemPrice(int itemId) {
+	public Integer getItemPrice(Integer itemId) {
 		return Dao.getItemPrice(itemId);
 	}
 }

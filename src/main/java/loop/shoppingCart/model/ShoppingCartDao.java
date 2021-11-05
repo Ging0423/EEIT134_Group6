@@ -23,7 +23,7 @@ public class ShoppingCartDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void addToCart(int itemId, int userId, int qty) {
+	public void addToCart(Integer itemId, Integer userId, Integer qty) {
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);
 		UsersBean user = session.get(UsersBean.class, userId);
@@ -42,7 +42,7 @@ public class ShoppingCartDao {
 		session.save(bean);
 	}
 
-	public List<ShoppingCartBean> selectById(int userId) {
+	public List<ShoppingCartBean> selectById(Integer userId) {
 		List<ShoppingCartBean> list = new ArrayList<ShoppingCartBean>();
 		Session session = sessionFactory.getCurrentSession();
 		String HQL = "from ShoppingCartBean where userId =: id";
@@ -52,7 +52,7 @@ public class ShoppingCartDao {
 		return list;
 	}
 
-	public void isExist(int itemId, int userId) {
+	public void isExist(Integer itemId, Integer userId) {
 
 	}
 }

@@ -30,7 +30,7 @@ public class UsersBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userId")
-	private int userId;
+	private Integer userId;
 
 	@Column(name = "account")
 	private String account;
@@ -66,11 +66,11 @@ public class UsersBean implements Serializable {
 
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -156,9 +156,33 @@ public class UsersBean implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UsersBean [userId=" + userId + ", account=" + account + ", userPassword=" + userPassword
-				+ ", userIdentity=" + userIdentity + ", userName=" + userName + ", email=" + email + ", tel=" + tel
-				+ ", userAddress=" + userAddress + ", registerDate=" + registerDate + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("UsersBean [userId=");
+		builder.append(userId);
+		builder.append(", account=");
+		builder.append(account);
+		builder.append(", userPassword=");
+		builder.append(userPassword);
+		builder.append(", userIdentity=");
+		builder.append(userIdentity);
+		builder.append(", userName=");
+		builder.append(userName);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", tel=");
+		builder.append(tel);
+		builder.append(", userAddress=");
+		builder.append(userAddress);
+		builder.append(", registerDate=");
+		builder.append(registerDate);
+		builder.append(", orderData=");
+		builder.append(orderData);
+		builder.append(", shoppingCart=");
+		builder.append(shoppingCart);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	
 
 }

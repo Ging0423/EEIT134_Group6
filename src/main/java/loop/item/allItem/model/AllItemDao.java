@@ -15,7 +15,7 @@ public class AllItemDao {
 	@Autowired
 	private SessionFactory sessionFactory; 
 	
-	public String getItemName(int itemId) {
+	public String getItemName(Integer itemId) {
 		String itemName = "";
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);
@@ -36,7 +36,7 @@ public class AllItemDao {
 		return itemName;
 	}
 	
-	public int getItemPrice(int itemId) {
+	public Integer getItemPrice(int itemId) {
 		int price = 0;
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);

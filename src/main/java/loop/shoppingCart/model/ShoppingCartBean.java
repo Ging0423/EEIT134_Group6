@@ -30,16 +30,16 @@ public class ShoppingCartBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "userId")
-	private int userId;
+	private Integer userId;
 	
 	@Column(name = "itemId")
-	private int itemId;
+	private Integer itemId;
 	
 	@Column(name = "qty")
-	private int qty;
+	private Integer qty;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "itemId",insertable = false, updatable = false)
@@ -53,27 +53,27 @@ public class ShoppingCartBean implements Serializable {
 
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
