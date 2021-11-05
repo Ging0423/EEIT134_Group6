@@ -20,24 +20,24 @@ import loop.shoppingCart.service.ShoppingCartService;
 public class ShoppingCartController {
 
 	@Autowired
-	ShoppingCartService service;
+	ShoppingCartService shoppingCartService;
 	
 	@Autowired
-	AllItemService aservice;
+	AllItemService allItemService;
 	
 	@PostMapping("/cart")
 	public String addToCart(HttpServletRequest request, Model m) {
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		int userId = 1;
-		service.addToCart(itemId, userId, qty);
-		List<ShoppingCartBean> list  = service.selectById(1);
+		shoppingCartService.addToCart(itemId, userId, qty);
+		List<ShoppingCartBean> list  = shoppingCartService.selectById(1);
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for(ShoppingCartBean i:list) {
 			items.add(new ShoppingCartDisplay(i.getItemId(),
-					aservice.getItemName(i.getItemId()),
+					allItemService.getItemName(i.getItemId()),
 					"test",
-					aservice.getItemPrice(i.getItemId()),
+					allItemService.getItemPrice(i.getItemId()),
 					i.getQty()));
 		}
 		m.addAttribute("items", items);
@@ -46,13 +46,13 @@ public class ShoppingCartController {
 	
 	@RequestMapping("/cart")
 	public String cartDisplay(Model m) {
-		List<ShoppingCartBean> list  = service.selectById(1);
+		List<ShoppingCartBean> list  = shoppingCartService.selectById(1);
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for(ShoppingCartBean i:list) {
 			items.add(new ShoppingCartDisplay(i.getItemId(),
-					aservice.getItemName(i.getItemId()),
+					allItemService.getItemName(i.getItemId()),
 					"test",
-					aservice.getItemPrice(i.getItemId()),
+					allItemService.getItemPrice(i.getItemId()),
 					i.getQty()));
 		}
 		m.addAttribute("items", items);
