@@ -26,22 +26,22 @@
 		<!-- setting auto generate table: update/validate -->
 		<!-- <property name="hbm2ddl.auto">update</property> -->
 
-
-		<!-- class mapping -->
-		<mapping class="proj.models.AllItemBean" />
-		<!-- class mapping -->
-		<mapping class="proj.models.UserItemBean" />
-		<!-- class mapping -->
-		<mapping class="proj.models.ToolsItemBean" />
-		<!-- class mapping -->
-		<mapping class="proj.models.PackageItemBean" />
-		<!-- class mapping -->
-		<mapping class="proj.models.YarnItemBean" />
-		<!-- class mapping -->
-		<mapping class="proj.models.BooksItemBean" />
-		<!-- class mapping -->
-<!-- 		<mapping class="proj.models.OrderDataBean" /> -->
 		
+		<mapping class="loop.shoppingCart.model.ShoppingCartBean" />
+		<mapping class="loop.item.allItem.model.AllItemBean" />
+		<mapping class="loop.item.booksItem.model.BooksItemBean" />
+		<mapping class="loop.item.packageItem.model.PackageItemBean" />
+		<mapping class="loop.item.userItem.model.UserItemBean" />
+		<mapping class="loop.item.yarnItem.model.YarnItemBean" />
+		<mapping class="loop.item.toolsItem.model.ToolsItemBean" />
+		<mapping class="loop.order.orderData.model.OrderDataBean" />
+		<mapping class="loop.order.orderItem.model.OrderItemBean" />
+		<mapping class="loop.shoppingCart.model.ShoppingCartBean" />
+		<mapping class="loop.user.model.UsersBean" />
+		
+		
+		
+
 		
 	</session-factory>
 </hibernate-configuration>

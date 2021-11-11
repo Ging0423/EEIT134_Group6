@@ -14,9 +14,10 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'allItem')
     drop table allItem;
 
 create table allItem(
-	id  int primary key not null, 
-	categoryId int not null
+	itemId  int primary key not null, 
 )
+insert into allItem
+values(10001),(10002),(10003)
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'users')
     drop table users;
@@ -29,9 +30,22 @@ userIdentity int,
 userName nvarchar(50) not null,
 email varchar(20) not null,
 tel varchar(20) not null,
-userAddress nvarchar(50) not null
+userAddress nvarchar(50) not null,
+registerDate smalldatetime
 
 )
+
+insert into users(
+account,
+userPassword,
+userIdentity,
+userName,
+email,
+tel,
+userAddress,
+registerDate
+)
+values('admin', 'admin', '0', 'admin','admin@test.com', '7777777','test7777',convert(datetime,GETDATE(),120))
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'yarnItem')
     drop table yarnItem;
@@ -43,12 +57,25 @@ material nvarchar(50) not null,
 size nvarchar(50) not null,
 color nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
+addDate smalldatetime,
 qty int not null,
 price int not null,
-img nvarchar(max) not null,
-
 
 )
+
+insert into yarnItem(
+itemName,
+material,
+size,
+color,
+itemDescription,
+addDate,
+qty,
+price
+)
+values('½u','¦Ï¤ò','3m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
+('½u','¦Ï¤ò','3m','ºñ','ºñºñªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
+('½u','¦Ï¤ò','10m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100)
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'toolsItem')
     drop table toolsItem;
@@ -58,9 +85,9 @@ itemId int primary key  identity(20001,1) not null,
 itemName nvarchar(50) not null,
 specification nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
+addDate smalldatetime,
 qty int not null,
 price int not null,
-img nvarchar(max) not null,
 )
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'booksItem')
@@ -72,9 +99,9 @@ itemName nvarchar(50) not null,
 publisher nvarchar(50) not null,
 author nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
+addDate smalldatetime,
 qty int not null,
 price int not null,
-img nvarchar(max) not null,
 
 )
 
@@ -85,9 +112,9 @@ create table packageItem(
 itemId int primary key  identity(40001,1) not null,
 itemName nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
+addDate smalldatetime,
 qty int not null,
 price int not null,
-img nvarchar(max) not null,
 
 )
 
@@ -99,10 +126,9 @@ itemId int primary key identity(50001,1) not null,
 userId int /*references Users(userId)*/ not null,
 itemName nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
+addDate smalldatetime,
 qty int not null,
 price int not null,
-img nvarchar(max) not null,
-
 
 )
 
@@ -114,6 +140,9 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderData
 create table orderData(
 orderId int primary key not null,
 userId int references Users(userid) not null,
+recipient nvarchar(50) not null,
+tel varchar(20) not null,
+shippingAddress nvarchar(50) not null,
 orderDate nvarchar(50) not null,
 payState nvarchar(20) not null,
 orderState nvarchar(20) not null,
@@ -126,8 +155,38 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderItem
     drop table orderItem;
 
 create table orderItem(
+id int primary key identity(1,1) not null,
 orderId int  references orderData(orderId) not null,
 itemId int references allItem(itemId) not null,
 qty int not null
 )
 
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'shoppingCart')
+    drop table shoppingCart;
+
+create table shoppingCart(
+id int primary key identity(1,1) not null,
+userId int  references users(userId) not null,
+itemId int references allItem(itemId) not null,
+qty int not null
+)
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemImg')
+    drop table itemImg;
+
+create table itemImg(
+id int primary key identity(1,1) not null,
+itemId int references allItem(itemId) not null,
+img nvarchar(max) not null
+)
+insert into itemImg
+values(10001,'img/yarn/jemilli-01-750x750.jpg')
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemKeyword')
+    drop table itemKeyword;
+
+create table itemKeyword(
+id int primary key identity(1,1) not null,
+itemId int references allItem(itemId) not null,
+keyword nvarchar(100)
+)
