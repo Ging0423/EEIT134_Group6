@@ -3,16 +3,13 @@ package loop.item.booksItem.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -54,7 +51,6 @@ public class BooksItemBean implements Serializable {
 	private AllItemBean allItem;
 	
 	public BooksItemBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getItemId() {
@@ -128,8 +124,5 @@ public class BooksItemBean implements Serializable {
 	public void setAllItem(AllItemBean allItem) {
 		this.allItem = allItem;
 	}
-
-
-	
 	
 }
