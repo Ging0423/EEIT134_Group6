@@ -20,7 +20,6 @@ public class AllItemDao {
 		Session session = sessionFactory.getCurrentSession();
 		AllItemBean allItem = session.get(AllItemBean.class, itemId);
 		char id = Integer.toString(itemId).charAt(0);
-		System.out.println(id);
 		if(id == '1') {
 			itemName = allItem.getYarnItem().getItemName();
 		}

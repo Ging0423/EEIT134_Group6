@@ -27,11 +27,11 @@ public class ShoppingCartController {
 	
 	@PostMapping("/cart")
 	public String addToCart(HttpServletRequest request, Model m) {
-		int itemId = Integer.parseInt(request.getParameter("itemId"));
-		int qty = Integer.parseInt(request.getParameter("qty"));
-		int userId = 1;
-		shoppingCartService.addToCart(itemId, userId, qty);
-		List<ShoppingCartBean> list  = shoppingCartService.selectById(1);
+		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
+		Integer qty = Integer.parseInt(request.getParameter("qty"));
+		Integer userId = 1;
+		shoppingCartService.save(itemId, userId, qty);
+		List<ShoppingCartBean> list  = shoppingCartService.findAllCartBeans(1);
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for(ShoppingCartBean i:list) {
 			items.add(new ShoppingCartDisplay(i.getItemId(),
@@ -46,7 +46,7 @@ public class ShoppingCartController {
 	
 	@RequestMapping("/cart")
 	public String cartDisplay(Model m) {
-		List<ShoppingCartBean> list  = shoppingCartService.selectById(1);
+		List<ShoppingCartBean> list  = shoppingCartService.findAllCartBeans(1);
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for(ShoppingCartBean i:list) {
 			items.add(new ShoppingCartDisplay(i.getItemId(),
