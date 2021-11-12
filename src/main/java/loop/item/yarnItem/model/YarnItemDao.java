@@ -32,8 +32,8 @@ public class YarnItemDao {
 	public List<YarnItemBean> selectAll() {
 		List<YarnItemBean> list = new ArrayList<YarnItemBean>();
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from YarnItemBean");
-		list = query.list();
+		Query<YarnItemBean> query = session.createQuery("from YarnItemBean", YarnItemBean.class);
+		list = query.getResultList();
 		return list;
 		
 	}

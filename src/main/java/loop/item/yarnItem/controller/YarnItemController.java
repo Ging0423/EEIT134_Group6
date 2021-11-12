@@ -24,14 +24,14 @@ public class YarnItemController {
 	@RequestMapping("/items/yarn")
 	public String selectAll(Model m) {
 		List<YarnItemBean> allItem = new ArrayList<YarnItemBean>();
-		allItem = service.selectAll();
+		allItem = service.findAll();
 		m.addAttribute("allItem", allItem);
 		return "/yarn";
 	}
 
 	@RequestMapping("/items/yarn/{id}")
 	public String selectById(@PathVariable("id") int itemId, Model m) {
-		bean = service.selectById(itemId);
+		bean = service.findById(itemId);
 		m.addAttribute("item", bean);
 		return "/yarnItem";
 	}
