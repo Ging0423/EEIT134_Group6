@@ -2,8 +2,11 @@ package loop.item.booksItem.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import loop.item.booksItem.model.BooksItemBean;
 
+@Repository
 public class BooksItemRepository {
 
 	public void save(BooksItemBean booksItemBean) {

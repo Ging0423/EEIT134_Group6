@@ -26,18 +26,18 @@ public class BooksItemController {
 		this.booksItemService = booksItemService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/1")
 	public String index(Model model) {
 		return "";
 	}
 	
-	@GetMapping("/")
-	public String sendEmptyFrom(Model model) {
+	@GetMapping("/2")
+	public String sendEmptyForm(Model model) {
 		BooksItemBean booksItemBean = new BooksItemBean();
 		model.addAttribute("BookItemBean", booksItemBean);
 		return "";				
 	}
-	@PostMapping("/")
+	@PostMapping("/3")
 	public String save(Model model,
 			BooksItemBean booksItemBean,
 			BindingResult bindingResult) {
@@ -68,7 +68,7 @@ public class BooksItemController {
 		return "booksItem";		
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/4")
 	public String update(Model model,
 			BooksItemBean booksItemBean,
 			BindingResult bindingResult) {
@@ -84,14 +84,14 @@ public class BooksItemController {
 		return "redirect:/";
 	}
 	
-	@DeleteMapping(value="//{id}")
+	@DeleteMapping(value="/5/{id}")
 	public String deleteBooksItemData(@PathVariable Integer itemId) {
 		booksItemService.deleteBooksItemByPrimaryKey(itemId);
 		return "redirect:/";
 		
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/6")
 	public String home() {
 		return "";
 	}
