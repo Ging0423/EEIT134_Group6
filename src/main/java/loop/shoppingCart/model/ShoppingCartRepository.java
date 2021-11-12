@@ -10,4 +10,8 @@ public interface ShoppingCartRepository extends JpaRepository<ShoppingCartBean, 
 
 	@Query(value = "from ShoppingCartBean where userId = ?1")
 	public List<ShoppingCartBean> findAllCartBeans(Integer userId);
+	
+	@Query(value = "from ShoppingCartBean where itemId = ?1 and userId =?2")
+	public List<ShoppingCartBean> findByItemIdAndUserId(int itemId, int userId);
+	
 }
