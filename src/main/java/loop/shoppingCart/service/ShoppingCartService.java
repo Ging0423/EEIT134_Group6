@@ -57,6 +57,13 @@ public class ShoppingCartService {
 		shoppingRepo.save(shoppingCartBean);
 	}
 
+	public void update(Integer itemId, Integer userId, Integer qty) {
+		List<ShoppingCartBean> list = shoppingRepo.findByItemIdAndUserId(itemId, userId);
+		ShoppingCartBean shoppingCartBean = list.get(0);
+		shoppingCartBean.setQty(qty);
+		shoppingRepo.save(shoppingCartBean);
+	}
+	
 	public void removeItem() {
 
 	}
