@@ -27,9 +27,9 @@ public class UsersService {
         return userRepository.findById(id).get();
     }
 
-    public UsersBean findByUsername(String usrName){
+    /*public UsersBean findByUsername(String usrName){
         return userRepository.findByUserName(usrName);
-    }
+    }*/
 
     public void deleteById(Integer id){
         userRepository.deleteById(id);
