@@ -21,7 +21,7 @@ import loop.item.packageItem.model.PackageItemBean;
 import loop.item.toolsItem.model.ToolsItemBean;
 import loop.item.userItem.model.UserItemBean;
 import loop.item.yarnItem.model.YarnItemBean;
-import loop.order.orderItem.model.OrderItemBean;
+import loop.order.model.OrderItemBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
 @Component

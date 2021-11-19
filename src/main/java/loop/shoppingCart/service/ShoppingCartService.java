@@ -16,31 +16,29 @@ import loop.shoppingCart.model.ShoppingCartDisplay;
 import loop.shoppingCart.model.ShoppingCartRepository;
 import loop.user.model.UsersBean;
 import loop.user.model.UsersRepository;
+import loop.user.service.UsersService;
 
 @Service
 @Transactional
 public class ShoppingCartService {
 
 	private ShoppingCartRepository shoppingRepo;
-	private AllItemRepository allItemRepo;
-	private UsersRepository usersRepo;
 	private AllItemService allItemService;
+	private UsersService usersService;
+
 
 	@Autowired
-	public ShoppingCartService(ShoppingCartRepository shoppingRepo, AllItemRepository allItemRepo,
-			UsersRepository usersRepo, AllItemService allItemService) {
+	public ShoppingCartService(ShoppingCartRepository shoppingRepo, AllItemService allItemService,
+			UsersService usersService) {
 		super();
 		this.shoppingRepo = shoppingRepo;
-		this.allItemRepo = allItemRepo;
-		this.usersRepo = usersRepo;
 		this.allItemService = allItemService;
+		this.usersService = usersService;
 	}
 
 	public void save(Integer itemId, Integer userId, Integer qty) {
-		Optional<AllItemBean> allItemOp = allItemRepo.findById(itemId);
-		AllItemBean allItemBean = allItemOp.get();
-		Optional<UsersBean> usersOp = usersRepo.findById(userId);
-		UsersBean usersBean = usersOp.get();
+		AllItemBean allItemBean = allItemService.findById(itemId);
+		UsersBean usersBean = usersService.findById(userId);
 		ShoppingCartBean shoppingCartBean = new ShoppingCartBean();
 		shoppingCartBean.setItemId(allItemBean.getItemId());
 		shoppingCartBean.setUserId(usersBean.getUserId());
@@ -49,6 +47,8 @@ public class ShoppingCartService {
 		shoppingCartBean.setUsers(usersBean);
 		shoppingRepo.save(shoppingCartBean);
 	}
+
+	
 
 	public void updateQty(Integer itemId, Integer userId, Integer qty) {
 		List<ShoppingCartBean> list = shoppingRepo.findByItemIdAndUserId(itemId, userId);
@@ -64,8 +64,8 @@ public class ShoppingCartService {
 		shoppingRepo.save(shoppingCartBean);
 	}
 	
-	public void removeItem() {
-
+	public void deleteByItemIdAndUserId(Integer itemId, Integer userId) {
+		shoppingRepo.deleteByItemIdAndUserId(itemId, userId);;
 	}
 
 	public List<ShoppingCartBean> findAllCartBeans(int userId) {

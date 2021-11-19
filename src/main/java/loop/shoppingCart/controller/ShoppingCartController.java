@@ -65,11 +65,20 @@ public class ShoppingCartController {
 	
 	@PostMapping("/updateCart")
 	@ResponseBody
-	public List<ShoppingCartDisplay> updateCart(@RequestBody List<HashMap<String, String>> array, Model m) throws JSONException {
-		int userId = 1;
+	public List<ShoppingCartDisplay> updateCart(@RequestBody List<HashMap<String, String>> array) throws JSONException {
+		Integer userId = 1;
 		for(HashMap<String, String> i : array) {
 			shoppingCartService.update(Integer.parseInt(i.get("itemId")), userId, Integer.parseInt(i.get("qty")));
 		}
+		List<ShoppingCartDisplay> items = shoppingCartService.list(1);
+		return items;
+	}
+	@PostMapping("/deleteCart")
+	@ResponseBody
+	public List<ShoppingCartDisplay> deleteCart(@RequestBody HashMap<String, String> map){
+		Integer itemId = Integer.parseInt(map.get("itemId"));
+		Integer userId = 1;
+		shoppingCartService.deleteByItemIdAndUserId(itemId, userId);
 		List<ShoppingCartDisplay> items = shoppingCartService.list(1);
 		return items;
 	}
