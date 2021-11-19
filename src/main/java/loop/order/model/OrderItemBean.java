@@ -1,4 +1,4 @@
-package loop.order.orderItem.model;
+package loop.order.model;
 
 import java.io.Serializable;
 
@@ -16,7 +16,6 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 import loop.item.allItem.model.AllItemBean;
-import loop.order.orderData.model.OrderDataBean;
 
 @Component
 @Entity

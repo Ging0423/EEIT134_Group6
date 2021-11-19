@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import loop.order.orderData.model.OrderDataBean;
+import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
 @Component
