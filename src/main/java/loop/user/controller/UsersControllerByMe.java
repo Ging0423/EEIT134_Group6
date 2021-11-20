@@ -2,6 +2,7 @@ package loop.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -13,7 +14,7 @@ public class UsersControllerByMe {
 	private UsersServiceByMe uService;
 	
 	@GetMapping("/userinsert.controller")
-	public UsersBean processInsertAction() {
+	public String processInsertAction(Model m) {
 		UsersBean user1 = new UsersBean();
 		user1.setAccount("test123");
 		user1.setUserPassword("5566");
@@ -23,7 +24,8 @@ public class UsersControllerByMe {
 		user1.setTel("0987654321");
 		user1.setUserAddress("earth");
 		user1.setRegisterDate(null);
-		return uService.insert(user1);
+		m.addAttribute("User", user1);
+		return "user";
 	}
 	
 	@GetMapping("/userinsert1.controller")
