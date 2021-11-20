@@ -72,7 +72,7 @@
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
 										<a class="dropdown-item" href="login.jsp"> 登錄 </a> <a
 											class="dropdown-item" href="checkout.jsp">商品結帳</a> <a
-											class="dropdown-item" href="cart.jsp">購物車</a> <a
+											class="dropdown-item" href="<c:url value='/cart'/>">購物車</a> <a
 											class="dropdown-item" href="confirmation.jsp">我的訂單</a>
 									</div></li>
 

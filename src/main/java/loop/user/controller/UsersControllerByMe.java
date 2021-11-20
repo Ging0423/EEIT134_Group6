@@ -1,14 +1,15 @@
 package loop.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import loop.user.model.UsersBean;
 import loop.user.service.UsersServiceByMe;
-
+@Controller
 public class UsersControllerByMe {
-	@Autowired //撈取UsersServiceByMe, 即Service<->Controller
+	@Autowired //撈取sersServiceByMe, 即Service<->Controller
 	private UsersServiceByMe uService;
 	
 	@GetMapping("/userinsert.controller")
@@ -21,6 +22,7 @@ public class UsersControllerByMe {
 		user1.setEmail("GER@hotmail.com");
 		user1.setTel("0987654321");
 		user1.setUserAddress("earth");
+		user1.setRegisterDate(null);
 		return uService.insert(user1);
 	}
 	
