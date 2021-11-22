@@ -24,7 +24,7 @@ public class UsersControllerByMe {
 		user1.setTel("0987654321");
 		user1.setUserAddress("earth");
 		user1.setRegisterDate(null);
-		m.addAttribute("User", user1);
+		m.addAttribute("User", user1); //傳至.JSP的${}
 		return "user";
 	}
 	
