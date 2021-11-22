@@ -1,5 +1,13 @@
 package loop.login.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Table(name = "users")
+@Entity
 public class LoginBean {
 
 	private String account;
