@@ -57,11 +57,11 @@ public class UsersBean implements Serializable {
 	@Column(name = "registerDate")
 	private Date registerDate;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
-	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
-	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+//	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
+//
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+//	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 
 	public UsersBean() {
 
@@ -139,21 +139,21 @@ public class UsersBean implements Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Set<OrderDataBean> getOrderData() {
-		return orderData;
-	}
-
-	public void setOrderData(Set<OrderDataBean> orderData) {
-		this.orderData = orderData;
-	}
-
-	public Set<ShoppingCartBean> getShoppingCart() {
-		return shoppingCart;
-	}
-
-	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
+//	public Set<OrderDataBean> getOrderData() {
+//		return orderData;
+//	}
+//
+//	public void setOrderData(Set<OrderDataBean> orderData) {
+//		this.orderData = orderData;
+//	}
+//
+//	public Set<ShoppingCartBean> getShoppingCart() {
+//		return shoppingCart;
+//	}
+//
+//	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
+//		this.shoppingCart = shoppingCart;
+//	}
 
 	@Override
 	public String toString() {
@@ -176,10 +176,10 @@ public class UsersBean implements Serializable {
 		builder.append(userAddress);
 		builder.append(", registerDate=");
 		builder.append(registerDate);
-		builder.append(", orderData=");
-		builder.append(orderData);
-		builder.append(", shoppingCart=");
-		builder.append(shoppingCart);
+//		builder.append(", orderData=");
+//		builder.append(orderData);
+//		builder.append(", shoppingCart=");
+//		builder.append(shoppingCart);
 		builder.append("]");
 		return builder.toString();
 	}

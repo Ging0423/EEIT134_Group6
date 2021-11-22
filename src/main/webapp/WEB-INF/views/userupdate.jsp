@@ -8,6 +8,6 @@
 <title>create</title>
 </head>
 <body>
-<h1>Successful!</h1>
+<h1>Update Successful!</h1>
 </body>
 </html>

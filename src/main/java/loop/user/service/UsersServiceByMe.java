@@ -24,12 +24,12 @@ public class UsersServiceByMe {
 		return uResp.save(user);
 	}
 	
-	public void deleteById(Integer Id) {
-		uResp.deleteById(Id);
+	public void deleteById(Integer id) {
+		uResp.deleteById(id);
 	}
 	
-	public UsersBean findById(Integer Id) {
-		Optional<UsersBean> op1 = uResp.findById(Id);
+	public UsersBean findById(Integer id) {
+		Optional<UsersBean> op1 = uResp.findById(id);
 		return op1.get();
 	}
 }
