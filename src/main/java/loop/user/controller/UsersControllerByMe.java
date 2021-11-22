@@ -14,7 +14,20 @@ public class UsersControllerByMe {
 	private UsersServiceByMe uService;
 	
 	@GetMapping("/userinsert.controller")
-	public String processInsertAction(Model m) {
+//	public String processInsertAction(Model m) {
+//		UsersBean user1 = new UsersBean();
+//		user1.setAccount("test123");
+//		user1.setUserPassword("5566");
+//		user1.setUserIdentity("0");
+//		user1.setUserName("GER");
+//		user1.setEmail("GER@hotmail.com");
+//		user1.setTel("0987654321");
+//		user1.setUserAddress("earth");
+//		user1.setRegisterDate(null);
+//		m.addAttribute("User", user1); //傳至.JSP的${}
+//		return "user";
+//	}
+	public UsersBean processInsertAction() {
 		UsersBean user1 = new UsersBean();
 		user1.setAccount("test123");
 		user1.setUserPassword("5566");
@@ -24,8 +37,7 @@ public class UsersControllerByMe {
 		user1.setTel("0987654321");
 		user1.setUserAddress("earth");
 		user1.setRegisterDate(null);
-		m.addAttribute("User", user1); //傳至.JSP的${}
-		return "user";
+		return uService.insert(user1);
 	}
 	
 	@GetMapping("/userinsert1.controller")
@@ -36,7 +48,7 @@ public class UsersControllerByMe {
 	@GetMapping("/userupdate.controller")
 	public UsersBean processUpdateAction() {
 		UsersBean user2 = new UsersBean();
-		user2.setUserId(100);
+		user2.setUserId(7);
 		user2.setUserPassword("556677");
 		user2.setUserName("GERSH");
 		user2.setEmail("GERSH@hotmail.com");
@@ -47,7 +59,7 @@ public class UsersControllerByMe {
 	
 	@GetMapping("/userdelete.controller")
 	public String processDelete() {
-		uService.deleteById(100);
+		uService.deleteById(1);
 		return "Delete successful !";
 	}
 }

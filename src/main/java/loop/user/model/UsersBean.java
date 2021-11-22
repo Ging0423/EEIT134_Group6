@@ -20,9 +20,10 @@ import org.springframework.stereotype.Component;
 import loop.order.orderData.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
-@Component
+
 @Entity
 @Table(name = "users")
+@Component
 public class UsersBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -183,6 +184,5 @@ public class UsersBean implements Serializable {
 		return builder.toString();
 	}
 
-	
 
 }
