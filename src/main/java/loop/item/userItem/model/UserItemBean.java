@@ -15,9 +15,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
+
 import loop.item.allItem.model.AllItemBean;
 
-
+@Component
 @Entity
 @Table(name="userItem")
 public class UserItemBean implements Serializable{

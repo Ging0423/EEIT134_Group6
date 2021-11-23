@@ -1,49 +1,39 @@
 package loop.item.userItem.service;
 
 import java.util.List;
-import java.util.Random;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import loop.item.userItem.dao.UserItemRepository;
 import loop.item.userItem.model.UserItemBean;
-import loop.item.userItem.model.UserItemDao;
 
+@Service
+@Transactional
 public class UserItemService {
-	UserItemDao cDao;
 	
-	public UserItemService() {
-		this.cDao = new UserItemDao();
-	}
-	public UserItemBean createItem(UserItemBean bean) {
-		return cDao.createItem(bean);
-	}
+	@Autowired
+	private UserItemRepository userItemRepository;
 	
-	public String updateItem(UserItemBean bean, String id) {
-		return cDao.update(bean, id);
+	public void save(UserItemBean userItemBean) {
+		userItemRepository.save(userItemBean);	
 	}
-	
-	public String deleteItem(String id) {
-		return cDao.delete(id);
-	}
-	public String deleteMultiItem(String[] id) {
-		return cDao.deleteMulti(id);
-	}
-	public String getRandomString(int length){
-		String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		Random random=new Random();
-		StringBuffer sb=new StringBuffer();
-		for(int i=0; i < length; i++){
-		int number=random.nextInt(62);
-		sb.append(str.charAt(number));
-		}
-		return sb.toString();
-		}  
-	
-	public List<UserItemBean> selectAll() {
-		return cDao.selectAll();
+
+	public List<UserItemBean> findAll() {
+		return userItemRepository.findAll();
 	}
 	
-	public List<UserItemBean> search(String keyword, String select) {
-		return cDao.search(keyword, select);
+	public UserItemBean findById(Integer itemId) {
+		return userItemRepository.findById(itemId);
+	}
+
+    public void update(UserItemBean userItemBean) {
+    	userItemRepository.update(userItemBean);		
 	}
 	
-	
+	public void deleteUserItemByPrimaryKey(Integer itemId) {
+		userItemRepository.deleteuserItemByPrimaryKey(itemId);		
+	}
 }
