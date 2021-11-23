@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.item.yarnItem.model.YarnItemBean;
 import loop.item.yarnItem.service.YarnItemService;
 
 @Controller
+@SessionAttributes({ "isLogin" })
 public class YarnItemController {
 
 	@Autowired

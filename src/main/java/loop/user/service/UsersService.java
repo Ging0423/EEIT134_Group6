@@ -12,10 +12,14 @@ import loop.user.model.UsersRepository;
 public class UsersService {
 	
 	@Autowired
-	private UsersRepository userRepo;
+	private UsersRepository usersRepo;
 	
 	public UsersBean findById(Integer userId) {
-		Optional<UsersBean> op = userRepo.findById(userId);
+		Optional<UsersBean> op = usersRepo.findById(userId);
 		return op.get();
+	}
+	
+	public void save(UsersBean bean) {
+		usersRepo.save(bean);
 	}
 }

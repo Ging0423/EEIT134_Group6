@@ -54,7 +54,7 @@ public class UsersBean implements Serializable {
 	private String userAddress;
 
 	@Column(name = "registerDate")
-	private Date registerDate;
+	private String registerDate;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
@@ -130,11 +130,11 @@ public class UsersBean implements Serializable {
 		this.userAddress = userAddress;
 	}
 
-	public Date getRegisterDate() {
+	public String getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
 
