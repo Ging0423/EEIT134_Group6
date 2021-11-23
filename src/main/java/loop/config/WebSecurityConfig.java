@@ -1,18 +1,32 @@
 package loop.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import loop.login.model.AuthUserDetailsService;
+import loop.login.model.MyAuthenticationFailureHandler;
+import loop.login.model.MyAuthenticationSuccessHandler;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
+	@Autowired
+	private AuthUserDetailsService userDetailService;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
+		auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
+
 	}
 
 	@Override
@@ -22,21 +36,44 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/users/**").authenticated()
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.GET, "/list").authenticated()
+		.antMatchers(HttpMethod.GET, "/update").authenticated()
 		.antMatchers(HttpMethod.GET).permitAll()
-		.antMatchers(HttpMethod.POST, "/users/**").authenticated()
-		.antMatchers(HttpMethod.POST).permitAll()
-		.anyRequest().authenticated()
+		.antMatchers(HttpMethod.POST, "/update").authenticated()
+		.antMatchers(HttpMethod.POST, "/delete").authenticated()
+		.antMatchers(HttpMethod.POST)
+		.permitAll().anyRequest()
+		.authenticated()
 		.and()
 		.rememberMe()
 		.tokenValiditySeconds(864000)
 		.key("rememberMe.key")
 		.and()
 		.csrf().disable()
-		.formLogin().loginPage("/login/page")
-		  .defaultSuccessUrl("/login/welcome");
+		.formLogin()
+		.loginPage("/login")
+		.usernameParameter("account")
+		.passwordParameter("password")
+		.successHandler(successHandler())
+		.failureHandler(failureHandler())
+		.and()
+		.logout()
+        .logoutUrl("/logout")
+        .logoutSuccessUrl("/");
+	}
+	
+	@Autowired
+	@Qualifier("MyAuthenticationSuccessHandler")
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+	    return new MyAuthenticationSuccessHandler();
+	}
+	@Autowired
+	@Qualifier("MyAuthenticationFailureHandler")
+	@Bean
+	public AuthenticationFailureHandler failureHandler() {
+		return new MyAuthenticationFailureHandler();
 	}
 	
 }

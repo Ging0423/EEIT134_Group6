@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.item.allItem.service.AllItemService;
 import loop.shoppingCart.model.ShoppingCartDisplay;
 import loop.shoppingCart.service.ShoppingCartService;
 
 @Controller
+@SessionAttributes({ "isLogin" })
 public class ShoppingCartController {
 
 	@Autowired
