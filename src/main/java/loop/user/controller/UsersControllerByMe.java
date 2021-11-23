@@ -1,5 +1,8 @@
 package loop.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +16,35 @@ public class UsersControllerByMe {
 	@Autowired //撈取sersServiceByMe, 即Service<->Controller
 	private UsersServiceByMe uService;
 	
-	@GetMapping("/userinsert.controller")
-	public String processInsertAction(Model m) {
+	@GetMapping("/create")
+	public String create(HttpServletRequest request, HttpServletResponse response, Model m) {
 		UsersBean user1 = new UsersBean();
-		user1.setAccount("test123");
-		user1.setUserPassword("5566");
-		user1.setUserIdentity("0");
-		user1.setUserName("GER");
-		user1.setEmail("GER@hotmail.com");
-		user1.setTel("0987654321");
-		user1.setUserAddress("earth");
-		user1.setRegisterDate(null);
-		uService.insert(user1);
-		m.addAttribute("User", user1); //傳至.JSP的${}
-		return "user";
+//		user1.setAccount("test123");
+//		user1.setUserPassword("5566");
+//		user1.setUserIdentity("0");
+//		user1.setUserName("GER");
+//		user1.setEmail("GER@hotmail.com");
+//		user1.setTel("0987654321");
+//		user1.setUserAddress("earth");
+//		user1.setRegisterDate(null);
+//		uService.insert(user1);
+//		m.addAttribute("uAccount", user1.getAccount()); //傳至.jsp的${}
+//		m.addAttribute("uPassword", user1.getUserPassword());
+//		m.addAttribute("uIdentity", user1.getUserIdentity());
+//		m.addAttribute("uName", user1.getUserName());
+//		m.addAttribute("uEmail", user1.getEmail());
+//		m.addAttribute("uTel", user1.getTel());
+//		m.addAttribute("uAddress", user1.getUserAddress());
+//		m.addAttribute("uRegisterDate", user1.getRegisterDate());
+		return "userinsert";
+	}
+	@GetMapping("/login")
+	public String login(Model m) {
+		return "login";		
+	}
+	@GetMapping("/index")
+	public String index(Model m) {
+		return "index";		
 	}
 //	public UsersBean processInsertAction() {
 //		UsersBean user1 = new UsersBean();

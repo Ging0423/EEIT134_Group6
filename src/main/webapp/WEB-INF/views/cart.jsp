@@ -36,7 +36,7 @@
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-12">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<a class="navbar-brand" href="index.jsp"> <img
+						<a class="navbar-brand" href="<c:url value='index'/>"> <img
 							src="img/logo.png" alt="logo">
 						</a>
 						<button class="navbar-toggler" type="button"
@@ -49,7 +49,7 @@
 						<div class="collapse navbar-collapse main-menu-item"
 							id="navbarSupportedContent">
 							<ul class="navbar-nav">
-								<li class="nav-item"><a class="nav-link" href="index.jsp">首頁</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='index'/>">首頁</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="about.jsp">關於</a>
 								</li>
