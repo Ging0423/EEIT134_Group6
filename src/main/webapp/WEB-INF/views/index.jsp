@@ -86,7 +86,7 @@
                                         討論區
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="blog.html"> 討論區</a>
+                                        <a class="dropdown-item" href="<c:url value='/forum'/>"> 討論區</a>
                                         <a class="dropdown-item" href="single-blog.html">Single blog</a>
                                     </div>
                                 </li>
