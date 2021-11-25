@@ -1,4 +1,4 @@
-USE master ;
+ï»¿USE master ;
 IF EXISTS(select * from sys.databases where name='project')
 BEGIN
    ALTER DATABASE project
@@ -25,7 +25,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'users')
 create table users(
 userId int primary key identity(1,1) not null,
 account varchar(12) not null,
-userPassword varchar(12) not null,
+userPassword varchar(max) not null,
 userIdentity int,
 userName nvarchar(50) not null,
 email varchar(20) not null,
@@ -73,9 +73,9 @@ addDate,
 qty,
 price
 )
-values('½u','¦Ï¤ò','3m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
-('½u','¦Ï¤ò','3m','ºñ','ºñºñªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
-('½u','¦Ï¤ò','10m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100)
+values('ç·š','ç¾Šæ¯›','3m','ç´…','ç´…ç´…çš„æ¯›ç·š',convert(datetime,GETDATE(),120),50,100),
+('ç·š','ç¾Šæ¯›','3m','ç¶ ','ç¶ ç¶ çš„æ¯›ç·š',convert(datetime,GETDATE(),120),50,100),
+('ç·š','ç¾Šæ¯›','10m','ç´…','ç´…ç´…çš„æ¯›ç·š',convert(datetime,GETDATE(),120),50,100)
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'toolsItem')
     drop table toolsItem;
@@ -105,10 +105,10 @@ price int not null,
 
 )
 
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'packageItem')
-    drop table packageItem;
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'kitsItem')
+    drop table kitsItem;
 
-create table packageItem(
+create table kitsItem(
 itemId int primary key  identity(40001,1) not null,
 itemName nvarchar(50) not null,
 itemDescription nvarchar(max) not null,

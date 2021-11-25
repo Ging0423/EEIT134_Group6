@@ -17,11 +17,11 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import loop.item.booksItem.model.BooksItemBean;
-import loop.item.packageItem.model.PackageItemBean;
+import loop.item.kitsItem.model.KitsItemBean;
 import loop.item.toolsItem.model.ToolsItemBean;
 import loop.item.userItem.model.UserItemBean;
 import loop.item.yarnItem.model.YarnItemBean;
-import loop.order.orderItem.model.OrderItemBean;
+import loop.order.model.OrderItemBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
 @Component
@@ -56,7 +56,7 @@ public class AllItemBean implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name = "itemId", referencedColumnName = "itemId")
-	private PackageItemBean packageItem;
+	private KitsItemBean kitsItem;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL )
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
@@ -108,12 +108,12 @@ public class AllItemBean implements Serializable {
 		this.booksItem = booksItem;
 	}
 
-	public PackageItemBean getPackageItem() {
-		return packageItem;
+	public KitsItemBean getKitsItem() {
+		return kitsItem;
 	}
 
-	public void setPackageItem(PackageItemBean packageItem) {
-		this.packageItem = packageItem;
+	public void setKitsItem(KitsItemBean kitsItem) {
+		this.kitsItem = kitsItem;
 	}
 
 	public Set<ShoppingCartBean> getShoppingCart() {
