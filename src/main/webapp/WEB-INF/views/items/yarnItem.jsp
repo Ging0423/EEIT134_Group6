@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!doctype html>
+<!Doctype html>
 <html lang="zxx">
 
 <head>
@@ -10,23 +10,24 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>pillloMart</title>
-<link rel="icon" href="img/favicon.png">
+<link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- animate CSS -->
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
 <!-- owl carousel CSS -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
 <!-- font awesome CSS -->
-<link rel="stylesheet" href="css/all.css">
-<!-- icon CSS -->
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- magnific popup CSS -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="<c:url value='/css/all.css'/>">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="<c:url value='/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/themify-icons.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 </head>
 
 <body>
@@ -111,148 +112,93 @@
 	<!-- Header part end-->
 
 	<!-- breadcrumb part start-->
-	<section class="breadcrumb_part">
+	<section class="breadcrumb_part single_product_breadcrumb">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="breadcrumb_iner">
-						<h2>cart list</h2>
-					</div>
+					<div class="breadcrumb_iner"></div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- breadcrumb part end-->
 
-	<!--================Cart Area =================-->
-	<section class="cart_area section_padding">
+	<!--================Single Product Area =================-->
+	<div class="product_image_area">
 		<div class="container">
-			<div class="cart_inner">
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">商品</th>
-								<th scope="col">售價</th>
-								<th scope="col">數量</th>
-								<th scope="col">總額</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<form action="updateCart" method="POST">
-								<c:forEach var="item" items='${items}'>
-									<tr>
-										<td>
-											<div class="media">
-												<div class="d-flex">
-													<img src="img/arrivel/arrivel_1.png" alt="" /> <input
-														type="hidden" name="itemId" value="${item.itemId}">
-												</div>
-												<div class="media-body">
-													<p>${item.itemName}</p>
-												</div>
-											</div>
-										</td>
-										<td>
-											<h5>$${item.price}</h5>
-										</td>
-										<td>
-                  <div class="product_count">
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-										<h5>$720.00</h5>
-										</td>
-									</tr>
-								</c:forEach>
-								<tr class="bottom_button">
-									<td><button class="btn_1" type="submit">更新購物車</button></td>
-							</form>
-							<td></td>
-							<td></td>
-							<td>
-								<div class="cupon_text float-right">
-									<a class="btn_1" href="#">Close Coupon</a>
-								</div>
-							</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Subtotal</h5>
-								</td>
-								<td>
-									<h5>$2160.00</h5>
-								</td>
-							</tr>
-							<tr class="shipping_area">
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>Flat Rate: $5.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Free Shipping <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Flat Rate: $10.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li class="active">Local Delivery: $2.00 <input
-												type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-										</ul>
-										<h6>
-											Calculate Shipping <i class="fa fa-caret-down"
-												aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select> <select class="shipping_select section_bg">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select> <input class="post_code" type="text"
-											placeholder="Postcode/Zipcode" /> <a class="btn_1" href="#">Update
-											Details</a>
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="product_img_slide owl-carousel">
+						<div class="single_product_img">
+							<img src="img/product/single_product.png" alt="#"
+								class="img-fluid">
+						</div>
+						<div class="single_product_img">
+							<img src="img/product/single_product.png" alt="#"
+								class="img-fluid">
+						</div>
+						<div class="single_product_img">
+							<img src="img/product/single_product.png" alt="#"
+								class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<div class="single_product_text text-center">
+						<h3>${item.itemName}</h3>
+						<p>${item.itemDescription}</p>
+						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
+						<form action="<c:url value='/cart'/>" method="POST"
+							name="addToCart">
+							<input type="hidden" name="itemId" value="${item.itemId}">
+							<div class="card_area">
+								<div class="product_count_area">
+									<p>數量</p>
+									<div class="product_count d-inline-block">
+										<span class="product_count_item inumber-decrement"> <i
+											class="ti-minus"></i></span> <input
+											class="product_count_item input-number" name="qty"
+											type="text" value="1" min="0" max="10"> <span
+											class="product_count_item number-increment"> <i
+											class="ti-plus"></i></span>
 									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="checkout_btn_inner float-right">
-						<a class="btn_1" href="#">Continue Shopping</a> <a
-							class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+									<p>$${item.price}</p>
+								</div>
+								<div class="add_to_cart">
+									<button type="submit" class="btn_3">加入購物車</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+	<!-- subscribe part here -->
+	<section class="subscribe_part section_padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="subscribe_part_content">
+						<h2>Get promotions & updates!</h2>
+						<p>Seamlessly empower fully researched growth strategies and
+							interoperable internal or “organic” sources credibly innovate
+							granular internal .</p>
+						<div class="subscribe_form">
+							<input type="email" placeholder="Enter your mail"> <a
+								href="#" class="btn_1">Subscribe</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
-	<!--================End Cart Area =================-->
+	<!-- subscribe part end -->
+
 	<!--::footer_part start::-->
 	<footer class="footer_part">
-		<div class="footer_iner section_bg">
+		<div class="footer_iner">
 			<div class="container">
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-8">
@@ -287,9 +233,7 @@
 							<P>
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;
-								<script>
-									document.write(new Date().getFullYear());
-								</script>
+								<script>document.write(new Date().getFullYear());</script>
 								All rights reserved | This template is made with <i
 									class="ti-heart" aria-hidden="true"></i> by <a
 									href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -307,32 +251,31 @@
 	<!--::footer_part end::-->
 
 	<!-- jquery plugins here-->
-	<script src="js/jquery-1.12.1.min.js"></script>
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
-	<script src="js/popper.min.js"></script>
+	<script src="<c:url value='/js/popper.min.js'/>"></script>
 	<!-- bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- easing js -->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<!-- swiper js -->
-	<script src="js/swiper.min.js"></script>
-	<!-- swiper js -->
-	<script src="js/mixitup.min.js"></script>
-	<!-- particles js -->
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	<!-- magnific popup js -->
+	<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	<!-- carousel js -->
+	<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
 	<!-- slick js -->
-	<script src="js/slick.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/contact.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="<c:url value='/js/slick.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	<script src="<c:url value='/js/contact.js'/>"></script>
+	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.form.js'/>"></script>
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
-	<script src="js/custom.js"></script>
+	<script src="<c:url value='/js/custom.js'/>"></script>
 
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
 </body>
 
 </html>

@@ -1,18 +1,14 @@
 package loop.item.toolsItem.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -38,7 +34,7 @@ public class ToolsItemBean implements Serializable {
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -86,12 +82,12 @@ public class ToolsItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
-		this.addDate = addDate;
+	public void setAddDate(String current) {
+		this.addDate = current;
 	}
 
 	public Integer getQty() {

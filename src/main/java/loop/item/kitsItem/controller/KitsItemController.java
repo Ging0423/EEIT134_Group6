@@ -1,4 +1,4 @@
-package loop.item.yarnItem.controller;
+package loop.item.kitsItem.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,52 +12,52 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import loop.item.yarnItem.model.YarnItemBean;
-import loop.item.yarnItem.service.YarnItemService;
+import loop.item.kitsItem.model.KitsItemBean;
+import loop.item.kitsItem.service.KitsItemService;
 
 @Controller
-public class YarnItemController {
-
-	@Autowired
-	private YarnItemService yarnService;
+public class KitsItemController {
 	
-	@GetMapping("/items/yarn")
+	@Autowired
+	private KitsItemService kitsService;
+	
+	@GetMapping("/items/kits")
 	public String selectAll(Model m) {
-	List <YarnItemBean> bean = yarnService.findAll();
-	m.addAttribute("allItem",bean);
-	return "items/yarn";
-	}
+	    List<KitsItemBean> bean = kitsService.findAll();
+	    m.addAttribute("allItem", bean);
+	    return "/items/kits";
+	    }
 	
-	@GetMapping("/items/yarn/create")
-	public String createYarnItemPage(Model m) {
-		YarnItemBean bean = new YarnItemBean();
-		m.addAttribute("yarnData", bean);
-		return "/items/yarncreate";				
+	@GetMapping("/items/kits/create")
+	public String createKitsItempage(Model m) {
+		KitsItemBean bean = new KitsItemBean();
+		m.addAttribute("kitsData", bean);
+		return "/items/kitscreate";
 	}
 	
 	@Autowired
-	private YarnItemBean bean;
+	private KitsItemBean bean;
 	
-	@GetMapping("/items/yarn/{id}")
+	@GetMapping("/items/kits/{id}")
 	public String selectById(@PathVariable("id") int itemId, Model m) {
-		bean = yarnService.findById(itemId);
+		bean = kitsService.findById(itemId);
 		m.addAttribute("item", bean);
-		return "items/yarnitem";
+		return "items/kitsitem";
 	}
 	
-	@PostMapping("/items/yarn/createyarn")
-	public String createItem(@ModelAttribute("yarnData") YarnItemBean bean) {
+	@PostMapping("/items/kits/createkits")
+	public String createItem(@ModelAttribute("kitsData") KitsItemBean bean) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date currect = new Date();
-		String Date = sdFormat.format(currect);
+		Date current = new Date();
+		String Date = sdFormat.format(current);
 		bean.setAddDate(Date);
-		yarnService.create(bean);
-		return "redirect:/items/yarn";
+		kitsService.create(bean);
+		return "redirect:/items/kits";
 	}
 	
-	@PostMapping("/items/modifyyarn/{id}")
+	@PostMapping("/items/modifykits/{id}")
 	public String update(Model m, 
-			YarnItemBean yarnItemBean) {
+			KitsItemBean kisItemBean) {
 //			BindingResult bindingResult) {
 //		ProductValidator productValidator = new ProductValidator();
 //		productValidator.validate(productBean, bindingResult);
@@ -67,8 +67,8 @@ public class YarnItemController {
 //			return "/items/editBooks";
 //		}
 //		
-		yarnService.update(bean);
-		return "items/yarn";
+		kitsService.update(bean);
+		return "items/kits";
 		
 	}
 }

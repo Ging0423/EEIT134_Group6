@@ -1,39 +1,39 @@
 package loop.item.booksItem.service;
 
 import java.util.List;
-
-import javax.transaction.Transactional;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import loop.item.booksItem.dao.BooksItemRepository;
 import loop.item.booksItem.model.BooksItemBean;
+import loop.item.booksItem.model.BooksItemRepository;
 
 @Service
-@Transactional
 public class BooksItemService {
 	
 	@Autowired
-	private BooksItemRepository booksItemRepository;
+	private BooksItemRepository booksRepo;
 	
-	public void save(BooksItemBean booksItemBean) {
-		booksItemRepository.save(booksItemBean);	
+	public void create(BooksItemBean bean) {
+		booksRepo.save(bean);	
 	}
 
 	public List<BooksItemBean> findAll() {
-		return booksItemRepository.findAll();
-	}
-	
-	public BooksItemBean findById(Integer itemId) {
-		return booksItemRepository.findById(itemId);
+		return booksRepo.findAll();
 	}
 
-    public void update(BooksItemBean booksItemBean) {
-    	booksItemRepository.update(booksItemBean);		
+	public BooksItemBean findById(int itemId) {
+		Optional<BooksItemBean> bean = booksRepo.findById(itemId);
+		return bean.get();
 	}
 	
-	public void deleteBooksItemByPrimaryKey(Integer itemId) {
-		booksItemRepository.deletebooksItemByPrimaryKey(itemId);		
+	public BooksItemBean update(BooksItemBean bean) {
+		return booksRepo.save(bean);
 	}
+	
+	public void deleteById(Integer id) {
+		booksRepo.deleteById(id);
+	}
+
 }

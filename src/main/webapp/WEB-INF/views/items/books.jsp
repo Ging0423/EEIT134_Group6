@@ -3,35 +3,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="zxx">
-
+<c:url value='' />
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>pillloMart</title>
-<link rel="icon" href="img/favicon.png">
+<link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- animate CSS -->
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
 <!-- owl carousel CSS -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
 <!-- font awesome CSS -->
-<link rel="stylesheet" href="css/all.css">
-<!-- icon CSS -->
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- magnific popup CSS -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="<c:url value='/css/all.css'/>">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="<c:url value='/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/themify-icons.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 </head>
 
 <body>
 	<!--::header part start::-->
-		<header class="main_menu home_menu">
+	<header class="main_menu home_menu">
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-12">
@@ -111,148 +112,163 @@
 	<!-- Header part end-->
 
 	<!-- breadcrumb part start-->
-	<section class="breadcrumb_part">
+		<section class="product_list section_padding">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb_iner">
-						<h2>cart list</h2>
+				<div class="col-md-4">
+					<div class="product_sidebar">
+						<div class="single_sedebar">
+							<form action="#">
+								<input type="text" name="#" placeholder="Search keyword">
+								<i class="ti-search"></i>
+							</form>
+						</div>
+						<div class="single_sedebar">
+							<div class="select_option">
+								<div class="select_option_list">
+									Category <i class="right fas fa-caret-down"></i>
+								</div>
+								<div class="select_option_dropdown">
+									<p>
+										<a href="#">Category 1</a>
+									</p>
+									<p>
+										<a href="#">Category 2</a>
+									</p>
+									<p>
+										<a href="#">Category 3</a>
+									</p>
+									<p>
+										<a href="#">Category 4</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="single_sedebar">
+							<div class="select_option">
+								<div class="select_option_list">
+									Type <i class="right fas fa-caret-down"></i>
+								</div>
+								<div class="select_option_dropdown">
+									<p>
+										<a href="#">Type 1</a>
+									</p>
+									<p>
+										<a href="#">Type 2</a>
+									</p>
+									<p>
+										<a href="#">Type 3</a>
+									</p>
+									<p>
+										<a href="#">Type 4</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="product_list">
+						<div class="row">
+							<c:forEach var="item" items='${allItem}'>
+								<div class="col-lg-6 col-sm-6">
+									<div class="single_product_item">
+<!-- 										<img src="" alt="#" class="img-fluid"> -->
+                                            <a href='<c:url value="/items/yarn/${item.itemId}"/>'><img src=""></a>
+										<h3>
+											<a href='<c:url value="/items/yarn/${item.itemId}"/>'>${item.itemName}</a>
+										</h3>
+<%-- 										<p>${item.material}</p> --%>
+<%-- 										<p>${item.color}</p> --%>
+									</div>
+								</div>
+							</c:forEach>
+
+
+						</div>
+						<div class="load_more_btn text-center">
+							<a href="#" class="btn_3">Load More</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- breadcrumb part end-->
+	<!-- product list part end-->
 
-	<!--================Cart Area =================-->
-	<section class="cart_area section_padding">
+	<!-- feature part here -->
+	<section class="feature_part section_padding">
 		<div class="container">
-			<div class="cart_inner">
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">商品</th>
-								<th scope="col">售價</th>
-								<th scope="col">數量</th>
-								<th scope="col">總額</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<form action="updateCart" method="POST">
-								<c:forEach var="item" items='${items}'>
-									<tr>
-										<td>
-											<div class="media">
-												<div class="d-flex">
-													<img src="img/arrivel/arrivel_1.png" alt="" /> <input
-														type="hidden" name="itemId" value="${item.itemId}">
-												</div>
-												<div class="media-body">
-													<p>${item.itemName}</p>
-												</div>
-											</div>
-										</td>
-										<td>
-											<h5>$${item.price}</h5>
-										</td>
-										<td>
-                  <div class="product_count">
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-										<h5>$720.00</h5>
-										</td>
-									</tr>
-								</c:forEach>
-								<tr class="bottom_button">
-									<td><button class="btn_1" type="submit">更新購物車</button></td>
-							</form>
-							<td></td>
-							<td></td>
-							<td>
-								<div class="cupon_text float-right">
-									<a class="btn_1" href="#">Close Coupon</a>
-								</div>
-							</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Subtotal</h5>
-								</td>
-								<td>
-									<h5>$2160.00</h5>
-								</td>
-							</tr>
-							<tr class="shipping_area">
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>Flat Rate: $5.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Free Shipping <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Flat Rate: $10.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li class="active">Local Delivery: $2.00 <input
-												type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-										</ul>
-										<h6>
-											Calculate Shipping <i class="fa fa-caret-down"
-												aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select> <select class="shipping_select section_bg">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select> <input class="post_code" type="text"
-											placeholder="Postcode/Zipcode" /> <a class="btn_1" href="#">Update
-											Details</a>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="checkout_btn_inner float-right">
-						<a class="btn_1" href="#">Continue Shopping</a> <a
-							class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+			<div class="row justify-content-between">
+				<div class="col-lg-6">
+					<div class="feature_part_tittle">
+						<h3>Credibly innovate granular internal or organic sources
+							whereas standards.</h3>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="feature_part_content">
+						<p>Seamlessly empower fully researched growth strategies and
+							interoperable internal or âorganicâ sources. Credibly
+							innovate granular internal or âorganicâ sources whereas high
+							standards in web-readiness.</p>
 					</div>
 				</div>
 			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature_part">
+						<img src="img/icon/feature_icon_1.svg" alt="#">
+						<h4>Credit Card Support</h4>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature_part">
+						<img src="img/icon/feature_icon_2.svg" alt="#">
+						<h4>Online Order</h4>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature_part">
+						<img src="img/icon/feature_icon_3.svg" alt="#">
+						<h4>Free Delivery</h4>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="single_feature_part">
+						<img src="img/icon/feature_icon_4.svg" alt="#">
+						<h4>Product with Gift</h4>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
-	<!--================End Cart Area =================-->
+	<!-- feature part end -->
+
+	<!-- subscribe part here -->
+	<section class="subscribe_part section_padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="subscribe_part_content">
+						<h2>Get promotions & updates!</h2>
+						<p>Seamlessly empower fully researched growth strategies and
+							interoperable internal or âorganicâ sources credibly innovate
+							granular internal .</p>
+						<div class="subscribe_form">
+							<input type="email" placeholder="Enter your mail"> <a
+								href="#" class="btn_1">Subscribe</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- subscribe part end -->
+
 	<!--::footer_part start::-->
 	<footer class="footer_part">
-		<div class="footer_iner section_bg">
+		<div class="footer_iner">
 			<div class="container">
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-8">
@@ -307,32 +323,30 @@
 	<!--::footer_part end::-->
 
 	<!-- jquery plugins here-->
-	<script src="js/jquery-1.12.1.min.js"></script>
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
-	<script src="js/popper.min.js"></script>
+	<script src="<c:url value='/js/popper.min.js'/>"></script>
 	<!-- bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- easing js -->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<!-- swiper js -->
-	<script src="js/swiper.min.js"></script>
-	<!-- swiper js -->
-	<script src="js/mixitup.min.js"></script>
-	<!-- particles js -->
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	<!-- magnific popup js -->
+	<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	<!-- carousel js -->
+	<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
 	<!-- slick js -->
-	<script src="js/slick.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/contact.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="<c:url value='/js/slick.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	<script src="<c:url value='/js/contact.js'/>"></script>
+	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.form.js'/>"></script>
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
-	<script src="js/custom.js"></script>
-
+	<script src="<c:url value='/js/custom.js'/>"></script>
+	<script type="text/javascript">
+		
+	</script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="zxx">
 
@@ -10,23 +11,24 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>pillloMart</title>
-<link rel="icon" href="img/favicon.png">
+<link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- animate CSS -->
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
 <!-- owl carousel CSS -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
 <!-- font awesome CSS -->
-<link rel="stylesheet" href="css/all.css">
-<!-- icon CSS -->
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- magnific popup CSS -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="<c:url value='/css/all.css'/>">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="<c:url value='/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/themify-icons.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 </head>
 
 <body>
@@ -116,7 +118,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
-						<h2>cart list</h2>
+						<h2>checkout</h2>
 					</div>
 				</div>
 			</div>
@@ -124,132 +126,114 @@
 	</section>
 	<!-- breadcrumb part end-->
 
-	<!--================Cart Area =================-->
-	<section class="cart_area section_padding">
+	<!--================Checkout Area =================-->
+	<section class="checkout_area section_padding">
 		<div class="container">
-			<div class="cart_inner">
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">商品</th>
-								<th scope="col">售價</th>
-								<th scope="col">數量</th>
-								<th scope="col">總額</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<form action="updateCart" method="POST">
-								<c:forEach var="item" items='${items}'>
-									<tr>
-										<td>
-											<div class="media">
-												<div class="d-flex">
-													<img src="img/arrivel/arrivel_1.png" alt="" /> <input
-														type="hidden" name="itemId" value="${item.itemId}">
-												</div>
-												<div class="media-body">
-													<p>${item.itemName}</p>
-												</div>
-											</div>
-										</td>
-										<td>
-											<h5>$${item.price}</h5>
-										</td>
-										<td>
-                  <div class="product_count">
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-										<h5>$720.00</h5>
-										</td>
-									</tr>
-								</c:forEach>
-								<tr class="bottom_button">
-									<td><button class="btn_1" type="submit">更新購物車</button></td>
-							</form>
-							<td></td>
-							<td></td>
-							<td>
-								<div class="cupon_text float-right">
-									<a class="btn_1" href="#">Close Coupon</a>
-								</div>
-							</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Subtotal</h5>
-								</td>
-								<td>
-									<h5>$2160.00</h5>
-								</td>
-							</tr>
-							<tr class="shipping_area">
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>Flat Rate: $5.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Free Shipping <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Flat Rate: $10.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li class="active">Local Delivery: $2.00 <input
-												type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-										</ul>
-										<h6>
-											Calculate Shipping <i class="fa fa-caret-down"
-												aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select> <select class="shipping_select section_bg">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select> <input class="post_code" type="text"
-											placeholder="Postcode/Zipcode" /> <a class="btn_1" href="#">Update
-											Details</a>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="checkout_btn_inner float-right">
-						<a class="btn_1" href="#">Continue Shopping</a> <a
-							class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+			<div class="returning_customer">
+				<div class="check_title">
+					<h2>
+						Returning Customer? <a href="#">Click here to login</a>
+					</h2>
+				</div>
+				<p>If you have shopped with us before, please enter your details
+					in the boxes below. If you are a new customer, please proceed to
+					the Billing & Shipping section.</p>
+				<form class="row contact_form" action="#" method="post"
+					novalidate="novalidate">
+					<div class="col-md-6 form-group p_star">
+						<input type="text" class="form-control" id="name" name="name"
+							value=" " /> <span class="placeholder"
+							data-placeholder="Username or Email"></span>
 					</div>
+					<div class="col-md-6 form-group p_star">
+						<input type="password" class="form-control" id="password"
+							name="password" value="" /> <span class="placeholder"
+							data-placeholder="Password"></span>
+					</div>
+					<div class="col-md-12 form-group">
+						<button type="submit" value="submit" class="btn_3">log in
+						</button>
+						<div class="creat_account">
+							<input type="checkbox" id="f-option" name="selector" /> <label
+								for="f-option">Remember me</label>
+						</div>
+						<a class="lost_pass" href="#">Lost your password?</a>
+					</div>
+				</form>
+			</div>
+			<div class="cupon_area">
+				<div class="check_title">
+					<h2>
+						Have a coupon? <a href="#">Click here to enter your code</a>
+					</h2>
+				</div>
+				<input type="text" placeholder="Enter coupon code" /> <a
+					class="tp_btn" href="#">Apply Coupon</a>
+			</div>
+			<div class="billing_details">
+				<div class="row">
+				<form:form class="row contact_form" method="post"
+							novalidate="novalidate" modelAttribute="orderData">
+					<div class="col-lg-8">
+						<h3>Billing Details</h3>
+						
+							<div class="col-md-6 form-group p_star">
+								<h4>收件人</h4>
+								<form:input type="text" class="form-control" name="recipient"
+									path="recipient" />
+								
+							</div>
+							<div class="col-md-6 form-group p_star">
+							<h4>聯絡方式</h4>
+								<form:input type="text" class="form-control" path="tel" />
+								
+							</div>
+							<div class="col-md-6 form-group p_star">
+							<h4>收件地址</h4>
+								<form:input type="text" class="form-control"
+									path="shippingAddress" />
+								
+							</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="order_box">
+							<h2>您的訂單</h2>
+							<ul class="list">
+								<li><a href="#">商品 <span>總金額</span>
+								</a></li>
+								<c:set var="subTotal" value="0" />
+								<c:forEach var="item" items="${items}">
+									<li><a href="#">${item.itemName} <span class="middle">x
+												${item.qty}</span> <c:set var="total"
+												value="${item.qty*item.price}" /> <span class="last">${total}</span>
+									</a></li>
+									<c:set var="subTotal" value="${subTotal + total}" />
+								</c:forEach>
+
+							</ul>
+							<ul class="list list_2">
+								<li> <a
+									href="#">總額 <span>$${subTotal}</span>
+								</a></li>
+								<li><a href="#">運費 <span>Flat rate: $50.00</span>
+								</a></li>
+								<li><a href="#">總金額(含運費) <span>$${subTotal}</span>
+								</a></li>
+								<form:hidden class="form-control" name="total"
+									path="total" value="${subTotal}"/>
+							</ul>
+							<a class="btn_3" href="#">Proceed to Paypal</a>
+							
+						</div>
+						
+					</div>
+					</form:form>
 				</div>
 			</div>
+		</div>
 	</section>
-	<!--================End Cart Area =================-->
+	<!--================End Checkout Area =================-->
+
 	<!--::footer_part start::-->
 	<footer class="footer_part">
 		<div class="footer_iner section_bg">
@@ -332,7 +316,6 @@
 	<script src="js/mail-script.js"></script>
 	<!-- custom js -->
 	<script src="js/custom.js"></script>
-
 </body>
 
 </html>

@@ -1,7 +1,5 @@
 package loop.item.allItem.model;
 
-import javax.persistence.Query;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class AllItemDao {
 			itemName = allItem.getBooksItem().getItemName();
 		}
 		else if(id == '4') {
-			itemName = allItem.getPackageItem().getItemName();
+			itemName = allItem.getKitsItem().getItemName();
 		}		
 		return itemName;
 	}
@@ -50,7 +48,7 @@ public class AllItemDao {
 			price = allItem.getBooksItem().getPrice();
 		}
 		if(id == '4') {
-			price = allItem.getPackageItem().getPrice();
+			price = allItem.getKitsItem().getPrice();
 		}		
 		return price;
 	}
