@@ -40,7 +40,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
-						<h2>cart list</h2>
+						<h2>購物車</h2>
 					</div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 		<div class="container">
 			<div class="cart_inner">
 				<div class="table-responsive">
-					<form action="checkOrder" method="POST">
+					<form action='<c:url value="/order/checkOrder"/>' method="POST">
 						<table class="table">
 							<thead>
 								<tr>
@@ -71,7 +71,7 @@
 								
 								
 									<c:forEach var="item" items='${items}'>
-										<tr class="ajaxTable">
+										<tr>
 											<td>
 												<div class="media">
 													<div class="d-flex">
@@ -242,7 +242,7 @@
 			$
 					.ajax({
 						type : 'post',
-						url : 'deleteCart',
+						url : '/cart/deleteCart',
 						data : id,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
@@ -329,7 +329,7 @@
 			$
 					.ajax({
 						type : 'post',
-						url : 'updateCart',
+						url : '/cart/updateCart',
 						data : array,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',

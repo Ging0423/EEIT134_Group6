@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.order.model.OrderDataBean;
 import loop.order.service.OrderDataService;
@@ -17,6 +19,8 @@ import loop.user.model.UsersBean;
 import loop.user.service.UsersService;
 
 @Controller
+@SessionAttributes({ "isLogin" })
+@RequestMapping("/order")
 public class OrderController {
 	
 	
@@ -40,10 +44,12 @@ public class OrderController {
 		return "checkout";
 	}
 	
-	@PostMapping("checkOrder")
+	@PostMapping("/checkOrder")
 	public String cartToOrder(Model m) {
-		UsersBean users = userService.findById(1);
-		List<ShoppingCartDisplay> items = shoppingCartService.list(1);
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		UsersBean users = userService.findById(userId);
+		List<ShoppingCartDisplay> items = shoppingCartService.list(userId);
 		m.addAttribute("items", items);
 		OrderDataBean orderData = new OrderDataBean();
 		orderData.setTel(users.getTel());

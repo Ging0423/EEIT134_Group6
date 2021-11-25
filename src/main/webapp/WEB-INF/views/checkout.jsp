@@ -146,7 +146,7 @@
 								<form:hidden class="form-control" name="total"
 									path="total" value="${subTotal}"/>
 							</ul>
-							<a class="btn_3" href="#">Proceed to Paypal</a>
+							<button class="btn_3" type="submit">結帳去</button>
 							
 						</div>
 						
