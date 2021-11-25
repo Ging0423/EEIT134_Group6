@@ -1,4 +1,4 @@
-package loop.item.packageItem.model;
+package loop.item.kitsItem.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
 import loop.item.allItem.model.AllItemBean;
 @Component
 @Entity
-@Table(name="packageItem")
-public class PackageItemBean implements Serializable {
+@Table(name="kitsItem")
+public class KitsItemBean implements Serializable {
 
 	
 	@Id
@@ -43,10 +43,10 @@ public class PackageItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	@OneToOne(mappedBy = "packageItem")
+	@OneToOne(mappedBy = "kitsItem")
 	private AllItemBean allItem;
 
-	public PackageItemBean() {
+	public KitsItemBean() {
 		// TODO Auto-generated constructor stub
 	}
 

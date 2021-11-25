@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+
 <!doctype html>
 <html lang="zxx">
 
@@ -70,10 +73,10 @@
 									id="navbarDropdown_3" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 會員 </a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-										<a class="dropdown-item" href="<c:url value='/login'/>">
-											登入 </a> <a class="dropdown-item" href="checkout.jsp">商品結帳</a> <a
-											class="dropdown-item" href="<c:url value='/cart'/>">購物車</a> <a
-											class="dropdown-item" href="<c:url value='/myorder'/>">我的訂單</a>
+										<a class="dropdown-item" href="<c:url value='/login'/>"> 登入 </a>
+										<a class="dropdown-item" href="checkout.jsp">商品結帳</a>
+										<a class="dropdown-item" href="<c:url value='/cart/display'/>">購物車</a>
+										<a class="dropdown-item" href="<c:url value='/myorder'/>">我的訂單</a>
 									</div></li>
 
 								<li class="nav-item dropdown"><a
@@ -87,24 +90,24 @@
 
 								<li class="nav-item"><a class="nav-link"
 									href="contact.html">教學影片</a></li>
+
 								<li class="nav-item"><div>
 										<a href="<c:url value='/logout'/>" class="nav-link">登出</a>
 									</div></li>
 							</ul>
 						</div>
 						<div>
+
 							<c:if test="${isLogin != null}">
 								<h5>Hi ${isLogin.userName}</h5>
 							</c:if>
 						</div>
 						<div class="hearer_icon d-flex align-items-center">
 							<a id="search_1" href="javascript:void(0)"><i
-								class="ti-search"></i></a> <a href="<c:url value='/cart'/>"> <i
-								class="flaticon-shopping-cart-black-shape"></i>
+								class="ti-search"></i></a> <a href="<c:url value='/cart/display'/>">
+								<i class="flaticon-shopping-cart-black-shape"></i>
 							</a>
 						</div>
-
-
 					</nav>
 				</div>
 			</div>

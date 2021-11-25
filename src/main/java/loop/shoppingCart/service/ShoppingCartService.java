@@ -68,12 +68,12 @@ public class ShoppingCartService {
 		shoppingRepo.deleteByItemIdAndUserId(itemId, userId);;
 	}
 
-	public List<ShoppingCartBean> findAllCartBeans(int userId) {
+	public List<ShoppingCartBean> findAllCartBeans(Integer userId) {
 
 		return shoppingRepo.findAllCartBeans(userId);
 	}
 
-	public boolean isExist(int itemId, int userId) {
+	public boolean isExist(Integer itemId, Integer userId) {
 		List<ShoppingCartBean> list = shoppingRepo.findByItemIdAndUserId(itemId, userId);
 		if (list.size() != 0) {
 			return true;

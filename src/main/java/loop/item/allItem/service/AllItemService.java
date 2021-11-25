@@ -35,7 +35,7 @@ public class AllItemService {
 		} else if (id == '3') {
 			itemName = allItem.getBooksItem().getItemName();
 		} else if (id == '4') {
-			itemName = allItem.getPackageItem().getItemName();
+			itemName = allItem.getKitsItem().getItemName();
 		}
 		return itemName;
 
@@ -56,7 +56,7 @@ public class AllItemService {
 			price = allItem.getBooksItem().getPrice();
 		}
 		if(id == '4') {
-			price = allItem.getPackageItem().getPrice();
+			price = allItem.getKitsItem().getPrice();
 		}		
 		return price;
 	}

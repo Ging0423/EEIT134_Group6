@@ -150,12 +150,12 @@
 						<h3>${item.itemName}</h3>
 						<p>${item.itemDescription}</p>
 						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
-						<form action="<c:url value='/cart'/>" method="POST"
+						<form action="<c:url value='/cart/addToCart'/>" method="POST"
 							name="addToCart">
 							<input type="hidden" name="itemId" value="${item.itemId}">
 							<div class="card_area">
 								<div class="product_count_area">
-									<p>Quantity</p>
+									<p>數量</p>
 									<div class="product_count d-inline-block">
 										<span class="product_count_item inumber-decrement"> <i
 											class="ti-minus"></i></span> <input

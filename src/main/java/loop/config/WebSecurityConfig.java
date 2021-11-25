@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,6 +19,7 @@ import loop.login.model.MyAuthenticationFailureHandler;
 import loop.login.model.MyAuthenticationSuccessHandler;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
@@ -36,12 +38,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/list").authenticated()
-		.antMatchers(HttpMethod.GET, "/update").authenticated()
+		
+		http
+		.httpBasic()
+		.and()
+		.authorizeRequests()
+		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
 		.antMatchers(HttpMethod.GET).permitAll()
-		.antMatchers(HttpMethod.POST, "/update").authenticated()
-		.antMatchers(HttpMethod.POST, "/delete").authenticated()
+		.antMatchers(HttpMethod.POST, "/cart/**").authenticated()
+		.antMatchers(HttpMethod.POST, "/order/**").authenticated()
 		.antMatchers(HttpMethod.POST)
 		.permitAll().anyRequest()
 		.authenticated()
@@ -61,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.logout()
         .logoutUrl("/logout")
         .logoutSuccessUrl("/");
+		
 	}
 	
 	@Autowired
