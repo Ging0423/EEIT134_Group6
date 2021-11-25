@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="zxx">
@@ -32,7 +31,7 @@
 
 <body>
 	<!--::header part start::-->
-	<header class="main_menu home_menu">
+		<header class="main_menu home_menu">
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-12">
@@ -61,10 +60,8 @@
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
 										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a>
 										<a class="dropdown-item" href="<c:url value='/items/toold'/>">工具</a>
-										<a class="dropdown-item"
-											href="<c:url value='/items/package'/>">套組</a> <a
-											class="dropdown-item" href="<c:url value='/items/books'/>">工具書</a>
-
+										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
+										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a> 
 									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.jsp"
@@ -189,17 +186,16 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-										<img src="" alt="#" class="img-fluid">
+<!-- 										<img src="" alt="#" class="img-fluid"> -->
+                                            <a href='<c:url value="/items/yarn/${item.itemId}"/>'><img src=""></a>
 										<h3>
 											<a href='<c:url value="/items/yarn/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
-										<p>${item.material}</p>
-										<p>${item.color}</p>
+<%-- 										<p>${item.material}</p> --%>
+<%-- 										<p>${item.color}</p> --%>
 									</div>
 								</div>
 							</c:forEach>
-
-
 						</div>
 						<div class="load_more_btn text-center">
 							<a href="#" class="btn_3">Load More</a>

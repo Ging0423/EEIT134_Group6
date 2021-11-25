@@ -105,10 +105,10 @@ price int not null,
 
 )
 
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'packageItem')
-    drop table packageItem;
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'kitsItem')
+    drop table kitsItem;
 
-create table packageItem(
+create table kitsItem(
 itemId int primary key  identity(40001,1) not null,
 itemName nvarchar(50) not null,
 itemDescription nvarchar(max) not null,

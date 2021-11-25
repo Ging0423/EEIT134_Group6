@@ -30,8 +30,10 @@
 </head>
 
 <body>
+
    
     <jsp:include page="/fragment/header.jsp" />
+
 
     <!-- banner part start-->
     <section class="banner_part">

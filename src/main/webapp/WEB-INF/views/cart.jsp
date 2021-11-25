@@ -31,7 +31,7 @@
 
 <body>
 	 
- <jsp:include page="/fragment/header.jsp" />
+<jsp:include page="/fragment/header.jsp" />
 
 
 	<!-- breadcrumb part start-->
