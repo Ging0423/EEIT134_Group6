@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Book Create</title>
 <style>
      table{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
@@ -32,7 +32,6 @@
       <tr>
          <td>商品描述:</td>
          <td><textarea id="itemDescription"name="itemDescription" rows="4" cols="21"></textarea><td>
-<!--          <td><input id="itemDescription" name="itemDescription" type="text" /></td> -->
       </tr>
 <!--       <tr> -->
 <!--          <td>日期:</td> -->

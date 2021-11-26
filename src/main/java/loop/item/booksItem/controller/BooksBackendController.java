@@ -39,7 +39,7 @@ public class BooksBackendController {
 		return "backend/bookscreate";
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/books/{id}")
 	public String selectById(@PathVariable("id") int itemId, Model m) {
 		BooksItemBean bean = booksService.findById(itemId);
 		m.addAttribute("booksData", bean);
@@ -56,8 +56,8 @@ public class BooksBackendController {
 		return "redirect:/backend/books";
 	}
 	
-	@GetMapping("/books/{id}")
-	public String updateBooksItemPage(@PathVariable ("id") Integer itemId, Model m) {
+	@GetMapping("/{id}")
+	public String updateBooksItemPage(@PathVariable ("id") int itemId, Model m) {
 		BooksItemBean bean = booksService.findById(itemId);
 		m.addAttribute("booksData",bean);
 		return "/backend/books";
@@ -73,8 +73,8 @@ public class BooksBackendController {
 		Integer id = bean.getItemId();
 		return "redirect:/backend/books/" + id;		
 	}
-//	
-	@PostMapping("/delete")
+
+	@PostMapping("/deletebooks")
 	public String deleteById(ServletRequest request) {	
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
 		booksService.deleteById(itemId);
