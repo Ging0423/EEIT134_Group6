@@ -21,15 +21,6 @@ import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.model.BooksItemRepository;
 
 @Service
-
-public class BooksItemService {
-	
-	@Autowired
-	private BooksItemRepository booksRepo;
-	
-	public void create(BooksItemBean bean) {
-		booksRepo.save(bean);	
-
 @Transactional
 public class BooksItemService {
 	
