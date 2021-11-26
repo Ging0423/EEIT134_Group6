@@ -50,20 +50,12 @@
 	  </tr>
 
 	  </table>	  
-	    <button type="submit" value="send">送出</button>
-	  </form>
-	     <button onclick="magic();">一鍵輸入</button>
-
-	  <tr>
-	  </table>
-	  照片
 	  <input type="file" name="img" accept="image/*"/>
 	  
 	  
 	  <div id="imgClass">
-	  <div>
-	  
-	  <button type="button" onclick="addImg();">新增照片</button>	  
+	  </div>  
+	  <button type="button" onclick="addImg();">新增照片</button><br>  
 	    <button type="submit" value="send">送出</button>
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
