@@ -54,6 +54,10 @@ public class UsersControllerByMe {
 	public String contact(Model m) {
 		return "contact";		
 	}
+	@GetMapping("/checkout")
+	public String checkout(Model m) {
+		return "checkout";		
+	}
 //	public UsersBean processInsertAction() {
 //		UsersBean user1 = new UsersBean();
 //		user1.setAccount("test123");
