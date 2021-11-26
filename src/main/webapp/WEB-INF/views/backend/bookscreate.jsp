@@ -50,10 +50,9 @@
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
 	  </table>	  
-	  <input type="file" name="img" accept="image/*"/>
+	  <input type="file" name="img" accept="image/*" onchange="addImg();"/>
 	  <div id="imgClass">
 	  </div>  
-	  <button type="button" onclick="addImg();">新增照片</button><br>  
 	    <button type="submit" value="send">送出</button>
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
@@ -94,7 +93,7 @@
 		
 		function addImg() {
 			var text = $("#imgClass");
-			var tr = '<input type="file" name="img" accept="image/*"/>';
+			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
 			text.append(tr);
 		}
 

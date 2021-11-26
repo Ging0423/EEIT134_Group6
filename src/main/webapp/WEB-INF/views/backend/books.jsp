@@ -16,9 +16,9 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <div align='center'>
 <h3>書籍商品資料</h3>
 <hr>
-<table border='1'>
+<form method="post" action="<c:url value='/backend/updatebooks'/>">
 <%-- <c:url var='path' value='/backend/updatebooks'/> --%>
-<form method="post" action="<c:url value='/backend/updatebooks'/>" />
+
 	<table>
 	  <tr>
 	     <td>編號:</td>
@@ -61,7 +61,9 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <input type="submit" value="刪除"><br>
 <a href="<c:url value='/backend/books' />">回前頁</a>
 </form>
-</table>
+<c:forEach var="itemImg" items="${itemImg}">
+	<img src=<c:url value="/items/img/${itemImg.img}"/> />
+</c:forEach>
 </div>
 </body>
 </html>

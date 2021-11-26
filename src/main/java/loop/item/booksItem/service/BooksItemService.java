@@ -53,6 +53,9 @@ public class BooksItemService {
 
 	public BooksItemBean findById(int itemId) {
 		Optional<BooksItemBean> bean = booksRepo.findById(itemId);
+		if(bean.isEmpty()) {
+			return null;
+		}
 		return bean.get();
 	}
 	
