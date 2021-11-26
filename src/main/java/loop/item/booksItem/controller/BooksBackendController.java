@@ -1,5 +1,9 @@
 package loop.item.booksItem.controller;
 
+
+import java.io.File;
+import java.io.IOException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +19,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemImgBean;
+import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.service.BooksItemService;
 
@@ -81,4 +92,3 @@ public class BooksBackendController {
 		return "redirect:/backend/books";
 	}
 }
-

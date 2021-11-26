@@ -176,6 +176,7 @@
                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src=""></a>
 										<h3>
 											<a href='<c:url value="/items/books/${item.itemId}"/>'>${item.itemName}</a>
+
 										</h3>
 <%-- 										<p>${item.material}</p> --%>
 <%-- 										<p>${item.color}</p> --%>

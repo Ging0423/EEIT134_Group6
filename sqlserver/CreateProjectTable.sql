@@ -1,4 +1,4 @@
-USE master ;
+﻿USE master ;
 IF EXISTS(select * from sys.databases where name='project')
 BEGIN
    ALTER DATABASE project
@@ -25,7 +25,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'users')
 create table users(
 userId int primary key identity(1,1) not null,
 account varchar(12) not null,
-userPassword varchar(12) not null,
+userPassword varchar(max) not null,
 userIdentity int,
 userName nvarchar(50) not null,
 email varchar(20) not null,

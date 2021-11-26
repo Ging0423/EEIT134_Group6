@@ -14,6 +14,8 @@
 <div align='center'>
 <h3>書籍商品資料</h3>
 <hr>
+<a href="<c:url value='/backend/books/create'/>">新增書籍</a>
+
 <%-- <center> --%>
 <table border='1'>
 <table> 

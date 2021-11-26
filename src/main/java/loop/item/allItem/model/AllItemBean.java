@@ -21,7 +21,7 @@ import loop.item.kitsItem.model.KitsItemBean;
 import loop.item.toolsItem.model.ToolsItemBean;
 import loop.item.userItem.model.UserItemBean;
 import loop.item.yarnItem.model.YarnItemBean;
-import loop.order.orderItem.model.OrderItemBean;
+import loop.order.model.OrderItemBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
 @Component
@@ -63,6 +63,10 @@ public class AllItemBean implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
+	private Set<ItemImgBean> itemImg = new LinkedHashSet<ItemImgBean>();
+
 
 	public AllItemBean() {
 		// TODO Auto-generated constructor stub
@@ -132,4 +136,13 @@ public class AllItemBean implements Serializable {
 		this.orderItem = orderItem;
 	}
 
+	public Set<ItemImgBean> getItemImg() {
+		return itemImg;
+	}
+
+	public void setItemImg(Set<ItemImgBean> itemImg) {
+		this.itemImg = itemImg;
+	}
+
+	
 }
