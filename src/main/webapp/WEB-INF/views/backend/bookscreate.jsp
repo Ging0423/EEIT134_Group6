@@ -16,6 +16,8 @@
 <h3>書籍商品資料</h3>
 <hr>
 
+
+
 <form method="post" action="createbooks" enctype="multipart/form-data">
 
 	<table>
@@ -48,11 +50,8 @@
          <td>價錢:</td>
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
-
 	  </table>	  
 	  <input type="file" name="img" accept="image/*"/>
-	  
-	  
 	  <div id="imgClass">
 	  </div>  
 	  <button type="button" onclick="addImg();">新增照片</button><br>  
