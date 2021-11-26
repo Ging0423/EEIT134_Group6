@@ -46,6 +46,14 @@ public class UsersControllerByMe {
 	public String index(Model m) {
 		return "index";		
 	}
+	@GetMapping("/elements")
+	public String elements(Model m) {
+		return "elements";		
+	}
+	@GetMapping("/contact")
+	public String contact(Model m) {
+		return "contact";		
+	}
 //	public UsersBean processInsertAction() {
 //		UsersBean user1 = new UsersBean();
 //		user1.setAccount("test123");
