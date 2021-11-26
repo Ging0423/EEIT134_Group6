@@ -174,9 +174,11 @@
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
 <!-- 										<img src="" alt="#" class="img-fluid"> -->
-                                            <a href='<c:url value="/items/yarn/${item.itemId}"/>'><img src=""></a>
+
+                                            <a href='<c:url value="/items/books/${item.itemId}"/>'><img src=""></a>
 										<h3>
-											<a href='<c:url value="/items/yarn/${item.itemId}"/>'>${item.itemName}</a>
+											<a href='<c:url value="/items/books/${item.itemId}"/>'>${item.itemName}</a>
+
 										</h3>
 <%-- 										<p>${item.material}</p> --%>
 <%-- 										<p>${item.color}</p> --%>

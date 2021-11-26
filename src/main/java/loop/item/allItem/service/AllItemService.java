@@ -64,4 +64,8 @@ public class AllItemService {
 		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
 		return allItemBean.get();
 	}
+	
+	public void save(AllItemBean bean) {
+		allItemRepo.save(bean);
+	}
 }

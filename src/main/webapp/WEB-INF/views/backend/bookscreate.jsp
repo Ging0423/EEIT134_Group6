@@ -15,7 +15,9 @@
 <div align='center'>
 <h3>書籍商品資料</h3>
 <hr>
-<form method="post" action="createbooks">
+
+<form method="post" action="createbooks" enctype="multipart/form-data">
+
 	<table>
       <tr>
          <td>書名:</td>
@@ -46,10 +48,49 @@
          <td>價錢:</td>
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
+
 	  </table>	  
 	    <button type="submit" value="send">送出</button>
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
+
+	  <tr>
+	  </table>
+	  照片
+	  <input type="file" name="img" accept="image/*"/>
+	  
+	  
+	  <div id="imgClass">
+	  <div>
+	  
+	  <button type="button" onclick="addImg();">新增照片</button>	  
+	    <button type="submit" value="send">送出</button>
+	  </form>
+	     <button onclick="magic();">一鍵輸入</button>
+	     
+	     
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+    <!-- popper js -->
+    <script src="<c:url value='/js/popper.min.js'/>"></script>
+    <!-- bootstrap js -->
+    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+    <!-- magnific popup js -->
+    <script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+    <!-- carousel js -->
+    <script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+    <script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+    <!-- slick js -->
+    <script src="<c:url value='/js/slick.min.js'/>"></script>
+    <script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+    <script src="<c:url value='/js/waypoints.min.js'/>"></script>
+    <script src="<c:url value='/js/contact.js'/>"></script>
+    <script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+    <script src="<c:url value='/js/jquery.form.js'/>"></script>
+    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+    <script src="<c:url value='/js/mail-script.js'/>"></script>
+    <!-- custom js -->
+    <script src="<c:url value='/js/custom.js'/>"></script>   
+
 	  <script>	
 		function magic() {	
 			document.getElementById('itemName').value = "好簡單的棒針&鉤針可愛小童帽";
@@ -59,6 +100,14 @@
 			document.getElementById('qty').value = "100";
 			document.getElementById('price').value = "315";
 		}
+
+		
+		function addImg() {
+			var text = $("#imgClass");
+			var tr = '<input type="file" name="img" accept="image/*"/>';
+			text.append(tr);
+		}
+
 	</script>
 </body>
 </html>
