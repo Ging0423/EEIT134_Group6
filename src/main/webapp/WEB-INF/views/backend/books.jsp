@@ -63,6 +63,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 </form>
 <c:forEach var="itemImg" items="${itemImg}">
 	<img src=<c:url value="/items/img/${itemImg.img}"/> />
+	<h3>${itemImg.img}</h3>
 </c:forEach>
 </div>
 </body>
