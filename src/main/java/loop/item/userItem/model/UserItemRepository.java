@@ -1,10 +1,8 @@
-package loop.item.userItem.dao;
+package loop.item.userItem.model;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
-import loop.item.userItem.model.UserItemBean;
 
 @Repository
 public class UserItemRepository {

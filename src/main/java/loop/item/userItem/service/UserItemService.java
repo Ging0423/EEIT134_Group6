@@ -7,33 +7,33 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import loop.item.userItem.dao.UserItemRepository;
 import loop.item.userItem.model.UserItemBean;
+import loop.item.userItem.model.UserItemRepository;
 
 @Service
 @Transactional
 public class UserItemService {
 	
 	@Autowired
-	private UserItemRepository userItemRepository;
+	private UserItemRepository userItemRepo;
 	
 	public void save(UserItemBean userItemBean) {
-		userItemRepository.save(userItemBean);	
+		userItemRepo.save(userItemBean);	
 	}
 
 	public List<UserItemBean> findAll() {
-		return userItemRepository.findAll();
+		return userItemRepo.findAll();
 	}
 	
 	public UserItemBean findById(Integer itemId) {
-		return userItemRepository.findById(itemId);
+		return userItemRepo.findById(itemId);
 	}
 
     public void update(UserItemBean userItemBean) {
-    	userItemRepository.update(userItemBean);		
+    	userItemRepo.update(userItemBean);		
 	}
 	
 	public void deleteUserItemByPrimaryKey(Integer itemId) {
-		userItemRepository.deleteuserItemByPrimaryKey(itemId);		
+		userItemRepo.deleteuserItemByPrimaryKey(itemId);		
 	}
 }
