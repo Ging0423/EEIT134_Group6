@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.item.userItem.model.UserItemBean;
 import loop.item.userItem.service.UserItemService;
 
 @Controller
+@SessionAttributes({ "isLogin" })
 public class UserItemController {
 	
 	@Autowired
@@ -57,7 +59,7 @@ public class UserItemController {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
-	//	bean.setAddDate(Date);
+		bean.setAddDate(Date);
 	//	usersService.create(bean);
 		return "redirect:/items/users";
 	}

@@ -42,7 +42,7 @@ public class UserItemBean implements Serializable{
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -57,7 +57,7 @@ public class UserItemBean implements Serializable{
 		
 	}
 
-	public UserItemBean(Integer itemId, Integer userId, String itemName, String itemDescription, Date addDate, Integer qty, Integer price) {
+	public UserItemBean(Integer itemId, Integer userId, String itemName, String itemDescription, String addDate, Integer qty, Integer price) {
 		super();
 		this.itemId = itemId;
 		this.userId = userId;
@@ -100,11 +100,11 @@ public class UserItemBean implements Serializable{
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
 
