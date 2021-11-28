@@ -24,6 +24,8 @@ public class UserItemController {
 	@GetMapping("/10")
 	public String index(Model model) {
 		return "single-userproduct";
+	
+		//return "";//copy yarn
 	}
 	
 	@GetMapping("/items/users")
