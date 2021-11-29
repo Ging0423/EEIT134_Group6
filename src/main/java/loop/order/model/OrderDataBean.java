@@ -16,9 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import loop.user.model.UsersBean;
 
@@ -50,6 +51,7 @@ public class OrderDataBean implements Serializable {
 	private String tel;
 
 	@Column(name = "orderDate")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date orderDate;
 
 	@Column(name = "payState")

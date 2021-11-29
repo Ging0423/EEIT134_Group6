@@ -36,10 +36,8 @@ public class UsersController {
 		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
 		bean.setUserPassword(password);
 		bean.setUserIdentity("1");
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
-		String registerDate = sdFormat.format(current);
-		bean.setRegisterDate(registerDate);
+		bean.setRegisterDate(current);
 		usersService.save(bean);
 		return "redirect:/login";
 	}

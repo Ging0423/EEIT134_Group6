@@ -1,6 +1,7 @@
 package loop.item.toolsItem.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import loop.item.allItem.model.AllItemBean;
 @Component
@@ -33,7 +36,8 @@ public class ToolsItemBean implements Serializable {
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private String addDate;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+	private Date addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -79,11 +83,11 @@ public class ToolsItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public String getAddDate() {
+	public Date getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(String current) {
+	public void setAddDate(Date current) {
 		this.addDate = current;
 	}
 

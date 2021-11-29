@@ -23,6 +23,9 @@ public class AllItemService {
 
 	public AllItemBean findById(Integer itemId) {	
 		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
+		if(allItemBean.isEmpty()) {
+			return null;
+		}
 		return allItemBean.get();
 	}
 	

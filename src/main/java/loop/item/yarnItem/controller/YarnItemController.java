@@ -46,15 +46,14 @@ public class YarnItemController {
 	public String selectById(@PathVariable("id") int itemId, Model m) {
 		bean = yarnService.findById(itemId);
 		m.addAttribute("item", bean);
-		return "items/yarnitem";
+		return "items/yarnItem";
 	}
 	
 	@PostMapping("/items/yarn/createyarn")
 	public String createItem(@ModelAttribute("yarnData") YarnItemBean bean) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date currect = new Date();
-		String Date = sdFormat.format(currect);
-		bean.setAddDate(Date);
+		Date current = new Date();
+		bean.setAddDate(current);
 		yarnService.create(bean);
 		return "redirect:/items/yarn";
 	}

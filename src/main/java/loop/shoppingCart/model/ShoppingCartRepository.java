@@ -17,4 +17,8 @@ public interface ShoppingCartRepository extends JpaRepository<ShoppingCartBean, 
 	@Modifying
 	@Query(value = "delete from ShoppingCartBean where itemId = ?1 and userId =?2")
 	public void deleteByItemIdAndUserId(Integer itemId, Integer userId);
+	
+	@Modifying
+	@Query(value="delete from ShoppingCartBean where userId = ?1")
+	public void deleteByUserId(Integer userId);
 }

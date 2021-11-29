@@ -75,7 +75,7 @@ public class ShoppingCartController {
 		for(HashMap<String, String> i : array) {
 			shoppingCartService.update(Integer.parseInt(i.get("itemId")), userId, Integer.parseInt(i.get("qty")));
 		}
-		List<ShoppingCartDisplay> items = shoppingCartService.list(1);
+		List<ShoppingCartDisplay> items = shoppingCartService.list(userId);
 		return items;
 	}
 	@PostMapping("/deleteCart")

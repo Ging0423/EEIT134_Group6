@@ -36,4 +36,28 @@ public class KitsItemController {
 		m.addAttribute("itemImg", itemImgs);
 		return "items/kitsitem";
 	}
-}
+	
+	@PostMapping("/items/kits/createkits")
+	public String createItem(@ModelAttribute("kitsData") KitsItemBean bean) {
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		bean.setAddDate(new Date());
+		kitsService.create(bean);
+		return "redirect:/items/kits";
+	}
+	
+	@PostMapping("/items/modifykits/{id}")
+	public String update(Model m, 
+			KitsItemBean kisItemBean) {
+//			BindingResult bindingResult) {
+//		ProductValidator productValidator = new ProductValidator();
+//		productValidator.validate(productBean, bindingResult);
+		
+//		if (bindingResult.hasErrors()) {
+//			System.out.println(bindingResult.getAllErrors());
+//			return "/items/editBooks";
+//		}
+//		
+		kitsService.update(bean);
+		return "items/kits";
+		
+	}
