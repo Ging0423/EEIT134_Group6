@@ -25,17 +25,18 @@ public class OrderItemBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "orderId")
-	private int orderId;
+	private Integer orderId;
 
 	@Column(name = "itemId")
-	private int itemId;
+	private Integer itemId;
 
 	@Column(name = "qty")
-	private int qty;
+	private Integer qty;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "itemId",insertable = false, updatable = false)
@@ -49,27 +50,27 @@ public class OrderItemBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 
-	public int getItemId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 

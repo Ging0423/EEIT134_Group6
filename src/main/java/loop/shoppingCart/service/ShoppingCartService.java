@@ -2,20 +2,18 @@ package loop.shoppingCart.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.allItem.model.AllItemBean;
-import loop.item.allItem.model.AllItemRepository;
 import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.shoppingCart.model.ShoppingCartBean;
 import loop.shoppingCart.model.ShoppingCartDisplay;
 import loop.shoppingCart.model.ShoppingCartRepository;
 import loop.user.model.UsersBean;
-import loop.user.model.UsersRepository;
 import loop.user.service.UsersService;
 
 @Service
@@ -25,15 +23,16 @@ public class ShoppingCartService {
 	private ShoppingCartRepository shoppingRepo;
 	private AllItemService allItemService;
 	private UsersService usersService;
+	private ItemImgService itemImgService;
 
 
 	@Autowired
 	public ShoppingCartService(ShoppingCartRepository shoppingRepo, AllItemService allItemService,
-			UsersService usersService) {
-		super();
+			UsersService usersService, ItemImgService itemImgService) {
 		this.shoppingRepo = shoppingRepo;
 		this.allItemService = allItemService;
 		this.usersService = usersService;
+		this.itemImgService = itemImgService;
 	}
 
 	public void save(Integer itemId, Integer userId, Integer qty) {
@@ -86,10 +85,15 @@ public class ShoppingCartService {
 		List<ShoppingCartBean> list = findAllCartBeans(userId);
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for (ShoppingCartBean i : list) {
-			items.add(new ShoppingCartDisplay(i.getItemId(), allItemService.getItemName(i.getItemId()), "test",
-					allItemService.getItemPrice(i.getItemId()), i.getQty()));
+			items.add(new ShoppingCartDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+					,"10.jpg" /*itemImgService.findByItemId(i.getItemId()).get(0).getImg()*/
+					,allItemService.getItemPrice(i.getItemId()), i.getQty()));
 		}
 		return items;
+	}
+	
+	public void deleteByUserId(Integer userId) {
+		shoppingRepo.deleteByUserId(userId);
 	}
 
 }

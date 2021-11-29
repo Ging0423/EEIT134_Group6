@@ -95,7 +95,10 @@
 		function addImg() {
 			var text = $("#imgClass");
 			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
-			text.append(tr);
+			if(text.val()){
+				text.append(tr);
+			}
+			
 		}
 
 	</script>

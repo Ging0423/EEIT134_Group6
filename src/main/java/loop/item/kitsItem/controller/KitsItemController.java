@@ -48,9 +48,7 @@ public class KitsItemController {
 	@PostMapping("/items/kits/createkits")
 	public String createItem(@ModelAttribute("kitsData") KitsItemBean bean) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date current = new Date();
-		String Date = sdFormat.format(current);
-		bean.setAddDate(Date);
+		bean.setAddDate(new Date());
 		kitsService.create(bean);
 		return "redirect:/items/kits";
 	}

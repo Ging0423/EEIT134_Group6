@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
@@ -54,7 +56,8 @@ public class UsersBean implements Serializable {
 	private String userAddress;
 
 	@Column(name = "registerDate")
-	private String registerDate;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+	private Date registerDate;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
@@ -130,11 +133,11 @@ public class UsersBean implements Serializable {
 		this.userAddress = userAddress;
 	}
 
-	public String getRegisterDate() {
+	public Date getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(String registerDate) {
+	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
 

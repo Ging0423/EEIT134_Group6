@@ -48,9 +48,7 @@ public class ToolsItemController {
 	@PostMapping("/items/tools/createtools")
 	public String createItem(@ModelAttribute("toolsData") ToolsItemBean bean) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date current = new Date();
-		String Date = sdFormat.format(current);
-		bean.setAddDate(Date);
+		bean.setAddDate(new Date());
 		toolsService.create(bean);
 		return "redirect:/items/tools";
 	}

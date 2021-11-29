@@ -1,6 +1,7 @@
 package loop.item.yarnItem.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +40,7 @@ public class YarnItemBean implements Serializable {
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private String addDate;
+	private Date addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -102,11 +103,11 @@ public class YarnItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public String getAddDate() {
+	public Date getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(String addDate) {
+	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
 
