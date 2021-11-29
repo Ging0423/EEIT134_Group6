@@ -1,7 +1,6 @@
 package loop.item.allItem.service;
 
 import java.util.Optional;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,6 @@ public class AllItemService {
 		this.allItemRepo = allItemRepo;
 	}
 
-	
-	
 	public AllItemBean findById(Integer itemId) {	
 		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
 		if(allItemBean.isEmpty()) {
@@ -52,7 +49,6 @@ public class AllItemService {
 			itemName = allItem.getKitsItem().getItemName();
 		}
 		return itemName;
-
 	}
 
 	public Integer getItemPrice(Integer itemId) {
@@ -74,6 +70,4 @@ public class AllItemService {
 		}		
 		return price;
 	}
-	
-	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Book Create</title>
 <style>
      table{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
@@ -15,8 +15,6 @@
 <div align='center'>
 <h3>書籍商品資料</h3>
 <hr>
-
-
 
 <form method="post" action="createbooks" enctype="multipart/form-data">
 
@@ -36,7 +34,6 @@
       <tr>
          <td>商品描述:</td>
          <td><textarea id="itemDescription"name="itemDescription" rows="4" cols="21"></textarea><td>
-<!--          <td><input id="itemDescription" name="itemDescription" type="text" /></td> -->
       </tr>
 <!--       <tr> -->
 <!--          <td>日期:</td> -->
@@ -50,7 +47,7 @@
          <td>價錢:</td>
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
-	  </table>	  
+      </table>	  
 	  <input type="file" name="img" accept="image/*" onchange="addImg();"/>
 	  <div id="imgClass">
 	  </div>  
@@ -58,29 +55,6 @@
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
 	     
-	     
-	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
-    <!-- popper js -->
-    <script src="<c:url value='/js/popper.min.js'/>"></script>
-    <!-- bootstrap js -->
-    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
-    <!-- magnific popup js -->
-    <script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
-    <!-- carousel js -->
-    <script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
-    <script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
-    <!-- slick js -->
-    <script src="<c:url value='/js/slick.min.js'/>"></script>
-    <script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
-    <script src="<c:url value='/js/waypoints.min.js'/>"></script>
-    <script src="<c:url value='/js/contact.js'/>"></script>
-    <script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
-    <script src="<c:url value='/js/jquery.form.js'/>"></script>
-    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-    <script src="<c:url value='/js/mail-script.js'/>"></script>
-    <!-- custom js -->
-    <script src="<c:url value='/js/custom.js'/>"></script>   
-
 	  <script>	
 		function magic() {	
 			document.getElementById('itemName').value = "好簡單的棒針&鉤針可愛小童帽";
@@ -90,8 +64,7 @@
 			document.getElementById('qty').value = "100";
 			document.getElementById('price').value = "315";
 		}
-
-		
+	
 		function addImg() {
 			var text = $("#imgClass");
 			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
@@ -100,7 +73,28 @@
 			}
 			
 		}
+		</script>
 
-	</script>
+		<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+	    <!-- popper js -->
+	    <script src="<c:url value='/js/popper.min.js'/>"></script>
+	    <!-- bootstrap js -->
+	    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	    <!-- magnific popup js -->
+	    <script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	    <!-- carousel js -->
+	    <script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+	    <!-- slick js -->
+	    <script src="<c:url value='/js/slick.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	    <script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	    <script src="<c:url value='/js/contact.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.form.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	    <script src="<c:url value='/js/mail-script.js'/>"></script>
+	    <!-- custom js -->
+	    <script src="<c:url value='/js/custom.js'/>"></script>   
 </body>
 </html>

@@ -3,11 +3,6 @@ package loop.item.booksItem.service;
 import java.util.List;
 import java.util.Optional;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -16,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.service.AllItemService;
-
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.model.BooksItemRepository;
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Books Form</title>
+<title>Kits Form</title>
 <style>
      table,th,td{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
@@ -12,16 +12,13 @@
 </head>
 <body>
 <div align='center'>
-<h3>書籍商品資料</h3>
+<h3>材料包商品資料</h3>
 <hr>
-<a href="<c:url value='/backend/books/create'/>">新增書籍</a>
-
-<table border='1'>
+<a herf="<c:url value='/backend/tools/create'/>">新增書籍</a>
+<table border='1'> 
 	<thead>
 		<th>編號</th>
-		<th>書名</th>
-		<th>出版社</th>
-		<th>作者</th>
+		<th>商品名</th>
 		<th>商品描述</th>
 		<th>日期</th>
 		<th>數量</th>
@@ -29,10 +26,8 @@
 	</thead>
 		<c:forEach var="item" items='${allItem}'>
 			<tr>
-				<td><a href= "<c:url value='/backend/books/${item.itemId}'/>">${item.itemId}</a></td>
+				<td><a href= "<c:url value='/backend/kits/${item.itemId}'/>">${item.itemId}</a></td>
 				<td>${item.itemName}</td>
-				<td>${item.publisher}</td>
-				<td>${item.author}</td>
 				<td>${item.itemDescription}</td>
 				<td>${item.addDate}</td>
 				<td>${item.qty}</td>
