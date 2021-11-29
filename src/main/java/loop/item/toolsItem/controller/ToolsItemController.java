@@ -37,38 +37,4 @@ public class ToolsItemController {
 		return "items/toolsitem";
 	}
 	
-	@PostMapping("/items/tools/createtools")
-	public String createItem(@ModelAttribute("toolsData") ToolsItemBean bean) {
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		bean.setAddDate(new Date());
-		toolsService.create(bean);
-		return "redirect:/items/tools";
-	}
-	
-//	@PostMapping("/tools/deletetools")
-//	public String deleteById(Model m) {
-//		
-//	}
-//	public List<ToolsItemBean> deleteById(@RequestBody HashMap<String, String> map) {
-//		Integer id = Integer.parseInt(map.get("itemId"));
-//		toolsService.deleteById(id);
-//		return toolsService.findAll();
-//	}
-	
-	@PostMapping("/items/modifytools/{id}")
-	public String update(Model m, 
-			ToolsItemBean toolsItemBean) {
-//			BindingResult bindingResult) {
-//		ProductValidator productValidator = new ProductValidator();
-//		productValidator.validate(productBean, bindingResult);
-		
-//		if (bindingResult.hasErrors()) {
-//			System.out.println(bindingResult.getAllErrors());
-//			return "/items/editBooks";
-//		}
-//		
-		toolsService.update(bean);
-		return "items/tools";
-		
-	}
 }
