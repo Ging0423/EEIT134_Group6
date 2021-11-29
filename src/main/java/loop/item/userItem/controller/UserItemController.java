@@ -1,27 +1,25 @@
 package loop.item.userItem.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import loop.item.allItem.model.ItemImgBean;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.userItem.model.UserItemBean;
 import loop.item.userItem.service.UserItemService;
 
 @Controller
-@SessionAttributes({ "isLogin" })
 public class UserItemController {
-	
+
 	@Autowired
-	private UserItemService usersService;
+	private UserItemService userService;
+	@Autowired
+	private ItemImgService itemImgService;
 	
 	@GetMapping("/10")
 	public String index(Model model) {
@@ -30,54 +28,20 @@ public class UserItemController {
 		//return "";//copy yarn
 	}
 	
-	@GetMapping("/items/users")
+	@GetMapping("/items/user")
 	public String selectAll(Model m) {
-	    List<UserItemBean> bean = usersService.findAll();
-	    m.addAttribute("allItem", bean);
-	    return "/items/users";
-	    }
-	
-	@GetMapping("/items/users/create")
-	public String createUserItempage(Model m) {
-		UserItemBean bean = new UserItemBean();
-		m.addAttribute("usersData", bean);
-		return "/items/userscreate";
+		List<UserItemBean> bean = userService.findAll();
+		m.addAttribute("allItem", bean);
+		return "items/user";
 	}
 	
-	@Autowired
-	private UserItemBean bean;
-	
-	@GetMapping("/items/users/{id}")
-	public String selectById(@PathVariable("id") int itemId, Model m) {
-		bean = usersService.findById(itemId);
+	@GetMapping("/items/user/{id}")
+	public String selectById(@PathVariable("id") Integer itemId, Model m) {
+		UserItemBean bean = userService.findById(itemId);
 		m.addAttribute("item", bean);
-		return "items/usersitem";
+		List<ItemImgBean> itemImgs = itemImgService.findByItemId(itemId);
+		m.addAttribute("itemImg", itemImgs);
+		return "items/useritem";
 	}
 	
-	@PostMapping("/items/users/createusers")
-	public String createItem(@ModelAttribute("usersData") UserItemBean bean) {
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date current = new Date();
-		String Date = sdFormat.format(current);
-		bean.setAddDate(Date);
-	//	usersService.create(bean);
-		return "redirect:/items/users";
-	}
-	
-	@PostMapping("/items/modifyusers/{id}")
-	public String update(Model m, 
-			UserItemBean kisItemBean) {
-//			BindingResult bindingResult) {
-//		ProductValidator productValidator = new ProductValidator();
-//		productValidator.validate(productBean, bindingResult);
-		
-//		if (bindingResult.hasErrors()) {
-//			System.out.println(bindingResult.getAllErrors());
-//			return "/items/editBooks";
-//		}
-//		
-		usersService.update(bean);
-		return "items/users";
-		
-	}
 }
