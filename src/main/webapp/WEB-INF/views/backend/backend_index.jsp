@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/'/>">
                         <span class="icon"><i class="fas fa-infinity" aria-hidden="true"></i></span>
                         <span class="title"><h2>Loop</h2></span>
                     </a>
@@ -26,13 +28,13 @@
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
-                        <span class="title">商品管理</span>
+                        <span class="title">商品管理</span>
                     </a>
                 </li>
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
-                        <span class="title">訂單管理</span>
+                        <span class="title">訂單管理</span>
                     </a>
                 </li>
                 <li>
@@ -44,13 +46,13 @@
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="far fa-file-video" aria-hidden="true"></i></span>
-                        <span class="title">教學影片管理</span>
+                        <span class="title">教學影片管理</span>
                     </a>
                 </li>
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="far fa-newspaper" aria-hidden="true"></i></span>
-                        <span class="title">討論區管理</span>
+                        <span class="title">討論區管理</span>
                     </a>
                 </li>
                 <li>
@@ -98,7 +100,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">120</div>
-                        <div class="cardName">已出貨訂單數量</div>
+                        <div class="cardName">已出貨訂單數量</div>
                     </div>
                     <div class="iconBox">
                         <i class="fas fa-dollar-sign"aria-hidden="true"></i>
@@ -134,31 +136,31 @@
                             <tr>
                                 <td>A000001</td>
                                 <td>NTD 1200</td>
-                                <td>哈利</td>
+                                <td>åå©</td>
                                 <td><span class="status paid">已付款</span></td>
                             </tr>
                             <tr>
                                 <td>A000002</td>
                                 <td>NTD 3500</td>
-                                <td>榮恩</td>
+                                <td>æ¦®æ©</td>
                                 <td><span class="status">已出貨</span></td>
                             </tr>
                             <tr>
                                 <td>A000003</td>
                                 <td>NTD 3000</td>
-                                <td>妙麗</td>
+                                <td>å¦éº</td>
                                 <td><span class="status delivered">已送達</span></td>
                             </tr>
                             <tr>
                                 <td>A000004</td>
                                 <td>NTD $2300</td>
-                                <td>麥教授</td>
+                                <td>éº¥ææ</td>
                                 <td><span class="status unpaid">未付款</span></td>
                             </tr>
                             <tr>
                                 <td>A000005</td>
                                 <td>$300</td>
-                                <td>金妮</td>
+                                <td>éå¦®</td>
                                 <td><span class="status">未出貨</span></td>
                             </tr>
                         </tbody>
@@ -173,27 +175,7 @@
                         <tbody>
                             <tr>
                                 <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>林園</h4><span>A00006</span></td>
-                            </tr>
-                            <tr>
-                                <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>test1</h4><span>A00005</span></td>
-                            </tr>
-                            <tr>
-                                <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>林芳</h4><span>A00004</span></td>
-                            </tr>
-                            <tr>
-                                <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>林民</h4><span>A00003</span></td>
-                            </tr>
-                            <tr>
-                                <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>林人</h4><span>A00002</span></td>
-                            </tr>
-                            <tr>
-                                <td width="60px"><div class="imgBx"><img src="image/dog.jpg"></div></td>
-                                <td><h4>林abc</h4><span>A00001</span></td>
+                                <td><h4>æabc</h4><span>A00001</span></td>
                             </tr>
                         </tbody>
                     </table>
