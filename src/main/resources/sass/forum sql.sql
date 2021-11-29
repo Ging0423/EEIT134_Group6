@@ -14,6 +14,8 @@ create table article(
 
 select * from article;
 
+Use project
+
 create table reply(
 	replyId int not null primary key identity(10000,1),
 	articleId int not null,
@@ -31,3 +33,4 @@ create table forumCategory(
 );
 
 select * from forumCategory
+

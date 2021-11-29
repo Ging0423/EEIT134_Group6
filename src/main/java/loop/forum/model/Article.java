@@ -1,4 +1,4 @@
-package loop.forum.article.model;
+package tw.JoyHsieh.forum.model;
 
 import java.util.Date;
 
