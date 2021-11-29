@@ -1,5 +1,4 @@
-package loop.item.booksItem.controller;
-
+package loop.item.toolsItem.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,59 +23,63 @@ import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.model.ItemImgBean;
 import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
-import loop.item.booksItem.model.BooksItemBean;
-import loop.item.booksItem.service.BooksItemService;
+import loop.item.toolsItem.model.ToolsItemBean;
+import loop.item.toolsItem.service.ToolsItemService;
 
 @Controller
 @RequestMapping("/backend")
-public class BooksBackendController {
-	
+public class ToolsItemBackendController {
+
 	@Autowired
-	private BooksItemService booksService;
+	private ToolsItemService toolsService;
 	@Autowired
 	private ItemImgService itemImgService;
 	@Autowired
 	private AllItemService allItemService;
 	
-	@GetMapping("/books")
+	@GetMapping("/tools")
 	public String selectAll(Model m) {
-		List<BooksItemBean> bean = booksService.findAll();
+		List<ToolsItemBean> bean = toolsService.findAll();
 		m.addAttribute("allItem", bean);
-		return "backend/booksform";
+		return "backend/toolsform";
 	}
 	
-	@GetMapping("/books/create")
-	public String CreateBooksItemPage(Model m) {
-		BooksItemBean bean = new BooksItemBean();
-		m.addAttribute("booksData", bean);
-		return "backend/bookscreate";
+	@GetMapping("/tools/create")
+	public String createToolsItemPage(Model m){
+		ToolsItemBean bean = new ToolsItemBean();
+		m.addAttribute("toolsData", bean);
+		return "backend/toolscreate";
 	}
 	
-	@GetMapping("/books/{id}")
-	public String selectById(@PathVariable("id") int itemId, Model m) {
-		BooksItemBean bean = booksService.findById(itemId);
-		m.addAttribute("booksData", bean);
-		return "backend/books";
+	@GetMapping("/tools/{id}")
+	public String selectById(@PathVariable("id") Integer itemId, Model m) {
+		ToolsItemBean bean = toolsService.findById(itemId);
+		m.addAttribute("toolsData", bean);
+		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
+		m.addAttribute("itemImg", itemImg);
+		return "backend/tools";
 	}
 	
-	@PostMapping("books/createbooks")
-	public String createItem(@ModelAttribute("booksData") BooksItemBean bean, MultipartHttpServletRequest mrequest) {
+	@PostMapping("tools/createtools")
+	public String createItem(@ModelAttribute("toolsData") ToolsItemBean bean, MultipartHttpServletRequest mrequest) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
 		bean.setAddDate(Date);
-		bean = booksService.persist(bean);
-		booksService.create(bean);
+		bean = toolsService.persist(bean);
+		toolsService.create(bean);
+		
 		Integer itemId = bean.getItemId();
 		AllItemBean allItem = allItemService.findById(itemId);
+		
 		List<MultipartFile> files = mrequest.getFiles("img");
-		for (int i = 0; i < files.size()-1; i++) {			
+		for (int i = 0; i < files.size()-1; i++) {
 			String imageFile = itemImgService.getRandomString();
 			String fileName = files.get(i).getOriginalFilename();
 			String extension = "";
-			int index = fileName.lastIndexOf('.');
+			int index = fileName.lastIndexOf(".");
 			if (index > 0) {
-			    extension = fileName.substring(index+1);
+				extension = fileName.substring(index+1);
 			}
 			String realPath = mrequest.getServletContext().getRealPath(".");
 			String saveDirPath = realPath + "\\items\\img\\";
@@ -89,44 +92,39 @@ public class BooksBackendController {
 				files.get(i).transferTo(savePathFile);
 				imgBean.setImg(imageFile + "." +extension);
 				imgBean.setAllItem(allItem);
-				itemImgService.save(imgBean);
-				
-				
+				itemImgService.save(imgBean);		
 			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		return "redirect:/backend/books";
+		return "redirect:/backend/tools";
 	}
 	
-	@GetMapping("/{id}")
-	public String updateBooksItemPage(@PathVariable ("id") int itemId, Model m) {
-		BooksItemBean bean = booksService.findById(itemId);
-		m.addAttribute("booksData",bean);
-		List<ItemImgBean> ItemImgs = itemImgService.findByItemId(itemId);
-		m.addAttribute("itemImg", ItemImgs);
-		return "/backend/books";
+	@PostMapping("tools/{id}")
+	public String updateToolsItemPage(@PathVariable("id") Integer itemId, Model m) {
+		ToolsItemBean bean = toolsService.findById(itemId);
+		m.addAttribute("toolsData",bean);
+		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
+		m.addAttribute("itemImg", itemImg);
+		return "/backend/tools";
 	}
 	
-	@PostMapping("updatebooks")
-//	public String update(@ModelAttribute("booksData")BooksItemBean bean, BindingResult result, ModelMap m) {
-	public String update(@ModelAttribute("booksData")BooksItemBean bean, Model m) {
-		booksService.update(bean);
-//		if(result.hasErrors()) {
-//			return "booksError";
-//		}
+	@PostMapping("updatetools")
+	public String update(@ModelAttribute("toolsData")ToolsItemBean bean, Model m) {
+		toolsService.update(bean);
 		Integer id = bean.getItemId();
-		return "redirect:/backend/books/" + id;		
+		return "redirect:/backend/tools/" + id;
 	}
-
-	@PostMapping("/deletebooks")
-	public String deleteById(ServletRequest request) {	
+	
+	@PostMapping("/deletetools")
+	public String deleteById(ServletRequest request) {
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
-		itemImgService.deleteByItemId(itemId);
-		booksService.deleteById(itemId);
-		
-		return "redirect:/backend/books";
+		toolsService.deleteById(itemId);
+		return "redirect:/backend/tools";
 	}
 }
+	
+	
+		
+	

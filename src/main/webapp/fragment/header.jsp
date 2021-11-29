@@ -40,8 +40,8 @@
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-12">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<a class="navbar-brand" href="index.jsp"> <img
-							src="img/logo.png" alt="logo">
+						<a class="navbar-brand" href="index.jsp">
+						<img src="<c:url value='/img/logo.png'/>" alt="logo"/>
 						</a>
 						<button class="navbar-toggler" type="button"
 							data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -64,10 +64,10 @@
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
 										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a>
 										<a class="dropdown-item" href="<c:url value='/items/tools'/>">工具</a>
-										<a class="dropdown-item" href="<c:url value='/items/kits'/>">套組</a>
-										<a class="dropdown-item" href="<c:url value='/items/books'/>">工具書</a>
-
-									</div></li>
+										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
+										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a>
+									</div>
+								</li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.jsp"
 									id="navbarDropdown_3" role="button" data-toggle="dropdown"
@@ -77,16 +77,18 @@
 										<a class="dropdown-item" href="checkout.jsp">商品結帳</a>
 										<a class="dropdown-item" href="<c:url value='/cart/display'/>">購物車</a>
 										<a class="dropdown-item" href="<c:url value='/myorder'/>">我的訂單</a>
-									</div></li>
+									</div>
+								</li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"
 									id="navbarDropdown_2" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 討論區 </a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-										<a class="dropdown-item" href="blog.html"> 討論區</a> <a
-											class="dropdown-item" href="single-blog.html">Single blog</a>
-									</div></li>
+										<a class="dropdown-item" href="blog.html"> 討論區</a> 
+										<a class="dropdown-item" href="single-blog.html">Single blog</a>
+									</div>
+								</li>
 
 								<li class="nav-item"><a class="nav-link"
 									href="contact.html">教學影片</a></li>

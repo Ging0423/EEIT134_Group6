@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kitd Form</title>
+<title>Kits Form</title>
 <style>
      table,th,td{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
@@ -14,9 +14,8 @@
 <div align='center'>
 <h3>材料包商品資料</h3>
 <hr>
-<%-- <center> --%>
-<table border='1'>
-<table> 
+<a herf="<c:url value='/backend/tools/create'/>">新增書籍</a>
+<table border='1'> 
 	<thead>
 		<th>編號</th>
 		<th>商品名</th>

@@ -18,7 +18,6 @@ import loop.item.allItem.model.AllItemBean;
 @Table(name="kitsItem")
 public class KitsItemBean implements Serializable {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="itemId")
@@ -43,7 +42,6 @@ public class KitsItemBean implements Serializable {
 	private AllItemBean allItem;
 
 	public KitsItemBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getItemId() {

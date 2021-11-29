@@ -38,7 +38,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 	  </tr>
       <tr>
          <td>商品描述:</td>
-         <td><textarea name="itemDescription" rows="4" cols="21">${booksData.itemDescription}</textarea><td>
+         <td><textarea name="itemDescription" rows="4" cols="21">${booksData.itemDescription}</textarea></td>
 <!--          <td><input id="itemDescription" name="itemDescription" type="text" /></td> -->
       </tr>
       <tr>
@@ -54,7 +54,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
          <td><input name="price" value=${booksData.price}></td>
 	  </tr>
 	  </table>
-<input type="submit" value="更新">
+<button type="submit">"更新</button>
 </form>
 <form action= "<c:url value='/backend/deletebooks'/>" method="post">
 <input type="hidden" name="itemId" value="${booksData.itemId}">
@@ -63,7 +63,6 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 </form>
 <c:forEach var="itemImg" items="${itemImg}">
 	<img src=<c:url value="/items/img/${itemImg.img}"/> />
-	<h3>${itemImg.img}</h3>
 </c:forEach>
 </div>
 </body>

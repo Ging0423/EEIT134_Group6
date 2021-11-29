@@ -16,16 +16,17 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <div align='center'>
 <h3>材料包商品資料</h3>
 <hr>
-<table border='1'>
-<%-- <c:url var='path' value='/backend/updatebooks'/> --%>
 <form method="post" action="<c:url value='/backend/updatekits'/>" />
+<!-- <table border='1'> -->
+<%-- <c:url var='path' value='/backend/updatebooks'/> --%>
+
 <table>
 	  <tr>
 	     <td>編號:</td>
 	     <td><input readonly name="itemId" value=${kitsData.itemId}></td>
 	  </tr>
        <tr>
-         <td>書名:</td>
+         <td>商品名:</td>
          <td><input name="itemName" value=${kitsData.itemName}></td>
 	  </tr>
       <tr>
@@ -46,14 +47,16 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
          <td><input name="price" value=${kitsData.price}></td>
 	  </tr>
 	  </table>
-<input type="submit" value="更新">
+<button type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deletekits'/>" method="post">
 <input type="hidden" name="itemId" value="${kitsData.itemId}">
 <input type="submit" value="刪除"><br>
 <a href="<c:url value='/backend/kits' />">回前頁</a>
 </form>
-</table>
+<c:forEach var="itemImg" items="${itemImg}">
+    <img src=<c:url value="/items/img/${itemImg.img}"/> />
+</c:forEach>
 </div>
 </body>
 </html>

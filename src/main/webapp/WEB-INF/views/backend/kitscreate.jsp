@@ -15,7 +15,8 @@
 <div align='center'>
 <h3>材料包商品資料</h3>
 <hr>
-<form method="post" action="createkits">
+<form method="post" action="createkits" enctype="multipart/form-data">
+
 	<table>
       <tr>
          <td>商品名:</td> 
@@ -33,17 +34,49 @@
          <td>價錢:</td>
          <td><input id="price" name="price" type="number" /></td>
       </tr>
-</table>	  
+      </table>	
+      <input type="file" name="img" accept="image/*" onchange="addImg();"/>
+	  <div id="imgClass">  
+	  </div>
 	    <button type="submit" value="send">送出</button>
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
+	 
 	  <script>	
 		function magic() {	
 			document.getElementById('itemName').value = "夏日網格托特包";
-			document.getElementById('itemDescription').value = "材料包內容: 5球毛線, 2個圈環, 作法說明書";
+			document.getElementById('itemDescription').value = "材料包內容: 5球毛線， 2個圈環，作法說明書";
 			document.getElementById('qty').value = "100";
 			document.getElementById('price').value = "1800";
 		}
-	</script>
+		
+		function addImg(){
+			var text = $("#imgClass");
+			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
+			text.append(tr);
+		}
+		</script>
+		
+		<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+	    <!-- popper js -->
+	    <script src="<c:url value='/js/popper.min.js'/>"></script>
+	    <!-- bootstrap js -->
+	    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	    <!-- magnific popup js -->
+	    <script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	    <!-- carousel js -->
+	    <script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+	    <!-- slick js -->
+	    <script src="<c:url value='/js/slick.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	    <script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	    <script src="<c:url value='/js/contact.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.form.js'/>"></script>
+	    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	    <script src="<c:url value='/js/mail-script.js'/>"></script>
+	    <!-- custom js -->
+	    <script src="<c:url value='/js/custom.js'/>"></script>   
 </body>
 </html>

@@ -16,9 +16,7 @@
 <hr>
 <a href="<c:url value='/backend/books/create'/>">新增書籍</a>
 
-<%-- <center> --%>
 <table border='1'>
-<table> 
 	<thead>
 		<th>編號</th>
 		<th>書名</th>

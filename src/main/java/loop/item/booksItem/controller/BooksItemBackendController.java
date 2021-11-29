@@ -1,4 +1,4 @@
-package loop.item.kitsItem.controller;
+package loop.item.booksItem.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,51 +23,51 @@ import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.model.ItemImgBean;
 import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
-import loop.item.kitsItem.model.KitsItemBean;
-import loop.item.kitsItem.service.KitsItemService;
+import loop.item.booksItem.model.BooksItemBean;
+import loop.item.booksItem.service.BooksItemService;
 
 @Controller
 @RequestMapping("/backend")
-public class KitsItemBackendController {
+public class BooksItemBackendController {
 	
 	@Autowired
-	private KitsItemService kitsService;
+	private BooksItemService booksService;
 	@Autowired
 	private ItemImgService itemImgService;
 	@Autowired
 	private AllItemService allItemService;
 	
-	@GetMapping("/kits")
+	@GetMapping("/books")
 	public String selectAll(Model m) {
-	    List<KitsItemBean> bean = kitsService.findAll();
-	    m.addAttribute("allItem", bean);
-	    return "backend/kitsform";
-	    }
-	
-	@GetMapping("/kits/create")
-	public String createKitsItempage(Model m) {
-		KitsItemBean bean = new KitsItemBean();
-		m.addAttribute("kitsData", bean);
-		return "backend/kitscreate";
+		List<BooksItemBean> bean = booksService.findAll();
+		m.addAttribute("allItem", bean);
+		return "backend/booksform";
 	}
 	
-	@GetMapping("/kits/{id}")
+	@GetMapping("/books/create")
+	public String CreateBooksItemPage(Model m) {
+		BooksItemBean bean = new BooksItemBean();
+		m.addAttribute("booksData", bean);
+		return "backend/bookscreate";
+	}
+	
+	@GetMapping("/books/{id}")
 	public String selectById(@PathVariable("id") Integer itemId, Model m) {
-		KitsItemBean bean = kitsService.findById(itemId);
-		m.addAttribute("kitsData", bean);
+		BooksItemBean bean = booksService.findById(itemId);
+		m.addAttribute("booksData", bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "backend/kits";
+		return "backend/books";
 	}
 	
-	@PostMapping("kits/createkits")
-	public String createItem(@ModelAttribute("kitsData") KitsItemBean bean, MultipartHttpServletRequest mrequest) {
+	@PostMapping("books/createbooks")
+	public String createItem(@ModelAttribute("booksData") BooksItemBean bean, MultipartHttpServletRequest mrequest) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
 		bean.setAddDate(Date);
-		bean = kitsService.persist(bean);
-		kitsService.create(bean);
+		bean = booksService.persist(bean);
+		booksService.create(bean);
 		
 		Integer itemId = bean.getItemId();
 		AllItemBean allItem = allItemService.findById(itemId);
@@ -97,29 +97,35 @@ public class KitsItemBackendController {
 				e.printStackTrace();
 			}
 		}
-		return "redirect:/backend/kits";
+		
+		return "redirect:/backend/books";
 	}
 	
-	@PostMapping("kits/{id}")
-	public String updateKitsItemPage(@PathVariable ("id") Integer itemId, Model m) {
-		KitsItemBean bean = kitsService.findById(itemId);
-		m.addAttribute("kitsData",bean);
+	@GetMapping("/{id}")
+	public String updateBooksItemPage(@PathVariable ("id") Integer itemId, Model m) {
+		BooksItemBean bean = booksService.findById(itemId);
+		m.addAttribute("booksData",bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "/backend/kits";
+		return "/backend/books";
 	}
 	
-	@PostMapping("updatekits")
-	public String update(@ModelAttribute("kitsData")KitsItemBean bean, Model m) {
-			kitsService.update(bean);
+	@PostMapping("updatebooks")
+//	public String update(@ModelAttribute("booksData")BooksItemBean bean, BindingResult result, ModelMap m) {
+	public String update(@ModelAttribute("booksData")BooksItemBean bean, Model m) {
+		booksService.update(bean);
+//		if(result.hasErrors()) {
+//			return "booksError";
+//		}
 		Integer id = bean.getItemId();
-		return "redirect:/backend/kits/" + id;
+		return "redirect:/backend/books/" + id;		
 	}
-	
-	@PostMapping("/deletekits")
-	public String deleteById(ServletRequest request) {
+
+	@PostMapping("/deletebooks")
+	public String deleteById(ServletRequest request) {	
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
-		kitsService.deleteById(itemId);
-		return "redirect:/backend/kits";		
+//		itemImgService.deleteByItemId(itemId);
+		booksService.deleteById(itemId);		
+		return "redirect:/backend/books";
 	}
 }
