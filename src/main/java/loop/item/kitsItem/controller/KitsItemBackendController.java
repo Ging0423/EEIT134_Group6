@@ -65,7 +65,7 @@ public class KitsItemBackendController {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
-		bean.setAddDate(Date);
+		bean.setAddDate(current);
 		bean = kitsService.persist(bean);
 		kitsService.create(bean);
 		
