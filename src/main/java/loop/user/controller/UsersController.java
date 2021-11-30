@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import loop.user.model.UsersBean;
 import loop.user.service.UsersService;
+//import sun.security.util.Password;
 
 @Controller
 public class UsersController {
@@ -51,6 +52,7 @@ public class UsersController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+<<<<<<< Updated upstream
 
 	@GetMapping("/users/{id}")
 	public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer id) {
@@ -62,4 +64,20 @@ public class UsersController {
 		}
 	}
 
+=======
+//	@GetMapping("updatemember")
+//	public String updateMember(@ModelAttribute("usersBean") UsersBean bean) {
+//		
+//		return null;		
+//	}
+	
+	@GetMapping("/updatemember")
+	public String updateMember(Model m) {
+		UsersBean bean = new UsersBean();
+		m.addAttribute("usersData", bean);
+//		bean.setUserPassword();		
+//		usersService.save(bean);
+		return "updatemember";
+	}
+>>>>>>> Stashed changes
 }
