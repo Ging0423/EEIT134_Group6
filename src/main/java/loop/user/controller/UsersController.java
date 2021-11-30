@@ -1,6 +1,6 @@
 package loop.user.controller;
 
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +48,24 @@ public class UsersController {
 		return "redirect:/login";
 	}
 
+	@GetMapping("/updatemember")
+	public String updateMember(Model m) {
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		m.addAttribute("usersData", bean);
+		return "updatemember";
+	}
+//	@PostMapping("updatemember")
+//	public String updateMember1(Model m) {
+//		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+//		m.addAttribute("usersData", bean);
+//		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
+//		bean.setUserPassword(password);
+//		bean.setUserIdentity("1");
+//		Date current = new Date();
+//		bean.setRegisterDate(current);
+//		usersService.save(bean);
+//		return "redirect:/login";
+//	}
 	@PostMapping("updatemember") // 修改
 	public String update(@ModelAttribute("isLogin") UsersBean userBean, Model m, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -66,18 +84,7 @@ public class UsersController {
 		bean.setRegisterDate(current);
 		usersService.save(bean);
 		return "redirect:/login";
-
 	}
-
-	@GetMapping("/updatemember")
-	public String updateMember(Model m) {
-		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-		m.addAttribute("usersData", bean);
-// 		bean.setUserPassword();		
-// 		usersService.save(bean);
-		return "updatemember";
-	}
-
 	// @GetMapping("/users/{id}")
 	// public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer
 	// id) {
