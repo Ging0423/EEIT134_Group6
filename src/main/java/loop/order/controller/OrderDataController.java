@@ -1,4 +1,4 @@
-package loop.order.orderData.controller;
+package loop.order.controller;
 
 //import java.util.Date;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import loop.order.orderData.model.OrderDataBean;
-import loop.order.orderData.service.OrderDataService;
+import loop.order.model.OrderDataBean;
+import loop.order.service.OrderDataService;
 
 
 public class OrderDataController {

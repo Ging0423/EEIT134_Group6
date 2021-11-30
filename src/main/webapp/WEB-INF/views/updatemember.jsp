@@ -52,11 +52,11 @@
 	<!-- breadcrumb part end-->
 
 	<!--================login_part Area =================-->
-	<form:form action="joinmember" method="POST" modelAttribute="usersData">
+	<form:form action="updatemember" method="POST" modelAttribute="usersData">
 		<div class="col-md-6 form-group p_star">
 			<h4>會員帳號</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account" />
+				name="account" path="account" readonly="true" />
 
 		</div>
 		<div class="col-md-6 form-group p_star">

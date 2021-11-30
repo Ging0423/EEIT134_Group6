@@ -1,4 +1,4 @@
-package loop.order.orderData.model;
+package loop.order.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

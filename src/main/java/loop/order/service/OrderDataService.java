@@ -1,13 +1,14 @@
-package loop.order.orderData.service;
+package loop.order.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import loop.order.orderData.model.OrderDataBean;
-import loop.order.orderData.model.OrderDataRepository;
+import loop.order.model.OrderDataBean;
+import loop.order.model.OrderDataRepository;
 
 
 @Service
@@ -31,5 +32,15 @@ public class OrderDataService {
 	public OrderDataBean findById(Integer id) {
 		Optional<OrderDataBean> op1 = odResp.findById(id);
 		return op1.get();
+	}
+
+	public OrderDataBean save(OrderDataBean orderData, Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<OrderDataBean> findByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
