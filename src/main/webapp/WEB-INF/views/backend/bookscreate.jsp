@@ -48,7 +48,7 @@
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
       </table>	  
-	  <input type="file" name="img" accept="image/*" onchange="addImg();"/>
+	  <input type="file" id="img1"name="img" accept="image/*" multiple/>
 	  <div id="imgClass">
 	  </div>  
 	    <button type="submit" value="send">送出</button>
@@ -65,14 +65,6 @@
 			document.getElementById('price').value = "315";
 		}
 	
-		function addImg() {
-			var text = $("#imgClass");
-			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
-			if(text.val()){
-				text.append(tr);
-			}
-			
-		}
 		</script>
 
 		<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
