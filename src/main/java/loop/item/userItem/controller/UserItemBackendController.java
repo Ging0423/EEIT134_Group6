@@ -64,7 +64,8 @@ public class UserItemBackendController {
 	public String createItem(@ModelAttribute("userData") UserItemBean bean, MultipartHttpServletRequest mrequest) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
-		bean.setAddDate(current);
+		String Date = sdFormat.format(current);
+		bean.setAddDate(Date);
 		bean = userService.persist(bean);
 		userService.create(bean);
 		

@@ -100,11 +100,11 @@ public class UserItemBean implements Serializable{
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date current) {
+	public void setAddDate(String current) {
 		this.addDate = current;
 	}
 
