@@ -62,8 +62,10 @@ public class BooksItemBackendController {
 	
 	@PostMapping("books/createbooks")
 	public String createItem(@ModelAttribute("booksData") BooksItemBean bean, MultipartHttpServletRequest mrequest) {
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		bean.setAddDate(new Date());
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date current = new Date();
+		String Date = sdFormat.format(current);
+		bean.setAddDate(Date);
 		bean = booksService.persist(bean);
 		booksService.create(bean);
 		

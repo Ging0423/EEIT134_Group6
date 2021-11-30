@@ -36,7 +36,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
       </tr>
       <tr>
 <!--          <td>日期:</td> -->
-         <td><input type="hidden" name="addDate"  value="${kitsData.addDate}" /></td>
+         <td><input type="hidden" name="addDate" value="${kitsData.addDate}"></td>
       </tr>
       <tr>
          <td>數量:</td>

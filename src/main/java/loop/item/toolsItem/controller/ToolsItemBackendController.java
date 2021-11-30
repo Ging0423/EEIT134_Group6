@@ -64,7 +64,8 @@ public class ToolsItemBackendController {
 	public String createItem(@ModelAttribute("toolsData") ToolsItemBean bean, MultipartHttpServletRequest mrequest) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date current = new Date();
-		bean.setAddDate(current);
+		String Date = sdFormat.format(current);
+		bean.setAddDate(Date);
 		bean = toolsService.persist(bean);
 		toolsService.create(bean);
 		

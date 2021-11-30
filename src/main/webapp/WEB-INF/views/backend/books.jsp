@@ -43,7 +43,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
       </tr>
       <tr>
 <!--          <td>日期:</td> -->
-         <td><input type="hidden" name="addDate"  value="${booksData.addDate}" /></td>
+         <td><input type="hidden" name="addDate" value=${booksData.addDate}></td>
       </tr>
       <tr>
          <td>數量:</td>
@@ -54,7 +54,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
          <td><input name="price" value=${booksData.price}></td>
 	  </tr>
 	  </table>
-<button type="submit">"更新</button>
+<button type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deletebooks'/>" method="post">
 <input type="hidden" name="itemId" value="${booksData.itemId}">
