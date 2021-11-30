@@ -1,4 +1,4 @@
-USE master ;
+ï»¿USE master ;
 IF EXISTS(select * from sys.databases where name='project')
 BEGIN
    ALTER DATABASE project
@@ -25,7 +25,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'users')
 create table users(
 userId int primary key identity(1,1) not null,
 account varchar(12) not null,
-userPassword varchar(12) not null,
+userPassword varchar(max) not null,
 userIdentity int,
 userName nvarchar(50) not null,
 email varchar(20) not null,
@@ -35,17 +35,6 @@ registerDate smalldatetime
 
 )
 
-insert into users(
-account,
-userPassword,
-userIdentity,
-userName,
-email,
-tel,
-userAddress,
-registerDate
-)
-values('admin', 'admin', '0', 'admin','admin@test.com', '7777777','test7777',convert(datetime,GETDATE(),120))
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'yarnItem')
     drop table yarnItem;
@@ -62,20 +51,6 @@ qty int not null,
 price int not null,
 
 )
-
-insert into yarnItem(
-itemName,
-material,
-size,
-color,
-itemDescription,
-addDate,
-qty,
-price
-)
-values('½u','¦Ï¤ò','3m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
-('½u','¦Ï¤ò','3m','ºñ','ºñºñªº¤ò½u',convert(datetime,GETDATE(),120),50,100),
-('½u','¦Ï¤ò','10m','¬õ','¬õ¬õªº¤ò½u',convert(datetime,GETDATE(),120),50,100)
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'toolsItem')
     drop table toolsItem;
@@ -105,10 +80,10 @@ price int not null,
 
 )
 
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'packageItem')
-    drop table packageItem;
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'kitsItem')
+    drop table kitsItem;
 
-create table packageItem(
+create table kitsItem(
 itemId int primary key  identity(40001,1) not null,
 itemName nvarchar(50) not null,
 itemDescription nvarchar(max) not null,
@@ -138,6 +113,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderData
     drop table orderData;
 
 create table orderData(
+id int identity(10000,1) not null,
 orderId int primary key not null,
 userId int references Users(userid) not null,
 recipient nvarchar(50) not null,

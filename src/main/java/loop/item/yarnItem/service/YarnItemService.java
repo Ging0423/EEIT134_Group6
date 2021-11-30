@@ -6,36 +6,34 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.yarnItem.model.YarnItemBean;
 import loop.item.yarnItem.model.YarnItemRepository;
 
 @Service
-@Transactional
 public class YarnItemService{
 
 	@Autowired
-	YarnItemRepository repo;
-
-	public String getRandomString(Integer length) {
-		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		Random random = new Random();
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < length; i++) {
-			int number = random.nextInt(62);
-			sb.append(str.charAt(number));
-		}
-		return sb.toString();
+	YarnItemRepository yarnRepo;
+	
+	public void create(YarnItemBean bean) {
+		yarnRepo.save(bean);
 	}
-
-	public List<YarnItemBean> findAll() {
-		return repo.findAll();
+	
+	public List<YarnItemBean> findAll(){
+		return yarnRepo.findAll();
 	}
-
 	public YarnItemBean findById(Integer itemId) {
-		Optional<YarnItemBean> bean = repo.findById(itemId);
+		Optional<YarnItemBean> bean = yarnRepo.findById(itemId);
 		return bean.get();
+	}
+	
+	public YarnItemBean update(YarnItemBean bean) {
+		return yarnRepo.save(bean);
+	}
+	
+	public void deleteById(Integer id) {
+		yarnRepo.deleteById(id);
 	}
 
 }

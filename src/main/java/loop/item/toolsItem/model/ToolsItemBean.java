@@ -1,18 +1,14 @@
 package loop.item.toolsItem.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -21,7 +17,6 @@ import loop.item.allItem.model.AllItemBean;
 @Entity
 @Table(name="toolsItem")
 public class ToolsItemBean implements Serializable {
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +33,7 @@ public class ToolsItemBean implements Serializable {
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -46,12 +41,10 @@ public class ToolsItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	
 	@OneToOne(mappedBy = "toolsItem")
 	private AllItemBean allItem;
 	
 	public ToolsItemBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getItemId() {
@@ -86,12 +79,12 @@ public class ToolsItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
-		this.addDate = addDate;
+	public void setAddDate( String current) {
+		this.addDate = current;
 	}
 
 	public Integer getQty() {
@@ -117,8 +110,5 @@ public class ToolsItemBean implements Serializable {
 	public void setAllItem(AllItemBean allItem) {
 		this.allItem = allItem;
 	}
-
-
 	
-
 }

@@ -1,7 +1,6 @@
 package loop.item.booksItem.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,13 +32,12 @@ public class BooksItemBean implements Serializable {
 	
 	@Column(name="author")
 	private String author;
-	
-	
+		
 	@Column(name="itemDescription")
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private int qty;
@@ -93,11 +91,11 @@ public class BooksItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
 

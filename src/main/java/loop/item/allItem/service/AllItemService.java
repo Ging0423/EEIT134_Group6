@@ -2,7 +2,6 @@ package loop.item.allItem.service;
 
 import java.util.Optional;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +21,18 @@ public class AllItemService {
 		this.allItemRepo = allItemRepo;
 	}
 
+	public AllItemBean findById(Integer itemId) {	
+		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
+		if(allItemBean.isEmpty()) {
+			return null;
+		}
+		return allItemBean.get();
+	}
+	
+	public void save(AllItemBean bean) {
+		allItemRepo.save(bean);
+	}
+	
 	public String getItemName(Integer itemId) {
 
 		String itemName = "";
@@ -35,10 +46,9 @@ public class AllItemService {
 		} else if (id == '3') {
 			itemName = allItem.getBooksItem().getItemName();
 		} else if (id == '4') {
-			itemName = allItem.getPackageItem().getItemName();
+			itemName = allItem.getKitsItem().getItemName();
 		}
 		return itemName;
-
 	}
 
 	public Integer getItemPrice(Integer itemId) {
@@ -56,7 +66,7 @@ public class AllItemService {
 			price = allItem.getBooksItem().getPrice();
 		}
 		if(id == '4') {
-			price = allItem.getPackageItem().getPrice();
+			price = allItem.getKitsItem().getPrice();
 		}		
 		return price;
 	}

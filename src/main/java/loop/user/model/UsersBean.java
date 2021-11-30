@@ -17,7 +17,9 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import loop.order.orderData.model.OrderDataBean;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 
 
@@ -55,6 +57,7 @@ public class UsersBean implements Serializable {
 	private String userAddress;
 
 	@Column(name = "registerDate")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
 
 //	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
