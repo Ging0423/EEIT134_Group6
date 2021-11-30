@@ -14,7 +14,7 @@
 <div align='center'>
 <h3>工具商品資料</h3>
 <hr>
-<a href="<c:url value='/backend/tools/create'/>">新增書籍</a>
+<a href="<c:url value='/backend/tools/create'/>">新增工具</a>
 
 <table border="1">
 <table>

@@ -64,7 +64,6 @@
 			document.getElementById('qty').value = "100";
 			document.getElementById('price').value = "315";
 		}
-	
 		</script>
 
 		<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
