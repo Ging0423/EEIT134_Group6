@@ -113,8 +113,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderData
     drop table orderData;
 
 create table orderData(
-id int identity(10000,1) not null,
-orderId int primary key not null,
+orderId int primary key identity(10000,1) not null,
 userId int references Users(userid) not null,
 recipient nvarchar(50) not null,
 tel varchar(20) not null,

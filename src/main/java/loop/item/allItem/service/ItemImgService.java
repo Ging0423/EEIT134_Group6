@@ -28,11 +28,11 @@ public class ItemImgService {
 		repo.deleteByItemId(itemId);
 	}
 	
-	public String getRandomString() {
+	public String getRandomString(int l) {
 		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random random = new Random();
 		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < l; i++) {
 			int number = random.nextInt(62);
 			sb.append(str.charAt(number));
 		}

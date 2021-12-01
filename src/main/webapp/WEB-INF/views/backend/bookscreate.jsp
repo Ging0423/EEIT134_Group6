@@ -47,8 +47,9 @@
          <td>價錢:</td>
          <td><input id="price" name="price" type="number" /></td>
 	  </tr>
-      </table>	  
-	  <input type="file" id="img1"name="img" accept="image/*" multiple/>
+      </table>
+      封面<input type="file" name="img" accept="image/*"/><br>
+	  <input type="file" name="img" accept="image/*" multiple/>
 	  <div id="imgClass">
 	  </div>  
 	    <button type="submit" value="send">送出</button>

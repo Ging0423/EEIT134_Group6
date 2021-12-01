@@ -1,6 +1,7 @@
 package loop.order.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,14 @@ public class OrderDataService {
 		orderData.setUsers(user);
 		orderDataRepo.save(orderData);
 		return orderData;
+	}
+	
+	public OrderDataBean findById(Integer orderId) {
+		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
+		if(op.isEmpty()) {
+			return null;
+		}
+		return op.get();
 	}
 	
 

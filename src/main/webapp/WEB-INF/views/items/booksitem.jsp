@@ -58,7 +58,7 @@
 							<img src='<c:url value="/items/img/${itemImg.img}" />' alt="#" class="img-fluid">
 						</div>
 					</c:forEach>
-					
+					</div>
 				</div>
 				<div class="col-lg-8">
 					<div class="single_product_text text-center">
@@ -69,7 +69,7 @@
 						<hr>
 						<p>${item.itemDescription}</p>
 						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
-						<form action="<c:url value='/cart'/>" method="POST"
+						<form action="<c:url value='/cart/addToCart'/>" method="POST"
 							name="addToCart">
 							<input type="hidden" name="itemId" value="${item.itemId}">
 							<div class="card_area">
