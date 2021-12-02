@@ -32,7 +32,6 @@
                <td><a href= "<c:url value='/backend/useritem/${item.itemId}'/>">${item.itemId}</a></td>
                <td>${item.userId}</td>
                <td>${item.itemName}</td>
-               <td>${item.specification}</td>
                <td>${item.itemDescription}</td>
                <td>${item.addDate}</td>
                <td>${item.qty}</td>
