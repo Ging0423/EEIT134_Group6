@@ -36,5 +36,4 @@ public class KitsItemController {
 		m.addAttribute("itemImg", itemImgs);
 		return "items/kitsitem";
 	}
-	
 }

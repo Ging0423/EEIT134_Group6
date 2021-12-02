@@ -26,11 +26,16 @@
     <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
     <!-- style CSS -->
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+    <style>
+    	.myOrderTable,td,tr{
+    		border:5px black solid;
+    	}
+    </style>
 </head>
 
 <body>
     <jsp:include page="/fragment/header.jsp" />
-    <table>
+    <table class="myOrderTable">
     <thead>
     <td>訂單編號</td>
     <td>收件人</td>
@@ -40,6 +45,7 @@
     <td>總金額</td>
     <td>付款狀態</td>
     <td>訂單狀態</td>
+    <td></td>
     </thead>
     <tbody>
     <c:forEach var="order" items="${allOrder}">
@@ -52,6 +58,7 @@
     	<td>${order.total}</td>
     	<td>${order.payState}</td>
     	<td>${order.orderState}</td>
+    	<td><button type="button" onclick="ajaxCheckout(${order.orderId});">信用卡結帳</button></td>
     </tr>
     </c:forEach>
     </tbody>
@@ -83,5 +90,23 @@
     <script src="<c:url value='/js/mail-script.js'/>"></script>
     <!-- custom js -->
     <script src="<c:url value='/js/custom.js'/>"></script>
+    
+    <script>function ajaxCheckout(orderId) {
+    	var json = new Object();
+		json.orderId = orderId;
+		$
+		.ajax({
+			type : 'post',
+			url : 'goECPay',
+			data : JSON.stringify(json),
+			dataType : 'html',
+			contentType : 'application/json;charset=utf-8',
+			success : function(data) {
+				var myWindow = window.open();
+				myWindow.document.write(data);		
+				}
+			});
+		}
+    </script>
 </body>
 </html>

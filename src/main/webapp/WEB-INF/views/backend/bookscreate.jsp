@@ -48,8 +48,9 @@ table{border:2px solid black; border-collapse:collapse}
          <td>價格:</td>
          <td><input id="price" name="price" type="number" min="0"/></td>
 	  </tr>
-      </table>	  
-	  <input type="file" name="img" accept="image/*" onchange="addImg();"/>
+      </table>
+      封面<input type="file" name="img" accept="image/*"/><br>
+	  <input type="file" name="img" accept="image/*" multiple/>
 	  <div id="imgClass">
 	  </div>  
 	    <button type="submit" value="send">送出</button>
@@ -64,13 +65,6 @@ table{border:2px solid black; border-collapse:collapse}
 			document.getElementById('itemDescription').value = "從頭開始裝可愛！ 22頂大人小孩都心動的加萌手織帽  無論是冬日寒風還是夏日烈陽，都需要一頂帽子來保護小寶貝免於風吹日曬。那麼就來親手織一頂最流行的栗子帽吧！本書收錄２２頂近年大人氣的各式栗子帽、尖帽，還有可愛的貓耳帽、小熊草帽、貝蕾帽與護耳毛帽等，根據使用線材的不同，可以依需求製作出冬日保暖，或是夏日涼爽透氣的可愛帽子。 大多使用棒針或鉤針的基礎針法就能完成，作法簡單，造型可愛。快翻開本書，為小寶貝編織一頂萌上加萌的可愛手織帽吧！";
 			document.getElementById('qty').value = "100";
 			document.getElementById('price').value = "315";
-		}
-	
-		function addImg() {
-			var text = $("#imgClass");
-			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>';
-			text.append(tr);
-			
 		}
 		</script>
 

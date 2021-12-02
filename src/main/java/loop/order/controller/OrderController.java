@@ -74,8 +74,8 @@ public class OrderController {
 	public String checkout(@ModelAttribute("orderData") OrderDataBean orderData, Model m) {
 		UsersBean user =  (UsersBean) m.getAttribute("isLogin");
 		orderData.setOrderDate(new Date());
-		orderData.setOrderState("已成立");
-		orderData.setPayState("尚未付款");
+		orderData.setOrderState("未付款");
+		orderData.setPayState("未付款");
 		orderData = orderDataService.save(orderData, user.getUserId());
 		List<ShoppingCartBean> list = shoppingCartService.findAllCartBeans(user.getUserId());
 		for(ShoppingCartBean i:list) {
