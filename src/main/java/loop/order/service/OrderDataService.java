@@ -49,5 +49,8 @@ public class OrderDataService {
 		return op.get();
 	}
 	
+	public void update(OrderDataBean bean) {
+		orderDataRepo.save(bean);
+	}
 
 }

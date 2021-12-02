@@ -1,11 +1,14 @@
 package loop.ecpay.controller;
 
+import java.net.http.HttpRequest;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +32,7 @@ import loop.order.service.OrderDataService;
 public class EcpayController {
 	
 	@Autowired
-	private PayementService payementService;
+	private PayementService paymentService;
 	@Autowired
 	private OrderDataService orderDataService;
 	
@@ -56,7 +59,27 @@ public class EcpayController {
 		
 		// 執行到此，購物車內所有購買的商品已經全部轉換為為OrderItemBean物件，並放在Items內
 		
-		return payementService.prepareECPayData(order, response);
+		return paymentService.prepareECPayData(order, response);		
+	}
+	
+	@PostMapping("/ecpaycheck")
+	@ResponseBody
+	public String checkPay(ServletRequest request) {
+		String hashString = request.getParameter("CheckMacValue");
+		Hashtable<String, String> dict = new Hashtable<String, String>();
+		dict.put("MerchantID", "2000132");
+		dict.put("CheckMacValue", hashString);
+		boolean result = paymentService.compareCheckMacValue(dict);
+		if(result) {
+			Integer orderId = Integer.parseInt(request.getParameter("MerchantTradeNo").substring(7));
+			OrderDataBean orderData = orderDataService.findById(orderId);
+			orderData.setPayState("付款成功");
+			orderData.setOrderState("已付款");
+			orderDataService.update(orderData);
+			return "1|OK";
+		}
+		else
+			return "fail";
 		
 	}
 }

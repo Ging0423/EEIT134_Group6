@@ -98,7 +98,7 @@
 											</td>
 											<td>
 												<h5><c:set var="total" value="${item.qty*item.price}"/>
-													<span id="total${item.itemId}">${total}</span>
+													<span id="total${item.itemId}" class="total">${total}</span>
 												</h5>
 											</td>
 											<td>
@@ -127,8 +127,9 @@
 										</td>
 										<td>
 											<h5>
-												<c:out value="${allTotal}" />
-											</h5> <input type="hidden" name="total" value="${allTotal}" />
+											<span id="spanallTotal">${allTotal}</span>
+												 <input type="hidden" id="allTotal" name="total" value="${allTotal}" />
+											</h5>
 										</td>
 									</tr>
 								</tbody>
@@ -224,17 +225,33 @@
 			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
 		    qty = isNaN(qty) ? 0 : qty;
 		    qty++;
-		    var price = parseInt(document.getElementById("price"+id).value,10)
+		    var price = parseInt(document.getElementById("price"+id).innerText, 10);
 		    document.getElementById("input-number"+id).value = qty;
-		    document.getElementById("total"+id).value = qty * price;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
 		}
 		function minus(id) {
 			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
 		    qty = isNaN(qty) ? 0 : qty;
 		    qty--;
-		    var price = parseInt(document.getElementById("price"+id).value,10)
+		    var price = parseInt(document.getElementById("price"+id).innerText,10);
 		    document.getElementById("input-number"+id).value = qty;
-		    document.getElementById("total"+id).value = qty * price;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
 
 		}
 	</script>

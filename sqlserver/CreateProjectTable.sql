@@ -154,8 +154,7 @@ id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 img nvarchar(max) not null
 )
-insert into itemImg
-values(10001,'img/yarn/jemilli-01-750x750.jpg')
+
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemKeyword')
     drop table itemKeyword;
