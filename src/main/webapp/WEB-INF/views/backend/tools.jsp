@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Tools</title>
 <style>
+#img {margin:left; width:20%}
    table{border:2px solid black; border-collapse:collapse} 
 /*      background-color{rgb(208, 148, 234)} */
 a {font-size:larger; margin: 50px auto; text-decoration:none}
@@ -40,11 +41,11 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
        <td><input type="hidden" name="addDate" value="${toolsData.addDate}"></td>
      </tr>
        <tr>
-         <td>數量:</td>
+         <td>庫存數量:</td>
          <td><input name="qty" value=${toolsData.qty}></td>
 	  </tr>
       <tr>
-         <td>價錢:</td>
+         <td>價格:</td>
          <td><input name="price" value=${toolsData.price}></td>
 	  </tr>
 	  </table>
@@ -56,7 +57,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <a href="<c:url value='/backend/tools' />">回前頁</a>
 </form> 
 <c:forEach var="itemImg" items="${itemImg}">
-    <img src=<c:url value="/items/img/${itemImg.img}"/> />
+    <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
 </c:forEach>
 </div>
 </body>

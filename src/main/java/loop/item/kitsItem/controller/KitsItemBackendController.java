@@ -106,7 +106,7 @@ public class KitsItemBackendController {
 		m.addAttribute("kitsData",bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "/backend/kits";
+		return "backend/kits";
 	}
 	
 	@PostMapping("updatekits")

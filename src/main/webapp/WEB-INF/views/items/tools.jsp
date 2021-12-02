@@ -115,7 +115,7 @@
 										<h3>
 											<a href='<c:url value="/items/tools/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
-                                            <p>${item.price}</p>
+                                            <p>$${item.price}</p>
 <%-- 										<p>${item.color}</p> --%>
 									</div>
 								</div>

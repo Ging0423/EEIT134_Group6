@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.model.ItemImgBean;
+import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.service.BooksItemService;
@@ -20,10 +22,12 @@ public class BooksItemController {
 	private BooksItemService booksService;
 	@Autowired
 	private ItemImgService itemImgService;
+	@Autowired
+	private AllItemService allItemService;
 	
 	@GetMapping("/items/books")
 	public String selectAll(Model m) {
-		List<BooksItemBean> bean = booksService.findAll();
+		List<ItemDisplay> bean = booksService.list();
 		m.addAttribute("allItem", bean);
 		return "items/books";
 	}
@@ -32,8 +36,8 @@ public class BooksItemController {
 	public String selectById(@PathVariable("id") Integer itemId, Model m) {
 		BooksItemBean bean = booksService.findById(itemId);
 		m.addAttribute("item", bean);
-		List<ItemImgBean> itemImgs = itemImgService.findByItemId(itemId);
-		m.addAttribute("itemImg", itemImgs);
+		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
+		m.addAttribute("itemImg", itemImg);
 		return "items/booksitem";
 	}	
 }

@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>pillloMart</title>
+<title>loop</title>
 <link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
@@ -110,13 +110,13 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<!-- 										<img src="" alt="#" class="img-fluid"> -->
-                                            <a href='<c:url value="/items/books/${item.itemId}"/>'><img src=""></a>
+<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
 											<a href='<c:url value="/items/books/${item.itemId}"/>'>${item.itemName}</a>
 
 										</h3>
-                                            <p>${item.price}</p>
+                                            <p>$${item.price}</p>
 <%-- 										<p>${item.color}</p> --%>
 									</div>
 								</div>

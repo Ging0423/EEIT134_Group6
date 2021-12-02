@@ -63,7 +63,7 @@
 									id="navbarDropdown_1" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 商品 </a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a>
+										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">紗線</a>
 										<a class="dropdown-item" href="<c:url value='/items/tools'/>">工具</a>
 										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
 										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a>

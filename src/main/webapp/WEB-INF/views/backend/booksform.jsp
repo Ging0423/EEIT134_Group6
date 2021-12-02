@@ -22,10 +22,10 @@
 		<th>書名</th>
 		<th>出版社</th>
 		<th>作者</th>
-		<th>商品描述</th>
+		<th>書籍描述</th>
 		<th>日期</th>
-		<th>數量</th>
-		<th>價錢</th>		
+		<th>庫存數量</th>
+		<th>價格</th>		
 	</thead>
 		<c:forEach var="item" items='${allItem}'>
 			<tr>
@@ -41,6 +41,6 @@
 		</c:forEach>
 	</table>
 	<a href="/backend">回首頁</a>
-	</center>
+	</div>
 </body>
 </html>

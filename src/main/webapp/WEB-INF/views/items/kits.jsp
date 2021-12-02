@@ -115,12 +115,11 @@
 										<h3>
 											<a href='<c:url value="/items/kits/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
-										<p>${item.price}</p>
+										<p>$${item.price}</p>
 
 									</div>
 								</div>
 							</c:forEach>
-
 
 						</div>
 						<div class="load_more_btn text-center">
