@@ -65,6 +65,7 @@ public class EcpayController {
 	@PostMapping("/ecpaycheck")
 	@ResponseBody
 	public String checkPay(ServletRequest request) {
+		System.out.println("get ecpay response");
 		String hashString = request.getParameter("CheckMacValue");
 		Hashtable<String, String> dict = new Hashtable<String, String>();
 		dict.put("MerchantID", "2000132");
