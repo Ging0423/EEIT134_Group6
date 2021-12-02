@@ -74,7 +74,7 @@ public class YarnItemBackendController {
 		
 		List<MultipartFile> files = mrequest.getFiles("img");
 		for (int i = 0; i< files.size()-1;i++) {
-			String imageFile = itemImgService.getRandomString();
+			String imageFile = itemImgService.getRandomString(8);
 			String fileName = files.get(i).getOriginalFilename();
 			String extension ="";
 			int index = fileName.lastIndexOf('.');
