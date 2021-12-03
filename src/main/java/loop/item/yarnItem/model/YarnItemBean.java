@@ -2,6 +2,7 @@ package loop.item.yarnItem.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class YarnItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 		
-	@OneToOne(mappedBy = "yarnItem")
+	@OneToOne(mappedBy = "yarnItem", cascade = CascadeType.ALL)
 	private AllItemBean allItem;
 	
 	public YarnItemBean() {
