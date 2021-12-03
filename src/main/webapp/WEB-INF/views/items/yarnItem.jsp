@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style>
+.single_product_img {margin:auto; width:70%}
+</style>
 </head>
 
 <body>
@@ -78,12 +81,12 @@
 								<div class="product_count_area">
 									<p>數量</p>
 									<div class="product_count d-inline-block">
-										<span class="product_count_item inumber-decrement"> <i
-											class="ti-minus"></i></span> <input
-											class="product_count_item input-number" name="qty"
-											type="text" value="1" min="0" max="10"> <span
-											class="product_count_item number-increment"> <i
-											class="ti-plus"></i></span>
+										<span class="product_count_item inumber-decrement"> 
+										<i class="ti-minus"></i></span> 
+										<input class="product_count_item input-number" name="qty"
+											type="text" value="1" min="0" max="10"> 
+										<span class="product_count_item number-increment"> 
+										<i class="ti-plus"></i></span>
 									</div>
 									<p>$${item.price}</p>
 								</div>

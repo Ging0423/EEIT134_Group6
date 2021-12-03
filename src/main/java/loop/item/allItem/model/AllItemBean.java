@@ -143,6 +143,5 @@ public class AllItemBean implements Serializable {
 	public void setItemImg(Set<ItemImgBean> itemImg) {
 		this.itemImg = itemImg;
 	}
-
 	
 }

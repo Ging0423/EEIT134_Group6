@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Books</title>
 <style>
-    table{border:2px solid black; border-collapse:collapse}
+#img {margin:left; width:20%}
+table {border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
 a {font-size:larger; margin: 50px auto; text-decoration:none}
 </style>
@@ -37,7 +38,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
          <td><input name="author" value=${booksData.author}></td>
 	  </tr>
       <tr>
-         <td>商品描述:</td>
+         <td>書籍內容:</td>
          <td><textarea name="itemDescription" rows="4" cols="21">${booksData.itemDescription}</textarea></td>
 <!--          <td><input id="itemDescription" name="itemDescription" type="text" /></td> -->
       </tr>
@@ -46,11 +47,11 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
          <td><input type="hidden" name="addDate" value=${booksData.addDate}></td>
       </tr>
       <tr>
-         <td>數量:</td>
+         <td>庫存數量:</td>
          <td><input name="qty" value=${booksData.qty}></td>
 	  </tr>
       <tr>
-         <td>價錢:</td>
+         <td>價格:</td>
          <td><input name="price" value=${booksData.price}></td>
 	  </tr>
 	  </table>
@@ -62,7 +63,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <a href="<c:url value='/backend/books' />">回前頁</a>
 </form>
 <c:forEach var="itemImg" items="${itemImg}">
-	<img src=<c:url value="/items/img/${itemImg.img}"/> />
+	<img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
 </c:forEach>
 </div>
 </body>

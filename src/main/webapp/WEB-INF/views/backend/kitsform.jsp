@@ -14,7 +14,8 @@
 <div align='center'>
 <h3>材料包商品資料</h3>
 <hr>
-<a herf="<c:url value='/backend/tools/create'/>">新增書籍</a>
+<a href="<c:url value='/backend/kits/create'/>">新增材料包</a>
+
 <table border='1'> 
 	<thead>
 		<th>編號</th>

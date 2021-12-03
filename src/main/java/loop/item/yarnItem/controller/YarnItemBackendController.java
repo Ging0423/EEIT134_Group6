@@ -1,4 +1,4 @@
-package loop.item.kitsItem.controller;
+package loop.item.yarnItem.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,63 +23,63 @@ import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.model.ItemImgBean;
 import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
-import loop.item.kitsItem.model.KitsItemBean;
-import loop.item.kitsItem.service.KitsItemService;
+import loop.item.yarnItem.model.YarnItemBean;
+import loop.item.yarnItem.service.YarnItemService;
 
 @Controller
 @RequestMapping("/backend")
-public class KitsItemBackendController {
+public class YarnItemBackendController {
 	
 	@Autowired
-	private KitsItemService kitsService;
+	private YarnItemService yarnService;
 	@Autowired
 	private ItemImgService itemImgService;
 	@Autowired
 	private AllItemService allItemService;
 	
-	@GetMapping("/kits")
+	@GetMapping("/yarn")
 	public String selectAll(Model m) {
-	    List<KitsItemBean> bean = kitsService.findAll();
-	    m.addAttribute("allItem", bean);
-	    return "backend/kitsform";
-	    }
-	
-	@GetMapping("/kits/create")
-	public String createKitsItempage(Model m) {
-		KitsItemBean bean = new KitsItemBean();
-		m.addAttribute("kitsData", bean);
-		return "backend/kitscreate";
+		List<YarnItemBean> bean = yarnService.findAll();
+		m.addAttribute("allItem", bean);
+		return "backend/yarnform";
 	}
 	
-	@GetMapping("/kits/{id}")
+	@GetMapping("/yarn/create")
+	public String CreateYarnItemPage(Model m) {
+		YarnItemBean bean = new YarnItemBean();
+		m.addAttribute("yarnData", bean);
+        return "backend/yarncreate";
+	}
+	
+	@GetMapping("/yarn/{id}")
 	public String selectById(@PathVariable("id") Integer itemId, Model m) {
-		KitsItemBean bean = kitsService.findById(itemId);
-		m.addAttribute("kitsData", bean);
+		YarnItemBean bean = yarnService.findById(itemId);
+		m.addAttribute("yarnData", bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "backend/kits";
+		return "backend/yarn";
 	}
-	
-	@PostMapping("kits/createkits")
-	public String createItem(@ModelAttribute("kitsData") KitsItemBean bean, MultipartHttpServletRequest mrequest) {
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+	@PostMapping("yarn/createyarn")
+	public String createItem(@ModelAttribute("yarnData") YarnItemBean bean, MultipartHttpServletRequest mrequest) {
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
 		bean.setAddDate(Date);
-		bean = kitsService.persist(bean);
-		kitsService.create(bean);
+		bean = yarnService.persist(bean);
+		yarnService.create(bean);
 		
 		Integer itemId = bean.getItemId();
-		AllItemBean allItem = allItemService.findById(itemId);
+		AllItemBean allItem =allItemService.findById(itemId);
 		
 		List<MultipartFile> files = mrequest.getFiles("img");
-		for (int i = 0; i < files.size()-1; i++) {			
+		for (int i = 0; i< files.size()-1;i++) {
 			String imageFile = itemImgService.getRandomString(8);
 			String fileName = files.get(i).getOriginalFilename();
-			String extension = "";
+			String extension ="";
 			int index = fileName.lastIndexOf('.');
 			if (index > 0) {
-			    extension = fileName.substring(index+1);
+				extension = fileName.substring(index+1);
 			}
 			String realPath = mrequest.getServletContext().getRealPath(".");
 			String saveDirPath = realPath + "\\items\\img\\";
@@ -90,36 +90,36 @@ public class KitsItemBackendController {
 			ItemImgBean imgBean = new ItemImgBean();
 			try {
 				files.get(i).transferTo(savePathFile);
-				imgBean.setImg(imageFile + "." +extension);
+				imgBean.setImg(imageFile + "." + extension);
 				imgBean.setAllItem(allItem);
-				itemImgService.save(imgBean);		
+				itemImgService.save(imgBean);
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return "redirect:/backend/kits";
+		return "redirect:/backend/yarn";	
 	}
 	
-	@PostMapping("kits/{id}")
-	public String updateKitsItemPage(@PathVariable ("id") Integer itemId, Model m) {
-		KitsItemBean bean = kitsService.findById(itemId);
-		m.addAttribute("kitsData",bean);
+	@PostMapping("yarn/{id}")
+	public String updateYarnItemPage(@PathVariable ("id") Integer itemId, Model m) {
+		YarnItemBean bean = yarnService.findById(itemId);
+		m.addAttribute("yarnData",bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
-		m.addAttribute("itemImg", itemImg);
-		return "backend/kits";
+		m.addAttribute("itemImg",itemImg);
+		return "/backend/yarn";
 	}
-	
-	@PostMapping("updatekits")
-	public String update(@ModelAttribute("kitsData")KitsItemBean bean, Model m) {
-			kitsService.update(bean);
+
+	@PostMapping("updateyarn")
+	public String update(@ModelAttribute("yarnData")YarnItemBean bean, Model m) {
+		yarnService.update(bean);
 		Integer id = bean.getItemId();
-		return "redirect:/backend/kits/" + id;
+		return "redirect:/backend/yarn/" + id;
 	}
 	
-	@PostMapping("/deletekits")
+	@PostMapping("/deleteyarn")
 	public String deleteById(ServletRequest request) {
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
-		kitsService.deleteById(itemId);
-		return "redirect:/backend/kits";		
+		yarnService.deleteById(itemId);
+		return "redirect:/backend/yarn";
 	}
 }

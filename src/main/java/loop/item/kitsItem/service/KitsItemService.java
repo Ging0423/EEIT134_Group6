@@ -1,5 +1,6 @@
 package loop.item.kitsItem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.kitsItem.model.KitsItemBean;
 import loop.item.kitsItem.model.KitsItemRepository;
 
@@ -26,6 +29,9 @@ public class KitsItemService {
 	
 	@Autowired
 	private AllItemService allItemService;
+	
+	@Autowired
+	private ItemImgService itemImgService;
 	
 	public void create(KitsItemBean bean) {
 		kitsRepo.save(bean);
@@ -62,6 +68,17 @@ public class KitsItemService {
 		allItem.setKitsItem(null);
 		kitsRepo.deleteById(id);
 	}
+	
+	public List<ItemDisplay> list(){
+		
+		List<KitsItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (KitsItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+					, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+					, allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
+	}
 
 }
-

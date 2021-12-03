@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/allitem'/>">
                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
                         <span class="title">商品管理</span>
                     </a>
