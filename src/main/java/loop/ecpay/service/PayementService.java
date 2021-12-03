@@ -60,7 +60,7 @@ public class PayementService {
 		aioCheck.setMerchantTradeNo("loop" + s + ob.getOrderId());
 		
 		/* 付款完成通知回傳網址：不瞭解此網址的作用 */
-		aioCheck.setReturnURL("http://eeit13428loop.southeastasia.cloudapp.azure.com:8080/loop/order/ecpaycheck");
+		aioCheck.setReturnURL("http://eeit13428loop.southeastasia.cloudapp.azure.com:8080/loop/ecpaycheck");
 		aioCheck.setOrderResultURL("http://eeit13428loop.southeastasia.cloudapp.azure.com:8080/loop/order/myorder");
 		// 輸出畫面
 		String htmlContent = aio.aioCheckOut(aioCheck, null);

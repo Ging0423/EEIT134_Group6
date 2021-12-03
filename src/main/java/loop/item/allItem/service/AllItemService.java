@@ -111,8 +111,6 @@ public class AllItemService {
 	}
 	
 	public void deleteByItemId(Integer id) {		
-//		AllItemBean allItem = allItemService.findById(id);
-//		allItem.setallItem(null);
-		allItemRepo.deleteById(id);
+		allItemRepo.deleteByItemId(id);
 	}
 }

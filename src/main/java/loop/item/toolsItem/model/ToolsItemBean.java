@@ -2,6 +2,7 @@ package loop.item.toolsItem.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,7 +42,7 @@ public class ToolsItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	@OneToOne(mappedBy = "toolsItem")
+	@OneToOne(mappedBy = "toolsItem", cascade = CascadeType.ALL)
 	private AllItemBean allItem;
 	
 	public ToolsItemBean() {

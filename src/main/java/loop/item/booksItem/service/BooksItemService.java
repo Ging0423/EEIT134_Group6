@@ -64,8 +64,7 @@ public class BooksItemService {
 	}
 	
 	public void deleteById(Integer id) {
-		AllItemBean allItem = allItemService.findById(id);
-		allItem.setBooksItem(null);
+		allItemService.deleteByItemId(id);
 		booksRepo.deleteById(id);
 	}
 	

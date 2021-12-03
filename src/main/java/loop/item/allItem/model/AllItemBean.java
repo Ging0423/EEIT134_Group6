@@ -61,7 +61,7 @@ public class AllItemBean implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL )
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem")
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
@@ -69,7 +69,7 @@ public class AllItemBean implements Serializable {
 
 
 	public AllItemBean() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Integer getItemId() {

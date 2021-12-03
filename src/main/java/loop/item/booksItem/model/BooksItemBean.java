@@ -2,6 +2,7 @@ package loop.item.booksItem.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class BooksItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	@OneToOne(mappedBy = "booksItem")
+	@OneToOne(mappedBy = "booksItem", cascade = CascadeType.ALL)
 	private AllItemBean allItem;
 	
 	public BooksItemBean() {
