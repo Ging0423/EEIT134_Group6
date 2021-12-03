@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Books Form</title>
 <style>
      table,th,td{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
@@ -14,9 +14,9 @@
 <div align='center'>
 <h3>書籍商品資料</h3>
 <hr>
-<%-- <center> --%>
+<a href="<c:url value='/backend/books/create'/>">新增書籍</a>
+
 <table border='1'>
-<table> 
 	<thead>
 		<th>編號</th>
 		<th>書名</th>

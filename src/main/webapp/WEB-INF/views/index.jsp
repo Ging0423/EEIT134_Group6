@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html lang="zxx">
 
@@ -32,10 +30,8 @@
 </head>
 
 <body>
-
-   
+  
     <jsp:include page="/fragment/header.jsp" />
-
 
     <!-- banner part start-->
     <section class="banner_part">
@@ -44,8 +40,7 @@
                 <div class="col-md-5">
                     <div class="banner_text">
                         <div class="banner_text_iner">
-                            <h1>Best quality
-                                pillow</h1>
+                            <h1>Best quality pillow</h1>
                             <p>Seamlessly empower fully researched 
                                 growth strategies and interoperable internal</p>
                             <a href="product_list.html" class="btn_1">shop now</a>

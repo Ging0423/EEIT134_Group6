@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import loop.item.allItem.model.AllItemBean;
+
 @Component
 @Entity
 @Table(name="kitsItem")
 public class KitsItemBean implements Serializable {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="itemId")
@@ -43,7 +43,6 @@ public class KitsItemBean implements Serializable {
 	private AllItemBean allItem;
 
 	public KitsItemBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getItemId() {
@@ -74,8 +73,8 @@ public class KitsItemBean implements Serializable {
 		return addDate;
 	}
 
-	public void setAddDate(String current) {
-		this.addDate = current;
+	public void setAddDate(String addDate) {
+		this.addDate = addDate;
 	}
 
 	public Integer getQty() {

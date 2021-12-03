@@ -35,17 +35,6 @@ registerDate smalldatetime
 
 )
 
-insert into users(
-account,
-userPassword,
-userIdentity,
-userName,
-email,
-tel,
-userAddress,
-registerDate
-)
-values('admin', 'admin', '0', 'admin','admin@test.com', '7777777','test7777',convert(datetime,GETDATE(),120))
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'yarnItem')
     drop table yarnItem;
@@ -62,20 +51,6 @@ qty int not null,
 price int not null,
 
 )
-
-insert into yarnItem(
-itemName,
-material,
-size,
-color,
-itemDescription,
-addDate,
-qty,
-price
-)
-values('線','羊毛','3m','紅','紅紅的毛線',convert(datetime,GETDATE(),120),50,100),
-('線','羊毛','3m','綠','綠綠的毛線',convert(datetime,GETDATE(),120),50,100),
-('線','羊毛','10m','紅','紅紅的毛線',convert(datetime,GETDATE(),120),50,100)
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'toolsItem')
     drop table toolsItem;
@@ -138,7 +113,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'orderData
     drop table orderData;
 
 create table orderData(
-orderId int primary key not null,
+orderId int primary key identity(10000,1) not null,
 userId int references Users(userid) not null,
 recipient nvarchar(50) not null,
 tel varchar(20) not null,
@@ -179,8 +154,7 @@ id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 img nvarchar(max) not null
 )
-insert into itemImg
-values(10001,'img/yarn/jemilli-01-750x750.jpg')
+
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'itemKeyword')
     drop table itemKeyword;

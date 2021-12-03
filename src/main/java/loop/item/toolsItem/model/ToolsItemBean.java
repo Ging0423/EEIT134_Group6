@@ -17,7 +17,6 @@ import loop.item.allItem.model.AllItemBean;
 @Entity
 @Table(name="toolsItem")
 public class ToolsItemBean implements Serializable {
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,12 +41,10 @@ public class ToolsItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	
 	@OneToOne(mappedBy = "toolsItem")
 	private AllItemBean allItem;
 	
 	public ToolsItemBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getItemId() {
@@ -86,7 +83,7 @@ public class ToolsItemBean implements Serializable {
 		return addDate;
 	}
 
-	public void setAddDate(String current) {
+	public void setAddDate( String current) {
 		this.addDate = current;
 	}
 
@@ -113,8 +110,5 @@ public class ToolsItemBean implements Serializable {
 	public void setAllItem(AllItemBean allItem) {
 		this.allItem = allItem;
 	}
-
-
 	
-
 }

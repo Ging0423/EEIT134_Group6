@@ -21,6 +21,18 @@ public class AllItemService {
 		this.allItemRepo = allItemRepo;
 	}
 
+	public AllItemBean findById(Integer itemId) {	
+		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
+		if(allItemBean.isEmpty()) {
+			return null;
+		}
+		return allItemBean.get();
+	}
+	
+	public void save(AllItemBean bean) {
+		allItemRepo.save(bean);
+	}
+	
 	public String getItemName(Integer itemId) {
 
 		String itemName = "";
@@ -37,7 +49,6 @@ public class AllItemService {
 			itemName = allItem.getKitsItem().getItemName();
 		}
 		return itemName;
-
 	}
 
 	public Integer getItemPrice(Integer itemId) {
@@ -58,10 +69,5 @@ public class AllItemService {
 			price = allItem.getKitsItem().getPrice();
 		}		
 		return price;
-	}
-	
-	public AllItemBean findById(Integer itemId) {	
-		Optional<AllItemBean> allItemBean = allItemRepo.findById(itemId);
-		return allItemBean.get();
 	}
 }

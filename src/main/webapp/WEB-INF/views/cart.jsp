@@ -30,8 +30,8 @@
 </head>
 
 <body>
-	 
-<jsp:include page="/fragment/header.jsp" />
+
+	<jsp:include page="/fragment/header.jsp" />
 
 
 	<!-- breadcrumb part start-->
@@ -54,29 +54,27 @@
 			<div class="cart_inner">
 				<div class="table-responsive">
 					<form action='<c:url value="/order/checkOrder"/>' method="POST">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">商品</th>
-									<th scope="col">售價</th>
-									<th scope="col">數量</th>
-									<th scope="col">總額</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-
-							<tbody>
-
-								<c:set var="allTotal" value="0" />
-								
-								
+						<div id="ajaxTable">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">商品</th>
+										<th scope="col">售價</th>
+										<th scope="col">數量</th>
+										<th scope="col">總額</th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:set var="allTotal" value="0" />
 									<c:forEach var="item" items='${items}'>
 										<tr>
 											<td>
 												<div class="media">
 													<div class="d-flex">
-														<img src="img/arrivel/arrivel_1.png" alt="" /> <input
-															type="hidden" name="itemId" value="${item.itemId}">
+														' <img src='<c:url value="/items/img/${item.img}"/>'
+															alt="" /> <input type="hidden" name="itemId"
+															value="${item.itemId}">
 													</div>
 													<div class="media-body">
 														<p>${item.itemName}</p>
@@ -84,32 +82,23 @@
 												</div>
 											</td>
 											<td>
-												<h5>$${item.price}</h5>
+												<span id="price${item.itemId}">${item.price}</span>
 											</td>
 											<td>
 												<div class="product_count">
-													<!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-													<span class="input-number-decrement"> <i
-														class="ti-minus"></i></span> <input class="input-number"
-														type="number" name="qty" value="${item.qty}" min="1"
-														max="10"> <span class="input-number-increment">
-														<i class="ti-plus"></i>
+													<span class="input-number-decrement"
+														onclick="minus(${item.itemId});"> <i
+														class="ti-minus"></i></span> <input
+														id="input-number${item.itemId}" type="number" name="qty"
+														value="${item.qty}" min="1" max="99"> <span
+														class="input-number-increment"
+														onclick="add(${item.itemId});"> <i class="ti-plus"></i>
 													</span>
 												</div>
 											</td>
 											<td>
-												<h5>
-													<c:set var="total" value="${item.qty*item.price}" />
-													<c:out value="${total}" />
+												<h5><c:set var="total" value="${item.qty*item.price}"/>
+													<span id="total${item.itemId}" class="total">${total}</span>
 												</h5>
 											</td>
 											<td>
@@ -117,79 +106,35 @@
 											</td>
 											<c:set var="allTotal" value="${allTotal + total}" />
 										</tr>
-										
 									</c:forEach>
-								
-								<tr class="bottom_button">
-									<td><button class="btn_1" type="button"
-											onclick="updateCart()">更新購物車</button></td>
+									<tr class="bottom_button">
+										<td><button class="btn_1" type="button"
+												onclick="updateCart()">更新購物車</button></td>
 
-									<td></td>
-									<td></td>
-									<td>
-										<div class="cupon_text float-right">
-											<a class="btn_1" href="#">Close Coupon</a>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td>
-										<h5>總金額</h5>
-									</td>
-
-									<td>
-
-										<h5>
-											<c:out value="${allTotal}" />
-										</h5> <input type="hidden" name="total" value="${allTotal}" />
-									</td>
-								</tr>
-
-								<!-- <tr class="shipping_area">
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>Flat Rate: $5.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Free Shipping <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li>Flat Rate: $10.00 <input type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-											<li class="active">Local Delivery: $2.00 <input
-												type="radio"
-												aria-label="Radio button for following text input">
-											</li>
-										</ul>
-										<h6>
-											Calculate Shipping <i class="fa fa-caret-down"
-												aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select> <select class="shipping_select section_bg">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select> <input class="post_code" type="text"
-											placeholder="Postcode/Zipcode" /> <a class="btn_1" href="#">Update
-											Details</a>
-									</div>
-								</td>
-							</tr> -->
-							</tbody>
-						</table>
+										<td></td>
+										<td></td>
+										<td>
+											<div class="cupon_text float-right">
+												<a class="btn_1" href="#">Close Coupon</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td>
+											<h5>總金額</h5>
+										</td>
+										<td>
+											<h5>
+											<span id="spanallTotal">${allTotal}</span>
+												 <input type="hidden" id="allTotal" name="total" value="${allTotal}" />
+											</h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 						<div class="checkout_btn_inner float-right">
 							<a class="btn_1" type="button" href="#">繼續購物</a>
 							<button class="btn_1 checkout_btn_1" type="submit">結帳去</button>
@@ -201,36 +146,34 @@
 	</section>
 	<!--================End Cart Area =================-->
 	<!--::footer_part start::-->
-	 <jsp:include page="/fragment/footer.jsp" />
+	<jsp:include page="/fragment/footer.jsp" />
 
 	<!--::footer_part end::-->
 
 	<!-- jquery plugins here-->
-	<script src="js/jquery-1.12.1.min.js"></script>
+
+	<!-- jquery plugins here-->
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
-	<script src="js/popper.min.js"></script>
+	<script src="<c:url value='/js/popper.min.js'/>"></script>
 	<!-- bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- easing js -->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<!-- swiper js -->
-	<script src="js/swiper.min.js"></script>
-	<!-- swiper js -->
-	<script src="js/mixitup.min.js"></script>
-	<!-- particles js -->
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	<!-- magnific popup js -->
+	<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	<!-- carousel js -->
+	<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
 	<!-- slick js -->
-	<script src="js/slick.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/contact.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="<c:url value='/js/slick.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	<script src="<c:url value='/js/contact.js'/>"></script>
+	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.form.js'/>"></script>
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
-	<script src="js/custom.js"></script>
+	<script src="<c:url value='/js/custom.js'/>"></script>
 	<script type="text/javascript">
 		function deleteById(id) {
 			let obj = new Object();
@@ -242,72 +185,12 @@
 			$
 					.ajax({
 						type : 'post',
-						url : '/cart/deleteCart',
+						url : 'deleteCart',
 						data : id,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
-
-							console.log('success:' + data);
-							var json = JSON.stringify(data, null, 4);
-							
-
-							$('#ajaxTable').empty("");
-
-							if (data == null) {
-								console.log("data == null");
-							} else {
-								/* window.location.href = "<c:url value='/cart'/>"; */
-								console.log('json:' + json);
-								var table = $('#ajaxTable');
-								var allTotal = 0;
-								$
-										.each(
-												data,
-												function(i, n) {
-													let total = n.price + n.qty;
-													allTotal += total;
-													var tr = 
-															'<td>'
-															+ '<div class="media">'
-															+ '<div class="d-flex">'
-															+ '<img src="img/arrivel/arrivel_1.png" alt="" />'
-															+ '<input type="hidden" name="itemId" value="'
-															+n.itemId+
-															'">'
-															+ '</div>'
-															+ '<div class="media-body">'
-															+ '<p>'
-															+ n.itemName
-															+ '</p>'
-															+ '</div>'
-															+ '</div>'
-															+ '</td>'
-															+ '<td>'
-															+ '<h5>$'
-															+ n.price
-															+ '</h5>'
-															+ '</td>'
-															+ '<td>'
-															+ '<td>'
-															+ +'<button type="button" onclick="delete('
-															+ n.itemId
-															+ ')">刪除</button"\>'
-															+ '</td>'
-															+ +'<div class="product_count">'
-															+ '<span class="input-number-decrement"> <i class="ti-minus"></i></span>'
-															+ '<input class="input-number" type="number" name="qty" value="'+n.qty+'" min="1" max="10">'
-															+ '<span class="input-number-increment"> <i class="ti-plus"></i></span>'
-															+ '</div></td><td>'
-															+ '<h5>'
-															+ total
-															+ '</h5>'
-															+ '</td>';
-
-													table.append(tr);
-												});
-										
-							}
+							window.location.reload();
 						}
 					});
 		}
@@ -329,71 +212,47 @@
 			$
 					.ajax({
 						type : 'post',
-						url : '/cart/updateCart',
+						url : 'updateCart',
 						data : array,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
-
-							console.log('success:' + data);
-							var json = JSON.stringify(data, null, 4);
-							console.log('json:' + json);
-
-							$('#ajaxTable').empty("");
-
-							if (data == null) {
-
-							} else {
-								var table = $('#ajaxTable');
-								var allTotal = 0;
-								$
-										.each(
-												data,
-												function(i, n) {
-													let total = n.price + n.qty;
-													allTotal += total;
-													var tr = 
-															'<td>'
-															+ '<div class="media">'
-															+ '<div class="d-flex">'
-															+ '<img src="img/arrivel/arrivel_1.png" alt="" />'
-															+ '<input type="hidden" name="itemId" value="'
-															+n.itemId+
-															'">'
-															+ '</div>'
-															+ '<div class="media-body">'
-															+ '<p>'
-															+ n.itemName
-															+ '</p>'
-															+ '</div>'
-															+ '</div>'
-															+ '</td>'
-															+ '<td>'
-															+ '<h5>$'
-															+ n.price
-															+ '</h5>'
-															+ '</td>'
-															+ '<td>'
-															+ '<td>'
-															+ +'<button type="button" onclick="delete('
-															+ n.itemId
-															+ ')">刪除</button"\>'
-															+ '</td>'
-															+ +'<div class="product_count">'
-															+ '<span class="input-number-decrement"> <i class="ti-minus"></i></span>'
-															+ '<input class="input-number" type="number" name="qty" value="'+n.qty+'" min="1" max="10">'
-															+ '<span class="input-number-increment"> <i class="ti-plus"></i></span>'
-															+ '</div></td><td>'
-															+ '<h5>'
-															+ total
-															+ '</h5>'
-															+ '</td>';
-
-													table.append(tr);
-												});
-							}
+							window.location.reload();
 						}
 					});
+		}
+		function add(id) {
+			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
+		    qty = isNaN(qty) ? 0 : qty;
+		    qty++;
+		    var price = parseInt(document.getElementById("price"+id).innerText, 10);
+		    document.getElementById("input-number"+id).value = qty;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
+		}
+		function minus(id) {
+			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
+		    qty = isNaN(qty) ? 0 : qty;
+		    qty--;
+		    var price = parseInt(document.getElementById("price"+id).innerText,10);
+		    document.getElementById("input-number"+id).value = qty;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
+
 		}
 	</script>
 </body>
