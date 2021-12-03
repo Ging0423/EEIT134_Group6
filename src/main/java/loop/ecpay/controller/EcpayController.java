@@ -28,7 +28,6 @@ import loop.order.model.OrderDataBean;
 import loop.order.service.OrderDataService;
 
 @Controller
-@RequestMapping("/order")
 public class EcpayController {
 	
 	@Autowired
@@ -36,7 +35,7 @@ public class EcpayController {
 	@Autowired
 	private OrderDataService orderDataService;
 	
-	@PostMapping("/goECPay")
+	@PostMapping("/order/goECPay")
 	@ResponseBody
 	public String connectToEcPayment(@RequestBody HashMap<String, String>  orderId,Model m, HttpServletResponse response) {
 		
