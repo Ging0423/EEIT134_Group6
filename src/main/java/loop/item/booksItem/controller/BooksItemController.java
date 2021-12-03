@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.model.ItemImgBean;
-import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.service.BooksItemService;
@@ -22,8 +21,8 @@ public class BooksItemController {
 	private BooksItemService booksService;
 	@Autowired
 	private ItemImgService itemImgService;
-	@Autowired
-	private AllItemService allItemService;
+//	@Autowired
+//	private AllItemService allItemService;
 	
 	@GetMapping("/items/books")
 	public String selectAll(Model m) {

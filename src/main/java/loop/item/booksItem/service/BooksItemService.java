@@ -75,8 +75,8 @@ public class BooksItemService {
 		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
 		for (BooksItemBean i : list) {
 			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
-					, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
-					,allItemService.getItemPrice(i.getItemId())));
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			, allItemService.getItemPrice(i.getItemId())));
 		}
 		return items;
 	}

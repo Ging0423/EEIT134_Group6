@@ -11,6 +11,27 @@ public class ItemDisplay implements Serializable{
 	private String img;
 	
 	private int price;
+	
+	private int qty;
+
+	public ItemDisplay() {
+	}
+	
+	public ItemDisplay(int itemId, String itemName, int price, int qty) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.price = price;
+		this.qty = qty;
+	}
+
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
 
 	public ItemDisplay(int itemId, String itemName, String img, int price) {
 		super();

@@ -1,5 +1,6 @@
 package loop.item.yarnItem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.yarnItem.model.YarnItemBean;
 import loop.item.yarnItem.model.YarnItemRepository;
 
@@ -26,6 +29,9 @@ public class YarnItemService{
 	
 	@Autowired
 	private AllItemService allItemService;
+	
+	@Autowired
+	private ItemImgService itemImgService;
 	
 	public void create(YarnItemBean bean) {
 		yarnRepo.save(bean);
@@ -60,4 +66,15 @@ public class YarnItemService{
 		yarnRepo.deleteById(id);
 	}
 
+	public List<ItemDisplay> list(){
+		
+		List<YarnItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (YarnItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			, allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
+	}
 }
