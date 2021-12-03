@@ -39,7 +39,7 @@ public class AllItemController {
 	@PostMapping("/backend/allitem")
 	public String deleteById(ServletRequest request) {
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
-		allItemService.deleteById(itemId);
+		allItemService.deleteByItemId(itemId);
 		return "redirect:/backend/allitem";
 	}
 	@GetMapping("/backend/items/{id}")
