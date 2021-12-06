@@ -18,20 +18,21 @@ import loop.login.service.LoginService;
 @Controller
 @SessionAttributes({ "isLogin" })
 public class LoginController {
-	
+
 	private LoginService loginService;
-	
+
 	@Autowired
 	public LoginController(LoginService loginService) {
 		super();
 		this.loginService = loginService;
 	}
-	
+
 	@GetMapping("/login")
-	public String loginFailurePage(@RequestParam(value="failure",required = false) String account, Model m) {
+	public String loginFailurePage(@RequestParam(value = "failure", required = false) String account,String password, Model m) {
 		try {
-			if (!account.equals(null)) {
-				m.addAttribute("errorMsg", "帳號密碼錯誤");
+			if (!account.equals(null) || !password.equals(null)) {
+				m.addAttribute("acerrorMsg", "帳號不可空白！");
+				m.addAttribute("pwerrorMsg", "密碼不可空白！");
 				return "login";
 			}
 		} catch (NullPointerException e) {
@@ -39,7 +40,20 @@ public class LoginController {
 		}
 		return "login";
 	}
-	
+
+//	@GetMapping("/login")
+//	public String loginFailurePage1(@RequestParam(value = "failure", required = false) String password, Model m) {
+//		try {
+//			if (!password.equals(null)) {
+//				m.addAttribute("pwerrorMsg", "密碼不可空白！");
+//				return "login";
+//			}
+//		} catch (NullPointerException e) {
+//			return "login";
+//		}
+//		return "login";
+//	}
+
 	@GetMapping("/logout")
 	public String logOut(HttpServletRequest request, HttpServletResponse response, SessionStatus status) {
 		HttpSession session = request.getSession();
@@ -48,5 +62,5 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 }
