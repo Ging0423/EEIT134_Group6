@@ -56,7 +56,7 @@
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/'/>">首頁</a></li>
-								<li class="nav-item"><a class="nav-link" href="about.jsp">關於</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='about'/>">關於</a>
 								</li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"

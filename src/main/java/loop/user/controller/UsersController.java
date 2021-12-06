@@ -112,6 +112,13 @@ public class UsersController {
 		super();
 		this.usersService = usersService;
 	}
+	
+	@GetMapping("/about")
+	public String about(Model m) {
+//		UsersBean bean = new UsersBean();
+//		m.addAttribute("usersData", bean);
+		return "about";
+	}
 
 	@GetMapping("/joinmember")
 	public String joinMember(Model m) {
