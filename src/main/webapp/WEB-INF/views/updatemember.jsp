@@ -89,7 +89,6 @@
 		</div>
 		<div>
 			<button class="btn_3" type="submit">送出</button>
-			
 		</div>
 	</form:form>
 	<br>
