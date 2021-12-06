@@ -568,7 +568,8 @@ ul {
 .btn_3 {
   display: inline-block;
   padding: 18px 36px;
-  border-radius: 5px;
+  margin:5px 0px 0px 15px;
+  border-radius: 7px;
   background-color: transparent;
   border: 1px solid #B08EAD;
   font-size: 15px;
@@ -8507,6 +8508,7 @@ h6 {
 /* line 2, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_breadcrumb.scss */
 .breadcrumb_part {
   height: 350px;
+  margin:0px 0px 15px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8520,7 +8522,7 @@ h6 {
 
 /* line 10, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_breadcrumb.scss */
 .breadcrumb_part .breadcrumb_iner h2 {
-  font-size: 50px;
+  font-size: 60px;
   line-height: 1.2;
   color: #fff;
   font-weight: 500;
