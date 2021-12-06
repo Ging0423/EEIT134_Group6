@@ -50,7 +50,7 @@ public class UserItemBean implements Serializable{
 	@Column(name="price")
 	private Integer price;
 	
-	@OneToOne(mappedBy = "userItem")	
+	@OneToOne(mappedBy = "userItem", cascade = CascadeType.ALL)	
 	private AllItemBean allItem;
 	
 	public UserItemBean() {

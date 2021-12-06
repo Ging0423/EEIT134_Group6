@@ -101,7 +101,7 @@ public class BooksItemBackendController {
 		return "redirect:/backend/books";
 	}
 	
-	@GetMapping("/{id}")
+	@PostMapping("books/{id}")
 	public String updateBooksItemPage(@PathVariable ("id") Integer itemId, Model m) {
 		BooksItemBean bean = booksService.findById(itemId);
 		m.addAttribute("booksData",bean);

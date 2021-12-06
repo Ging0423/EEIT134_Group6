@@ -1,5 +1,6 @@
 package loop.item.booksItem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.booksItem.model.BooksItemRepository;
 
@@ -26,6 +29,9 @@ public class BooksItemService {
 	
 	@Autowired
 	private AllItemService allItemService;
+	
+	@Autowired
+	private ItemImgService itemImgService;
 	
 	public void create(BooksItemBean bean) {
 		booksRepo.save(bean);
@@ -58,10 +64,20 @@ public class BooksItemService {
 	}
 	
 	public void deleteById(Integer id) {
-
-		AllItemBean allItem = allItemService.findById(id);
-		allItem.setBooksItem(null);
+		allItemService.deleteByItemId(id);
 		booksRepo.deleteById(id);
+	}
+	
+	public List<ItemDisplay> list() {
+
+		List<BooksItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (BooksItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			, allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
 	}
 
 }

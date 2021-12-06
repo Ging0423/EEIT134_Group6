@@ -110,17 +110,16 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<!-- 										<img src="" alt="#" class="img-fluid"> -->
-                                            <a href='<c:url value="/items/kits/${item.itemId}"/>'><img src=""></a>
+<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
 											<a href='<c:url value="/items/kits/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
-										<p>${item.price}</p>
+										<p>$${item.price}</p>
 
 									</div>
 								</div>
 							</c:forEach>
-
 
 						</div>
 						<div class="load_more_btn text-center">

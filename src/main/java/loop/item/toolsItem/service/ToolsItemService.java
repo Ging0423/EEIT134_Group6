@@ -1,5 +1,6 @@
 package loop.item.toolsItem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.toolsItem.model.ToolsItemBean;
 import loop.item.toolsItem.model.ToolsItemRepository;
 
@@ -26,6 +29,9 @@ public class ToolsItemService {
 	
 	@Autowired
 	private AllItemService allItemService;
+	
+	@Autowired
+	private ItemImgService itemImgService;
 	
 	public void create(ToolsItemBean bean) {
 		toolsRepo.save(bean);
@@ -61,6 +67,18 @@ public class ToolsItemService {
 		AllItemBean allItem = allItemService.findById(id);
 		allItem.setToolsItem(null);
 		toolsRepo.deleteById(id);
+	}
+	
+	public List<ItemDisplay> list(){
+		
+		List<ToolsItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (ToolsItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			,allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
 	}
 
 }

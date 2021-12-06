@@ -2,6 +2,7 @@ package loop.item.kitsItem.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class KitsItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 	
-	@OneToOne(mappedBy = "kitsItem")
+	@OneToOne(mappedBy = "kitsItem", cascade = CascadeType.ALL)
 	private AllItemBean allItem;
 
 	public KitsItemBean() {

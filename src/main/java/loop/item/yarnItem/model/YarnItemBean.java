@@ -1,8 +1,8 @@
 package loop.item.yarnItem.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import loop.item.allItem.model.AllItemBean;
+
 @Component
 @Entity
 @Table(name="yarnItem")
@@ -40,7 +41,7 @@ public class YarnItemBean implements Serializable {
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -48,11 +49,10 @@ public class YarnItemBean implements Serializable {
 	@Column(name="price")
 	private Integer price;
 		
-	@OneToOne(mappedBy = "yarnItem")
+	@OneToOne(mappedBy = "yarnItem", cascade = CascadeType.ALL)
 	private AllItemBean allItem;
 	
 	public YarnItemBean() {
-		
 	}
 
 	public Integer getItemId() {
@@ -103,11 +103,11 @@ public class YarnItemBean implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
 

@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style>
+.single_product_img {margin:auto; width:70%}
+</style>
 </head>
 
 <body>
@@ -53,12 +56,11 @@
 				<div class="col-lg-12">
 					<div class="product_img_slide owl-carousel">
 					<c:forEach var="itemImg" items="${itemImg}">
-					
 						<div class="single_product_img">
 							<img src='<c:url value="/items/img/${itemImg.img}" />' alt="#" class="img-fluid">
 						</div>
 					</c:forEach>
-					
+					</div>
 				</div>
 				<div class="col-lg-8">
 					<div class="single_product_text text-center">
