@@ -35,6 +35,10 @@ public class LoginController {
 				m.addAttribute("pwerrorMsg", "密碼不可空白！");
 				return "login";
 			}
+//			if(!password.equals(null)) {
+//				m.addAttribute("pwerrorMsg", "密碼不可空白！");
+//				return "login";
+//			}
 		} catch (NullPointerException e) {
 			return "login";
 		}
