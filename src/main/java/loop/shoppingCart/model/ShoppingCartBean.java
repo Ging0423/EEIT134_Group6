@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import loop.item.allItem.model.AllItemBean;
 import loop.user.model.UsersBean;
 
@@ -41,10 +43,11 @@ public class ShoppingCartBean implements Serializable {
 	@Column(name = "qty")
 	private Integer qty;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "itemId",insertable = false, updatable = false)
 	private AllItemBean allItem;
-
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;

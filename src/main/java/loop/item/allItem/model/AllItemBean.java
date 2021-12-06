@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import loop.item.booksItem.model.BooksItemBean;
 import loop.item.kitsItem.model.KitsItemBean;
 import loop.item.toolsItem.model.ToolsItemBean;
@@ -60,7 +62,7 @@ public class AllItemBean implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL )
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
-
+	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem")
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 	

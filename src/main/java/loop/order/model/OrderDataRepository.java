@@ -9,4 +9,7 @@ public interface OrderDataRepository extends JpaRepository<OrderDataBean, Intege
 
 	@Query(value="from OrderDataBean where userId = ?1")
 	public List<OrderDataBean> findByUserId(Integer userId);
+	
+	@Query(value="from OrderDataBean where payState = ?1")
+	public List<OrderDataBean> findPayState(String state);
 }
