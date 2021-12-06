@@ -112,7 +112,7 @@ public class UsersController {
 		super();
 		this.usersService = usersService;
 	}
-	
+	// 連結"關於"頁面
 	@GetMapping("/about")
 	public String about(Model m) {
 //		UsersBean bean = new UsersBean();
