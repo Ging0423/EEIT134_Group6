@@ -40,9 +40,9 @@
                 <div class="col-md-5">
                     <div class="banner_text">
                         <div class="banner_text_iner">
-                            <h1>Best quality pillow</h1>
-                            <p>Seamlessly empower fully researched 
-                                growth strategies and interoperable internal</p>
+                            <h1>圈在一起!</h1>
+                            <h2>鉤針、棒針DIY材料</h2>
+                            <h2>優質紗線商店</h2>
                             <a href="product_list.html" class="btn_1">shop now</a>
                         </div>
                     </div>
@@ -71,10 +71,9 @@
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam 
-                                        brief modern throw 
-                                        pillow case</a> </h2>
+<!--                                     <h5>Started from $10</h5> -->
+<!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a> </h2> -->
+                                    <h2> <a href="single-product.html">鉤針、棒針工具</a> </h2>
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
@@ -90,10 +89,9 @@
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam 
-                                        brief modern throw 
-                                        pillow case</a> </h2>
+<!--                                     <h5>Started from $10</h5> -->
+<!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a> </h2> -->
+                                    <h2> <a href="single-product.html">鉤針、棒針書籍</a> </h2>
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
@@ -109,10 +107,9 @@
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam 
-                                            brief modern throw 
-                                            pillow case</a> </h2>
+<!--                                     <h5>Started from $10</h5> -->
+<!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a></h2> -->
+                                    <h2> <a href="single-product.html">DIY材料包</a></h2> 
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
                             </div>

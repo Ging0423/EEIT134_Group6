@@ -15,6 +15,8 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import loop.item.allItem.model.AllItemBean;
 
 @Component
@@ -37,11 +39,13 @@ public class OrderItemBean implements Serializable {
 
 	@Column(name = "qty")
 	private Integer qty;
-
+	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "itemId",insertable = false, updatable = false)
 	private AllItemBean allItem;
-
+	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "orderId",insertable = false, updatable = false)
 	private OrderDataBean orderData;

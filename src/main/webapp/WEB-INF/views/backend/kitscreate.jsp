@@ -28,11 +28,11 @@
       </tr>
       <tr>
          <td>數量:</td> 
-         <td><input id="qty" name="qty" type="number" /></td>
+         <td><input id="qty" name="qty" type="number" min="0"/></td>
       </tr>
       <tr>
          <td>價錢:</td>
-         <td><input id="price" name="price" type="number" /></td>
+         <td><input id="price" name="price" type="number" min="0"/></td>
       </tr>
       </table>	
       <input type="file" name="img" accept="image/*" onchange="addImg();"/>

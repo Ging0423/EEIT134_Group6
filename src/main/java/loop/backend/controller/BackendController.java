@@ -8,9 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/backend")
 public class BackendController {
+	
+//	@Autowired
+//	private AllItemService allItemService;
 
 	@GetMapping
 	public String backendIndex(Model m) {
 		return "backend/backend_index";
 	}
+//	
+//	@GetMapping("/allitem")
+//	public String backendAllItem(Model m) {
+//		List<ItemDisplay> bean = allItemService.list();
+//		m.addAttribute("allItem", bean);
+//		return "backend/allitemform";
+//	}
+	
 }
+

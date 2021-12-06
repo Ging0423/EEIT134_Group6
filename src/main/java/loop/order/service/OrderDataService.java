@@ -52,5 +52,13 @@ public class OrderDataService {
 	public void update(OrderDataBean bean) {
 		orderDataRepo.save(bean);
 	}
+	
+	public List<OrderDataBean> findAll() {
+		return orderDataRepo.findAll();
+	}
+	
+	public List<OrderDataBean> findState(String state) {
+		return orderDataRepo.findPayState(state);
+	}
 
 }

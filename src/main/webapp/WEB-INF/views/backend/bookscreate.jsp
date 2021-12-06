@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Book Create</title>
 <style>
-     table{border:2px solid black; border-collapse:collapse}
+.single_product_img {margin:auto; width:70%}
+table{border:2px solid black; border-collapse:collapse}
 /*      background-color{rgb(208, 148, 234)} */
 </style> 
 </head>
@@ -32,20 +33,20 @@
          <td><input id="author" name="author" type="text" /></td>
 	  </tr>
       <tr>
-         <td>商品描述:</td>
-         <td><textarea id="itemDescription"name="itemDescription" rows="4" cols="21"></textarea><td>
+         <td>書籍描述:</td>
+         <td><textarea id="itemDescription" name="itemDescription" rows="4" cols="21"></textarea></td>
       </tr>
 <!--       <tr> -->
 <!--          <td>日期:</td> -->
 <!--          <td><input id="addDate" name="addDate" type="date" /></td> -->
 <!--       </tr> -->
       <tr>
-         <td>數量:</td>
-         <td><input id="qty" name="qty" type="number" /></td>
+         <td>庫存數量:</td>
+         <td><input id="qty" name="qty" type="number" min="0"/></td>
 	  </tr>
       <tr>
-         <td>價錢:</td>
-         <td><input id="price" name="price" type="number" /></td>
+         <td>價格:</td>
+         <td><input id="price" name="price" type="number" min="0"/></td>
 	  </tr>
       </table>
       封面<input type="file" name="img" accept="image/*"/><br>
