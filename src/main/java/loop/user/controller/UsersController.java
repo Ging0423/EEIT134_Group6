@@ -137,36 +137,24 @@ public class UsersController {
 		m.addAttribute("usersData", bean);
 		return "updatemember";
 	}
-//	@PostMapping("updatemember")
-//	public String updateMember1(Model m) {
-//		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-//		m.addAttribute("usersData", bean);
-//		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
-//		bean.setUserPassword(password);
-//		bean.setUserIdentity("1");
-//		Date current = new Date();
-//		bean.setRegisterDate(current);
-//		usersService.save(bean);
-//		return "redirect:/login";
-//	}
-	@PostMapping("updatemember") // 修改
+
+	// 會員資料修改
+	@PostMapping("updatemember")
 	public String update(@ModelAttribute("isLogin") UsersBean userBean, Model m, HttpServletRequest request,
 			HttpServletResponse response) {
-//		int count = 0;
 		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
 		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
 		bean.setUserPassword(password);
-//		bean.setUserPassword(new BCryptPasswordEncoder().encode(request.getParameter("password")));
-//		bean.setUserName(request.getParameter("name"));
-//		bean.setEmail(request.getParameter("email"));
-//		bean.setTel(request.getParameter("tel"));
-//		bean.setUserAddress(request.getParameter("address"));
-//		bean.setUserPassword(password);
 		bean.setUserIdentity("1");
 		Date current = new Date();
 		bean.setRegisterDate(current);
 		usersService.save(bean);
 		return "redirect:/login";
+	}
+
+	@DeleteMapping("/users/{id}")
+	public void delete(@PathVariable Integer id) {
+		usersService.deleteById(id);
 	}
 	// @GetMapping("/users/{id}")
 	// public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer
@@ -188,11 +176,7 @@ public class UsersController {
 	// public void add(@RequestBody UsersBean user) {
 	// usersService.saveUser(user);
 	// }
-	 //根據id刪除資料
-	 @DeleteMapping("/users/{id}")
-	 public void delete(@PathVariable Integer id) {
-	 usersService.deleteById(id);
-	 }
+	// 根據id刪除資料
 
 	// @PutMapping("/users/{id}")
 	// public ResponseEntity<?> update(@RequestBody UsersBean putuser, @PathVariable
@@ -209,4 +193,3 @@ public class UsersController {
 	// }
 	// }
 }
-
