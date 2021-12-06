@@ -61,3 +61,4 @@ target/*
 
 src/main/webapp/items/*
 
+log/gpserver-.log.2021-12-02
