@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -105,11 +107,11 @@ public class UsersController {
 	// public void add(@RequestBody UsersBean user) {
 	// usersService.saveUser(user);
 	// }
-	// //根據id刪除資料
-	// @DeleteMapping("/users/{id}")
-	// public void delete(@PathVariable Integer id) {
-	// usersService.deleteById(id);
-	// }
+	 //根據id刪除資料
+	 @DeleteMapping("/users/{id}")
+	 public void delete(@PathVariable Integer id) {
+	 usersService.deleteById(id);
+	 }
 
 	// @PutMapping("/users/{id}")
 	// public ResponseEntity<?> update(@RequestBody UsersBean putuser, @PathVariable
