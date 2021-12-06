@@ -83,6 +83,8 @@
 												href="<c:url value='/cart/display'/>">購物車</a>
 											<a class="dropdown-item"
 												href="<c:url value='/order/myorder'/>">我的訂單</a>
+											<a class="dropdown-item"
+												href="<c:url value='updatemember'/>">會員資料修改</a>
 										</c:if>
 										<c:if test="${isLogin != null && isLogin.userIdentity == '0'}">
 											<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>
