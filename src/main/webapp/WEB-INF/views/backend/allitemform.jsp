@@ -1,53 +1,175 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
 <head>
+<!-- =========== -->
 <meta charset="UTF-8">
-<title>Books Form</title>
-<style>
-table {margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse}
-/*      background-color{rgb(208, 148, 234)} */
-</style> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <title>後臺管理系統-商家版</title> -->
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+	crossorigin="anonymous"></script>
 </head>
+<!-- =========== -->
+<title>All Item Form</title>
+<style>
+.img {
+	width: 20%
+}
+
+table {
+	margin: auto;
+	width: 70%
+}
+
+table, th, td {
+	border: 2px solid black;
+	border-collapse: collapse
+}
+
+th {
+	background-color: #F4EDF2
+}
+
+.a {
+	font-size: x-large
+}
+
+a { 
+text-decoration: none
+} 
+
+/* a {
+	font-size: larger;
+	margin: 50px auto;
+	text-decoration: none
+} */
+</style>
+
 <body>
-<%-- <input type="button" name="button1" id="button1" value= "<c:url value='/backend/yarn'/>"> --%>
-<!-- <button type="button" name="button1" id="button1">紗線</button> -->
+	<!-- =========== -->
+	<div class="container">
+		<div class="navigation">
+			<ul>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-infinity" aria-hidden="true"></i></span> <span
+						class="title"><h2>Loop</h2></span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-users-cog" aria-hidden="true"></i></span> <span
+						class="title">管理員專區</span>
+				</a></li>
+				<li><a href="<c:url value='/backend/allitem'/>"> <span
+						class="icon"><i class="fas fa-shopping-bag"
+							aria-hidden="true"></i></span> <span class="title">商品管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
+						class="title">訂單管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-comments" aria-hidden="true"></i></span> <span
+						class="title">訊息管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="far fa-file-video" aria-hidden="true"></i></span> <span
+						class="title">教學影片管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="far fa-newspaper" aria-hidden="true"></i></span> <span
+						class="title">討論區管理</span>
+				</a></li>
+				<li><a href="<c:url value='/logout'/>"> <span class="icon"><i
+							class="fas fa-sign-out-alt" aria-hidden="true"></i></span> <span
+						class="title">登出</span>
+				</a></li>
+			</ul>
+		</div>
 
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle" onclick="toggleMenu();">
+					<i class="fas fa-bars"></i>
+				</div>
+				<div class="search">
+					<label> 
+					    <input type="text" placeholder="Search here">
+						<i class="fas fa-search" aria-hidden="true"></i>
+					</label>
+				</div>
+				<div class="user">
+					<img src="image/user.jpg">
+				</div>
+			</div>
+<!-- ========================= -->
 
-<!-- <li class="nav-item dropdown"> -->
-<!-- <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1" role="button" data-toggle="dropdown" -->
-<!-- aria-haspopup="true" aria-expanded="false"> 商品管理 </a> -->
-								    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-										<a class="dropdown-item" href="<c:url value='/backend/yarn'/>">紗線</a>
-										<a class="dropdown-item" href="<c:url value='/backend/tools'/>">工具</a>
-										<a class="dropdown-item" href="<c:url value='/backend/books'/>">書籍</a>
-										<a class="dropdown-item" href="<c:url value='/backend/kits'/>">材料包</a>
-									</div>
-								</li>
-<div align='center'>
-<h3>商品資料</h3>
-<hr>
-<%-- <a href="<c:url value='/backend/books/create'/>">新增書籍</a> --%>
+			<div align='center'>
+				<div style="background-color: #B08EAD">
+					<br>
+					<h1 style="color: #fff">商品資料總表</h1>
+					<br>
+					<hr>
+				</div>
+				<br>
 
-<table border='1'>
-	<thead>
-		<th>編號</th>
-		<th>商品名稱</th>
-		<th>庫存數量</th>
-		<th>價格</th>		
-	</thead>
-		<c:forEach var="item" items='${allItem}'>
-			<tr>
-				<td><a href= "<c:url value='/backend/items/${item.itemId}'/>">${item.itemId}</a></td>
-				<td>${item.itemName}</td>
-				<td>${item.qty}</td>
-				<td>$${item.price}</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<a href="/backend/backend_index">回首頁</a>
+				<div>
+					<select class=a onchange="javascript:location.href=this.value;">
+						<option value="<c:url value='/backend/allitem'/>">所有商品</option>
+						<option value="<c:url value='/backend/yarn'/>">紗線</option>
+						<option value="<c:url value='/backend/tools'/>">工具</option>
+						<option value="<c:url value='/backend/books'/>">書籍</option>
+						<option value="<c:url value='/backend/kits'/>">材料包</option>
+						<!-- <option value="http://localhost:8080/loop/backend/allitems">所有商品</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/yarn">紗線</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/tools">工具</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/books">書籍</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/kits">材料包</option> -->
+					</select>
+				</div>
+				<br>
+
+				<table border='1'>
+					<thead>
+						<th>編號</th>
+						<th>商品名稱</th>
+						<th>庫存數量</th>
+						<th>價格</th>
+						<th>圖片</th>
+					</thead>
+					<c:forEach var="item" items='${allItem}'>
+						<tr>
+							<td><a href="<c:url value='/backend/items/${item.itemId}'/>">${item.itemId}</a></td>
+							<td>${item.itemName}</td>
+							<td>${item.qty}</td>
+							<td>$${item.price}</td>
+							<td><c:forEach var="img" items="${item.imgs}">
+									<img class="img" src='<c:url value="/items/img/${img.img}"/>' />
+								</c:forEach></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<a class=a href="/loop/backend">回後台管理</a>
+			</div>
+
+		</div>
 	</div>
+
+	<!--     ================================ -->
+	<script>
+		window.onload(toggleMenu());
+
+		function toggleMenu() {
+			let toggle = document.querySelector('.toggle');
+			let navigation = document.querySelector('.navigation');
+			let main = document.querySelector('.main');
+			toggle.classList.toggle('active');
+			navigation.classList.toggle('active');
+			main.classList.toggle('active');
+		}
+	</script>
+	<!--     ================================ -->
 </body>
 </html>

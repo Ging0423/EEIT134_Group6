@@ -27,6 +27,12 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style type="text/css">
+	.single_product_item {
+	display: none;
+}
+</style>
+</script>
 </head>
 
 <body>
@@ -40,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner">
-                        <h2>product list</h2>
+                        <h2>書籍</h2>
                     </div>
                 </div>
             </div>
@@ -49,7 +55,7 @@
     <!-- breadcrumb part end-->
     
 	<!-- product list part start-->
-		<section class="product_list section_padding">
+	<section class="product_list section_padding">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
@@ -110,7 +116,8 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+									<div class="product_display">
+                                    <img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
 <%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
 											<a href='<c:url value="/items/books/${item.itemId}"/>'>${item.itemName}</a>
@@ -119,13 +126,14 @@
                                             <p>$${item.price}</p>
 <%-- 										<p>${item.color}</p> --%>
 									</div>
+									</div>
 								</div>
 							</c:forEach>
 
 
 						</div>
 						<div class="load_more_btn text-center">
-							<a href="#" class="btn_3">Load More</a>
+							<a href="#" class="btn_3" id="loadmore">Load More</a>
 						</div>
 					</div>
 				</div>
@@ -194,8 +202,8 @@
 							interoperable internal or âorganicâ sources credibly innovate
 							granular internal .</p>
 						<div class="subscribe_form">
-							<input type="email" placeholder="Enter your mail"> <a
-								href="#" class="btn_1">Subscribe</a>
+							<input type="email" placeholder="Enter your mail"> 
+							<a href="#" class="btn_1">Subscribe</a>
 						</div>
 					</div>
 				</div>
@@ -275,16 +283,28 @@
 	<script src="<c:url value='/js/slick.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
 	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
-	<script src="<c:url value='/js/contact.js'/>"></script>
+<%-- 	<script src="<c:url value='/js/contact.js'/>"></script> --%>
 	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.form.js'/>"></script>
 	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-	<script type="text/javascript">
-		
-	</script>
+	
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+	
+<script>  
+$(document).ready (function () {  
+  $(".single_product_item").slice(0, 6).show();  
+  $(".btn_3").on("click", function(e){  
+    e.preventDefault();  
+    $(".single_product_item:hidden").slice(0, 6).slideDown();  
+    if ($(".single_product_item:hidden").length == 0) {  
+      $(".btn_3").text("沒有更多商品").addClass("noContent");  
+    }  
+  });  
+  })  
+</script> 	
 </body>
-
 </html>

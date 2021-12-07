@@ -5,58 +5,117 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <title>後臺管理系統-商家版</title> -->
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>" type="text/css"/>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+	crossorigin="anonymous"></script>
+</head>
+<!-- =========== -->
 <title>Book Create</title>
 <style>
 .single_product_img {margin:auto; width:70%}
-table{border:2px solid black; border-collapse:collapse}
-/*      background-color{rgb(208, 148, 234)} */
+.a{align='center'; width:99%}
+table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%}
+tr{background-color:#F4EDF2}
 </style> 
-</head>
-<body>
-<div align='center'>
-<h3>書籍商品資料</h3>
-<hr>
 
+<body>
+<!-- =========== -->
+	<div class="container">
+		<div class="navigation">
+			<ul>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-infinity" aria-hidden="true"></i></span> <span
+						class="title"><h2>Loop</h2></span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-users-cog" aria-hidden="true"></i></span> <span
+						class="title">管理員專區</span>
+				</a></li>
+				<li><a href="<c:url value='/backend/allitem'/>"> <span
+						class="icon"><i class="fas fa-shopping-bag"
+							aria-hidden="true"></i></span> <span class="title">商品管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
+						class="title">訂單管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-comments" aria-hidden="true"></i></span> <span
+						class="title">訊息管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="far fa-file-video" aria-hidden="true"></i></span> <span
+						class="title">教學影片管理</span>
+				</a></li>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="far fa-newspaper" aria-hidden="true"></i></span> <span
+						class="title">討論區管理</span>
+				</a></li>
+				<li><a href="<c:url value='/logout'/>"> <span class="icon"><i
+							class="fas fa-sign-out-alt" aria-hidden="true"></i></span> <span
+						class="title">登出</span>
+				</a></li>
+			</ul>
+		</div>
+
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle" onclick="toggleMenu();">
+					<i class="fas fa-bars"></i>
+				</div>
+				<div class="search">
+					<label> 
+					    <input type="text" placeholder="Search here">
+						<i class="fas fa-search" aria-hidden="true"></i>
+					</label>
+				</div>
+				<div class="user">
+					<img src="image/user.jpg">
+				</div>
+			</div>
+<!-- ========================= -->
+
+<div align='center'>
+<div style="background-color:#B08EAD"><br>
+<h1 style="color:#fff">新增書籍商品資料</h1><br>
+<hr>
+</div><br>
 <form method="post" action="createbooks" enctype="multipart/form-data">
 
 	<table>
-      <tr>
-         <td>書名:</td>
-         <td><input id="itemName" name="itemName" type="text" /></td>
-	  </tr>
-      <tr>
-         <td>出版社:</td>
-         <td><input id="publisher" name="publisher" type="text" /></td>	
-	  </tr>
-      <tr>
-         <td>作者:</td>
-         <td><input id="author" name="author" type="text" /></td>
-	  </tr>
-      <tr>
-         <td>書籍描述:</td>
-         <td><textarea id="itemDescription" name="itemDescription" rows="4" cols="21"></textarea></td>
-      </tr>
-<!--       <tr> -->
-<!--          <td>日期:</td> -->
-<!--          <td><input id="addDate" name="addDate" type="date" /></td> -->
-<!--       </tr> -->
-      <tr>
-         <td>庫存數量:</td>
-         <td><input id="qty" name="qty" type="number" min="0"/></td>
-	  </tr>
-      <tr>
-         <td>價格:</td>
-         <td><input id="price" name="price" type="number" min="0"/></td>
-	  </tr>
+         <tr><td>書名:</td></tr>
+         <tr><td><input class=a id="itemName" name="itemName" type="text" /></td></tr>
+         <tr><td>出版社:</td></tr>
+         <tr><td><input class=a id="publisher" name="publisher" type="text" /></td></tr>
+         <tr><td>作者:</td></tr>
+         <tr><td><input class=a id="author" name="author" type="text" /></td></tr>
+         <tr><td>內容簡介:</td></tr>
+         <tr><td><textarea class=a id="itemDescription" name="itemDescription" rows="8" cols="20"></textarea></td></tr>
+         <tr><td>庫存數量:</td></tr>
+         <tr><td><input class=a id="qty" name="qty" type="number" min="0"/></td></tr>
+         <tr><td>價格:</td></tr>
+         <tr><td><input class=a id="price" name="price" type="number" min="0"/></td></tr>
       </table>
-      封面<input type="file" name="img" accept="image/*"/><br>
-	  <input type="file" name="img" accept="image/*" multiple/>
-	  <div id="imgClass">
-	  </div>  
+      <div id="imgClass"><br>
+      圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
+	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
+	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/><br>
+	    
+      <img type="file" id="img1" accept="image/*" width=20% />
+      <img type="file" id="img2" accept="image/*" width=20% />
+      <img type="file" id="img3" accept="image/*" width=20% /><br>
+
+      </div>
 	    <button type="submit" value="send">送出</button>
 	  </form>
 	     <button onclick="magic();">一鍵輸入</button>
-	     
+	   <a href="<c:url value='/backend/books' />">書籍商品資料總表</a>
+	     </div>
 	  <script>	
 		function magic() {	
 			document.getElementById('itemName').value = "好簡單的棒針&鉤針可愛小童帽";
@@ -88,6 +147,24 @@ table{border:2px solid black; border-collapse:collapse}
 	    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
 	    <script src="<c:url value='/js/mail-script.js'/>"></script>
 	    <!-- custom js -->
-	    <script src="<c:url value='/js/custom.js'/>"></script>   
+	    <script src="<c:url value='/js/custom.js'/>"></script>
+	    
+	    </div>  
+	    
+	    <!--     ================================ -->
+	    
+	<script>
+		window.onload(toggleMenu());
+
+		function toggleMenu() {
+			let toggle = document.querySelector('.toggle');
+			let navigation = document.querySelector('.navigation');
+			let main = document.querySelector('.main');
+			toggle.classList.toggle('active');
+			navigation.classList.toggle('active');
+			main.classList.toggle('active');
+		}
+	</script>
+	<!--     ================================ --> 
 </body>
 </html>
