@@ -22,4 +22,8 @@ public class UsersService {
 	public void save(UsersBean bean) {
 		usersRepo.save(bean);
 	}
+	
+	public void deleteById(Integer id) {
+		usersRepo.deleteById(id);
+	}
 }
