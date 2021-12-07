@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="selector">
+                                        <input type="checkbox" id="f-option" name="remeberMe">
                                         <label for="f-option">記住帳號</label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">

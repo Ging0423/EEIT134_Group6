@@ -65,11 +65,17 @@ public class EcpayController {
 	@ResponseBody
 	public String checkPay(ServletRequest request) {
 		System.out.println("get ecpay response");
+		System.out.println(request.getParameter("RtnMsg"));
 		String hashString = request.getParameter("CheckMacValue");
 		Hashtable<String, String> dict = new Hashtable<String, String>();
 		dict.put("MerchantID", "2000132");
 		dict.put("CheckMacValue", hashString);
-		boolean result = paymentService.compareCheckMacValue(dict);
+		boolean result = false;
+		try {
+			result = paymentService.compareCheckMacValue(dict);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(result) {
 			Integer orderId = Integer.parseInt(request.getParameter("MerchantTradeNo").substring(7));
 			OrderDataBean orderData = orderDataService.findById(orderId);

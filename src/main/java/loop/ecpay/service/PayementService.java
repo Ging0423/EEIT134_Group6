@@ -59,7 +59,6 @@ public class PayementService {
 		/* 特店交易編號，不能超過20個符號，也不能重複(一個編號只能用一次)，否則當掉，可自填 */
 		aioCheck.setMerchantTradeNo("loop" + s + ob.getOrderId());
 		
-		/* 付款完成通知回傳網址：不瞭解此網址的作用 */
 		aioCheck.setReturnURL("https://eeit13428loop.southeastasia.cloudapp.azure.com:8080/loop/ecpaycheck");
 
 		aioCheck.setOrderResultURL("https://eeit13428loop.southeastasia.cloudapp.azure.com:8080/loop/order/myorder");
