@@ -65,18 +65,17 @@ public class EcpayController {
 	@ResponseBody
 	public String checkPay(ServletRequest request) {
 		System.out.println("get ecpay response");
+		String code = request.getParameter("RtnCode");
+		System.out.println(code);
 		System.out.println(request.getParameter("RtnMsg"));
 		String hashString = request.getParameter("CheckMacValue");
+		System.out.println(hashString);
 		Hashtable<String, String> dict = new Hashtable<String, String>();
 		dict.put("MerchantID", "2000132");
 		dict.put("CheckMacValue", hashString);
-		boolean result = false;
-		try {
-			result = paymentService.compareCheckMacValue(dict);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(result) {
+		boolean	result = paymentService.compareCheckMacValue(dict);
+		if(code.equals("1")) {
+			System.out.println("check success");
 			Integer orderId = Integer.parseInt(request.getParameter("MerchantTradeNo").substring(7));
 			OrderDataBean orderData = orderDataService.findById(orderId);
 			orderData.setPayState("付款成功");
@@ -84,8 +83,10 @@ public class EcpayController {
 			orderDataService.update(orderData);
 			return "1|OK";
 		}
-		else
+		else {
+			System.out.println("failed");
 			return "fail";
-		
+		}
+			
 	}
 }
