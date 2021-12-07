@@ -40,7 +40,7 @@
                 <div class="col-md-5">
                     <div class="banner_text">
                         <div class="banner_text_iner">
-                            <h1>圈在一起!</h1>
+                            <h1>圈在一起!</h1> 
                             <h2>鉤針、棒針DIY材料</h2>
                             <h2>優質紗線商店</h2>
                             <a href="product_list.html" class="btn_1">shop now</a>
@@ -54,7 +54,7 @@
             <img src="img/banner_pattern.png " alt="#" class="pattern_img img-fluid">
         </div>
     </section>
-    <!-- banner part start-->
+    <!-- banner part end-->
 
     <!-- product list start-->
     <section class="single_product_list">

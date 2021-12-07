@@ -113,6 +113,14 @@ public class UsersController {
 		this.usersService = usersService;
 	}
 
+	// 連結"關於"頁面
+	@GetMapping("/about")
+	public String about(Model m) {
+//		UsersBean bean = new UsersBean();
+//		m.addAttribute("usersData", bean);
+		return "about";
+	}
+
 	@GetMapping("/joinmember")
 	public String joinMember(Model m) {
 		UsersBean bean = new UsersBean();

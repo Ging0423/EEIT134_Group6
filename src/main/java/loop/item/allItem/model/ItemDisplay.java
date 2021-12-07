@@ -1,6 +1,7 @@
 package loop.item.allItem.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class ItemDisplay implements Serializable{
 	
@@ -10,6 +11,8 @@ public class ItemDisplay implements Serializable{
 	
 	private String img;
 	
+	private List<ItemImgBean> imgs;
+	
 	private int price;
 	
 	private int qty;
@@ -17,12 +20,26 @@ public class ItemDisplay implements Serializable{
 	public ItemDisplay() {
 	}
 	
-	public ItemDisplay(int itemId, String itemName, int price, int qty) {
+	
+	
+	public ItemDisplay(int itemId, String itemName, List<ItemImgBean> imgs, int price, int qty) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.imgs = imgs;
+		this.price = price;
+		this.qty = qty;
+	}
+
+
+
+	public ItemDisplay(int itemId, String itemName, int price, int qty, String img) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.price = price;
 		this.qty = qty;
+		this.img = img;
 	}
 
 	public int getQty() {
@@ -30,7 +47,8 @@ public class ItemDisplay implements Serializable{
 	}
 
 	public void setQty(int qty) {
-		this.qty = qty;
+		this.qty = qty;	
+		
 	}
 
 	public ItemDisplay(int itemId, String itemName, String img, int price) {
@@ -73,4 +91,18 @@ public class ItemDisplay implements Serializable{
 		this.price = price;
 	}
 
+
+
+	public List<ItemImgBean> getImgs() {
+		return imgs;
+	}
+
+
+
+	public void setImgs(List<ItemImgBean> imgs) {
+		this.imgs = imgs;
+	}
+
+	
+	
 }

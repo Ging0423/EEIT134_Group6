@@ -39,34 +39,34 @@ input:focus {
 
 /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
 .section_padding {
-  padding: 200px 0px;
+  padding: 50px 0px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
   .section_padding {
-    padding: 100px 0px;
+    padding: 20px 0px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 50px 0px;
   }
 }
 
 @media (max-width: 576px) {
   /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 50px 0px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
   .section_padding {
-    padding: 70px 0px;
+    padding: 50px 0px;
   }
 }
 
@@ -568,8 +568,7 @@ ul {
 .btn_3 {
   display: inline-block;
   padding: 18px 36px;
-  margin:5px 0px 0px 15px;
-  border-radius: 7px;
+  border-radius: 5px;
   background-color: transparent;
   border: 1px solid #B08EAD;
   font-size: 15px;
@@ -2499,8 +2498,8 @@ ul {
   left: 0;
   bottom: 0;
   background-color: #B08EAD;
-  width: 196px;
-  height: 618px;
+  width: 150px;
+  height: 650px;
 }
 
 @media (max-width: 991px) {
@@ -2704,7 +2703,7 @@ ul {
 /**************** hero part css end ****************/
 /* line 1, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_single_product.scss */
 .single_product_list {
-  padding: 200px 0 100px;
+  padding: 100px 0 100px;
 }
 
 @media (max-width: 991px) {
@@ -3386,7 +3385,7 @@ input:focus {
 /***************** product list css *******************/
 /* line 3, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_product_list.scss */
 .product_sidebar .single_sedebar {
-  position: relative;
+  position: relative; 
   margin-bottom: 20px;
 }
 
@@ -8507,8 +8506,7 @@ h6 {
 /************ about_us css end ***************/
 /* line 2, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_breadcrumb.scss */
 .breadcrumb_part {
-  height: 350px;
-  margin:0px 0px 15px 0px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8522,7 +8520,7 @@ h6 {
 
 /* line 10, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_breadcrumb.scss */
 .breadcrumb_part .breadcrumb_iner h2 {
-  font-size: 60px;
+  font-size: 50px;
   line-height: 1.2;
   color: #fff;
   font-weight: 500;
