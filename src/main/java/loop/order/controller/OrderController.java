@@ -1,5 +1,6 @@
 package loop.order.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,10 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import loop.item.allItem.model.ItemDisplay;
+import loop.item.allItem.service.AllItemService;
 import loop.order.model.OrderDataBean;
 import loop.order.model.OrderItemBean;
 import loop.order.service.OrderDataService;
@@ -32,15 +36,18 @@ public class OrderController {
 	private OrderDataService orderDataService;
 	private OrderItemService orderItemService;
 	private ShoppingCartService shoppingCartService;
+	private AllItemService allItemService;
 	
 	@Autowired
 	public OrderController(UsersService userService, OrderDataService orderDataService,
-			OrderItemService orderItemService, ShoppingCartService shoppingCartService) {
+			OrderItemService orderItemService, ShoppingCartService shoppingCartService,
+			AllItemService allItemService) {
 		super();
 		this.userService = userService;
 		this.orderDataService = orderDataService;
 		this.orderItemService = orderItemService;
 		this.shoppingCartService = shoppingCartService;
+		this.allItemService =  allItemService;
 	}
 
 	@GetMapping("/checkout")
@@ -89,6 +96,26 @@ public class OrderController {
 		}	
 		shoppingCartService.deleteByUserId(user.getUserId());
 		return "redirect:/order/myorder";
+	}
+	@GetMapping("/{id}")
+	public String orderDetail(@PathVariable("id") Integer orderId, Model m) {
+		OrderDataBean order = orderDataService.findById(orderId);
+		UsersBean userBean = (UsersBean)m.getAttribute("isLogin");
+		if(order.getUserId() == userBean.getUserId()) {
+			m.addAttribute("order", order);
+			List<OrderItemBean> orderItems = orderItemService.findByOrderId(orderId);
+			List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+			for(OrderItemBean i : orderItems) {
+				items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+											,allItemService.getItemPrice(i.getItemId()), i.getQty()));
+			}
+			m.addAttribute("orderItems", items);
+			return "orderdetail";
+		}
+		else {
+			return "redirect:/order/myorder";
+		}
+		
 	}
 	
 }

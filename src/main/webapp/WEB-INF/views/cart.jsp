@@ -73,7 +73,7 @@
 											<td>
 												<div class="media">
 													<div class="d-flex">
-														' <img src='<c:url value="/items/img/${item.img}"/>'
+														<img src='<c:url value="/items/img/${item.img}"/>'
 															alt="" /> <input type="hidden" name="itemId"
 															value="${item.itemId}">
 													</div>
@@ -103,21 +103,33 @@
 												</h5>
 											</td>
 											<td>
-												<button type="button" onclick="deleteById('${item.itemId}')">刪除</button>
+												<button type="button" class="btn btn-danger" onclick="deleteById('${item.itemId}')">刪除</button>
 											</td>
 											<c:set var="allTotal" value="${allTotal + total}" />
 										</tr>
 									</c:forEach>
 									<tr class="bottom_button">
-										<td><button class="btn_1" type="button"
-												onclick="updateCart()">更新購物車</button></td>
+										<td></td>
 
 										<td></td>
 										<td></td>
 										<td>
 											<div class="cupon_text float-right">
-												<a class="btn_1" href="#">Close Coupon</a>
+												<button class="btn_1" type="button"
+												onclick="updateCart()">更新購物車</button>
 											</div>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td>
+											<h5>運費</h5>
+										</td>
+										<td>
+											<h5>
+											<span id="shippingBill">0</span>
+											</h5>
 										</td>
 									</tr>
 									<tr>
@@ -137,7 +149,7 @@
 							</table>
 						</div>
 						<div class="checkout_btn_inner float-right">
-							<a class="btn_1" type="button" href="#">繼續購物</a>
+							<a class="btn_1" type="button" href="<c:url value='/'/>">繼續購物</a>
 							<button class="btn_1 checkout_btn_1" type="submit">結帳去</button>
 						</div>
 					</form>
@@ -235,8 +247,13 @@
 		    {
 		    	total += parseInt(totals[i].innerText,10);
 		    }
-		    document.getElementById("allTotal").value = total;
-		    document.getElementById("spanallTotal").innerText = total;
+		    var shipping = 0;
+			if(total < 1000){
+				shipping = 100;
+			}
+		    document.getElementById("shippingBill").innerText = shipping;
+		    document.getElementById("allTotal").value = total + shipping;
+		    document.getElementById("spanallTotal").innerText = total + shipping;
 		}
 		function minus(id) {
 			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
@@ -251,9 +268,24 @@
 		    {
 		    	total += parseInt(totals[i].innerText,10);
 		    }
-		    document.getElementById("allTotal").value = total;
-		    document.getElementById("spanallTotal").innerText = total;
+		    var shipping = 0;
+			if(total < 1000){
+				shipping = 100;
+			}
+		    document.getElementById("shippingBill").innerText = shipping;
+		    document.getElementById("allTotal").value = total + shipping;
+		    document.getElementById("spanallTotal").innerText = total + shipping;
 
+		}
+		window.onload = function(){
+			var shipping = 0;
+			var total = parseInt(document.getElementById("spanallTotal").innerText, 10);
+			if(total < 1000){
+				shipping = 100;
+			}
+		    document.getElementById("shippingBill").innerText = shipping;
+		    document.getElementById("allTotal").value = total + shipping;
+		    document.getElementById("spanallTotal").innerText = total + shipping;
 		}
 	</script>
 </body>

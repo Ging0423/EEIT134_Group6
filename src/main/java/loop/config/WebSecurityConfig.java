@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import loop.login.model.AuthUserDetailsService;
 import loop.login.model.MyAuthenticationFailureHandler;
@@ -25,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private AuthUserDetailsService userDetailService;
 	
+//	@Autowired
+//	PersistentTokenRepository persistenceTokenRepository;
+//	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
@@ -55,8 +61,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.authenticated()
 		.and()
 		.rememberMe()
+        .rememberMeCookieName("rememberme")
+        .alwaysRemember(true)
+        .useSecureCookie(true)
 		.tokenValiditySeconds(864000)
-		.key("rememberMe.key")
+		.key("rememberMe")
 		.and()
 		.csrf().disable()
 		.formLogin()
@@ -85,4 +94,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return new MyAuthenticationFailureHandler();
 	}
 	
+//	@Bean
+//	public PersistentTokenBasedRememberMeServices getPersistentTokenBasedRememberMeServices() {
+//	    PersistentTokenBasedRememberMeServices persistenceTokenBasedservice = new PersistentTokenBasedRememberMeServices("rememberme", userDetailService, persistenceTokenRepository);
+//	    persistenceTokenBasedservice.setAlwaysRemember(true);
+//	    return persistenceTokenBasedservice;
+//	  }
 }

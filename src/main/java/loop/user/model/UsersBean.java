@@ -1,8 +1,10 @@
 package loop.user.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
+import loop.video.model.VideoCommentBean;
 
 @Component
 @Entity
@@ -65,6 +68,10 @@ public class UsersBean implements Serializable {
 	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
+	@JsonManagedReference
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
+
 
 	public UsersBean() {
 
@@ -156,6 +163,16 @@ public class UsersBean implements Serializable {
 
 	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+
+	
+	
+	public List<VideoCommentBean> getVideoComment() {
+		return videoComment;
+	}
+
+	public void setVideoComment(List<VideoCommentBean> videoComment) {
+		this.videoComment = videoComment;
 	}
 
 	@Override

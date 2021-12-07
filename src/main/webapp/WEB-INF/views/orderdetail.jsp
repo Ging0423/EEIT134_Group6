@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
 <title>loop</title>
-<link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- animate CSS -->
@@ -35,64 +31,79 @@
 }
 </style>
 </head>
-
 <body>
+
 	<jsp:include page="/fragment/header.jsp" />
 
+
+	<!-- breadcrumb part start-->
 	<section class="breadcrumb_part">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
-						<h2>我的訂單</h2>
+						<h2>我的訂單明細</h2>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<div class="container-sm divWidth">
-		<table class="table table-striped table-hover">
-			<thead>
+	<div class="divWidth">
+		<table class="table table-bordered border-primary">
+			<tr>
 				<td>訂單編號</td>
-				<td>收件人</td>
+				<td>${order.orderId}</td>
+			</tr>
+			<tr>
+				<th>收件人</th>
+				<td>${order.recipient}</td>
+			</tr>
+			<tr>
 				<td>電話</td>
+				<td>${order.tel}</td>
+			</tr>
+			<tr>
 				<td>收件地址</td>
+				<td>${order.shippingAddress}</td>
+			</tr>
+			<tr>
 				<td>訂購日期</td>
+				<td>${order.orderDate}</td>
+			</tr>
+			<tr>
 				<td>總金額</td>
+				<td>${order.total}</td>
+			</tr>
+			<tr>
 				<td>付款狀態</td>
+				<td>${order.payState}</td>
+			</tr>
+			<tr>
 				<td>訂單狀態</td>
-				<td></td>
+				<td>${order.orderState}</td>
+			</tr>
+		</table>
+		<table class="table table-bordered border-primary">
+			<thead>
+				<tr>
+					<th>商品編號</th>
+					<th>商品名稱</th>
+					<th>商品價格</th>
+					<th>商品數量</th>
+				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="order" items="${allOrder}">
+				<c:forEach var="item" items="${orderItems}">
 					<tr>
-						<td><a href="<c:url value='/order/${order.orderId}'/>" target="_blank" onclick="orderWindow(${order.orderId});"/>${order.orderId}</a></td>
-						<td>${order.recipient}</td>
-						<td>${order.tel}</td>
-						<td>${order.shippingAddress}</td>
-						<td>${order.orderDate}</td>
-						<td>${order.total}</td>
-						<td>${order.payState}</td>
-						<td>${order.orderState}</td>
-						<c:choose>
-							<c:when test='${order.payState == "付款成功"}'>
-								<td></td>
-							</c:when>
-							<c:otherwise>
-								<td><button type="button"
-										onclick="ajaxCheckout(${order.orderId});">信用卡結帳</button></td>
-							</c:otherwise>
-
-						</c:choose>
+						<td>${item.itemId}</td>
+						<td>${item.itemName}</td>
+						<td>${item.price}</td>
+						<td>${item.qty}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-
-
-
 	<jsp:include page="/fragment/footer.jsp" />
 
 	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
@@ -116,23 +127,5 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-
-	<script>function ajaxCheckout(orderId) {
-    	var json = new Object();
-		json.orderId = orderId;
-		$
-		.ajax({
-			type : 'post',
-			url : 'goECPay',
-			data : JSON.stringify(json),
-			dataType : 'html',
-			contentType : 'application/json;charset=utf-8',
-			success : function(data) {
-				var myWindow = window.open();
-				myWindow.document.write(data);		
-				}
-			});
-		}
-    </script>
 </body>
 </html>

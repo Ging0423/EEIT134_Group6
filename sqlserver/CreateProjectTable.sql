@@ -164,3 +164,24 @@ id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 keyword nvarchar(100)
 )
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'allVideo')
+    drop table allVideo;
+
+create table allVideo(
+videoId int primary key identity(1,1) not null,
+videoName nvarchar(100) not null,
+videoLink nvarchar(MAX) not null,
+videoDescription nvarchar(MAX),
+href nvarchar(100)
+)
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'videoComment')
+    drop table videoComment;
+
+create table videoComment(
+id int primary key identity(1,1) not null,
+videoId int references allVideo(videoId) not null,
+userId int references users(userId) not null,
+comment nvarchar(100) not null,
+)

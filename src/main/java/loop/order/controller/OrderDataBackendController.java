@@ -48,7 +48,7 @@ public class OrderDataBackendController {
 		OrderDataBean order = orderDataService.findById(orderId);
 		m.addAttribute("order", order);
 		List<OrderItemBean> orderItems = orderItemService.findByOrderId(orderId);
-		List<ItemDisplay> items = new ArrayList<>();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
 		for(OrderItemBean i : orderItems) {
 			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
 										,allItemService.getItemPrice(i.getItemId()), i.getQty()));

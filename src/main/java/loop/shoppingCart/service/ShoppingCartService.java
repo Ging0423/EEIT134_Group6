@@ -86,7 +86,7 @@ public class ShoppingCartService {
 		List<ShoppingCartDisplay> items = new ArrayList<ShoppingCartDisplay>();
 		for (ShoppingCartBean i : list) {
 			items.add(new ShoppingCartDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
-					,"10.jpg" /*itemImgService.findByItemId(i.getItemId()).get(0).getImg()*/
+					,allItemService.findById(i.getItemId()).getItemImg().get(0).getImg()
 					,allItemService.getItemPrice(i.getItemId()), i.getQty()));
 		}
 		return items;
