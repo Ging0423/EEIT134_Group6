@@ -31,7 +31,7 @@ public class AllItemController {
 	
     @GetMapping("/backend/allitem")
 	public String backendAllItem(Model m) {
-		List<ItemDisplay> bean = allItemService.list();
+		List<ItemDisplay> bean = allItemService.listAllItem();
 		m.addAttribute("allItem", bean);
 		return "backend/allitemform";
 	}	
@@ -55,5 +55,20 @@ public class AllItemController {
 			return "redirect:/backend/kits/"+itemId;
 		}
 		return "redirect:/backend/allitem/";
+	}
+	
+	@GetMapping("/items/{id}")
+	public String selectItemsId(@PathVariable("id") Integer itemId) {
+		char id = Integer.toString(itemId).charAt(0);
+		if (id == '1') {
+			return "redirect:/items/yarn/"+itemId;
+		} else if (id == '2') {
+			return "redirect:/items/tools/"+itemId;
+		} else if (id == '3') {
+			return "redirect:/items/books/"+itemId;
+		} else if (id == '4') {
+			return "redirect:/items/kits/"+itemId;
+		}
+		return "redirect:/";
 	}
 }

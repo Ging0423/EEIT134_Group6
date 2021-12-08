@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.model.ItemImgBean;
@@ -15,7 +16,7 @@ import loop.item.yarnItem.model.YarnItemBean;
 import loop.item.yarnItem.service.YarnItemService;
 
 @Controller
-//@SessionAttributes({ "isLogin" })
+@SessionAttributes({ "isLogin" })
 public class YarnItemController {
 
 	@Autowired

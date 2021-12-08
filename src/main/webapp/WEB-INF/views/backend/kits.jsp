@@ -2,65 +2,154 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html>
 <head>
+<!-- =========== -->
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <title>後臺管理系統-商家版</title> -->
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>" type="text/css"/>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+	crossorigin="anonymous"></script>
+</head>
+<!-- =========== -->
 <title>Kits</title>
 <style>
-#img {margin:left; width:20%}
-    table{border:2px solid black; border-collapse:collapse}
-/*      background-color{rgb(208, 148, 234)} */
-a {font-size:larger; margin: 50px auto; text-decoration:none}
+#img {margin:left; width:20%} 
+table{border:2px solid black; border-collapse:collapse; margin:auto; width:90%; height: 200%}
+tr{background-color:#F4EDF2}
+.a{align='center'; width:99%}
+/* a {font-size:larger; margin: 50px auto; text-decoration:none} */
+a {text-decoration:none}
 </style>
-</head>
+
 <body>
+<!-- =========== -->
+<div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="fas fa-infinity" aria-hidden="true"></i></span>
+                        <span class="title"><h2>Loop</h2></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="fas fa-users-cog" aria-hidden="true"></i></span>
+                        <span class="title">管理員專區</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
+                        <span class="title">商品管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
+                        <span class="title">訂單管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="fas fa-comments" aria-hidden="true"></i></span>
+                        <span class="title">訊息管理</span>
+                     </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="far fa-file-video" aria-hidden="true"></i></span>
+                        <span class="title">教學影片管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value=''/>">
+                        <span class="icon"><i class="far fa-newspaper" aria-hidden="true"></i></span>
+                        <span class="title">討論區管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value='/logout'/>">    
+                        <span class="icon"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
+                        <span class="title">登出</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+     </div>
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="toggleMenu();">
+                <i class="fas fa-bars"></i>
+                </div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </label>
+                </div>
+                <div class="user">
+                    <img src="image/user.jpg">
+                </div>
+            </div>
+<!-- ========================= -->
+
 <div align='center'>
-<h3>材料包商品資料</h3>
+<div style="background-color:#B08EAD"><br>
+<h1 style="color:#fff">材料包商品資料</h1><br>
 <hr>
-<form method="post" action="<c:url value='/backend/updatekits'/>" />
-<!-- <table border='1'> -->
-<%-- <c:url var='path' value='/backend/updatebooks'/> --%>
+</div><br>
+<form method="post" action="<c:url value='/backend/updatekits'/>" >
 
 <table>
-	  <tr>
-	     <td>編號:</td>
-	     <td><input readonly name="itemId" value=${kitsData.itemId}></td>
-	  </tr>
-       <tr>
-         <td>工具名稱:</td>
-         <td><input name="itemName" value=${kitsData.itemName}></td>
-	  </tr>
-      <tr>
-         <td>工具描述:</td>
-         <td><textarea name="itemDescription" rows="4" cols="21">${kitsData.itemDescription}</textarea><td>
-<!--          <td><input id="itemDescription" name="itemDescription" type="text" /></td> -->
-      </tr>
-      <tr>
-<!--          <td>日期:</td> -->
-         <td><input type="hidden" name="addDate" value="${kitsData.addDate}"></td>
-      </tr>
-      <tr>
-         <td>庫存數量:</td>
-         <td><input name="qty" value=${kitsData.qty}></td>
-	  </tr>
-      <tr>
-         <td>價格:</td>
-         <td><input name="price" value=${kitsData.price}></td>
-	  </tr>
+	  <tr><td>編號:</td></tr>
+	  <tr><td><input class=a readonly name="itemId" value=${kitsData.itemId}></td></tr>
+      <tr><td>工具名稱:</td>
+      <tr><td><input class=a name="itemName" value=${kitsData.itemName}></td></tr>
+      <tr><td>工具描述:</td></tr>
+      <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${kitsData.itemDescription}</textarea><td></tr>
+      <tr><td><input class=a type="hidden" name="addDate" value="${kitsData.addDate}"></td></tr>
+      <tr><td>庫存數量:</td></tr>
+      <tr><td><input class=a name="qty" value=${kitsData.qty}></td></tr>
+      <tr><td>價格:</td></tr>
+      <tr><td><input class=a name="price" value=${kitsData.price}></td></tr>
+      <tr><td></td></tr>
 	  </table>
-<button type="submit">更新</button>
+	  <c:forEach var="itemImg" items="${itemImg}">
+	  <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
+      </c:forEach>
+<br><button type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deletekits'/>" method="post">
 <input type="hidden" name="itemId" value="${kitsData.itemId}">
 <input type="submit" value="刪除"><br>
-<a href="<c:url value='/backend/kits' />">回前頁</a>
+<a href="<c:url value='/backend/kits' />">回材料包商品資料總表</a>
 </form>
-<c:forEach var="itemImg" items="${itemImg}">
-    <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
-</c:forEach>
+<%-- <c:forEach var="itemImg" items="${itemImg}"> --%>
+<%--     <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> /> --%>
+<%-- </c:forEach> --%>
 </div>
-</body>
-</html>
+
+<!--     ================================ -->
+<script>
+        window.onload(toggleMenu());
+
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+    </script>
+<!--     ================================ -->
 
 </body>
 </html>

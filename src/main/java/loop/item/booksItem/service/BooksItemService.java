@@ -44,7 +44,6 @@ public class BooksItemService {
 	public BooksItemBean persist(BooksItemBean bean) {
 		entityManager.persist(bean);
 		return bean;
-
 	}
 
 	public List<BooksItemBean> findAll() {

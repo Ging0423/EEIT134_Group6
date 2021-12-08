@@ -105,7 +105,20 @@ public class AllItemService {
 		List<ItemDisplay> list = new ArrayList<ItemDisplay>();
 		for(AllItemBean i : allItem) {
 			list.add(new ItemDisplay(i.getItemId(), getItemName(i.getItemId())
-					, getItemPrice(i.getItemId()), getItemQty(i.getItemId())));
+					, getItemPrice(i.getItemId()), getItemQty(i.getItemId()),
+					i.getItemImg().get(0).getImg()));
+		}
+		return list;
+	}
+	
+	public List<ItemDisplay> listAllItem(){
+		List<AllItemBean> allItem = findAll();
+		List<ItemDisplay> list = new ArrayList<ItemDisplay>();
+		for(AllItemBean i : allItem) {
+			list.add(new ItemDisplay(i.getItemId(), getItemName(i.getItemId())
+					,i.getItemImg()
+					, getItemPrice(i.getItemId()), getItemQty(i.getItemId())
+					));
 		}
 		return list;
 	}

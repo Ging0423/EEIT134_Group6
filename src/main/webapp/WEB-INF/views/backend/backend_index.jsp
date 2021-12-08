@@ -28,13 +28,13 @@
                 <li>
                     <a href="<c:url value='/backend/allitem'/>">
                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
-                        <span class="title">商品管理</span>
+                        <span class="title">商品管理</span>
                     </a>
                 </li>
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
-                        <span class="title">訂單管理</span>
+                        <span class="title">訂單管理</span>
                     </a>
                 </li>
                 <li>
@@ -46,13 +46,13 @@
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="far fa-file-video" aria-hidden="true"></i></span>
-                        <span class="title">教學影片管理</span>
+                        <span class="title">教學影片管理</span>
                     </a>
                 </li>
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="far fa-newspaper" aria-hidden="true"></i></span>
-                        <span class="title">討論區管理</span>
+                        <span class="title">討論區管理</span>
                     </a>
                 </li>
                 <li>
