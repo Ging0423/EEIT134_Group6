@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<<<<<<< Updated upstream
 <!doctype html>
 <html lang="zxx">
 
@@ -10,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Loop 討論區-發文</title>
+<title>Loop 討論區</title>
 <link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
@@ -29,6 +28,8 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<!-- forum CSS -->
+<link rel="stylesheet" href="<c:url value='/css/forumstyle.css'/>">
 </head>
 
 <body>
@@ -76,7 +77,7 @@
 											class="dropdown-item" href="checkout.jsp">商品結帳</a> <a
 											class="dropdown-item" href="<c:url value='/cart'/>">購物車</a> <a
 											class="dropdown-item" href="confirmation.jsp">我的訂單</a> <a
-											class="dropdown-item" href="<c:url value='/myarticle'/>">我的文章</a>
+											class="dropdown-item" href="<c:url value='/forum/myforum'/>">我的文章</a>
 									</div></li>
 
 								<li class="nav-item dropdown"><a
@@ -117,10 +118,46 @@
 	<!-- Header part end-->
 
 	<!-- Forum content start here -->
+	<section class="forum">
+		<div class="banner">
+			<h2>討論區</h2>
+			<span>你，與世界的對話</span>
+		</div>
 
-	<section class="forum_content">
-		<div id="editor">
-			<p>請在這裡填寫內容</p>
+		<div class="forum_container">
+			<div class="title">
+				<div class="dropdown">
+				  <input type="button" id="category_btn" onclick="selectCategory()" class="dropbtn" value="請選擇主題類別">
+				  <div id="category" class="dropdown-content">
+					    <a onclick="changeCategoryid(0)">請選擇主題類別</a>
+					    <a onclick="changeCategoryid(1)">成品分享</a>
+					    <a onclick="changeCategoryid(2)">手作教學</a>
+					    <a onclick="changeCategoryid(3)">材料心得</a>
+					    <a onclick="changeCategoryid(4)">店家評點</a>
+					    <a onclick="changeCategoryid(5)">活動分享</a>
+					    <a onclick="changeCategoryid(6)">二手交易</a>
+				  </div>
+				</div>
+				<input type="text" size="25" id="title" onkeyup="titlecheck()">
+				<span id="titlecheck">尚可輸入25個字元</span>
+			</div>
+
+			<div class="editor_container">
+				<div id="editor">
+					<p>請輸入文章內容</p>
+				</div>
+			</div>
+
+			<span id="contenttest"></span>
+
+<!-- 			<div> -->
+<!-- 				<label id="articletag"><span>主題標籤</span></label> <label -->
+<!-- 					id="pubdate_set"><span>定時發布</span></label> -->
+<!-- 			</div> -->
+
+			<div class="newPost">
+				<input type="submit" value="發表新文章" onclick="sendArticle()">
+			</div>
 		</div>
 	</section>
 	<!-- Forum content end -->
@@ -224,152 +261,9 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-	<script src="你的路徑/build/ckeditor.js"></script>
-	<script>
-		ClassicEditor.create( document.querySelector( '#editor' ), {
-			// 這裡可以設定 plugin
-		}).then( editor => {
-			console.log( 'Editor was initialized', editor );
-		}).catch( err => {
-			console.error( err.stack );
-		});
-	</script>
+	<script src="<c:url value='/js/ckeditor.js'/>"></script>
+	<script src="<c:url value='/js/translations/zh.js'/>"></script>
+	<script src="<c:url value='/js/forum/forum_newPost.js'/>"></script>
 </body>
 
-=======
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>發布新文章</title>
-<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
-<link rel="stylesheet" href="<c:url value='/css/forumstyle.css'/>">
-<script src="<c:url value='/js/ckeditor.js'/>"></script>
-</head>
-<body>
-	<div class="forum_content">
-		<span> <select id="category">
-				<option value='0'>請選擇主題類別</option>
-				<option value="1">成品分享</option>
-				<option value="2">手作教學</option>
-				<option value="3">材料心得</option>
-				<option value="4">店家評點</option>
-				<option value="5">活動分享</option>
-				<option value="6">二手交易</option>
-		</select> <input type="text" size="25" id="title" onkeyup="titlecheck()">
-			<span id="titlecheck">尚可輸入25個字元</span>
-		</span>
-
-		<textarea id="editor">
-			<p>請輸入文章內容</p>
-		</textarea>
-		
-		<span id="contenttest"></span>
-
-		<div>
-			<label id="articletag"><span>主題標籤</span></label> <label
-				id="pubdate_set"><span>定時發布</span></label>
-		</div>
-
-		<input type="submit" value="發表新文章" onclick="sendArticle()">
-	</div>
-
-	<script type="text/javascript">
-		var myEditor;
-		
-		ClassicEditor.create( document.querySelector('#editor'), {
-		})
-		.then(editor => {
-			console.log( 'Editor was initialized', editor );
-			myEditor = editor;
-		 })
-		 .catch( err => {
-			console.error( err.stack );
-		 });
-		
-		//檢查標題字數
-		function titlecheck(){
-	    	var title = $("#title").val();
-	    	var textleft = 25-title.length;
-	    	
-	    	if(textleft >= 0)
-	    		$("#titlecheck").html("尚可輸入" + textleft + "個字元");
-	    	else
-	    		$("#titlecheck").html("已超過標題輸入上限");
-	    }
-		
-		//檢查文章資料是否錯誤並送出資料到後台
-		function sendArticle(){
-			var title = $("#title").val();
-			var categoryid = $("#category").val();
-			var errorMessage = [];
-			
-			// check文章類別 標題是否空白或標題是否超過字數
-			if($.trim(categoryid) == '0'){
-				errorMessage.push('需要選擇文章類別');
-			}
-			if($.trim(title) == ''){
-				errorMessage.push('\n請加入文章標題');
-			}
-			if($.trim(title).length >25){
-				errorMessage.push('\n標題字數超過上限，請修改標題');
-			}
-			if(errorMessage.length){
-				alert (errorMessage);
-				return;
-			}
-			
-			//確認資料ok，送出資料到後端
-			var article = {
-				"title":title,
-				"authorid":1,
-				"categoryid":categoryid,
-				"content":myEditor.getData()
-			}
-				
-			//發文成功送去的頁面url
-			const url = "/loop/forum/newArticleSuccess";
-			
-			$.ajax({
-				type:'post',
-				url: url,
-				dataType:'JSON',
-				contentType:'application/json',
-				data:JSON.stringify(article),
-				success: function(data){
-					console.log(data);
-				}
-			}); 
-		}
-	</script>
-
-	<script>
-		
-	
-		
-		
-		
-			
-
-			
-// 			// Create XMLHttpRequest
-// 			var xhr = new XMLHttpRequest();
-
-// 			// Create Callback function
-// 			xhr.onreadystatechange = function(){
-// 			  if(xhr.readyState === 4 && xhr.status === 200){
-// // 			    document.getElementById('ajax').innerHTML = xhr.responseText;
-// 			   }
-// 			};
-
-// 			// open('格式','網址','同步與非同步')
-// 			xhr.open('POST', url)
-
-// 			// send request
-// 			// 傳送資料:title, categoryid, authorid, content
-// 			xhr.send(article);
-			
-	</script>
-</body>
->>>>>>> Stashed changes
 </html>

@@ -1,12 +1,18 @@
 package tw.JoyHsieh.forum.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -33,8 +39,8 @@ public class Article {
 	private String content;
 
 	@Column(name = "POSTDATE")
-	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-	private Date postDate;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
+	private Date postdate;
 
 	@Column(name = "AUTHORID")
 	private int authorid;
@@ -47,6 +53,25 @@ public class Article {
 	
 	@Column(name = "SHARENUM")
 	private int shareNum;
+
+	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
+	private List<Reply> reply;
+	
+	public Date getPostdate() {
+		return postdate;
+	}
+
+	public void setPostdate(Date postdate) {
+		this.postdate = postdate;
+	}
+
+	public List<Reply> getReply() {
+		return reply;
+	}
+
+	public void setReply(List<Reply> reply) {
+		this.reply = reply;
+	}
 
 	public int getArticleid() {
 		return articleid;
@@ -78,14 +103,6 @@ public class Article {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Date getPostDate() {
-		return postDate;
-	}
-
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
 	}
 
 	public int getAuthorid() {
