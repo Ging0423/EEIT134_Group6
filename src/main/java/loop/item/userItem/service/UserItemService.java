@@ -2,13 +2,13 @@ package loop.item.userItem.service;
 
 import java.util.List;
 import java.util.Optional;
-
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
-
+import loop.item.allItem.model.ItemDisplay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import loop.item.allItem.service.ItemImgService;
 import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.service.AllItemService;
 import loop.item.userItem.model.UserItemBean;
@@ -26,7 +26,8 @@ public class UserItemService {
 	
 	@Autowired
 	private AllItemService allItemService;
-	
+	@Autowired
+	private ItemImgService itemImgService;
 	public void create(UserItemBean bean) {
 		userRepo.save(bean);
 		AllItemBean allItem = new AllItemBean();
@@ -63,4 +64,15 @@ public class UserItemService {
 		userRepo.deleteById(id);
 	}
 
+	public List<ItemDisplay> list(){
+		
+		List<UserItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (UserItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			,allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
+	}
 }

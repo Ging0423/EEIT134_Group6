@@ -1,7 +1,7 @@
 package loop.item.userItem.controller;
 
 import java.util.List;
-
+import loop.item.allItem.model.ItemDisplay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +30,7 @@ public class UserItemController {
 	
 	@GetMapping("/items/user")
 	public String selectAll(Model m) {
-		List<UserItemBean> bean = userService.findAll();
+		List<ItemDisplay> bean = userService.list();
 		m.addAttribute("allItem", bean);
 		return "items/user";
 	}

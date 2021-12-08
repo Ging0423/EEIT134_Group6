@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>會員商品</title>
 <style>
+#img {margin:left; width:20%}
    table{border:2px solid black; border-collapse:collapse} 
 
 a {font-size:larger; margin: 50px auto; text-decoration:none}
@@ -56,7 +57,7 @@ a {font-size:larger; margin: 50px auto; text-decoration:none}
 <a href="<c:url value='/backend/useritem' />">回前頁</a>
 </form> 
 <c:forEach var="itemImg" items="${itemImg}">
-    <img src=<c:url value="/items/img/${itemImg.img}"/> />
+     <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
 </c:forEach>
 </div>
 </body>
