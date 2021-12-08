@@ -102,7 +102,7 @@
 								</li>
 
 								<li class="nav-item"><a class="nav-link"
-									href="contact.html">教學影片</a></li>
+									href="<c:url value='/video'/>">教學影片</a></li>
 
 								<c:if test="${isLogin != null}">
 									<li class="nav-item"><div>

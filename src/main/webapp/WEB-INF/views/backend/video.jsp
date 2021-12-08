@@ -10,12 +10,29 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>
->
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
 	type="text/css">
+<link rel="icon" href="<c:url value='img/favicon.png'/>">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<!-- animate CSS -->
+<link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/all.css'/>">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="<c:url value='/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/themify-icons.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
+<!-- style CSS -->
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 <style>
 .divWidth {
-	width: 75%;
+	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -35,23 +52,23 @@
 				</a></li>
 				<li><a href="<c:url value='/backend/allitem'/>"> <span
 						class="icon"><i class="fas fa-shopping-bag"
-							aria-hidden="true"></i></span> <span class="title">商品管理</span>
+							aria-hidden="true"></i></span> <span class="title">商品管理</span>
 				</a></li>
-				<li><a href="<c:url value='/backend/order'/>"> <span
-						class="icon"><i class="fas fa-cart-arrow-down"
-							aria-hidden="true"></i></span> <span class="title">訂單管理</span>
+				<li><a href="<c:url value=''/>"> <span class="icon"><i
+							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
+						class="title">訂單管理</span>
 				</a></li>
 				<li><a href="<c:url value=''/>"> <span class="icon"><i
 							class="fas fa-comments" aria-hidden="true"></i></span> <span
 						class="title">訊息管理</span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
-							class="far fa-file-video" aria-hidden="true"></i></span> <span
-						class="title">教學影片管理</span>
+				<li><a href="<c:url value='/backend/video'/>"> <span
+						class="icon"><i class="far fa-file-video"
+							aria-hidden="true"></i></span> <span class="title">教學影片管理</span>
 				</a></li>
 				<li><a href="<c:url value=''/>"> <span class="icon"><i
 							class="far fa-newspaper" aria-hidden="true"></i></span> <span
-						class="title">討論區管理</span>
+						class="title">討論區管理</span>
 				</a></li>
 				<li><a href="<c:url value='/logout'/>"> <span class="icon"><i
 							class="fas fa-sign-out-alt" aria-hidden="true"></i></span> <span
@@ -59,6 +76,7 @@
 				</a></li>
 			</ul>
 		</div>
+
 		<div class="main">
 			<div class="topbar">
 				<div class="toggle" onclick="toggleMenu();">
@@ -74,28 +92,33 @@
 				</div>
 			</div>
 			<div>
-				<a href="<c:url value='/backend/video/create'/>">新增影片</a>
 				<div class="divWidth">
-					<table>
+					<a class="btn btn-primary"
+						href="<c:url value='/backend/video/create'/>">新增影片</a>
+					<table class="table table-striped table-bordered border-primary">
 						<thead>
 							<tr>
 								<th>影片連結</th>
-								<th>影片編號</th>
-								<th>影片名稱</th>
-								<th>影片敘述</th>
-								<th>商品連結</th>
+								<th style="padding: 4px;">影片編號</th>
+								<th style="padding: 10px;">影片名稱</th>
+								<th style="padding: 10px;">影片敘述</th>
+								<th style="padding: 10px;">商品連結</th>
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="video" items="allVideo">
-							<tr>
-							<td><iframe width="560" height="315" src="https://www.youtube.com/embed/${video.Link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
-							<td>${video.videoId}</td>
-							<td>${video.videoName}</td>
-							<td>${video.videoDescription}</td>
-							<td><a href='<c:url value="/items/${video.href}"/>'>${video.href}</a></td>
-							</tr>
-						</c:forEach>
+							<c:forEach var="video" items="${allVideo}">
+								<tr>
+									<td><iframe width="560" height="315"
+											src="https://www.youtube.com/embed/${video.videoLink}"
+											title="YouTube video player" frameborder="0"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe></td>
+									<td><a href="<c:url value='/backend/video/${video.videoId}'/>">${video.videoId}</a></td>
+									<td>${video.videoName}</td>
+									<td>${video.videoDescription}</td>
+									<td><a href='<c:url value="/items/${video.href}"/>'>${video.href}</a></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

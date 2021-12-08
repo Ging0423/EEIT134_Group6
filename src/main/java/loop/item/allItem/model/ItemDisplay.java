@@ -41,6 +41,25 @@ public class ItemDisplay implements Serializable{
 		this.qty = qty;
 		this.img = img;
 	}
+	public ItemDisplay(int itemId, String itemName, String img, int price) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.img = img;
+		this.price = price;
+	}
+	
+	
+
+	public ItemDisplay(int itemId, String itemName, int price, int qty) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.price = price;
+		this.qty = qty;
+	}
+
+
 
 	public int getQty() {
 		return qty;
@@ -51,13 +70,7 @@ public class ItemDisplay implements Serializable{
 		
 	}
 
-	public ItemDisplay(int itemId, String itemName, String img, int price) {
-		super();
-		this.itemId = itemId;
-		this.itemName = itemName;
-		this.img = img;
-		this.price = price;
-	}
+	
 
 	public int getItemId() {
 		return itemId;

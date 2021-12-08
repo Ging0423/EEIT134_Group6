@@ -51,14 +51,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
-		.antMatchers(HttpMethod.GET, "/backend/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.GET).permitAll()
 		.antMatchers(HttpMethod.POST, "/cart/**").authenticated()
+		.antMatchers(HttpMethod.POST, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.POST, "/order/**").authenticated()
-		.antMatchers(HttpMethod.POST, "/backend/**").authenticated()
-		.antMatchers(HttpMethod.POST)
-		.permitAll().anyRequest()
-		.authenticated()
+		.antMatchers(HttpMethod.POST, "/video/comment").hasAuthority("ROLE_ADMIN")
+		.antMatchers(HttpMethod.POST).permitAll()
+		.anyRequest().authenticated()
 		.and()
 		.rememberMe()
         .rememberMeCookieName("rememberme")
@@ -94,10 +94,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return new MyAuthenticationFailureHandler();
 	}
 	
-//	@Bean
-//	public PersistentTokenBasedRememberMeServices getPersistentTokenBasedRememberMeServices() {
-//	    PersistentTokenBasedRememberMeServices persistenceTokenBasedservice = new PersistentTokenBasedRememberMeServices("rememberme", userDetailService, persistenceTokenRepository);
-//	    persistenceTokenBasedservice.setAlwaysRemember(true);
-//	    return persistenceTokenBasedservice;
-//	  }
 }

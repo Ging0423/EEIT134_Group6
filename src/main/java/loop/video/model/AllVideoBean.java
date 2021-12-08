@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Component
 @Entity
 @Table(name = "allVideo")
@@ -30,7 +32,7 @@ public class AllVideoBean implements Serializable{
 	private String videoDescription;
 	
 	private String href;
-	
+	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "allVideo",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment;
 

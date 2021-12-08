@@ -44,7 +44,7 @@
                      </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/video'/>">
                         <span class="icon"><i class="far fa-file-video" aria-hidden="true"></i></span>
                         <span class="title">教學影片管理</span>
                     </a>

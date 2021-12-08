@@ -1,7 +1,9 @@
 package loop.video.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,7 @@ import loop.video.model.AllVideoRepository;
 @Transactional
 public class AllVideoService {
 	
+	@Autowired
 	private AllVideoRepository allVideoRepo;
 	
 	public void save(AllVideoBean bean) {
@@ -30,4 +33,12 @@ public class AllVideoService {
 		return allVideoRepo.findAll();
 	}
 
+	public AllVideoBean findById(Integer videoId) {
+		Optional<AllVideoBean> opt = allVideoRepo.findById(videoId);
+		if(opt.isEmpty()) {
+			return null;
+		}
+		else
+			return opt.get();
+	}
 }

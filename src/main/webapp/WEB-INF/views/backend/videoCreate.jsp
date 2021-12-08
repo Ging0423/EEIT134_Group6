@@ -13,16 +13,38 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
 	type="text/css">
+	<link rel="icon" href="img/favicon.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<!-- animate CSS -->
+<link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/all.css'/>">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="<c:url value='/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/themify-icons.css'/>">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
+<!-- style CSS -->
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 <style>
 .divWidth {
 	width: 75%;
 	margin-right: auto;
 	margin-left: auto;
 }
+.container{
+    position: relative;
+    width: 100%;
+}
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/'/>"> <span class="icon"><i
@@ -73,29 +95,33 @@
 					<img src="image/user.jpg">
 				</div>
 			</div>
-			<div>
-				<form:form method="POST" action="/backend/video/create"
+			<div class=divWidth>
+			<c:url value="/backend/video/create" var="url"/>
+				<form:form method="POST" action="${url}"
 					modelAttribute="video">
 
-					<table class="table table-success table-striped divWidth">
+					<table class="table table-striped">
 						<tr>
 							<td><form:label path="videoName">影片名稱</form:label></td>
 							<td><form:input path="videoName" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="videoLink">連結</form:label></td>
-							<td><form:input path="videoLink" /></td>
+							<td><form:input id="url" path="videoLink"/></td>
 						</tr>
 						<tr>
 							<td><form:label path="videoDescription">影片敘述</form:label></td>
-							<td><form:input path="videoDescription" /></td>
+							<td><form:textarea rows="3" cols="30" path="videoDescription" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="href">產品編號</form:label></td>
 							<td><form:input path="href" /></td>
 						</tr>
 						<tr>
-							<td><button type="submit">新增</button></td>
+							<td><button class="btn btn-primary table-bordered border-primary" type="submit">新增</button></td>
+							<td>
+								<div class="videoDiv"></div>
+							</td>
 						</tr>
 					</table>
 				</form:form>
@@ -113,6 +139,7 @@
 			navigation.classList.toggle('active');
 			main.classList.toggle('active');
 		}
+		
 	</script>
 </body>
 </html>

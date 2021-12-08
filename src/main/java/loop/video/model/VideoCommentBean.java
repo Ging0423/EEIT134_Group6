@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import loop.user.model.UsersBean;
 
 @Component
@@ -31,10 +34,12 @@ public class VideoCommentBean implements Serializable{
 	
 	private String comment;
 	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "videoId",insertable = false, updatable = false)
 	private AllVideoBean allVideo;
