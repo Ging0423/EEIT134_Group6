@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>pillloMart</title>
+<title>loop</title>
 <link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style>
+.single_product_img {margin:auto; width:70%}
+</style>
 </head>
 
 <body>
@@ -53,12 +56,11 @@
 				<div class="col-lg-12">
 					<div class="product_img_slide owl-carousel">
 					<c:forEach var="itemImg" items="${itemImg}">
-					
 						<div class="single_product_img">
 							<img src='<c:url value="/items/img/${itemImg.img}" />' alt="#" class="img-fluid">
 						</div>
 					</c:forEach>
-					
+					</div>
 				</div>
 				<div class="col-lg-8">
 					<div class="single_product_text text-center">
@@ -69,7 +71,7 @@
 						<hr>
 						<p>${item.itemDescription}</p>
 						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
-						<form action="<c:url value='/cart'/>" method="POST"
+						<form action="<c:url value='/cart/addToCart'/>" method="POST"
 							name="addToCart">
 							<input type="hidden" name="itemId" value="${item.itemId}">
 							<div class="card_area">

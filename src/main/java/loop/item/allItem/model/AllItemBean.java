@@ -1,7 +1,9 @@
 package loop.item.allItem.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -61,15 +63,15 @@ public class AllItemBean implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL )
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem")
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="allItem", cascade = CascadeType.ALL)
-	private Set<ItemImgBean> itemImg = new LinkedHashSet<ItemImgBean>();
+	private List<ItemImgBean> itemImg = new ArrayList<ItemImgBean>();
 
 
 	public AllItemBean() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Integer getItemId() {
@@ -136,13 +138,12 @@ public class AllItemBean implements Serializable {
 		this.orderItem = orderItem;
 	}
 
-	public Set<ItemImgBean> getItemImg() {
+	public List<ItemImgBean> getItemImg() {
 		return itemImg;
 	}
 
-	public void setItemImg(Set<ItemImgBean> itemImg) {
+	public void setItemImg(List<ItemImgBean> itemImg) {
 		this.itemImg = itemImg;
 	}
-
 	
 }

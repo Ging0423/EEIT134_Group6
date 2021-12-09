@@ -38,6 +38,18 @@ public class OrderDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public OrderDataBean findById(Integer orderId) {
+		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
+		if(op.isEmpty()) {
+			return null;
+		}
+		return op.get();
+	}
+	
+	public void update(OrderDataBean bean) {
+		orderDataRepo.save(bean);
+	}
 
 	public List<OrderDataBean> findByUserId(Integer userId) {
 		// TODO Auto-generated method stub

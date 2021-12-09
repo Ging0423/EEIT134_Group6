@@ -1,3 +1,84 @@
+//package loop.user.controller;
+//
+////import java.text.SimpleDateFormat;
+////import org.springframework.util.SystemPropertyUtils;
+//import java.util.Date;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//
+//import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.SessionAttributes;
+//
+//import loop.user.model.UsersBean;
+//import loop.user.service.UsersService;
+//
+//@Controller
+//@SessionAttributes({ "isLogin" })
+//public class UsersController {
+//
+//	private UsersService usersService;
+//
+//	@Autowired
+//	public UsersController(UsersService usersService) {
+//		super();
+//		this.usersService = usersService;
+//	}
+//
+//	@GetMapping("/joinmember")
+//	public String joinMember(Model m) {
+//		UsersBean bean = new UsersBean();
+//		m.addAttribute("usersData", bean);
+//		return "joinmember";
+//	}
+//
+//	@PostMapping("joinmember")
+//	public String joinMember(@ModelAttribute("usersBean") UsersBean bean) {
+//		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
+//		bean.setUserPassword(password);
+//		bean.setUserIdentity("1");
+//		Date current = new Date();
+//		bean.setRegisterDate(current);
+//		usersService.save(bean);
+//		return "redirect:/login";
+//	}
+//
+//	@GetMapping("/updatemember")
+//	public String updateMember(Model m) {
+//		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+//		m.addAttribute("usersData", bean);
+//		return "updatemember";
+//	}
+//	//更新會員資料
+//	@PostMapping("updatemember") 
+//	public String update(@ModelAttribute("isLogin") UsersBean userBean, Model m, HttpServletRequest request,
+//			HttpServletResponse response) {
+//		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+//		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
+//		System.out.println(password);
+//		bean.setUserIdentity("1");
+//		Date current = new Date();
+//		bean.setRegisterDate(current);
+//		usersService.save(bean);
+//		return "redirect:/login";
+//	}
+//
+//	@DeleteMapping("/users/{id}")
+//	public void delete(@PathVariable Integer id) {
+//		usersService.deleteById(id);
+//	}
+//
+//}
+
 package loop.user.controller;
 
 //import java.text.SimpleDateFormat;
@@ -32,6 +113,14 @@ public class UsersController {
 		this.usersService = usersService;
 	}
 
+	// 連結"關於"頁面
+	@GetMapping("/about")
+	public String about(Model m) {
+//		UsersBean bean = new UsersBean();
+//		m.addAttribute("usersData", bean);
+		return "about";
+	}
+
 	@GetMapping("/joinmember")
 	public String joinMember(Model m) {
 		UsersBean bean = new UsersBean();
@@ -56,37 +145,27 @@ public class UsersController {
 		m.addAttribute("usersData", bean);
 		return "updatemember";
 	}
-//	@PostMapping("updatemember")
-//	public String updateMember1(Model m) {
-//		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-//		m.addAttribute("usersData", bean);
-//		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
-//		bean.setUserPassword(password);
-//		bean.setUserIdentity("1");
-//		Date current = new Date();
-//		bean.setRegisterDate(current);
-//		usersService.save(bean);
-//		return "redirect:/login";
-//	}
-	@PostMapping("updatemember") // 修改
+
+	// 會員資料修改
+	@PostMapping("updatemember")
 	public String update(@ModelAttribute("isLogin") UsersBean userBean, Model m, HttpServletRequest request,
 			HttpServletResponse response) {
-//		int count = 0;
 		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
 		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
 		bean.setUserPassword(password);
-//		bean.setUserPassword(new BCryptPasswordEncoder().encode(request.getParameter("password")));
-//		bean.setUserName(request.getParameter("name"));
-//		bean.setEmail(request.getParameter("email"));
-//		bean.setTel(request.getParameter("tel"));
-//		bean.setUserAddress(request.getParameter("address"));
-//		bean.setUserPassword(password);
 		bean.setUserIdentity("1");
 		Date current = new Date();
 		bean.setRegisterDate(current);
 		usersService.save(bean);
 		return "redirect:/login";
 	}
+
+	@DeleteMapping("/users/{id}")
+	public void delete(@PathVariable Integer id) {
+		usersService.deleteById(id);
+	}
+	
+	
 	// @GetMapping("/users/{id}")
 	// public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer
 	// id) {
@@ -107,11 +186,7 @@ public class UsersController {
 	// public void add(@RequestBody UsersBean user) {
 	// usersService.saveUser(user);
 	// }
-	 //根據id刪除資料
-	 @DeleteMapping("/users/{id}")
-	 public void delete(@PathVariable Integer id) {
-	 usersService.deleteById(id);
-	 }
+	// 根據id刪除資料
 
 	// @PutMapping("/users/{id}")
 	// public ResponseEntity<?> update(@RequestBody UsersBean putuser, @PathVariable

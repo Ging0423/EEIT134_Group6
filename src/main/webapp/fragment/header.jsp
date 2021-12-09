@@ -56,14 +56,14 @@
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/'/>">首頁</a></li>
-								<li class="nav-item"><a class="nav-link" href="about.jsp">關於</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='about'/>">關於</a>
 								</li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"
 									id="navbarDropdown_1" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 商品 </a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a>
+										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">紗線</a>
 										<a class="dropdown-item" href="<c:url value='/items/tools'/>">工具</a>
 										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
 										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a>
@@ -84,7 +84,7 @@
 											<a class="dropdown-item"
 												href="<c:url value='/order/myorder'/>">我的訂單</a>
 											<a class="dropdown-item"
-												href="<c:url value='updatemember'/>">會員資料修改</a>	
+												href="<c:url value='updatemember'/>">會員資料修改</a>
 										</c:if>
 										<c:if test="${isLogin != null && isLogin.userIdentity == '0'}">
 											<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>

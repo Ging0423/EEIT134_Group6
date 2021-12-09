@@ -73,9 +73,11 @@ public class KitsItemBackendController {
 		AllItemBean allItem = allItemService.findById(itemId);
 		
 		List<MultipartFile> files = mrequest.getFiles("img");
-		for (int i = 0; i < files.size()-1; i++) {			
-			String imageFile = itemImgService.getRandomString();
-			String fileName = files.get(i).getOriginalFilename();
+//		for (int i = 0; i < files.size()-1; i++) {		
+		for(MultipartFile i : files) {	
+			String imageFile = itemImgService.getRandomString(8);
+			String fileName = i.getOriginalFilename();
+//			String fileName = files.get(i).getOriginalFilename();
 			String extension = "";
 			int index = fileName.lastIndexOf('.');
 			if (index > 0) {
@@ -89,7 +91,8 @@ public class KitsItemBackendController {
 			File savePathFile = new File(savePath);
 			ItemImgBean imgBean = new ItemImgBean();
 			try {
-				files.get(i).transferTo(savePathFile);
+//				files.get(i).transferTo(savePathFile);
+				i.transferTo(savePathFile);
 				imgBean.setImg(imageFile + "." +extension);
 				imgBean.setAllItem(allItem);
 				itemImgService.save(imgBean);		
@@ -106,7 +109,7 @@ public class KitsItemBackendController {
 		m.addAttribute("kitsData",bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "/backend/kits";
+		return "backend/kits";
 	}
 	
 	@PostMapping("updatekits")

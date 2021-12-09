@@ -27,6 +27,11 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style type="text/css">
+	.single_product_item {
+	display: none;
+}
+</style>
 </head>
 
 <body>
@@ -40,7 +45,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
-						<h2>product list</h2>
+						<h2>紗線</h2>
 					</div>
 				</div>
 			</div>
@@ -110,8 +115,8 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<!-- 										<img src="" alt="#" class="img-fluid"> -->
-                                            <a href='<c:url value="/items/yarn/${item.itemId}"/>'><img src=""></a>
+<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
 											<a href='<c:url value="/items/yarn/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
@@ -316,6 +321,21 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
+	
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+	
+<script>  
+$(document).ready (function () {  
+  $(".single_product_item").slice(0, 6).show();  
+  $(".btn_3").on("click", function(e){  
+    e.preventDefault();  
+    $(".single_product_item:hidden").slice(0, 6).slideDown();  
+    if ($(".single_product_item:hidden").length == 0) {  
+      $(".btn_3").text("沒有更多商品").addClass("noContent");  
+    }  
+  });  
+  })  
 </body>
 
 </html>

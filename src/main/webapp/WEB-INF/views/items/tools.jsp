@@ -27,6 +27,11 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<style type="text/css">
+	.single_product_item {
+	display: none;
+}
+</style>
 </head>
 
 <body>
@@ -40,7 +45,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
-						<h2>product list</h2>
+						<h2>工具</h2>
 					</div>
 				</div>
 			</div>
@@ -110,12 +115,12 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<!-- 										<img src="" alt="#" class="img-fluid"> -->
-                                            <a href='<c:url value="/items/tools/${item.itemId}"/>'><img src=""></a>
+<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
 											<a href='<c:url value="/items/tools/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
-                                            <p>${item.price}</p>
+                                            <p>$${item.price}</p>
 <%-- 										<p>${item.color}</p> --%>
 									</div>
 								</div>
@@ -279,37 +284,51 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-	<script type="text/javascript">
-		function deleteById(id) {
-			let obj = new Object();
-			obj.itemId = id;
-			let json = JSON.stringify(obj, null, 4);
-			deleteAjax(json);
-		}
-		function deleteAjax(id) {
-			$.ajax({
-						type : 'post',
-						url : 'tools/deletetools',
-						data : id,
-						dataType : 'JSON',
-						contentType : 'application/json;charset=utf-8',
-						success : function(data) {
+	
+	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+		
+	<script>  
+	$(document).ready (function () {  
+	  $(".single_product_item").slice(0, 6).show();  
+	  $(".btn_3").on("click", function(e){  
+	    e.preventDefault();  
+	    $(".single_product_item:hidden").slice(0, 6).slideDown();  
+	    if ($(".single_product_item:hidden").length == 0) {  
+	      $(".btn_3").text("沒有更多商品").addClass("noContent");  
+	    }  
+	  });  
+	  })  
+// 		function deleteById(id) {
+// 			let obj = new Object();
+// 			obj.itemId = id;
+// 			let json = JSON.stringify(obj, null, 4);
+// 			deleteAjax(json);
+// 		}
+// 		function deleteAjax(id) {
+// 			$.ajax({
+// 						type : 'post',
+// 						url : 'tools/deletetools',
+// 						data : id,
+// 						dataType : 'JSON',
+// 						contentType : 'application/json;charset=utf-8',
+// 						success : function(data) {
 
-							console.log('success:' + data);
-							var json = JSON.stringify(data, null, 4);
-							console.log('json:' + json);
+// 							console.log('success:' + data);
+// 							var json = JSON.stringify(data, null, 4);
+// 							console.log('json:' + json);
 
-							$('#ajax').empty("");
+// 							$('#ajax').empty("");
 
-							if (data == null) {
+// 							if (data == null) {
 
-							} else {
-								window.location.href = "<c:url value='/tools'/>";			   
+// 							} else {
+// 								window.location.href = "<c:url value='/tools'/>";			   
 										
-							}
-						}
-					});
-		}
+// 							}
+// 						}
+// 					});
+// 		}
 	</script>
 </body>
 

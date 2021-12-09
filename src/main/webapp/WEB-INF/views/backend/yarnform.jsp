@@ -14,10 +14,10 @@
 	crossorigin="anonymous"></script>
 </head>
 <!-- =========== -->
-<title>Tools Form</title>
+<title>Yarn Form</title>
 <style>
 table{margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse} 
+table,th,td{border:2px solid black; border-collapse:collapse}
 th{background-color:#F4EDF2}
 /* a {font-size:x-large; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
@@ -82,38 +82,41 @@ a {text-decoration:none}
 
 <div align='center'>
 <div style="background-color:#B08EAD"><br>
-<h1 style="color:#fff">工具商品資料</h1><br>
+<h1 style="color:#fff">紗線商品資料總表</h1><br>
 <hr>
 </div><br>
 
-<a class=a href="<c:url value='/backend/tools/create'/>">新增</a>
+<a class=a href="<c:url value='/backend/yarn/create'/>">新增</a>
 
-<table border="1">
-<table>
+<table border='1'>
     <thead>
         <th>編號</th>
-        <th>工具名稱</th>
-        <th>規格</th>
-        <th>工具簡介</th>
+        <th>紗線名</th>
+        <th>材質</th>
+        <th>尺寸(直徑、規格)</th>
+        <th>顏色</th>
+        <th>紗線簡介</th>
         <th>日期</th>
-		<th>庫存數量</th>
-		<th>價格</th>	
-    </thead>
+        <th>庫存數量</th>
+        <th>價格</th>
+     </thead>
         <c:forEach var="item" items='${allItem}'>
             <tr>
-               <td><a href= "<c:url value='/backend/tools/${item.itemId}'/>">${item.itemId}</a></td>
+               <td><a href= "<c:url value='/backend/yarn/${item.itemId}'/>">${item.itemId}</a></td>
                <td>${item.itemName}</td>
-               <td>${item.specification}</td>
+               <td>${item.material}</td>
+               <td>${item.size}</td>
+               <td>${item.color}</td>
                <td>${item.itemDescription}</td>
                <td>${item.addDate}</td>
                <td>${item.qty}</td>
                <td>${item.price}</td>
-            </tr>
-         </c:forEach>
-      </table>
-      <a href="/loop/backend/allitem">回商品資料總表</a>
-      </div>
-      <!--     ================================ -->
+           </tr>
+        </c:forEach>
+     </table>
+   	 <a href="/loop/backend/allitem">回商品資料總表</a>
+     </div>
+     <!--     ================================ -->
 	<script>
 		window.onload(toggleMenu());
 

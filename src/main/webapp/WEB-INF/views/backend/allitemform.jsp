@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <head>
 <!-- =========== -->
@@ -14,17 +14,43 @@
 	crossorigin="anonymous"></script>
 </head>
 <!-- =========== -->
-<title>Tools Form</title>
+<title>All Item Form</title>
 <style>
-table{margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse} 
-th{background-color:#F4EDF2}
-/* a {font-size:x-large; margin: 50px auto; text-decoration:none} */
-a {text-decoration:none}
+.img {
+	width: 20%
+}
+
+table {
+	margin: auto;
+	width: 70%
+}
+
+table, th, td {
+	border: 2px solid black;
+	border-collapse: collapse
+}
+
+th {
+	background-color: #F4EDF2
+}
+
+.a {
+	font-size: x-large
+}
+
+a { 
+text-decoration: none
+} 
+
+/* a {
+	font-size: larger;
+	margin: 50px auto;
+	text-decoration: none
+} */
 </style>
 
 <body>
-<!-- =========== -->
+	<!-- =========== -->
 	<div class="container">
 		<div class="navigation">
 			<ul>
@@ -80,40 +106,58 @@ a {text-decoration:none}
 			</div>
 <!-- ========================= -->
 
-<div align='center'>
-<div style="background-color:#B08EAD"><br>
-<h1 style="color:#fff">工具商品資料</h1><br>
-<hr>
-</div><br>
+			<div align='center'>
+				<div style="background-color: #B08EAD">
+					<br>
+					<h1 style="color: #fff">商品資料總表</h1>
+					<br>
+					<hr>
+				</div>
+				<br>
 
-<a class=a href="<c:url value='/backend/tools/create'/>">新增</a>
+				<div>
+					<select class=a onchange="javascript:location.href=this.value;">
+						<option value="<c:url value='/backend/allitem'/>">所有商品</option>
+						<option value="<c:url value='/backend/yarn'/>">紗線</option>
+						<option value="<c:url value='/backend/tools'/>">工具</option>
+						<option value="<c:url value='/backend/books'/>">書籍</option>
+						<option value="<c:url value='/backend/kits'/>">材料包</option>
+						<!-- <option value="http://localhost:8080/loop/backend/allitems">所有商品</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/yarn">紗線</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/tools">工具</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/books">書籍</option> -->
+						<!-- <option value="http://localhost:8080/loop/backend/kits">材料包</option> -->
+					</select>
+				</div>
+				<br>
 
-<table border="1">
-<table>
-    <thead>
-        <th>編號</th>
-        <th>工具名稱</th>
-        <th>規格</th>
-        <th>工具簡介</th>
-        <th>日期</th>
-		<th>庫存數量</th>
-		<th>價格</th>	
-    </thead>
-        <c:forEach var="item" items='${allItem}'>
-            <tr>
-               <td><a href= "<c:url value='/backend/tools/${item.itemId}'/>">${item.itemId}</a></td>
-               <td>${item.itemName}</td>
-               <td>${item.specification}</td>
-               <td>${item.itemDescription}</td>
-               <td>${item.addDate}</td>
-               <td>${item.qty}</td>
-               <td>${item.price}</td>
-            </tr>
-         </c:forEach>
-      </table>
-      <a href="/loop/backend/allitem">回商品資料總表</a>
-      </div>
-      <!--     ================================ -->
+				<table border='1'>
+					<thead>
+						<th>編號</th>
+						<th>商品名稱</th>
+						<th>庫存數量</th>
+						<th>價格</th>
+						<th>圖片</th>
+					</thead>
+					<c:forEach var="item" items='${allItem}'>
+						<tr>
+							<td><a href="<c:url value='/backend/items/${item.itemId}'/>">${item.itemId}</a></td>
+							<td>${item.itemName}</td>
+							<td>${item.qty}</td>
+							<td>$${item.price}</td>
+							<td><c:forEach var="img" items="${item.imgs}">
+									<img class="img" src='<c:url value="/items/img/${img.img}"/>' />
+								</c:forEach></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<a class=a href="/loop/backend">回後台管理</a>
+			</div>
+
+		</div>
+	</div>
+
+	<!--     ================================ -->
 	<script>
 		window.onload(toggleMenu());
 

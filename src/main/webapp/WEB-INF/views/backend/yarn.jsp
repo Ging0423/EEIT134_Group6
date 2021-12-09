@@ -13,18 +13,18 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>
-</head>
+
 <!-- =========== -->
-<title>Kits</title>
+<title>Yarn</title>
 <style>
-#img {margin:left; width:20%} 
-table{border:2px solid black; border-collapse:collapse; margin:auto; width:90%; height: 200%}
+#img {margin:left; width:20%}
+table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%}
 tr{background-color:#F4EDF2}
 .a{align='center'; width:99%}
 /* a {font-size:larger; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
 </style>
-
+</head>
 <body>
 <!-- =========== -->
 <div class="container">
@@ -101,37 +101,43 @@ a {text-decoration:none}
 
 <div align='center'>
 <div style="background-color:#B08EAD"><br>
-<h1 style="color:#fff">材料包商品資料</h1><br>
+<h1 style="color:#fff">紗線商品資料</h1><br>
 <hr>
 </div><br>
-<form method="post" action="<c:url value='/backend/updatekits'/>" >
+<form method="post" action="<c:url value='/backend/updateyarn' />">
 
-<table>
-	  <tr><td>編號:</td></tr>
-	  <tr><td><input class=a readonly name="itemId" value=${kitsData.itemId}></td></tr>
-      <tr><td>工具名稱:</td>
-      <tr><td><input class=a name="itemName" value=${kitsData.itemName}></td></tr>
-      <tr><td>工具描述:</td></tr>
-      <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${kitsData.itemDescription}</textarea><td></tr>
-      <tr><td><input class=a type="hidden" name="addDate" value="${kitsData.addDate}"></td></tr>
-      <tr><td>庫存數量:</td></tr>
-      <tr><td><input class=a name="qty" value=${kitsData.qty}></td></tr>
-      <tr><td>價格:</td></tr>
-      <tr><td><input class=a name="price" value=${kitsData.price}></td></tr>
-      <tr><td></td></tr>
-	  </table>
-	  <c:forEach var="itemImg" items="${itemImg}">
+    <table>
+    <tr><td>編號:</td></tr>
+    <tr><td><input class=a readonly name="itemId" value=${yarnData.itemId}></td></tr>
+    <tr><td>紗線名稱:</td></tr>
+    <tr><td><input class=a name="itemName" value=${yarnData.itemName}></td></tr>
+    <tr><td>材質:</td></tr>
+    <tr><td><input class=a name="material" value=${yarnData.material}></td></tr>
+    <tr><td>尺寸(直徑、規格):</td></tr>
+    <tr><td><input class=a name="size" value=${yarnData.size}></td></tr>
+    <tr><td>顏色:</td></tr>
+    <tr><td><input class=a name="color" value=${yarnData.color}></td></tr>
+    <tr><td>紗線描述:</td></tr>
+    <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${yarnData.itemDescription}</textarea></td></tr>
+    <tr><td><input class=a type="hidden" name="addDate" value=${yarnDate.addDate}></td></tr>
+    <tr><td>庫存數量:</td></tr>
+    <tr><td><input class=a name="qty" value=${yarnData.qty}></td></tr>
+    <tr><td>價格:</td>
+    <tr><td><input class=a name="price" vlaue=${yarnData.price}></td></tr>
+    </table>
+    
+    <c:forEach var="itemImg" items="${itemImg}">
 	  <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
       </c:forEach>
 <br><button type="submit">更新</button>
 </form>
-<form action= "<c:url value='/backend/deletekits'/>" method="post">
-<input type="hidden" name="itemId" value="${kitsData.itemId}">
+<form action= "<c:url value='/backend/deleteyarn' />" method="post">
+<input type="hidden" name="itemId" value="${yarnData.itemId}">
 <input type="submit" value="刪除"><br>
-<a href="<c:url value='/backend/kits' />">回材料包商品資料總表</a>
+<a href="<c:url value='/backend/yarn' />">回紗線商品資料總表</a>
 </form>
 <%-- <c:forEach var="itemImg" items="${itemImg}"> --%>
-<%--     <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> /> --%>
+<%--      <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> /> --%>
 <%-- </c:forEach> --%>
 </div>
 

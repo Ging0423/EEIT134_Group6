@@ -82,7 +82,7 @@
 												</div>
 											</td>
 											<td>
-												<h5>$${item.price}</h5>
+												<span id="price${item.itemId}">${item.price}</span>
 											</td>
 											<td>
 												<div class="product_count">
@@ -97,9 +97,8 @@
 												</div>
 											</td>
 											<td>
-												<h5>
-													<c:set var="total" value="${item.qty*item.price}" />
-													<c:out value="${total}" />
+												<h5><c:set var="total" value="${item.qty*item.price}"/>
+													<span id="total${item.itemId}" class="total">${total}</span>
 												</h5>
 											</td>
 											<td>
@@ -128,8 +127,9 @@
 										</td>
 										<td>
 											<h5>
-												<c:out value="${allTotal}" />
-											</h5> <input type="hidden" name="total" value="${allTotal}" />
+											<span id="spanallTotal">${allTotal}</span>
+												 <input type="hidden" id="allTotal" name="total" value="${allTotal}" />
+											</h5>
 										</td>
 									</tr>
 								</tbody>
@@ -190,94 +190,7 @@
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
-
-							console.log('success:' + data);
-							var json = JSON.stringify(data, null, 4);
-
-							$('#ajaxTable').empty("");
-
-							if (data == null) {
-								console.log("data == null");
-							} else {
-								
-								console.log('json:' + json);
-								var table = $('#ajaxTable');
-								var allTotal = 0;
-								$
-										.each(
-												data,
-												function(i, n) {
-													let total = n.price + n.qty;
-													allTotal += total;
-													var tr = '<table class="table">'
-														+'<thead>'
-														+'<tr>'
-														+'<th scope="col">商品</th><th scope="col">售價</th><th scope="col">數量</th><th scope="col">總額</th><th scope="col"></th>'
-														+'</tr>'
-														+'</thead>'	
-														+'<tbody>'							
-														+'<tr>'
-														+'<td>'
-														+ '<div class="media">'
-														+ '<div class="d-flex">'
-														+ '<img src="/items/img/'
-														+n.img
-														+'" alt="" />'
-														+ '<input type="hidden" name="itemId" value="'
-														+n.itemId
-														+'">'
-														+ '</div>'
-														+ '<div class="media-body">'
-														+ '<p>'
-														+ n.itemName
-														+ '</p>'
-														+ '</div>'
-														+ '</div>'
-														+ '</td>'
-														+ '<td>'
-														+ '<h5>$'
-														+ n.price
-														+ '</h5>'
-														+ '</td>'
-														+ '<td>'
-														+ '<td>'
-														+ +'<button type="button" onclick="delete('
-														+ n.itemId
-														+ ')">刪除</button"\>'
-														+ '</td>'
-														+ +'<div class="product_count">'
-														+ '<span class="input-number-decrement"onclick="minus('
-														+n.itemId
-														+');"><i class="ti-minus"></i></span>'
-														+'<input id="input-number${item.itemId}" type="number" name="qty" value="'
-														+n.qty
-														+'" min="1" max="99">'
-														+'<span class="input-number-increment" onclick="add('
-														+ n.itemId
-														+'});"> <i class="ti-plus"></i></span>'
-														+ '</div></td><td>'
-														+ '<h5>'
-														+ total
-														+ '</h5>' + '</td>';
-														+'<td>'
-														+'<button type="button" onclick="deleteById('
-														+ n.itemId
-														+')">刪除</button>'
-														+'</td>'						
-														+'</tr>'
-														+'<tr class="bottom_button">'
-														+'<td><button class="btn_1" type="button"'
-														+'onclick="updateCart()">更新購物車</button></td>'
-														+'<td></td><td></td><td><div class="cupon_text float-right"><a class="btn_1" href="#">Close Coupon</a>'
-														+'</div></td></tr><tr><td></td><td></td><td><h5>總金額</h5>'
-														+'</td><td><h5></h5> <input type="hidden" name="total" value="'
-														+ allTotal
-														+'" />'
-														+'</td></tr></tbody></table>';
-													table.append(tr);
-												});
-
-							}
+							window.location.reload();
 						}
 					});
 		}
@@ -304,106 +217,42 @@
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
-
-							console.log('success:' + data);
-							var json = JSON.stringify(data, null, 4);
-							console.log('json:' + json);
-
-							$('#ajaxTable').empty("");
-
-							if (data == null) {
-
-							} else {
-								var table = $('#ajaxTable');
-								var allTotal = 0;
-								$
-										.each(
-												data,
-												function(i, n) {
-													let total = n.price + n.qty;
-													allTotal += total;
-													var tr = '<table class="table">'
-															+'<thead>'
-															+'<tr>'
-															+'<th scope="col">商品</th><th scope="col">售價</th><th scope="col">數量</th><th scope="col">總額</th><th scope="col"></th>'
-															+'</tr>'
-															+'</thead>'	
-															+'<tbody>'							
-															+'<tr>'
-															+'<td>'
-															+ '<div class="media">'
-															+ '<div class="d-flex">'
-															+ '<img src="/items/img/'
-															+n.img
-															+'" alt="" />'
-															+ '<input type="hidden" name="itemId" value="'
-															+n.itemId
-															+'">'
-															+ '</div>'
-															+ '<div class="media-body">'
-															+ '<p>'
-															+ n.itemName
-															+ '</p>'
-															+ '</div>'
-															+ '</div>'
-															+ '</td>'
-															+ '<td>'
-															+ '<h5>$'
-															+ n.price
-															+ '</h5>'
-															+ '</td>'
-															+ '<td>'
-															+ '<td>'
-															+'<button type="button" onclick="delete('
-															+ n.itemId
-															+ ')">刪除</button"\>'
-															+ '</td>'
-															+ '<div class="product_count">'
-															+ '<span class="input-number-decrement" onclick="minus('
-															+ n.itemId
-															+');"><i class="ti-minus"></i></span>'
-															+'<input id="input-number${item.itemId}" type="number" name="qty" value="'
-															+n.qty
-															+'" min="1" max="99">'
-															+'<span class="input-number-increment" onclick="add('
-															+n.itemId
-															+');"> <i class="ti-plus"></i></span>'
-															+ '</div></td><td>'
-															+ '<h5>'
-															+ total
-															+ '</h5>' + '</td>';
-															+'<td>'
-															+'<button type="button" onclick="deleteById('
-															+n.itemId
-															+')">刪除</button>'
-															+'</td>'						
-															+'</tr>'
-															+'<tr class="bottom_button">'
-															+'<td><button class="btn_1" type="button"'
-															+'onclick="updateCart()">更新購物車</button></td>'
-															+'<td></td><td></td><td><div class="cupon_text float-right"><a class="btn_1" href="#">Close Coupon</a>'
-															+'</div></td></tr><tr><td></td><td></td><td><h5>總金額</h5>'
-															+'</td><td><h5></h5> <input type="hidden" name="total" value="'
-															+allTotal
-															+'" />'
-															+'</td></tr></tbody></table>';
-													table.append(tr);
-												});
-							}
+							window.location.reload();
 						}
 					});
 		}
 		function add(id) {
-			 var value = parseInt(document.getElementById("input-number"+id).value, 10);
-			    value = isNaN(value) ? 0 : value;
-			    value++;
-			    document.getElementById("input-number"+id).value = value;
+			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
+		    qty = isNaN(qty) ? 0 : qty;
+		    qty++;
+		    var price = parseInt(document.getElementById("price"+id).innerText, 10);
+		    document.getElementById("input-number"+id).value = qty;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
 		}
 		function minus(id) {
-			var value = parseInt(document.getElementById("input-number"+id).value, 10);
-		    value = isNaN(value) ? 0 : value;
-		    value--;
-		    document.getElementById("input-number"+id).value = value;
+			var qty = parseInt(document.getElementById("input-number"+id).value, 10);
+		    qty = isNaN(qty) ? 0 : qty;
+		    qty--;
+		    var price = parseInt(document.getElementById("price"+id).innerText,10);
+		    document.getElementById("input-number"+id).value = qty;
+		    document.getElementById("total"+id).innerText = qty * price;
+		    var totals = document.getElementsByClassName("total");
+		    var total = 0;
+		    for (var i=0;i<totals.length;i++)
+		    {
+		    	total += parseInt(totals[i].innerText,10);
+		    }
+		    document.getElementById("allTotal").value = total;
+		    document.getElementById("spanallTotal").innerText = total;
+
 		}
 	</script>
 </body>

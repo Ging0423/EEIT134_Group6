@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import loop.item.allItem.model.ItemDisplay;
 import loop.item.allItem.model.ItemImgBean;
 import loop.item.allItem.service.ItemImgService;
 import loop.item.kitsItem.model.KitsItemBean;
@@ -23,7 +24,7 @@ public class KitsItemController {
 	
 	@GetMapping("/items/kits")
 	public String selectAll(Model m) {
-	    List<KitsItemBean> bean = kitsService.findAll();
+		List<ItemDisplay> bean = kitsService.list();
 	    m.addAttribute("allItem", bean);
 	    return "items/kits";
 	}
@@ -36,5 +37,4 @@ public class KitsItemController {
 		m.addAttribute("itemImg", itemImgs);
 		return "items/kitsitem";
 	}
-	
 }
