@@ -23,6 +23,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import loop.forum.model.Article;
+import loop.forum.model.Reply;
 import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 import loop.video.model.VideoCommentBean;
@@ -63,16 +65,26 @@ public class UsersBean implements Serializable {
 	@Column(name = "registerDate")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
+	
 	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
+	
 	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
+	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
-
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Article> article = new ArrayList<Article>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Reply> reply = new ArrayList<Reply>();
 
 	public UsersBean() {
 

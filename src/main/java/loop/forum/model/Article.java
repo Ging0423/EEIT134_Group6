@@ -1,10 +1,8 @@
 package loop.forum.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,12 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import loop.user.model.UsersBean;
 
 @Component
 @Table(name = "article")
@@ -56,6 +57,10 @@ public class Article {
 
 	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
 	private List<Reply> reply;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId",insertable = false, updatable = false)
+	private UsersBean users;
 	
 	public Date getPostdate() {
 		return postdate;

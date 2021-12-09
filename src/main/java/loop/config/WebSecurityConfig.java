@@ -51,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/forum/newPost").authenticated()
 		.antMatchers(HttpMethod.GET, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.GET).permitAll()
 		.antMatchers(HttpMethod.POST, "/cart/**").authenticated()

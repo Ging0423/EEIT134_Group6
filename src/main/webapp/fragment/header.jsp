@@ -81,7 +81,9 @@
 											<a class="dropdown-item"
 												href="<c:url value='/cart/display'/>">購物車</a>
 											<a class="dropdown-item"
-												href="<c:url value='/order/myorder'/>">我的訂單</a>
+												href="<c:url value='/order/myorder'/>">我的訂單 </a>
+											<a class="dropdown-item"
+												href="<c:url value='/forum/myforum'/>">我的文章</a>
 											<a class="dropdown-item" href="<c:url value='updatemember'/>">會員資料修改</a>
 										</c:if>
 										<c:if test="${isLogin != null && isLogin.userIdentity == '0'}">
