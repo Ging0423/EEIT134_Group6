@@ -26,7 +26,7 @@
 							class="fas fa-infinity" aria-hidden="true"></i></span> <span
 						class="title"><h2>loop</h2></span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend/admin'/>"> <span class="icon"><i
 							class="fas fa-users-cog" aria-hidden="true"></i></span> <span
 						class="title">管理員專區</span>
 				</a></li>

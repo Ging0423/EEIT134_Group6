@@ -39,24 +39,24 @@ public class OrderDataService {
 		return null;
 	}
 	
-	public OrderDataBean findById(Integer orderId) {
-		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
-		if(op.isEmpty()) {
-			return null;
-		}
-		return op.get();
-	}
+//	public OrderDataBean findById(Integer orderId) {
+//		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
+//		if(op.isEmpty()) {
+//			return null;
+//		}
+//		return op.get();
+//	}
 	
-	public void update(OrderDataBean bean) {
-		orderDataRepo.save(bean);
-	}
+//	public void update(OrderDataBean bean) {
+//		orderDataRepo.save(bean);
+//	}
 	
 	public List<OrderDataBean> findAll() {
-		return orderDataRepo.findAll();
+		return odResp.findAll();
 	}
 	
 	public List<OrderDataBean> findState(String state) {
-		return orderDataRepo.findPayState(state);
+		return odResp.findPayState(state);
 	}
 
 	public List<OrderDataBean> findByUserId(Integer userId) {

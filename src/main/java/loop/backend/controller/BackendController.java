@@ -19,7 +19,13 @@ public class BackendController {
 	public String backendIndex(Model m) {
 		return "backend/backend_index";
 	}
-
+	
+//	@GetMapping("/admin")
+//	public String about(Model m) {
+////		UsersBean bean = new UsersBean();
+////		m.addAttribute("usersData", bean);
+//		return "backend/backend_admin";
+//	}
 	
 }
 

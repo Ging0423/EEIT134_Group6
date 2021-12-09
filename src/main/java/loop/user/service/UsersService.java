@@ -1,10 +1,12 @@
 package loop.user.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import loop.order.model.OrderDataBean;
 import loop.user.model.UsersBean;
 import loop.user.model.UsersRepository;
 
@@ -25,5 +27,9 @@ public class UsersService {
 	
 	public void deleteById(Integer id) {
 		usersRepo.deleteById(id);
+	}
+	
+	public List<UsersBean> findAll() {
+		return usersRepo.findAll();
 	}
 }

@@ -20,9 +20,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/admin'/>">
                         <span class="icon"><i class="fas fa-users-cog" aria-hidden="true"></i></span>
-                        <span class="title">管理員專區</span>
+                        <span class="title">會員管理</span>
                     </a>
                 </li>
                 <li>
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/order'/>">
                         <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
                         <span class="title">訂單管理</span>
                     </a>
