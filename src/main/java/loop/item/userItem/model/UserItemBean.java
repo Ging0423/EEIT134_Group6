@@ -1,7 +1,6 @@
 package loop.item.userItem.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,22 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import org.springframework.stereotype.Component;
 
 import loop.item.allItem.model.AllItemBean;
 
-
+@Component
 @Entity
 @Table(name="userItem")
 public class UserItemBean implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="itemId")
@@ -40,7 +35,7 @@ public class UserItemBean implements Serializable{
 	private String itemDescription;
 	
 	@Column(name="addDate")
-	private Date addDate;
+	private String addDate;
 	
 	@Column(name="qty")
 	private Integer qty;
@@ -51,20 +46,19 @@ public class UserItemBean implements Serializable{
 	@OneToOne(mappedBy = "userItem", cascade = CascadeType.ALL)	
 	private AllItemBean allItem;
 	
-	public UserItemBean() {
-		
+	public UserItemBean() {	
 	}
 
-	public UserItemBean(Integer itemId, Integer userId, String itemName, String itemDescription, Date addDate, Integer qty, Integer price) {
-		super();
-		this.itemId = itemId;
-		this.userId = userId;
-		this.itemName = itemName;
-		this.itemDescription = itemDescription;
-		this.addDate = addDate;
-		this.qty = qty;
-		this.price = price;
-	}
+//	public UserItemBean(Integer itemId, Integer userId, String itemName, String itemDescription, Date addDate, Integer qty, Integer price) {
+//		super();
+//		this.itemId = itemId;
+//		this.userId = userId;
+//		this.itemName = itemName;
+//		this.itemDescription = itemDescription;
+//		this.addDate = addDate;
+//		this.qty = qty;
+//		this.price = price;
+//	}
 
 	public Integer getItemId() {
 		return itemId;
@@ -98,11 +92,11 @@ public class UserItemBean implements Serializable{
 		this.itemDescription = itemDescription;
 	}
 
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
 
@@ -130,7 +124,4 @@ public class UserItemBean implements Serializable{
 		this.allItem = allItem;
 	}
 
-	
-	
-	
 }

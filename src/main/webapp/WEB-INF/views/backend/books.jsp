@@ -131,10 +131,11 @@ a {text-decoration:none}
 <!--       <br>圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/> -->
 <!-- 	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>   -->
 <!-- 	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/><br> -->
-	    
-<%--       <img type="file" id="img1" src=<c:url value="/items/img/${itemImg.img}"/> accept="image/*" width=20% /> --%>
+	  
+<%-- 	  <img type="file" id="img1" src=<c:url value="/items/img/${itemImg.img}"/> accept="image/*" width=20% /> --%>
 <%--       <img type="file" id="img2" src=<c:url value="/items/img/${itemImg.img}"/> accept="image/*" width=20% /> --%>
 <%--       <img type="file" id="img3" src=<c:url value="/items/img/${itemImg.img}"/>accept="image/*" width=20% /><br> --%>
+      
 <br><button type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deletebooks'/>" method="post">

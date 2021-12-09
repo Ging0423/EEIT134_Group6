@@ -2,12 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="zxx">
+<c:url value='' />
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>pillloMart</title>
+<title>loop</title>
 <link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
@@ -31,6 +32,7 @@
 	display: none;
 }
 </style>
+</script>
 </head>
 
 <body>
@@ -38,20 +40,20 @@
 	    <jsp:include page="/fragment/header.jsp" />
 	<!-- Header part end-->
 	
-    <!-- breadcrumb part start-->
+	 <!-- breadcrumb part start-->
     <section class="breadcrumb_part">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner">
-                        <h2>材料包</h2>
+                        <h2>會員手作賣場</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- breadcrumb part end-->
-
+    
 	<!-- product list part start-->
 	<section class="product_list section_padding">
 		<div class="container">
@@ -114,20 +116,24 @@
 							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+									<div class="product_display">
+                                    <img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
 <%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
-											<a href='<c:url value="/items/kits/${item.itemId}"/>'>${item.itemName}</a>
-										</h3>
-										<p>$${item.price}</p>
+											<a href='<c:url value="/items/books/${item.itemId}"/>'>${item.itemName}</a>
 
+										</h3>
+                                            <p>$${item.price}</p>
+<%-- 										<p>${item.color}</p> --%>
+									</div>
 									</div>
 								</div>
 							</c:forEach>
 
+
 						</div>
 						<div class="load_more_btn text-center">
-							<a href="#" class="btn_3">Load More</a>
+							<a href="#" class="btn_3" id="loadmore">Load More</a>
 						</div>
 					</div>
 				</div>
@@ -183,7 +189,7 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</section> -->
-<!-- feature part end --> 
+<!-- feature part end -->
 
 <!-- subscribe part here -->
 <!-- 	<section class="subscribe_part section_padding"> -->
@@ -196,17 +202,17 @@
 <!-- 							interoperable internal or âorganicâ sources credibly innovate -->
 <!-- 							granular internal .</p> -->
 <!-- 						<div class="subscribe_form"> -->
-<!-- 							<input type="email" placeholder="Enter your mail"> <a -->
-<!-- 								href="#" class="btn_1">Subscribe</a> -->
+<!-- 							<input type="email" placeholder="Enter your mail">  -->
+<!-- 							<a href="#" class="btn_1">Subscribe</a> -->
 <!-- 						</div> -->
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</section> -->
-<!-- 	<!-- subscribe part end --> 
+<!-- subscribe part end -->
 
-<!-- 	<!--::footer_part start::--> 
+<!--::footer_part start::-->
 <!-- 	<footer class="footer_part"> -->
 <!-- 		<div class="footer_iner"> -->
 <!-- 			<div class="container"> -->
@@ -234,7 +240,7 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 <!-- 		</div> -->
-<!-- <footer class="footer_part">  -->
+
 <!-- 		<div class="copyright_part"> -->
 <!-- 			<div class="container"> -->
 <!-- 				<div class="row "> -->
@@ -244,7 +250,7 @@
 <!-- 								Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 <!-- 								Copyright &copy; -->
 <!-- 								<script> -->
-<!-- 									document.write(new Date().getFullYear()); -->
+<!--  									document.write(new Date().getFullYear()); -->
 <!-- 								</script> -->
 <!-- 								All rights reserved | This template is made with <i -->
 <!-- 									class="ti-heart" aria-hidden="true"></i> by <a -->
@@ -260,8 +266,8 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</footer> -->
-<!--::footer_part end::--> 
-
+<!-- 	<!--::footer_part end::-->
+	
 <!--::footer_part start::-->
 	    <jsp:include page="/fragment/footer.jsp" />
 <!--::footer_part end::-->
@@ -281,7 +287,7 @@
 	<script src="<c:url value='/js/slick.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
 	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
-	<script src="<c:url value='/js/contact.js'/>"></script>
+<%-- 	<script src="<c:url value='/js/contact.js'/>"></script> --%>
 	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.form.js'/>"></script>
 	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
@@ -289,22 +295,20 @@
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	
-	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
-		
-	<script>  
-	$(document).ready (function () {  
-	  $(".single_product_item").slice(0, 6).show();  
-	  $(".btn_3").on("click", function(e){  
-	    e.preventDefault();  
-	    $(".single_product_item:hidden").slice(0, 6).slideDown();  
-	    if ($(".single_product_item:hidden").length == 0) {  
-	      $(".btn_3").text("沒有更多商品").addClass("noContent");  
-	    }  
-	  });  
-	  })  
-		
-	</script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+	
+<script>  
+$(document).ready (function () {  
+  $(".single_product_item").slice(0, 6).show();  
+  $(".btn_3").on("click", function(e){  
+    e.preventDefault();  
+    $(".single_product_item:hidden").slice(0, 6).slideDown();  
+    if ($(".single_product_item:hidden").length == 0) {  
+      $(".btn_3").text("沒有更多商品").addClass("noContent");  
+    }  
+  });  
+  })  
+</script> 	
 </body>
-
 </html>

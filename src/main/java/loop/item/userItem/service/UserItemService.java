@@ -1,49 +1,82 @@
 package loop.item.userItem.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import loop.item.allItem.model.AllItemBean;
+import loop.item.allItem.model.ItemDisplay;
+import loop.item.allItem.service.AllItemService;
+import loop.item.allItem.service.ItemImgService;
 import loop.item.userItem.model.UserItemBean;
-import loop.item.userItem.model.UserItemDao;
+import loop.item.userItem.model.UserItemRepository;
 
+@Service
+@Transactional
 public class UserItemService {
-	UserItemDao cDao;
 	
-	public UserItemService() {
-		this.cDao = new UserItemDao();
-	}
-	public UserItemBean createItem(UserItemBean bean) {
-		return cDao.createItem(bean);
+	@Autowired
+	private EntityManager entityManager;
+	
+	@Autowired
+	private UserItemRepository userRepo;
+	
+	@Autowired
+	private AllItemService allItemService;
+	
+	@Autowired
+	private ItemImgService itemImgService;
+	
+	public void create(UserItemBean bean) {
+		userRepo.save(bean);
+		AllItemBean allItem = new AllItemBean();
+		allItem.setItemId(bean.getItemId());
+		allItem.setUserItem(bean);
+		allItemService.save(allItem);
 	}
 	
-	public String updateItem(UserItemBean bean, String id) {
-		return cDao.update(bean, id);
+	public UserItemBean persist(UserItemBean bean) {
+		entityManager.persist(bean);
+		return bean;
 	}
-	
-	public String deleteItem(String id) {
-		return cDao.delete(id);
+
+	public List<UserItemBean> findAll() {
+		return userRepo.findAll();
 	}
-	public String deleteMultiItem(String[] id) {
-		return cDao.deleteMulti(id);
-	}
-	public String getRandomString(int length){
-		String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		Random random=new Random();
-		StringBuffer sb=new StringBuffer();
-		for(int i=0; i < length; i++){
-		int number=random.nextInt(62);
-		sb.append(str.charAt(number));
+
+	public UserItemBean findById(int itemId) {
+		Optional<UserItemBean> bean = userRepo.findById(itemId);
+		if(bean.isEmpty()) {
+			return null;
 		}
-		return sb.toString();
-		}  
-	
-	public List<UserItemBean> selectAll() {
-		return cDao.selectAll();
+		return bean.get();
 	}
 	
-	public List<UserItemBean> search(String keyword, String select) {
-		return cDao.search(keyword, select);
+	public UserItemBean update(UserItemBean bean) {
+		return userRepo.save(bean);
 	}
 	
+	public void deleteById(Integer id) {
+		allItemService.deleteByItemId(id);
+		userRepo.deleteById(id);
+	}
 	
+	public List<ItemDisplay> list() {
+
+		List<UserItemBean> list = findAll();
+		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
+		for (UserItemBean i : list) {
+			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
+			, itemImgService.findByItemId(i.getItemId()).get(0).getImg()
+			, allItemService.getItemPrice(i.getItemId())));
+		}
+		return items;
+	}
+
 }

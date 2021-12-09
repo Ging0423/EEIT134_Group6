@@ -1,4 +1,4 @@
-package loop.item.booksItem.controller;
+package loop.item.userItem.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,51 +23,51 @@ import loop.item.allItem.model.AllItemBean;
 import loop.item.allItem.model.ItemImgBean;
 import loop.item.allItem.service.AllItemService;
 import loop.item.allItem.service.ItemImgService;
-import loop.item.booksItem.model.BooksItemBean;
-import loop.item.booksItem.service.BooksItemService;
+import loop.item.userItem.model.UserItemBean;
+import loop.item.userItem.service.UserItemService;
 
 @Controller
 @RequestMapping("/backend")
-public class BooksItemBackendController {
+public class UserItemBackendController {
 	
 	@Autowired
-	private BooksItemService booksService;
+	private UserItemService userItemService;
 	@Autowired
 	private ItemImgService itemImgService;
 	@Autowired
 	private AllItemService allItemService;
 	
-	@GetMapping("/books")
+	@GetMapping("/useritem")
 	public String selectAll(Model m) {
-		List<BooksItemBean> bean = booksService.findAll();
+		List<UserItemBean> bean = userItemService.findAll();
 		m.addAttribute("allItem", bean);
-		return "backend/booksform";
+		return "backend/useritemform";
 	}
 	
-	@GetMapping("/books/create")
-	public String CreateBooksItemPage(Model m) {
-		BooksItemBean bean = new BooksItemBean();
-		m.addAttribute("booksData", bean);
-		return "backend/bookscreate";
+	@GetMapping("/useritem/create")
+	public String CreateUserItemPage(Model m) {
+		UserItemBean bean = new UserItemBean();
+		m.addAttribute("useritemData", bean);
+		return "backend/useritemcreate";
 	}
 	
-	@GetMapping("/books/{id}")
+	@GetMapping("/useritem/{id}")
 	public String selectById(@PathVariable("id") Integer itemId, Model m) {
-		BooksItemBean bean = booksService.findById(itemId);
-		m.addAttribute("booksData", bean);
+		UserItemBean bean = userItemService.findById(itemId);
+		m.addAttribute("useritemData", bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "backend/books";
+		return "backend/useritem";
 	}
 	
-	@PostMapping("books/createbooks")
-	public String createItem(@ModelAttribute("booksData") BooksItemBean bean, MultipartHttpServletRequest mrequest) {
+	@PostMapping("useritem/createitem")
+	public String createItem(@ModelAttribute("userData") UserItemBean bean, MultipartHttpServletRequest mrequest) {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date current = new Date();
 		String Date = sdFormat.format(current);
 		bean.setAddDate(Date);
-		bean = booksService.persist(bean);
-		booksService.create(bean);
+		bean = userItemService.persist(bean);
+		userItemService.create(bean);
 		
 		Integer itemId = bean.getItemId();
 		AllItemBean allItem = allItemService.findById(itemId);
@@ -98,62 +98,34 @@ public class BooksItemBackendController {
 			}
 		}
 		
-		return "redirect:/backend/books";
+		return "redirect:/backend/useritem";
 	}
 	
-	@PostMapping("books/{id}")
-	public String updateBooksItemPage(@PathVariable ("id") Integer itemId, Model m) {
-		BooksItemBean bean = booksService.findById(itemId);
-		m.addAttribute("booksData",bean);
+	@PostMapping("useritem/{id}")
+	public String userItemPage(@PathVariable ("id") Integer itemId, Model m) {
+		UserItemBean bean = userItemService.findById(itemId);
+		m.addAttribute("useritemData",bean);
 		List<ItemImgBean> itemImg = itemImgService.findByItemId(itemId);
 		m.addAttribute("itemImg", itemImg);
-		return "/backend/books";
+		return "/backend/useritem";
 	}
 	
-	@PostMapping("updatebooks")
-//	public String update(@ModelAttribute("booksData")BooksItemBean bean, BindingResult result, ModelMap m) {
-	public String update(@ModelAttribute("booksData")BooksItemBean bean, Model m) {//, MultipartHttpServletRequest mrequest		
-		booksService.update(bean);
+	@PostMapping("updateuseritem")
+//	public String update(@ModelAttribute("useritemData")UserItemBean bean, BindingResult result, ModelMap m) {
+	public String update(@ModelAttribute("useritemData")UserItemBean bean, Model m) {
+		userItemService.update(bean);
 //		if(result.hasErrors()) {
-//			return "booksError";
+//			return "useritemError";
 //		}
 		Integer id = bean.getItemId();
-//		AllItemBean allItem = allItemService.findById(id);
-//		
-//		
-//		List<MultipartFile> files = mrequest.getFiles("img");
-//		for(MultipartFile i : files) {			
-//			String imageFile = itemImgService.getRandomString(8);
-//			String fileName = i.getOriginalFilename();
-//			String extension = "";
-//			int index = fileName.lastIndexOf('.');
-//			if (index > 0) {
-//			    extension = fileName.substring(index+1);
-//			}
-//			String realPath = mrequest.getServletContext().getRealPath(".");
-//			String saveDirPath = realPath + "\\items\\img\\";
-//			File saveDirPathFile = new File(saveDirPath);
-//			saveDirPathFile.mkdirs();
-//			String savePath = saveDirPath + imageFile + "." + extension;
-//			File savePathFile = new File(savePath);
-//			ItemImgBean imgBean = new ItemImgBean();
-//			try {
-//				i.transferTo(savePathFile);
-//				imgBean.setImg(imageFile + "." +extension);
-//				imgBean.setAllItem(allItem);
-//				itemImgService.save(imgBean);		
-//			} catch (IllegalStateException | IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-		return "redirect:/backend/books/" + id;		
+		return "redirect:/backend/useritem/" + id;		
 	}
 
-	@PostMapping("/deletebooks")
+	@PostMapping("/deleteuseritem")
 	public String deleteById(ServletRequest request) {	
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
 //		itemImgService.deleteByItemId(itemId);
-		booksService.deleteById(itemId);		
-		return "redirect:/backend/books";
+		userItemService.deleteById(itemId);		
+		return "redirect:/backend/useritem";
 	}
 }

@@ -13,9 +13,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>
-
+</head>
 <!-- =========== -->
-<title>Yarn</title>
+<title>User Item</title>
 <style>
 #img {margin:left; width:20%}
 table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%}
@@ -24,7 +24,7 @@ tr{background-color:#F4EDF2}
 /* a {font-size:larger; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
 </style>
-</head>
+
 <body>
 <!-- =========== -->
 <div class="container">
@@ -43,11 +43,19 @@ a {text-decoration:none}
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/allitem'/>">
                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
                         <span class="title">商品管理</span>
                     </a>
                 </li>
+<!--                 ================== -->
+                <li>
+                    <a href="<c:url value='/backend/useritems'/>">
+                        <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
+                        <span class="title">會員手作商品管理</span>
+                    </a>
+                </li>
+<!--                 ================== -->
                 <li>
                     <a href="<c:url value=''/>">
                         <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
@@ -101,54 +109,38 @@ a {text-decoration:none}
 
 <div align='center'>
 <div style="background-color:#B08EAD"><br>
-<h1 style="color:#fff">紗線商品資料</h1><br>
+<h1 style="color:#fff">會員手作商品資料</h1><br>
 <hr>
 </div><br>
-<form method="post" action="<c:url value='/backend/updateyarn'/>" enctype="multipart/form-data">
+<form method="post" action="<c:url value='/backend/updateuseritem'/>">
 
-    <table>
-    <tr><td>編號:</td></tr>
-    <tr><td><input class=a readonly name="itemId" value=${yarnData.itemId}></td></tr>
-    <tr><td>紗線名稱:</td></tr>
-    <tr><td><input class=a name="itemName" value=${yarnData.itemName}></td></tr>
-    <tr><td>材質:</td></tr>
-    <tr><td><input class=a name="material" value=${yarnData.material}></td></tr>
-    <tr><td>尺寸(直徑、規格):</td></tr>
-    <tr><td><input class=a name="size" value=${yarnData.size}></td></tr>
-    <tr><td>顏色:</td></tr>
-    <tr><td><input class=a name="color" value=${yarnData.color}></td></tr>
-    <tr><td>紗線描述:</td></tr>
-    <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${yarnData.itemDescription}</textarea></td></tr>
-    <tr><td><input class=a type="hidden" name="addDate" value=${yarnDate.addDate}></td></tr>
-    <tr><td>庫存數量:</td></tr>
-    <tr><td><input class=a name="qty" value=${yarnData.qty}></td></tr>
-    <tr><td>價格:</td>
-    <tr><td><input class=a name="price" value=${yarnData.price}></td></tr>
-    </table>
-    
-    <c:forEach var="itemImg" items="${itemImg}">
-<!--      <input type="file" name="img" accept="image/*"/>  -->
+	<table>
+	  <tr><td>商品編號:</td></tr>
+	  <tr><td><input class=a readonly name="itemId" value=${useritemData.itemId}></td></tr>
+	  <tr><td>會員編號:</td></tr>
+	  <tr><td><input class=a readonly name="userId" value=${useritemData.userId}></td></tr>
+      <tr><td>商品名:</td></tr>
+      <tr><td><input class=a name="itemName" value=${useritemData.itemName}></td></tr>
+      <tr><td>商品簡介:</td></tr>
+      <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${useritemData.itemDescription}</textarea></td></tr>
+      <tr><td><input type="hidden" name="addDate" value=${useritemData.addDate}></td></tr>
+      <tr><td>商品數量:</td></tr>
+      <tr><td><input class=a name="qty" value=${useritemData.qty}></td></tr>
+      <tr><td>價格:</td></tr>
+      <tr><td><input class=a name="price" value=${useritemData.price}></td></tr>
+	  </table>
+	  
+	  <c:forEach var="itemImg" items="${itemImg}">
 	  <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
       </c:forEach>
       
-      <br><img type="file" id="img1" accept="image/*" width=20% />
-      <img type="file" id="img2" accept="image/*" width=20% />
-      <img type="file" id="img3" accept="image/*" width=20% />
-      
-      <br>圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
-	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
-	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/>
-      
 <br><button type="submit">更新</button>
 </form>
-<form action= "<c:url value='/backend/deleteyarn' />" method="post">
-<input type="hidden" name="itemId" value="${yarnData.itemId}">
+<form action= "<c:url value='/backend/useritem'/>" method="post">
+<input type="hidden" name="itemId" value="${useritemData.itemId}">
 <input type="submit" value="刪除"><br>
-<a href="<c:url value='/backend/yarn' />">回紗線商品資料總表</a>
+<a href="<c:url value='/backend/useritem' />">回書籍商品資料總表</a>
 </form>
-<%-- <c:forEach var="itemImg" items="${itemImg}"> --%>
-<%--      <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> /> --%>
-<%-- </c:forEach> --%>
 </div>
 
 <!--     ================================ -->
