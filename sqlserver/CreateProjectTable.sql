@@ -164,3 +164,58 @@ id int primary key identity(1,1) not null,
 itemId int references allItem(itemId) not null,
 keyword nvarchar(100)
 )
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'allVideo')
+    drop table allVideo;
+
+create table allVideo(
+videoId int primary key identity(1,1) not null,
+videoName nvarchar(100) not null,
+videoLink nvarchar(MAX) not null,
+videoDescription nvarchar(MAX),
+href nvarchar(100)
+)
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'videoComment')
+    drop table videoComment;
+
+create table videoComment(
+id int primary key identity(1,1) not null,
+videoId int references allVideo(videoId) not null,
+userId int references users(userId) not null,
+comment nvarchar(100) not null,
+)
+
+create table article(
+	articleId int not null primary key identity(10000,1),
+	title nvarchar(50) not null,
+	categoryId int not null,
+	content text not null,
+	authorId int not null,
+	postDate date not null,
+	clickNum int not null,
+	likeNum int not null,
+	shareNum int not null
+);
+
+select * from article;
+
+Use project
+
+create table reply(
+	replyId int not null primary key identity(10000,1),
+	articleId int not null,
+	content text not null,
+	authorId int not null,
+	replyDate date not null,
+	likeNum int not null
+);
+
+select * from reply;
+
+create table forumCategory(
+	categoryId int not null primary key identity(1,1),
+	title nvarchar(10) not null
+);
+
+select * from forumCategory

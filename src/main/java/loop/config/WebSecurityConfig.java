@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import loop.login.model.AuthUserDetailsService;
 import loop.login.model.MyAuthenticationFailureHandler;
@@ -25,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private AuthUserDetailsService userDetailService;
 	
+//	@Autowired
+//	PersistentTokenRepository persistenceTokenRepository;
+//	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
@@ -45,16 +51,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/forum/newPost").authenticated()
+		.antMatchers(HttpMethod.GET, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.GET).permitAll()
 		.antMatchers(HttpMethod.POST, "/cart/**").authenticated()
+		.antMatchers(HttpMethod.POST, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.POST, "/order/**").authenticated()
-		.antMatchers(HttpMethod.POST)
-		.permitAll().anyRequest()
-		.authenticated()
+		.antMatchers(HttpMethod.POST, "/video/comment").hasAuthority("ROLE_ADMIN")
+		.antMatchers(HttpMethod.POST).permitAll()
+		.anyRequest().authenticated()
 		.and()
 		.rememberMe()
+        .rememberMeCookieName("rememberme")
+        .alwaysRemember(true)
+        .useSecureCookie(true)
 		.tokenValiditySeconds(864000)
-		.key("rememberMe.key")
+		.key("rememberMe")
 		.and()
 		.csrf().disable()
 		.formLogin()

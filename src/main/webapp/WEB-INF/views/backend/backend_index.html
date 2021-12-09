@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>後臺管理系統-商家版</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/style_index.css" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js" integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg==" crossorigin="anonymous"></script></head>
 <body>
     <div class="container">
@@ -19,6 +19,7 @@
                 </li>
                 <li>
                     <a href="<c:url value=''/>">
+                    <a href="backend_admin.html">
                         <span class="icon"><i class="fas fa-users-cog" aria-hidden="true"></i></span>
                         <span class="title">管理員專區</span>
                     </a>
@@ -30,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value=''/>">
+                    <a href="<c:url value='/backend/orderData'/>">
                         <span class="icon"><i class="fas fa-cart-arrow-down" aria-hidden="true"></i></span>
                         <span class="title">訂單管理</span>
                     </a>
@@ -53,6 +54,12 @@
                         <span class="title">討論區管理</span>
                     </a>
                 </li>
+                <li>   
+                    <a href="#">
+                        <span class="icon"><i class="far fa-newspaper" aria-hidden="true"></i></span>
+                        <span class="title">公告與活動管理</span>
+                    </a>
+                </li>
                 <li>
                     <a href="<c:url value='/logout'/>">    
                         <span class="icon"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
@@ -67,8 +74,7 @@
                 <div class="toggle" onclick="toggleMenu();"><i class="fas fa-bars"></i></div>
                 <div class="search">
                     <label>
-                        <input type="text" placeholder="Search here">
-                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input type="text" placeholder="搜尋訂單編號、會員名稱">
                     </label>
                 </div>
                 <div class="user">
@@ -159,6 +165,30 @@
                                 <td>A000005</td>
                                 <td>$300</td>
                                 <td>金妮</td>
+                                <td><span class="status">未出貨</span></td>
+                            </tr>
+                            <tr>
+                                <td>A000006</td>
+                                <td>$1367</td>
+                                <td>奈威</td>
+                                <td><span class="status">未出貨</span></td>
+                            </tr>
+                            <tr>
+                                <td>A000007</td>
+                                <td>$579</td>
+                                <td>石內卜</td>
+                                <td><span class="status">未出貨</span></td>
+                            </tr>
+                            <tr>
+                                <td>A000008</td>
+                                <td>$1967</td>
+                                <td>澎澎</td>
+                                <td><span class="status">未出貨</span></td>
+                            </tr>
+                            <tr>
+                                <td>A000008</td>
+                                <td>$1967</td>
+                                <td>澎澎</td>
                                 <td><span class="status">未出貨</span></td>
                             </tr>
                         </tbody>
