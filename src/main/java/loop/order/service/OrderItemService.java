@@ -25,4 +25,8 @@ public class OrderItemService {
 		orderItemRepo.save(bean);
 		
 	}
+	
+	public List<OrderItemBean> findByOrderId(Integer orderId) {
+		return orderItemRepo.findByOrderId(orderId);
+	}
 }
