@@ -39,7 +39,7 @@
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/'/>"> <span class="icon"><i
@@ -103,9 +103,10 @@
 								<th style="padding: 10px;">影片名稱</th>
 								<th style="padding: 10px;">影片敘述</th>
 								<th style="padding: 10px;">商品連結</th>
+								<th></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="video">
 							<c:forEach var="video" items="${allVideo}">
 								<tr>
 									<td><iframe width="560" height="315"
@@ -113,10 +114,14 @@
 											title="YouTube video player" frameborder="0"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 											allowfullscreen></iframe></td>
-									<td><a href="<c:url value='/backend/video/${video.videoId}'/>">${video.videoId}</a></td>
+									<td><a
+										href="<c:url value='/backend/video/${video.videoId}'/>">${video.videoId}</a></td>
 									<td>${video.videoName}</td>
 									<td>${video.videoDescription}</td>
 									<td><a href='<c:url value="/items/${video.href}"/>'>${video.href}</a></td>
+									<td><button type="button"
+											onclick="deleteById(${video.videoId});"
+											class="btn btn-danger">刪除</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -125,6 +130,29 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+	<!-- popper js -->
+	<script src="<c:url value='/js/popper.min.js'/>"></script>
+	<!-- bootstrap js -->
+	<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	<!-- magnific popup js -->
+	<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	<!-- carousel js -->
+	<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+	<!-- slick js -->
+	<script src="<c:url value='/js/slick.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	<script src="<c:url value='/js/contact.js'/>"></script>
+	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.form.js'/>"></script>
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script src="<c:url value='/js/mail-script.js'/>"></script>
+	<!-- custom js -->
+	<script src="<c:url value='/js/custom.js'/>"></script>
+
 	<script type="text/javascript">
 		window.onload(toggleMenu());
 
@@ -135,6 +163,21 @@
 			toggle.classList.toggle('active');
 			navigation.classList.toggle('active');
 			main.classList.toggle('active');
+		}
+		function deleteById(id) {
+			let obj = new Object();
+			obj.videoId = id;
+			var json = JSON.stringify(obj, null, 4);
+			$.ajax({
+				type : 'post',
+				url : 'video/delete',
+				data : json,
+				dataType : 'JSON',
+				contentType : 'application/json;charset=utf-8',
+				success : function(data) {
+					window.location.reload();
+				}
+			});
 		}
 	</script>
 </body>

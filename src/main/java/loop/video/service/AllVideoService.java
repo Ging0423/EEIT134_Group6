@@ -22,7 +22,7 @@ public class AllVideoService {
 	}
 	
 	public void delete(Integer videoId) {
-		allVideoRepo.deleteByVideoId(videoId);
+		allVideoRepo.deleteById(videoId);
 	}
 	
 	public void update(AllVideoBean bean) {

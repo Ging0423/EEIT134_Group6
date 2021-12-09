@@ -58,13 +58,25 @@ public class VideoBackendController {
 		allVideoService.save(allVideo);
 		return "redirect:/backend/video";
 	}
-	@PostMapping("video/{id}/deleteComment")
+	@PostMapping("/video/{id}/deleteComment")
 	@ResponseBody
-	public List<VideoCommentBean> deleteComment(@RequestBody HashMap<String, String> map) {
+	public List<VideoCommentBean> deleteComment(@RequestBody HashMap<String, String> map) {		
 		Integer Id = Integer.parseInt(map.get("id"));
 		videoCommentService.delete(Id);
 		Integer VideoId = Integer.parseInt(map.get("videoId"));
-		return videoCommentService.findByVideoId(VideoId);
-		
+		return videoCommentService.findByVideoId(VideoId);	
 	}
+	@PostMapping("/video/update")
+	public String updateVideo(@ModelAttribute("video") AllVideoBean bean) {
+		allVideoService.update(bean);
+		return "redirect:/backend/video/"+bean.getVideoId();
+	}
+	@PostMapping("/video/delete")
+	@ResponseBody
+	public List<AllVideoBean> delete(@RequestBody HashMap<String, String> map) {
+		Integer videoId = Integer.parseInt(map.get("videoId"));
+		allVideoService.delete(videoId);
+		return allVideoService.findAll();
+	}
+	
 }

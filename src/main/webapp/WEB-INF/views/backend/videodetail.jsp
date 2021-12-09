@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,26 +96,42 @@
 				</div>
 			</div>
 			<div class="container-sm divWidth">
-				<table class="table table-bordered border-primary">
-					<tr>
-						<td>${video.videoId}</td>
-					</tr>
-					<tr>
-						<td><iframe width="1120" height="730"
-								src="https://www.youtube.com/embed/${video.videoLink}"
-								title="YouTube video player" frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen></iframe></td>
-					<tr>
-						<td><h3>${video.videoName}</h3></td>
-					</tr>
-					<tr>
-						<td>${video.videoDescription}</td>
-					</tr>
-					<tr>
-						<td><a href='<c:url value="/items/${video.href}"/>'>材料包連結</a></td>
-					</tr>
-				</table>
+				<c:url value='/backend/video/update' var="update" />
+				<form:form method="POST" action="${update}" modelAttribute="video">
+					<table class="table table-bordered border-primary">
+						<tr>
+							<td>影片編號</td>
+							<td><form:input readonly="true" path="videoId" name="videoId"/></td>
+						</tr>
+						<tr>
+							<td>影片連結碼</td>
+							<td><form:input path="videoLink" name="videoLink"
+									type="text" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><iframe width="530" height="315"
+									src="https://www.youtube.com/embed/${video.videoLink}"
+									title="YouTube video player" frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen></iframe></td>
+						<tr>
+							<td>影片名稱</td>
+							<td><form:input path="videoName" name="videoName"
+									type="text" /></td>
+						</tr>
+						<tr>
+							<td>影片描述</td>
+							<td><form:input path="videoDescription"
+									name="videoDescription" type="text" /></td>
+						</tr>
+						<tr>
+							<td>套件包編號</td>
+							<td><form:input path="href" name="href" type="text" /></a></td>
+						</tr>
+					</table>
+					<button type="submit" class="btn btn-primary">修改</button>
+				</form:form>
 				<h1>留言區</h1>
 				<table id="comment" class="table " style="width: 50%;">
 					<thead>
@@ -127,7 +144,7 @@
 							<td>${comment.users.userName}</td>
 							<td style="">${comment.comment}</td>
 							<td><button type="button" class="btn btn-danger"
-									onclick="deleteById(${comment.id});">刪除</button>
+									onclick="deleteById(${comment.id}, ${comment.videoId});">刪除</button>
 						</tr>
 					</c:forEach>
 				</table>
@@ -170,9 +187,9 @@
 		main.classList.toggle('active');
 	}
 
-		function deleteById(id) {
+		function deleteById(id, videoId) {
 			let obj = new Object();
-			obj.videoId = ${comment.videoId}
+			obj.videoId = videoId;
 			obj.id = id;
 			var json = JSON.stringify(obj, null, 4);
 			$.ajax({
