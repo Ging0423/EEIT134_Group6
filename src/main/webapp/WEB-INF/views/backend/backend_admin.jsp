@@ -74,33 +74,22 @@
 					<img src="image/user.jpg">
 				</div>
 			</div>
-			<div class="userBtn">
-				<!-- 	<button class="btn active">會員資料檢視</button> -->
-				<!-- 	<button class="btn" type="submit" onclick="d();">多筆會員資料刪除</button> -->
-				<!--  <button class="btn">密碼修改</button> -->
-			</div>
 
-			<div>
-				<!--   <img class="user-image" src="image/user.jpg"> -->
+			<div>			
 				<div class="user-info">
-					<p>會員資料總覽
+					<p>會員資料總覽</p>
 		
 
 					<form id="myForm" action="<c:url value='/backend/admin/delete'/>" method="POST">
 						<input type='hidden' id='hiddenField' name='array' />
-						<button type="submit" onclick="d();">多筆刪除</button>
+						<button class="btn" type="submit" onclick="d();">多筆刪除</button>
 					</form>
 					<table class="table table-bordered border-primary">
 						<thead>
 							<tr>
 								<th>ID</th>
 								<th>帳號</th>
-								<!--<th>密碼</th>-->
-								<!--<th>身份</th>-->
-								<!--<th>名稱</th>-->
-								<!--<th>email</th>-->
-								<!--<th>電話</th>-->
-								<!--<th>地址</th>-->
+								<th>身份</th>
 								<th>刪除</th>
 							</tr>
 						</thead>
@@ -109,10 +98,10 @@
 								<tr>
 									<td><a
 										href="<c:url value='/backend/admin/${user.userId}'/>"
-										target="_blank" onclick="orderWindow(${user.userId});" />${user.userId}</a></td>
+										target="_blank" onclick="orderWindow(${user.userId});">${user.userId}</a></td>
 									<td>${user.account}</td>
 									<!--<td>${user.userPassword}</td>-->
-									<!--<td>${user.userIdentity}</td>-->
+									<td>${user.userIdentity}</td>
 									<!--<td>${user.userName}</td>-->
 									<!--<td>${user.email}</td>-->
 									<!--<td>${user.tel}</td>-->

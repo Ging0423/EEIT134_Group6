@@ -70,44 +70,39 @@
 					<img src="image/user.jpg">
 				</div>
 			</div>
-			<!--  		<span>付款狀態</span> <select id="orderSelector" required
-				onchange="payState();">
-				<option>全部</option>
-				<option>未付款</option>
-				<option>已付款</option>
-			</select>-->
+
 			<table class="table table-bordered border-primary" id="ajaxTable">				
 					<tr>
-						<td>ID：</td>
-						<td>${user.userId}</td>
+						<td>ID：${user.userId}</td>
+						<!--<td>${user.userId}</td>-->
 					</tr>
 					<tr>
-						<td>帳號：</td>
-						<td>${user.account}</td>
+						<td>帳號：${user.account}</td>
+						<!--<td>${user.account}</td>-->
 					</tr>
 					<tr>	
-						<td>身份：</td>
-						<td>${user.userIdentity}</td>
+						<td>身份：${user.userIdentity}</td>
+						<!--<td>${user.userIdentity}</td>-->
 					</tr>
 					
 					<tr>
-					<td>暱稱：</td>
-					<td>${user.userName}</td>
+						<td>暱稱：${user.userName}</td>
+						<!--<td>${user.userName}</td>-->
 					</tr>
 					
 					<tr>	
-					<td>email：</td>
-					<td>${user.email}</td>
+						<td>email：${user.email}</td>
+						<!--<td>${user.email}</td>-->
 					</tr>					
 					<tr>	
-					<td>電話：</td>
-					<td>${user.tel}</td>
+						<td>電話：${user.tel}</td>
+						<!--<td>${user.tel}</td>-->
 					</tr>
 					<tr>
-					<td>地址：</td>
-					<td>${user.userAddress}</td>
+						<td>地址：${user.userAddress}</td>
+						<!--<td>${user.userAddress}</td>-->
 					</tr>					
-
+				</table>
 		</div>
 	</div>
 	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>

@@ -19,22 +19,22 @@ import loop.order.model.OrderDataRepository;
 @Transactional
 public class OrderDataService {
 	@Autowired
-	private OrderDataRepository odResp;
+	private OrderDataRepository orderDataRepo;
 
 	public OrderDataBean insert(OrderDataBean orderdata) {
-		return odResp.save(orderdata);
+		return orderDataRepo.save(orderdata);
 	}
 
 	public OrderDataBean update(OrderDataBean orderdata) {
-		return odResp.save(orderdata);
+		return orderDataRepo.save(orderdata);
 	}
 
 	public void deleteById(Integer id) {
-		odResp.deleteById(id);
+		orderDataRepo.deleteById(id);
 	}
 
 	public OrderDataBean findById(Integer id) {
-		Optional<OrderDataBean> op1 = odResp.findById(id);
+		Optional<OrderDataBean> op1 = orderDataRepo.findById(id);
 		return op1.get();
 	}
 
@@ -51,18 +51,12 @@ public class OrderDataService {
 //		return op.get();
 //	}
 	
-<<<<<<< Updated upstream
-	public void update(OrderDataBean bean) {
-		orderDataRepo.save(bean);
-		
-	}
-	
 	public List<OrderDataBean> findAll() {
-		return odResp.findAll();
+		return orderDataRepo.findAll();
 	}
 	
 	public List<OrderDataBean> findState(String state) {
-		return odResp.findPayState(state);
+		return orderDataRepo.findPayState(state);
 	}
 	
 	public Long count() {
@@ -76,11 +70,10 @@ public class OrderDataService {
 		return orderDataRepo.findAll(page);
 	}
 	
-=======
 //	public void update(OrderDataBean bean) {
 //		orderDataRepo.save(bean);
 //	}
->>>>>>> Stashed changes
+
 
 	public List<OrderDataBean> findByUserId(Integer userId) {
 		// TODO Auto-generated method stub
