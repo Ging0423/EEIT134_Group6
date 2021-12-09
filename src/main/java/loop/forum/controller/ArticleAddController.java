@@ -1,7 +1,6 @@
-package tw.JoyHsieh.forum.controller;
+package loop.forum.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import tw.JoyHsieh.forum.model.Article;
-import tw.JoyHsieh.forum.model.ArticleService;
+import loop.forum.model.Article;
+import loop.forum.model.ArticleService;
 
 @Controller
 @RequestMapping("/forum/newPost")

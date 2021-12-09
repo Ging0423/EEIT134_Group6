@@ -56,8 +56,8 @@
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/'/>">首頁</a></li>
-								<li class="nav-item"><a class="nav-link" href="<c:url value='about'/>">關於</a>
-								</li>
+								<li class="nav-item"><a class="nav-link"
+									href="<c:url value='about'/>">關於</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"
 									id="navbarDropdown_1" role="button" data-toggle="dropdown"
@@ -67,8 +67,7 @@
 										<a class="dropdown-item" href="<c:url value='/items/tools'/>">工具</a>
 										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
 										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a>
-									</div>
-								</li>
+									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.jsp"
 									id="navbarDropdown_3" role="button" data-toggle="dropdown"
@@ -83,8 +82,7 @@
 												href="<c:url value='/cart/display'/>">購物車</a>
 											<a class="dropdown-item"
 												href="<c:url value='/order/myorder'/>">我的訂單</a>
-											<a class="dropdown-item"
-												href="<c:url value='updatemember'/>">會員資料修改</a>
+											<a class="dropdown-item" href="<c:url value='updatemember'/>">會員資料修改</a>
 										</c:if>
 										<c:if test="${isLogin != null && isLogin.userIdentity == '0'}">
 											<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>
@@ -96,10 +94,9 @@
 									id="navbarDropdown_2" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 討論區 </a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-										<a class="dropdown-item" href="blog.html"> 討論區</a> 
-										<a class="dropdown-item" href="single-blog.html">Single blog</a>
-									</div>
-								</li>
+										<a class="dropdown-item" href="<c:url value='/forum'/>">
+											討論區</a>
+									</div></li>
 
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/video'/>">教學影片</a></li>

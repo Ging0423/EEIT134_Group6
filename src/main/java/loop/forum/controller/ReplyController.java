@@ -1,4 +1,4 @@
-package tw.JoyHsieh.forum.controller;
+package loop.forum.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import tw.JoyHsieh.forum.model.Article;
-import tw.JoyHsieh.forum.model.Reply;
-import tw.JoyHsieh.forum.model.ReplyService;
+import loop.forum.model.Reply;
+import loop.forum.model.ReplyService;
 
 @Controller
 @RequestMapping("/forum")

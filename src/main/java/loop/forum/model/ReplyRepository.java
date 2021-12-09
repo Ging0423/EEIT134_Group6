@@ -1,4 +1,4 @@
-package tw.JoyHsieh.forum.model;
+package loop.forum.model;
 
 import java.util.List;
 
