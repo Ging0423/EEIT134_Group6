@@ -51,6 +51,7 @@ public class OrderDataService {
 //		return op.get();
 //	}
 	
+<<<<<<< Updated upstream
 	public void update(OrderDataBean bean) {
 		orderDataRepo.save(bean);
 		
@@ -75,6 +76,11 @@ public class OrderDataService {
 		return orderDataRepo.findAll(page);
 	}
 	
+=======
+//	public void update(OrderDataBean bean) {
+//		orderDataRepo.save(bean);
+//	}
+>>>>>>> Stashed changes
 
 	public List<OrderDataBean> findByUserId(Integer userId) {
 		// TODO Auto-generated method stub
