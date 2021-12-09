@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Component;
 
 import loop.login.service.LoginService;
@@ -20,6 +22,10 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
 	
 	@Autowired
 	private LoginService loginService;
+	
+//	@Autowired
+//	PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
+
 	
 	public MyAuthenticationSuccessHandler() {
 		setDefaultTargetUrl("/");
@@ -35,6 +41,10 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
         UserDetails username = (UserDetails) authentication.getPrincipal();
         UsersBean bean = loginService.findByAccount(username.getUsername()).get();
         session.setAttribute("isLogin", bean);
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null){
+//            persistentTokenBasedRememberMeServices.loginSuccess(request, response, auth);
+//        }
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

@@ -17,7 +17,7 @@ public class UserAuthorityUtils {
 	public static Collection<? extends GrantedAuthority> createAuthorities(
 			UsersBean bean) {
 		String identity = bean.getUserIdentity();
-		if (identity.equals(0)) {
+		if (identity.equals("0")) {
 			return ADMIN_ROLES;
 		}
 		return USER_ROLES;
