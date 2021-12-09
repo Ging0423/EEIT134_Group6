@@ -67,8 +67,8 @@ public class UsersBean implements Serializable {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
 	
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
 	
 	@JsonManagedReference

@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/'/>"> <span class="icon"><i
