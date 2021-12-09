@@ -68,28 +68,29 @@
 										<a class="dropdown-item" href="<c:url value='/items/books'/>">書籍</a>
 										<a class="dropdown-item" href="<c:url value='/items/kits'/>">材料包</a>
 									</div></li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="blog.jsp"
-									id="navbarDropdown_3" role="button" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false"> 會員 </a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-										<c:if test="${empty isLogin}">
-											<a class="dropdown-item" href="<c:url value='/login'/>">
-												登入 </a>
-										</c:if>
-										<c:if test="${isLogin != null}">
-											<a class="dropdown-item"
-												href="<c:url value='/cart/display'/>">購物車</a>
-											<a class="dropdown-item"
-												href="<c:url value='/order/myorder'/>">我的訂單 </a>
-											<a class="dropdown-item"
-												href="<c:url value='/forum/myforum'/>">我的文章</a>
-											<a class="dropdown-item" href="<c:url value='updatemember'/>">會員資料修改</a>
-										</c:if>
-										<c:if test="${isLogin != null && isLogin.userIdentity == '0'}">
-											<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>
-										</c:if>
-									</div></li>
+								<c:choose>
+									<c:when test="${isLogin != null}">
+										<li class="nav-item dropdown"><a
+											class="nav-link dropdown-toggle" href="blog.jsp"
+											id="navbarDropdown_3" role="button" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false"> 會員 </a>
+											<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+												<a class="dropdown-item"
+													href="<c:url value='/cart/display'/>">購物車</a> <a
+													class="dropdown-item"
+													href="<c:url value='/order/myorder'/>">我的訂單 </a> <a
+													class="dropdown-item"
+													href="<c:url value='/forum/myforum'/>">我的文章</a> <a
+													class="dropdown-item" href="<c:url value='updatemember'/>">會員資料修改</a>
+												<c:if
+													test="${isLogin != null && isLogin.userIdentity == '0'}">
+													<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>
+												</c:if>
+											</div></li>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"
@@ -102,17 +103,18 @@
 
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/video'/>">教學影片</a></li>
-									
-								<li class="nav-item"><a class="nav-link"
-									href="<c:url value='/items/useritems'/>">會員手作賣場</a></li>
-
-
-								<c:if test="${isLogin != null}">
-									<li class="nav-item"><div>
-											<a href="<c:url value='/logout'/>" class="nav-link">登出</a>
-										</div></li>
-								</c:if>
-
+								<!-- 								<li class="nav-item"><a class="nav-link" -->
+								<%-- 									href="<c:url value='/items/useritems'/>">會員手作賣場</a></li> --%>
+								<c:choose>
+									<c:when test="${empty isLogin}">
+										<li class="nav-item"><a class="nav-link"
+											href="<c:url value='/login'/>">登入</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="nav-item"><a class="nav-link"
+											href="<c:url value='/logout'/>">登出</a></li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</div>
 						<div>
