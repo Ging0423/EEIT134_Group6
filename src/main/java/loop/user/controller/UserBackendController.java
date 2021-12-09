@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,23 +44,41 @@ public class UserBackendController {
 	public String UserList(Model m) {
 		List<UsersBean> list1 = userService.findAll();
 		m.addAttribute("allUsers", list1);
-		System.out.println("查詢完成");
+		System.out.println("查詢成功");
 		return "backend/backend_admin";
 	}
 	
-//	@GetMapping("/order/{id}")
-//	public String orderStatus(@PathVariable("id") Integer orderId, Model m) {
-//		OrderDataBean order = orderDataService.findById(orderId);
-//		m.addAttribute("order", order);
-//		List<OrderItemBean> orderItems = orderItemService.findByOrderId(orderId);
-//		List<ItemDisplay> items = new ArrayList<ItemDisplay>();
-//		for(OrderItemBean i : orderItems) {
-//			items.add(new ItemDisplay(i.getItemId(), allItemService.getItemName(i.getItemId())
-//										,allItemService.getItemPrice(i.getItemId()), i.getQty()));
-//		}
-//		m.addAttribute("orderItems", items);
-//		return "backend/order";
-//	}
+	
+	
+	@GetMapping("/admin/{id}") //28
+	public String userStatus(@PathVariable("id") Integer userId, Model m) {
+		UsersBean user = userService.findById(userId);
+		m.addAttribute("user", user);
+		return "backend/userdata";
+	}
+	
+	@PostMapping("/admin/delete")
+	public String delete(Model m, HttpServletRequest request, HttpServletResponse response) {
+		
+		try {
+			if(request.getParameterValues("array") != null) {
+				System.out.println("1");
+				//多個刪除的參數傳過來是string陣列
+				String[] id = request.getParameterValues("array");
+				//但是資料都在id[0]中，所以要分割字串轉成另一個array
+				String array[] = (id[0].split(","));
+					userService.delete(array);				
+				return "redirect:/backend/admin";
+			}
+			else {
+				System.out.println("2");
+				return "redirect:/backend/admin";
+			}
+		} catch (Exception e) {
+			return "redirect:/backend/admin";
+		}
+	
+	}
 	
 //	@PostMapping("/order/{id}/updateState")
 //	public String updateOrderStatus(@PathVariable("id") Integer orderId, @RequestParam("state") String state, Model m) {

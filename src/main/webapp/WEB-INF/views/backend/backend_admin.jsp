@@ -75,47 +75,53 @@
 				</div>
 			</div>
 			<div class="userBtn">
-			<!-- 	<button class="btn active">會員資料檢視</button> -->
-				<button class="btn">會員資料刪除</button>
+				<!-- 	<button class="btn active">會員資料檢視</button> -->
+				<!-- 	<button class="btn" type="submit" onclick="d();">多筆會員資料刪除</button> -->
 				<!--  <button class="btn">密碼修改</button> -->
 			</div>
 
-			<div class="userContainer">
+			<div>
 				<!--   <img class="user-image" src="image/user.jpg"> -->
 				<div class="user-info">
-					<p>會員資料總覽</p>
-					<form action="<c:url value='${order.orderId}/updateState'/>"
-						method="POST">
-						<table class="table table-bordered border-primary">
-							<thead>
+					<p>會員資料總覽
+		
+
+					<form id="myForm" action="<c:url value='/backend/admin/delete'/>" method="POST">
+						<input type='hidden' id='hiddenField' name='array' />
+						<button type="submit" onclick="d();">多筆刪除</button>
+					</form>
+					<table class="table table-bordered border-primary">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>帳號</th>
+								<!--<th>密碼</th>-->
+								<!--<th>身份</th>-->
+								<!--<th>名稱</th>-->
+								<!--<th>email</th>-->
+								<!--<th>電話</th>-->
+								<!--<th>地址</th>-->
+								<th>刪除</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="user" items="${allUsers}">
 								<tr>
-									<th>ID</th>
-									<th>帳號</th>
-								<!--	<th>密碼</th>-->
-									<th>身份</th>
-									<th>名稱</th>
-									<th>email</th>
-									<th>電話</th>
-								<!--	<th>地址</th>-->
-									<th>刪除</th>
+									<td><a
+										href="<c:url value='/backend/admin/${user.userId}'/>"
+										target="_blank" onclick="orderWindow(${user.userId});" />${user.userId}</a></td>
+									<td>${user.account}</td>
+									<!--<td>${user.userPassword}</td>-->
+									<!--<td>${user.userIdentity}</td>-->
+									<!--<td>${user.userName}</td>-->
+									<!--<td>${user.email}</td>-->
+									<!--<td>${user.tel}</td>-->
+									<!--<td>${user.userAddress}</td>-->
+									<td><input type="checkbox" name="check" value="${user.userId}"></td>
 								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="user" items="${allUsers}">
-									<tr>
-										<td>${user.userId}</td>
-										<td>${user.account}</td>
-									<!--	<td>${user.userPassword}</td>-->
-										<td>${user.userIdentity}</td>
-										<td>${user.userName}</td>
-										<td>${user.email}</td>
-										<td>${user.tel}</td>
-									<!--	<td>${user.userAddress}</td>-->
-										<td><input type="checkbox"></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+							</c:forEach>
+						</tbody>
+					</table>
 					<!--  	<table class="table table-bordered border-primary">
 
 							<tbody>
@@ -129,7 +135,7 @@
 								</c:forEach>
 							</tbody>
 						</table>-->
-						<!--  <button class="btn btn-primary" type="submit">更新訂單</button>-->
+					<!--  <button class="btn btn-primary" type="submit">更新訂單</button>-->
 					</form>
 					<!--	<table class="table table-bordered border-primary">
 					<tr>
@@ -147,7 +153,8 @@
 			</div>
 		</div>
 	</div>
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 		window.onload(toggleMenu());
 
@@ -158,6 +165,17 @@
 			toggle.classList.toggle('active');
 			navigation.classList.toggle('active');
 			main.classList.toggle('active');
+		}
+		
+		function d() {
+			var array = [];
+			var checkboxes = document
+					.querySelectorAll('input[type=checkbox]:checked');
+			for (var i = 0; i < checkboxes.length; i++) {
+				array.push(checkboxes[i].value);
+			}
+			document.getElementById('hiddenField').value = array;
+			document.getElementById("myForm").submit();
 		}
 	</script>
 </body>

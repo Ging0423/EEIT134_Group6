@@ -160,10 +160,32 @@ public class UsersController {
 		return "redirect:/login";
 	}
 
-	@DeleteMapping("/users/{id}")
-	public void delete(@PathVariable Integer id) {
-		usersService.deleteById(id);
-	}
+//	@DeleteMapping("/users/{id}")
+//	public void delete(@PathVariable Integer id) {
+//		usersService.deleteById(id);
+//	}
+	
+	
+//	@PostMapping("/delete")
+//	public String delete(Model m, HttpServletRequest request, HttpServletResponse response) {
+//		
+//		try {
+//			if(request.getParameterValues("array") != null) {
+//				//多個刪除的參數傳過來是string陣列
+//				String[] id = request.getParameterValues("array");
+//				//但是資料都在id[0]中，所以要分割字串轉成另一個array
+//				String array[] = (id[0].split(","));
+//				usersService.delete(array);
+//				return "redirect:/admin";
+//			}
+//			else {
+//				return "redirect:/admin";
+//			}
+//		} catch (Exception e) {
+//			return "redirect:/admin";
+//		}
+//	
+//	}
 	
 	
 	// @GetMapping("/users/{id}")

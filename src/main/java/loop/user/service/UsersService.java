@@ -29,6 +29,12 @@ public class UsersService {
 		usersRepo.deleteById(id);
 	}
 	
+	public void delete(String[] array) {
+		for(String i:array) {
+			usersRepo.deleteById(Integer.parseInt(i));
+		}	
+	}
+	
 	public List<UsersBean> findAll() {
 		return usersRepo.findAll();
 	}
