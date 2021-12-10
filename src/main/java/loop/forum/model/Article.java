@@ -3,6 +3,7 @@ package loop.forum.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,7 +56,7 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
