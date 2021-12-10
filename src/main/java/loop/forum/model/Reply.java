@@ -45,10 +45,6 @@ public class Reply {
 	private int likeNum;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "articleid",insertable = false, updatable = false)
-	private Article article;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;
 

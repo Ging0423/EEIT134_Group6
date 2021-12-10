@@ -3,7 +3,6 @@ package loop.forum.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +17,6 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import loop.user.model.UsersBean;
 
@@ -57,11 +55,9 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-//	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
 	private List<Reply> reply;
 	
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;
