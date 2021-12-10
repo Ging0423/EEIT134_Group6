@@ -64,7 +64,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>歡迎回來 <br>
+                            <h3>歡迎回來~ <br>
                                 請先登入</h3>
                             <form class="row contact_form" action="login" method="post" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">

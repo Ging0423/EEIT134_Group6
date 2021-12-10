@@ -14,14 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.forum.model.Reply;
 import loop.forum.model.ReplyService;
 
 @Controller
 @RequestMapping("/forum")
-@SessionAttributes({"totalPages", "totalElements","isLogin"})
 public class ReplyController {
 	@Autowired
 	private ReplyService rService;
