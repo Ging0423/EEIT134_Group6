@@ -95,54 +95,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="user" items="${allUsers}">
-			
+							<c:forEach var="user" items="${allUsers}">			
 								<tr>
 									<td><a
 										href="<c:url value='/backend/admin/${user.userId}'/>"
 										target="_blank" onclick="orderWindow(${user.userId});">${user.userId}</a></td>
 									<td>${user.account}</td>
-									<!--<td>${user.userPassword}</td>-->
 									<td>${user.userIdentity}</td>
-									<!--<td>${user.userName}</td>-->
-									<!--<td>${user.email}</td>-->
-									<!--<td>${user.tel}</td>-->
-									<!--<td>${user.userAddress}</td>-->
 									<td><input type="checkbox" name="check" value="${user.userId}"></td>
 								</tr>
-								<!--<c:forEach var="count" items="${counter}" varStatus="counterstatus">
-								
-								</c:forEach>-->
 							</c:forEach>
 						</tbody>
 					</table>
-					<!--  	<table class="table table-bordered border-primary">
-
-							<tbody>
-								<c:forEach var="item" items="${orderItems}">
-									<tr>
-										<td><a href="/backend/items/${item.itemId}">${item.itemId}</a></td>
-										<td>${item.itemName}</td>
-										<td>${item.price}</td>
-										<td>${item.qty}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>-->
-					<!--  <button class="btn btn-primary" type="submit">更新訂單</button>-->
-					</form>
-					<!--	<table class="table table-bordered border-primary">
-					<tr>
-						<td>帳號</td>
-						<td>密碼</td>
-						<td>身份</td>
-						<td>名稱</td>
-						<td>email</td>
-						<td>電話</td>
-						<td>地址</td>
-					</tr>
-				</table> -->
-
 				</div>
 			</div>
 		</div>

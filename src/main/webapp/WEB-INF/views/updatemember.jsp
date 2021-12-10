@@ -151,8 +151,7 @@
 			let description5 = document.getElementById('telerrorMsg');
 			let userAddress = document.getElementById("userAddress").value;
 			let description6 = document.getElementById('userAddresserrorMsg');
-																							
-			
+																										
 			let count = 0;
 			
 			if(account == "") {
