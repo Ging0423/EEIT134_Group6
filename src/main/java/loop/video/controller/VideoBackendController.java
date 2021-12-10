@@ -3,6 +3,8 @@ package loop.video.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,17 +51,16 @@ public class VideoBackendController {
 	
 	@GetMapping("/video/create")
 	public String videoCreatePage(Model m) {
-		AllVideoBean bean = new AllVideoBean();
-		bean.setVideoName("手作小物");
-		bean.setVideoLink("kTD0YPizee0");
-		bean.setVideoDescription("自己作手作小物吧");
-		bean.setHref("30001");
-		m.addAttribute("video", bean);
 		return "backend/videoCreate";
 	}
 	@PostMapping("video/create")
-	public String videoCreate(@ModelAttribute("video") AllVideoBean allVideo, Model m) {
-		allVideoService.save(allVideo);
+	public String videoCreate(ServletRequest request, Model m) {
+		AllVideoBean bean = new AllVideoBean();
+		bean.setHref(request.getParameter("href"));
+		bean.setVideoDescription(request.getParameter("description"));
+		bean.setVideoLink(request.getParameter("videoLink"));
+		bean.setVideoName(request.getParameter("videoName"));
+		allVideoService.save(bean);
 		return "redirect:/backend/video";
 	}
 	@PostMapping("/video/{id}/deleteComment")

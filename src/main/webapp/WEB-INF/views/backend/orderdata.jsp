@@ -134,7 +134,7 @@ form.example::after {
 				onchange="payState();">
 				<option>全部</option>
 				<option>未付款</option>
-				<option>已付款</option>
+				<option>付款成功</option>
 			</select>
 			<table class="table table-bordered border-primary" id="ajaxTable">
 				<thead>
