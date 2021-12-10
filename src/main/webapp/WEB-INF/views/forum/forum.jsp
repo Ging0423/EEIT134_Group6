@@ -284,12 +284,6 @@
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	<script src="<c:url value='/js/forum/forum_main.js'/>"></script>
-	
-	<script type="text/javascript">
-	
-		console.log(${totalPages})
-	
-	</script>
 </body>
 
 </html>

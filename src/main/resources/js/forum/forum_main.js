@@ -22,6 +22,7 @@ function load(categoryid, indexPage) {
 				$('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
 			} else {
 				$.each(data, function(i, n) {
+					
 					var tr = "<tr align='center'>" +
 						"<td>" + categoryName(n.categoryid) + "</td>" +
 						"<td><a href='/loop/forum/article/" + n.articleid + "'>" + n.title + "</a></td>" +
