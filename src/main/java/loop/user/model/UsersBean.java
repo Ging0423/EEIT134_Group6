@@ -71,11 +71,11 @@ public class UsersBean implements Serializable {
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
 	
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
 	
 	@JsonIgnore

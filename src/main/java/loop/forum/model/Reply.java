@@ -49,7 +49,7 @@ public class Reply {
 	private Article article;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId",insertable = false, updatable = false)
+	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 
 	public int getReplyid() {

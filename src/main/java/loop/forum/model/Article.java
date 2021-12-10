@@ -63,7 +63,7 @@ public class Article {
 	
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId",insertable = false, updatable = false)
+	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	
 	public Date getPostdate() {

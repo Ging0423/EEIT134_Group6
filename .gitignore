@@ -65,3 +65,4 @@ src/main/webapp/items/*
 log/*
 
 /.metadata/
+.factorypath
