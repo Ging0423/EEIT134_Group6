@@ -52,43 +52,43 @@
 	<!-- breadcrumb part end-->
 
 	<!--================login_part Area =================-->
-	<form:form action="updatemember" method="POST" modelAttribute="usersData">
+	<form:form action="updatemember" method="POST" modelAttribute="usersData" id="userupdate">
 		<div class="col-md-6 form-group p_star">
-			<h4>會員帳號：</h4>
+						<h4>會員帳號：</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account" readonly="true" />
+				name="account" path="account" readonly="true"/><span style=color:red id="accounterrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員密碼：</h4>
-			<form:input type="password" class="form-control" name="password"
-				path="userPassword" />
+			<form:input type="password" class="form-control" name="password" id="password"
+				path="userPassword" /><span style=color:red id="pwerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員名稱：</h4>
-			<form:input type="text" class="form-control" name="userName"
-				path="userName" />
+			<form:input type="text" class="form-control" name="userName" id="userName"
+				path="userName" /><span style=color:red id="userNameerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email：</h4>
 			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com"/>
-
+			<span style=color:red id="emailerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話：</h4>
 			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX"/>
-
+			<span style=color:red id="telerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員地址：</h4>
 			<form:input type="text" class="form-control" id="userAddress"
-				path="userAddress" />
-
+				path="userAddress" /><span style=color:red id="userAddresserrorMsg"></span>
+				
 		</div>
 		<div>
-			<button class="btn_3" type="submit">送出</button>
+			<button class="btn_3" type="button" onclick="check();">送出</button>
 		</div>
 	</form:form>
 	<br>
@@ -135,6 +135,72 @@
 			count++;
 			if (count == 6) {
 				count = 0;
+			}
+		}
+		
+		function check() {
+			let account = document.getElementById("account").value;
+			let description1 = document.getElementById('accounterrorMsg');
+			let password = document.getElementById("password").value;
+			let description2 = document.getElementById('pwerrorMsg');
+			let userName = document.getElementById("userName").value;
+			let description3 = document.getElementById('userNameerrorMsg');
+			let email = document.getElementById("email").value;
+			let description4 = document.getElementById('emailerrorMsg');
+			let tel = document.getElementById("tel").value;
+			let description5 = document.getElementById('telerrorMsg');
+			let userAddress = document.getElementById("userAddress").value;
+			let description6 = document.getElementById('userAddresserrorMsg');
+																							
+			
+			let count = 0;
+			
+			if(account == "") {
+				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				count++;
+			}
+				else{
+				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			} 
+			
+			if(password == "") {
+				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
+				count++;
+			}
+				else{
+					description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(userName == "") {
+				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 名稱不可空白";
+				count++;
+			}
+				else{
+					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(email == "") {
+				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> email不可空白";
+				count++;
+			}
+				else{
+					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(tel == "") {
+				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				count++;
+			}
+				else{
+					description5.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(userAddress == "") {
+				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				count++;
+			}
+				else{
+					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			
+			if(count == 0) {
+				 document.getElementById("userupdate").submit()
 			}
 		}
 	</script>
