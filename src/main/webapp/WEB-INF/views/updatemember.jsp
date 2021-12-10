@@ -54,35 +54,35 @@
 	<!--================login_part Area =================-->
 	<form:form action="updatemember" method="POST" modelAttribute="usersData">
 		<div class="col-md-6 form-group p_star">
-			<h4>會員帳號</h4>
+			<h4>會員帳號：</h4>
 			<form:input type="text" class="form-control" id="account"
 				name="account" path="account" readonly="true" />
 
 		</div>
 		<div class="col-md-6 form-group p_star">
-			<h4>會員密碼</h4>
+			<h4>會員密碼：</h4>
 			<form:input type="password" class="form-control" name="password"
 				path="userPassword" />
 
 		</div>
 		<div class="col-md-6 form-group p_star">
-			<h4>會員名稱</h4>
+			<h4>會員名稱：</h4>
 			<form:input type="text" class="form-control" name="userName"
 				path="userName" />
 
 		</div>
 		<div class="col-md-6 form-group p_star">
-			<h4>email</h4>
+			<h4>email：</h4>
 			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com"/>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
-			<h4>會員電話</h4>
+			<h4>會員電話：</h4>
 			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX"/>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
-			<h4>會員地址</h4>
+			<h4>會員地址：</h4>
 			<form:input type="text" class="form-control" id="userAddress"
 				path="userAddress" />
 
