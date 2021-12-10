@@ -137,7 +137,7 @@
 			main.classList.toggle('active');
 		}
 
-		function payState() {
+		/*function payState() {
 			var state = document.getElementById("orderSelector").value;
 
 			$
@@ -174,7 +174,7 @@
 							}
 						}
 					});
-		}
+		}*/
 	</script>
 </body>
 </html>

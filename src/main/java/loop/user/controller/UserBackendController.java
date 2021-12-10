@@ -1,9 +1,9 @@
 package loop.user.controller;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
+//import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,17 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import loop.item.allItem.model.ItemDisplay;
-import loop.item.allItem.service.AllItemService;
-import loop.order.model.OrderDataBean;
-import loop.order.model.OrderItemBean;
-import loop.order.service.OrderDataService;
-import loop.order.service.OrderItemService;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.ResponseBody;
+//
+//import loop.item.allItem.model.ItemDisplay;
+//import loop.item.allItem.service.AllItemService;
+//import loop.order.model.OrderDataBean;
+//import loop.order.model.OrderItemBean;
+//import loop.order.service.OrderDataService;
+//import loop.order.service.OrderItemService;
 import loop.user.model.UsersBean;
 import loop.user.service.UsersService;
 
@@ -44,9 +44,9 @@ public class UserBackendController {
 	public String UserList(Model m) {
 		List<UsersBean> list1 = userService.findAll();
 		m.addAttribute("allUsers", list1);
+		System.out.println("查詢成功");
 		long count = userService.count();
 		m.addAttribute("count", count);
-		System.out.println("查詢成功");
 		return "backend/backend_admin";
 	}
 	

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import loop.item.allItem.service.AllItemService;
+//import loop.item.allItem.service.AllItemService;
 import loop.order.model.OrderDataBean;
 import loop.order.service.OrderDataService;
 
@@ -23,8 +23,8 @@ import loop.order.service.OrderDataService;
 @RequestMapping("/backend")
 public class BackendController {
 	
-	@Autowired
-	private AllItemService allItemService;
+//	@Autowired
+//	private AllItemService allItemService;
 
 
 	@Autowired

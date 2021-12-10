@@ -152,7 +152,7 @@ form.example::after {
 				<tbody>
 					<c:forEach var="order" items="${allOrders}">
 						<tr>
-							<td><a href="<c:url value='/backend/order/${order.orderId}'/>" target="_blank" onclick="orderWindow(${order.orderId});"/>${order.orderId}</a></td>
+							<td><a href="<c:url value='/backend/order/${order.orderId}'/>" target="_blank" onclick="orderWindow(${order.orderId});">${order.orderId}</a></td>
 							<td>${order.recipient}</td>
 							<td>${order.tel}</td>
 							<td>${order.shippingAddress}</td>
