@@ -103,11 +103,11 @@
 					<table class="table table-striped">
 						<tr>
 							<td><form:label path="videoName">影片名稱</form:label></td>
-							<td><form:input path="videoName" /></td>
+							<td><form:input id="videoName" path="videoName" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="videoLink">連結</form:label></td>
-							<td><form:input id="url" path="videoLink"/></td>
+							<td><form:input id="link" path="videoLink"/></td>
 						</tr>
 						<tr>
 							<td><form:label path="videoDescription">影片敘述</form:label></td>
@@ -115,7 +115,7 @@
 						</tr>
 						<tr>
 							<td><form:label path="href">產品編號</form:label></td>
-							<td><form:input path="href" /></td>
+							<td><form:input id="href" path="href" /></td>
 						</tr>
 						<tr>
 							<td><button class="btn btn-primary table-bordered border-primary" type="submit">新增</button></td>
@@ -125,6 +125,7 @@
 						</tr>
 					</table>
 				</form:form>
+				<button type="button" onclick="magic();" >神奇小按鈕</button>
 			</div>
 		</div>
 	</div>
@@ -138,6 +139,21 @@
 			toggle.classList.toggle('active');
 			navigation.classList.toggle('active');
 			main.classList.toggle('active');
+		}
+		
+		var count = 0
+		function magic() {
+			var name = [ "小提袋", "保暖物品", "小包包"];
+			var url = ["kTD0YPizee0", "AF-O_zJqBXI", "C1-WAEGean4"];
+			var des = ["來做東西吧","手作小物","自己動手做"];
+			document.getElementById('videoName').innerHTML = name[count];
+			document.getElementById('link').innerHTML = url[count];
+			document.getElementById('description').innerHTML = des[count];
+			document.getElementById('href').value = "30001"
+			count++;
+			if (count == 6) {
+				count = 0;
+			}
 		}
 		
 	</script>

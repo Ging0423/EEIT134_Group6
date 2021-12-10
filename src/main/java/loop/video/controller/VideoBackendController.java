@@ -50,6 +50,10 @@ public class VideoBackendController {
 	@GetMapping("/video/create")
 	public String videoCreatePage(Model m) {
 		AllVideoBean bean = new AllVideoBean();
+		bean.setVideoName("手作小物");
+		bean.setVideoLink("kTD0YPizee0");
+		bean.setVideoDescription("自己作手作小物吧");
+		bean.setHref("30001");
 		m.addAttribute("video", bean);
 		return "backend/videoCreate";
 	}

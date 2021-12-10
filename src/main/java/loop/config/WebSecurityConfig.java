@@ -22,15 +22,11 @@ import loop.login.model.MyAuthenticationFailureHandler;
 import loop.login.model.MyAuthenticationSuccessHandler;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private AuthUserDetailsService userDetailService;
-	
-//	@Autowired
-//	PersistentTokenRepository persistenceTokenRepository;
-//	
+		
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
@@ -52,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/forum/newPost").authenticated()
+		.antMatchers(HttpMethod.GET, "/backend/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/backend/**").hasAuthority("ROLE_ADMIN")
 		.antMatchers(HttpMethod.GET).permitAll()
 		.antMatchers(HttpMethod.POST, "/cart/**").authenticated()

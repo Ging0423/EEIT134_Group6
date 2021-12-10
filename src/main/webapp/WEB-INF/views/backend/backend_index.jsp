@@ -184,6 +184,7 @@
     $(document).ready(function() {
 		var pid = $('#pid').val();
 		load(pid);
+		
 	});
     var indexPage=1;
     $(document).ready(function(){

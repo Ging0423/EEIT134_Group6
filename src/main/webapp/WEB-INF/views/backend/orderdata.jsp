@@ -145,7 +145,7 @@
 
 			$.ajax({
 						type : 'post',
-						url : 'searchState',
+						url : 'order/searchState',
 						data : state,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',
