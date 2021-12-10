@@ -38,4 +38,8 @@ public class UsersService {
 	public List<UsersBean> findAll() {
 		return usersRepo.findAll();
 	}
+	
+	public long count() {
+		return usersRepo.count();
+	}
 }

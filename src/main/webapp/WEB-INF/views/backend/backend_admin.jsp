@@ -78,12 +78,12 @@
 			<div>			
 				<div class="user-info">
 					<p>會員資料總覽</p>
-		
+					<p>目前會員總數 : ${count}</p>
 
 					<form id="myForm" action="<c:url value='/backend/admin/delete'/>" method="POST">
 						<input type='hidden' id='hiddenField' name='array' />
 						<button class="btn" type="submit" onclick="d();">多筆刪除</button>
-						<a href="<c:url value='/backend'/>" class="btn">回後台首頁</a>
+						<a href="<c:url value='/backend'/>" class="btn">回後台管理</a>
 					</form>
 					<table class="table table-bordered border-primary">
 						<thead>
@@ -95,7 +95,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="user" items="${allUsers}">
+							<c:forEach var="user" items="${allUsers}" begin="1" varStatus="counterStatus">
+			
 								<tr>
 									<td><a
 										href="<c:url value='/backend/admin/${user.userId}'/>"
@@ -109,6 +110,9 @@
 									<!--<td>${user.userAddress}</td>-->
 									<td><input type="checkbox" name="check" value="${user.userId}"></td>
 								</tr>
+								<!--<c:forEach var="count" items="${counter}" varStatus="counterstatus">
+								
+								</c:forEach>-->
 							</c:forEach>
 						</tbody>
 					</table>
@@ -161,17 +165,17 @@
 		    var result = confirm('是否刪除?');  
 		    if(result){  
 		        alert('刪除成功!');  
+				var array = [];
+				var checkboxes = document
+						.querySelectorAll('input[type=checkbox]:checked');
+				for (var i = 0; i < checkboxes.length; i++) {
+					array.push(checkboxes[i].value);
+				}
+				document.getElementById('hiddenField').value = array;
+				document.getElementById("myForm").submit();
 		    }else{  
 		        alert('不刪除!');  
 		    }  
-			var array = [];
-			var checkboxes = document
-					.querySelectorAll('input[type=checkbox]:checked');
-			for (var i = 0; i < checkboxes.length; i++) {
-				array.push(checkboxes[i].value);
-			}
-			document.getElementById('hiddenField').value = array;
-			document.getElementById("myForm").submit();
 		}
 	</script>
 </body>

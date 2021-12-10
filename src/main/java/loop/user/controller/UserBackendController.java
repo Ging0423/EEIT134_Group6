@@ -44,6 +44,8 @@ public class UserBackendController {
 	public String UserList(Model m) {
 		List<UsersBean> list1 = userService.findAll();
 		m.addAttribute("allUsers", list1);
+		long count = userService.count();
+		m.addAttribute("count", count);
 		System.out.println("查詢成功");
 		return "backend/backend_admin";
 	}
@@ -62,7 +64,7 @@ public class UserBackendController {
 		
 		try {
 			if(request.getParameterValues("array") != null) {
-				System.out.println("1");
+				System.out.println("刪除成功");
 				//多個刪除的參數傳過來是string陣列
 				String[] id = request.getParameterValues("array");
 				//但是資料都在id[0]中，所以要分割字串轉成另一個array
