@@ -1,4 +1,4 @@
-package tw.JoyHsieh.forum.controller;
+package loop.forum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import tw.JoyHsieh.forum.model.Article;
-import tw.JoyHsieh.forum.model.ArticleService;
-import tw.JoyHsieh.forum.model.ReplyService;
+import loop.forum.model.Article;
+import loop.forum.model.ArticleService;
+import loop.forum.model.ReplyService;
 
 @Controller
 @RequestMapping("/forum")
