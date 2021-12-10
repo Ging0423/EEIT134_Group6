@@ -56,7 +56,7 @@
 		<div class="col-md-6 form-group p_star">
 			<h4>會員帳號</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account" /><font color="red">${acerrorMsg}</font>
+				name="account" path="account"/>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
@@ -73,12 +73,12 @@
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email</h4>
-			<form:input type="text" class="form-control" id="email" path="email" />
+			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com"/>
 			<font color="red">${acerrorMsg}</font>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話</h4>
-			<form:input type="text" class="form-control" id="tel" path="tel" />
+			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX"/>
 			<font color="red">${acerrorMsg}</font>
 		</div>
 		<div class="col-md-6 form-group p_star">
