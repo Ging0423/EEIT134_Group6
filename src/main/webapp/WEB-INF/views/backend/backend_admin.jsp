@@ -158,6 +158,12 @@
 		}
 		
 		function d() {
+		    var result = confirm('是否刪除?');  
+		    if(result){  
+		        alert('刪除成功!');  
+		    }else{  
+		        alert('不刪除!');  
+		    }  
 			var array = [];
 			var checkboxes = document
 					.querySelectorAll('input[type=checkbox]:checked');
