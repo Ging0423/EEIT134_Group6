@@ -1,8 +1,10 @@
 package loop.user.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,9 +20,14 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import loop.forum.model.Article;
+import loop.forum.model.Reply;
 import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
+import loop.video.model.VideoCommentBean;
 
 @Component
 @Entity
@@ -58,12 +65,26 @@ public class UsersBean implements Serializable {
 	@Column(name = "registerDate")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
-
+	
+	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Article> article = new ArrayList<Article>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	private List<Reply> reply = new ArrayList<Reply>();
 
 	public UsersBean() {
 
@@ -155,6 +176,16 @@ public class UsersBean implements Serializable {
 
 	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+
+	
+	
+	public List<VideoCommentBean> getVideoComment() {
+		return videoComment;
+	}
+
+	public void setVideoComment(List<VideoCommentBean> videoComment) {
+		this.videoComment = videoComment;
 	}
 
 	@Override

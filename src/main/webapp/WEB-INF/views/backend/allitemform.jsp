@@ -66,6 +66,14 @@ text-decoration: none
 						class="icon"><i class="fas fa-shopping-bag"
 							aria-hidden="true"></i></span> <span class="title">商品管理</span>
 				</a></li>
+<!--                 ================== -->
+                <li>
+                    <a href="<c:url value='/backend/useritems'/>">
+                        <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
+                        <span class="title">會員手作商品管理</span>
+                    </a>
+                </li>
+<!--                 ================== -->
 				<li><a href="<c:url value=''/>"> <span class="icon"><i
 							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
 						class="title">訂單管理</span>

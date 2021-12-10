@@ -19,7 +19,9 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import loop.user.model.UsersBean;
 
@@ -60,9 +62,10 @@ public class OrderDataBean implements Serializable {
 	@Column(name = "total")
 	private int total;
 
+	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderData", cascade = CascadeType.ALL)
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
-
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;

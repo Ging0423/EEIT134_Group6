@@ -104,7 +104,7 @@ a {text-decoration:none}
 <h1 style="color:#fff">紗線商品資料</h1><br>
 <hr>
 </div><br>
-<form method="post" action="<c:url value='/backend/updateyarn' />">
+<form method="post" action="<c:url value='/backend/updateyarn'/>" enctype="multipart/form-data">
 
     <table>
     <tr><td>編號:</td></tr>
@@ -123,12 +123,22 @@ a {text-decoration:none}
     <tr><td>庫存數量:</td></tr>
     <tr><td><input class=a name="qty" value=${yarnData.qty}></td></tr>
     <tr><td>價格:</td>
-    <tr><td><input class=a name="price" vlaue=${yarnData.price}></td></tr>
+    <tr><td><input class=a name="price" value=${yarnData.price}></td></tr>
     </table>
     
     <c:forEach var="itemImg" items="${itemImg}">
+<!--      <input type="file" name="img" accept="image/*"/>  -->
 	  <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
       </c:forEach>
+      
+      <br><img type="file" id="img1" accept="image/*" width=20% />
+      <img type="file" id="img2" accept="image/*" width=20% />
+      <img type="file" id="img3" accept="image/*" width=20% />
+      
+      <br>圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
+	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
+	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/>
+      
 <br><button type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deleteyarn' />" method="post">

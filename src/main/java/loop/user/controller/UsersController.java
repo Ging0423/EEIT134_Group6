@@ -164,6 +164,8 @@ public class UsersController {
 	public void delete(@PathVariable Integer id) {
 		usersService.deleteById(id);
 	}
+	
+	
 	// @GetMapping("/users/{id}")
 	// public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer
 	// id) {
