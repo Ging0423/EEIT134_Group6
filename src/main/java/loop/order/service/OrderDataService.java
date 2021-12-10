@@ -21,9 +21,9 @@ public class OrderDataService {
 		return orderDataRepo.save(orderdata);
 	}
 
-	public OrderDataBean update(OrderDataBean orderdata) {
-		return orderDataRepo.save(orderdata);
-	}
+//	public OrderDataBean update(OrderDataBean orderdata) {
+//		return orderDataRepo.save(orderdata);
+//	}
 
 	public void deleteById(Integer id) {
 		orderDataRepo.deleteById(id);

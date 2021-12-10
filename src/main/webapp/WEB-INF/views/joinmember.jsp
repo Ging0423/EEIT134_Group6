@@ -138,11 +138,27 @@
 				count = 0;
 			}
 		}
+		
+		function check() {
+			let name = document.getElementById("videoName").value;
+			let url = document.getElementById("link").value;
+			let description = document.getElementById('description').innerHTML;
+			let href = document.getElementById('href').value;
+			let count = 0;
+			if(name == "") {
+				alert("影片名稱不可為空");
+				count++;
+			}
+			if(url == "") {
+				alert("影片連結不可為空");
+				count++;
+			}
+			if(count == 0) {
+				 document.getElementById("myform").submit()
+			}
+		}
 	</script>
 	
-	<script>
-	
-	</script>
 </body>
 
 </html>
