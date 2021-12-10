@@ -95,7 +95,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="user" items="${allUsers}" begin="1" varStatus="counterStatus">
+							<c:forEach var="user" items="${allUsers}">
 			
 								<tr>
 									<td><a
@@ -162,9 +162,9 @@
 		}
 		
 		function d() {
-		    var result = confirm('是否刪除?');  
+		    var result = confirm('確定刪除？');  
 		    if(result){  
-		        alert('刪除成功!');  
+		        alert('刪除成功！');  
 				var array = [];
 				var checkboxes = document
 						.querySelectorAll('input[type=checkbox]:checked');
@@ -174,7 +174,7 @@
 				document.getElementById('hiddenField').value = array;
 				document.getElementById("myForm").submit();
 		    }else{  
-		        alert('不刪除!');  
+		        alert('動作取消！');  
 		    }  
 		}
 	</script>

@@ -56,36 +56,36 @@
 		<div class="col-md-6 form-group p_star">
 			<h4>會員帳號</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account" />
+				name="account" path="account" /><font color="red">${acerrorMsg}</font>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員密碼</h4>
 			<form:input type="password" class="form-control" name="password"
-				path="userPassword" />
+				path="userPassword" /><font color="red">${acerrorMsg}</font>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員名稱</h4>
 			<form:input type="text" class="form-control" name="userName"
-				path="userName" />
+				path="userName" /><font color="red">${acerrorMsg}</font>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email</h4>
 			<form:input type="text" class="form-control" id="email" path="email" />
-
+			<font color="red">${acerrorMsg}</font>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話</h4>
 			<form:input type="text" class="form-control" id="tel" path="tel" />
-
+			<font color="red">${acerrorMsg}</font>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員地址</h4>
 			<form:input type="text" class="form-control" id="userAddress"
-				path="userAddress" />
-
+				path="userAddress" /><font color="red">${acerrorMsg}</font>
+				
 		</div>
 		<div>
 			<button class="btn_3" type="submit">加入會員</button>
