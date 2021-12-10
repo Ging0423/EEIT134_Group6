@@ -91,7 +91,6 @@
 									<c:otherwise>
 									</c:otherwise>
 								</c:choose>
-
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="blog.html"
 									id="navbarDropdown_2" role="button" data-toggle="dropdown"
@@ -103,8 +102,11 @@
 
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/video'/>">教學影片</a></li>
-								<!-- 								<li class="nav-item"><a class="nav-link" -->
-								<%-- 									href="<c:url value='/items/useritems'/>">會員手作賣場</a></li> --%>
+									
+								<%-- <li class="nav-item"><a class="nav-link"
+									href="<c:url value='/items/useritems'/>">會員手作賣場</a></li> --%>
+
+
 								<c:choose>
 									<c:when test="${empty isLogin}">
 										<li class="nav-item"><a class="nav-link"
@@ -115,6 +117,7 @@
 											href="<c:url value='/logout'/>">登出</a></li>
 									</c:otherwise>
 								</c:choose>
+
 							</ul>
 						</div>
 						<div>

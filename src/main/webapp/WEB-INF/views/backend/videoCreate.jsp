@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+
 <style>
 .divWidth {
 	width: 75%;
@@ -41,39 +42,93 @@
     position: relative;
     width: 100%;
 }
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #B08EAD;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn {
+background-color:#B08EAD;
+color: white
+}
+
 </style>
 </head>
+
 <body>
+<!-- =========== -->
 	<div class="container1">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/'/>"> <span class="icon"><i
-							class="fas fa-infinity" aria-hidden="true"></i></span> <span
-						class="title"><h2>loop</h2></span>
+				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
+							class="fas fa-infinity" aria-hidden="true"></i></span> 
+<!-- 							<span class="title"><h2>loop<h2></span> -->
+	<span class="title"><img src= "<c:url value='/img/loop.png' />"></span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend/admin'/>"> <span class="icon"><i
 							class="fas fa-users-cog" aria-hidden="true"></i></span> <span
-						class="title">管理員專區</span>
+						class="title">會員專區</span>
 				</a></li>
 				<li><a href="<c:url value='/backend/allitem'/>"> <span
 						class="icon"><i class="fas fa-shopping-bag"
-							aria-hidden="true"></i></span> <span class="title">商品管理</span>
+							aria-hidden="true"></i></span> <span class="title">商品管理</span>
 				</a></li>
-				<li><a href="<c:url value='/backend/order'/>"> <span
-						class="icon"><i class="fas fa-cart-arrow-down"
-							aria-hidden="true"></i></span> <span class="title">訂單管理</span>
+<!--                 ================== -->
+<!--                 <li> -->
+<%--                     <a href="<c:url value='/backend/useritems'/>"> --%>
+<!--                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span> -->
+<!--                         <span class="title">會員手作商品管理</span> -->
+<!--                     </a> -->
+<!--                 </li> -->
+<!--                 ================== -->
+				<li><a href="<c:url value='/backend/order'/>"> <span class="icon"><i
+							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
+						class="title">訂單管理</span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
-							class="fas fa-comments" aria-hidden="true"></i></span> <span
-						class="title">訊息管理</span>
-				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+<%-- 				<li><a href="<c:url value=''/>"> <span class="icon"><i --%>
+<!-- 							class="fas fa-comments" aria-hidden="true"></i></span> <span -->
+<!-- 						class="title">訊息管理</span> -->
+<!-- 				</a></li> -->
+				<li><a href="<c:url value='/backend/video'/>"> <span class="icon"><i
 							class="far fa-file-video" aria-hidden="true"></i></span> <span
-						class="title">教學影片管理</span>
+						class="title">教學影片管理</span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend/forum'/>"> <span class="icon"><i
 							class="far fa-newspaper" aria-hidden="true"></i></span> <span
-						class="title">討論區管理</span>
+						class="title">討論區管理</span>
 				</a></li>
 				<li><a href="<c:url value='/logout'/>"> <span class="icon"><i
 							class="fas fa-sign-out-alt" aria-hidden="true"></i></span> <span
@@ -81,50 +136,64 @@
 				</a></li>
 			</ul>
 		</div>
+		
 		<div class="main">
 			<div class="topbar">
 				<div class="toggle" onclick="toggleMenu();">
 					<i class="fas fa-bars"></i>
 				</div>
 				<div class="search">
-					<label> <input type="text" placeholder="Search here">
-						<i class="fas fa-search" aria-hidden="true"></i>
-					</label>
+<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
 				</div>
 				<div class="user">
 					<img src="image/user.jpg">
 				</div>
 			</div>
+			
+<!-- ========================= -->			
+<div align='center'>
+<div style="background-color:#B08EAD"><br>
+<h1 style="color:#fff">新增教學影片</h1><br>
+<hr>
+</div><br>
+			
 			<div class=divWidth>
 			<c:url value="/backend/video/create" var="url"/>
-				<form:form method="POST" action="${url}"
-					modelAttribute="video">
+				<form method="POST" action="${url}" id="myform">
 
 					<table class="table table-striped">
 						<tr>
-							<td><form:label path="videoName">影片名稱</form:label></td>
-							<td><form:input path="videoName" /></td>
+							<td>影片名稱</td>
+							<td><input id="videoName" name="videoName" type="text"/></td>
+							<td></td>
 						</tr>
 						<tr>
-							<td><form:label path="videoLink">連結</form:label></td>
-							<td><form:input id="url" path="videoLink"/></td>
+							<td>連結</td>
+							<td><input id="link" name="videoLink" type="text" onchange="show();"/></td>
+							<td><span id="showVideo"></span></td>
 						</tr>
 						<tr>
-							<td><form:label path="videoDescription">影片敘述</form:label></td>
-							<td><form:textarea rows="3" cols="30" path="videoDescription" /></td>
+							<td>影片敘述</td>
+							<td><textarea rows="3" cols="30" name="videoDescription" id="description"></textarea></td>
+						
+						<td></td></tr>
+						<tr>
+							<td>產品編號</td>
+							<td><input id="href" name="href" type="text"/></td>
+							<td></td>
 						</tr>
 						<tr>
-							<td><form:label path="href">產品編號</form:label></td>
-							<td><form:input path="href" /></td>
-						</tr>
-						<tr>
-							<td><button class="btn btn-primary table-bordered border-primary" type="submit">新增</button></td>
+							<td><button class="btn" type="button" onclick="check();">新增</button></td>
 							<td>
 								<div class="videoDiv"></div>
 							</td>
 						</tr>
 					</table>
-				</form:form>
+				</form>
+				<button type="button" onclick="magic();" >神奇小按鈕</button>
 			</div>
 		</div>
 	</div>
@@ -138,6 +207,49 @@
 			toggle.classList.toggle('active');
 			navigation.classList.toggle('active');
 			main.classList.toggle('active');
+		}
+		
+		function magic() {
+			let ind = Math.floor(Math.random()*3);
+			var name = [ "小提袋", "保暖物品", "小包包"];
+			var url = ["kTD0YPizee0", "AF-O_zJqBXI", "C1-WAEGean4"];
+			var des = ["來做東西吧","手作小物","自己動手做"];
+			document.getElementById('videoName').value = name[ind];
+			document.getElementById('link').value = url[ind];
+			document.getElementById('showVideo').innerHTML = '<iframe width="560" height="315"'
+				+'src="https://www.youtube.com/embed/'+url[ind]+'"title="YouTube video player" frameborder="0"'
+					+'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+					+'allowfullscreen></iframe>';
+			document.getElementById('description').innerHTML = des[ind];
+			document.getElementById('href').value = "30001"
+		}
+		
+		function check() {
+			let name = document.getElementById("videoName").value;
+			let url = document.getElementById("link").value;
+			let description = document.getElementById('description').innerHTML;
+			let href = document.getElementById('href').value;
+			let count = 0;
+			if(name == "") {
+				alert("影片名稱不可為空");
+				count++;
+			}
+			if(url == "") {
+				alert("影片連結不可為空");
+				count++;
+			}
+			if(count == 0) {
+				 document.getElementById("myform").submit()
+			}
+		}
+		
+		function show(){
+			var link = document.getElementById('link').value;
+			console.log(link);
+			document.getElementById('showVideo').innerHTML = '<iframe width="560" height="315"'
+			+'src="https://www.youtube.com/embed/'+link+'"title="YouTube video player" frameborder="0"'
+				+'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+				+'allowfullscreen></iframe>';
 		}
 		
 	</script>

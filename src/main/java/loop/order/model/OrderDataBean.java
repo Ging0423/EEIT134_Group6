@@ -65,7 +65,7 @@ public class OrderDataBean implements Serializable {
 	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderData", cascade = CascadeType.ALL)
 	private Set<OrderItemBean> orderItem = new LinkedHashSet<OrderItemBean>();
-	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;

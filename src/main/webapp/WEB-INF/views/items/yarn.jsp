@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="zxx">
@@ -28,15 +27,15 @@
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 <style type="text/css">
-.single_product_item {
+	.single_product_item {
 	display: none;
-} 
+}
 </style>
 </head>
 
 <body>
 	<!--::header part start::-->
-	<jsp:include page="/fragment/header.jsp" />
+	    <jsp:include page="/fragment/header.jsp" />
 	<!-- Header part end-->
 
 	<!-- breadcrumb part start-->
@@ -112,16 +111,16 @@
 				<div class="col-md-8">
 					<div class="product_list">
 						<div class="row">
-
-							<c:forEach var="items" items='${allItem}'>
+							<c:forEach var="item" items='${allItem}'>
 								<div class="col-lg-6 col-sm-6">
 									<div class="single_product_item">
-										<img src='<c:url value="/items/img/${items.img}" />' alt="#"
-											class="img-fluid">
-										<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
+<!-- 									<div class="product_display"> -->
+										<img src='<c:url value="/items/img/${item.img}" />' alt="#" class="img-fluid">
+<%--                                             <a href='<c:url value="/items/books/${item.itemId}"/>'><img src='<c:url value="/items/img/${itemImg.img}" />'</a> --%>
 										<h3>
-											<a href='<c:url value="/items/yarn/${items.itemId}"/>'>${items.itemName}</a>
+											<a href='<c:url value="/items/yarn/${item.itemId}"/>'>${item.itemName}</a>
 										</h3>
+										<p>$${item.price}</p>
 										<%-- 										<p>${item.material}</p> --%>
 										<%-- 										<p>${item.color}</p> --%>
 									</div>
@@ -137,12 +136,10 @@
 		</div>
 	</section>
 	<!-- product list part end-->
+	    <jsp:include page="/fragment/footer.jsp" />
+	<!-- Header part end-->
 	
-<!--::footer_part start::-->
-	
-<!--::footer_part end::-->
-
-<!-- jquery plugins here-->
+	<!-- jquery plugins here-->
 	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
 	<script src="<c:url value='/js/popper.min.js'/>"></script>
@@ -157,7 +154,7 @@
 	<script src="<c:url value='/js/slick.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
 	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
-	<script src="<c:url value='/js/contact.js'/>"></script>
+<%-- 	<script src="<c:url value='/js/contact.js'/>"></script> --%>
 	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.form.js'/>"></script>
 	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
@@ -165,21 +162,20 @@
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	
-	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-	<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
-		
-	<script>  
-	$(document).ready (function () {  
-	  $(".single_product_item").slice(0, 6).show();  
-	  $(".btn_3").on("click", function(e){  
-	    e.preventDefault();  
-	    $(".single_product_item:hidden").slice(0, 6).slideDown();  
-	    if ($(".single_product_item:hidden").length == 0) {  
-	      $(".btn_3").text("沒有更多商品").addClass("noContent");  
-	    }  
-	  });  
-	  })  
-	</script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+	
+<script>  
+$(document).ready (function () {  
+  $(".single_product_item").slice(0, 6).show();  
+  $(".btn_3").on("click", function(e){  
+    e.preventDefault();  
+    $(".single_product_item:hidden").slice(0, 6).slideDown();  
+    if ($(".single_product_item:hidden").length == 0) {  
+      $(".btn_3").text("沒有更多商品").addClass("noContent");  
+    }  
+  });  
+  })  
+</script> 	
 </body>
-
 </html>
