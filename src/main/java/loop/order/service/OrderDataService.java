@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import loop.order.model.OrderDataBean;
 import loop.order.model.OrderDataRepository;
+import loop.user.model.UsersBean;
+import loop.user.service.UsersService;
 
 
 @Service
@@ -18,6 +20,9 @@ import loop.order.model.OrderDataRepository;
 public class OrderDataService {
 	@Autowired
 	private OrderDataRepository orderDataRepo;
+	
+	@Autowired
+	private UsersService usersService;
 
 	public OrderDataBean insert(OrderDataBean orderdata) {
 		return orderDataRepo.save(orderdata);
@@ -31,22 +36,30 @@ public class OrderDataService {
 		orderDataRepo.deleteById(id);
 	}
 
-	public OrderDataBean findById(Integer id) {
-		Optional<OrderDataBean> op1 = orderDataRepo.findById(id);
-		return op1.get();
+	public List<OrderDataBean> findByUserId(Integer id) {
+		
+		return orderDataRepo.findByUserId(id);
 	}
+	
+	public OrderDataBean save(OrderDataBean orderData, Integer userId) {
+		  UsersBean user = usersService.findById(userId);
+		  orderData.setUserId(userId);
+		  orderData.setUsers(user);
+		  orderDataRepo.save(orderData);
+		  return orderData;
+		 }
 	
 	public void update(OrderDataBean bean) {
 		orderDataRepo.save(bean);
 	}
 	
-//	public OrderDataBean findById(Integer orderId) {
-//		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
-//		if(op.isEmpty()) {
-//			return null;
-//		}
-//		return op.get();
-//	}
+	public OrderDataBean findById(Integer orderId) {
+		Optional<OrderDataBean> op = orderDataRepo.findById(orderId);
+		if(op.isEmpty()) {
+			return null;
+		}
+		return op.get();
+	}
 	
 	public List<OrderDataBean> findAll() {
 		return orderDataRepo.findAll();

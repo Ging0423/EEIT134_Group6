@@ -34,20 +34,20 @@ public class OrderDataController {
 		return odService.insert(odata);
 	}
 	
-	@GetMapping("/orderdataupdate.controller")
-	public OrderDataBean processUpdateAction() {
-		OrderDataBean odata2 = new OrderDataBean();
-//		odata2.setOrderId(101);
-//		odata2.setUserId(100);
-		odata2.setRecipient("VIPcustomer");
-		odata2.setShippingAddress("Luna");
-		odata2.setTel("0987654321");
-//		odata2.setOrderDate();
-		odata2.setPayState("2");
-		odata2.setOrderState("2");
-		odata2.setTotal(85911);
-		return odService.update(odata2);		
-	}
+//	@GetMapping("/orderdataupdate.controller")
+//	public OrderDataBean processUpdateAction() {
+//		OrderDataBean odata2 = new OrderDataBean();
+////		odata2.setOrderId(101);
+////		odata2.setUserId(100);
+//		odata2.setRecipient("VIPcustomer");
+//		odata2.setShippingAddress("Luna");
+//		odata2.setTel("0987654321");
+////		odata2.setOrderDate();
+//		odata2.setPayState("2");
+//		odata2.setOrderState("2");
+//		odata2.setTotal(85911);
+//		return odService.update(odata2);		
+//	}
 	
 	@GetMapping("/orderdatadelete.controller")
 	public String processDelete() {
