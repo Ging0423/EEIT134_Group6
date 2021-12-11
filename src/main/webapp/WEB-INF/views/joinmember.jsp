@@ -276,7 +276,7 @@
 				   contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 				   success: function(account){					   
 					   if(account==true){
-						   $('table').prepend("<img src='img/usercheck/checkNO.png'/> 帳號已被使用, 請重新輸入！");;
+						   $('table').prepend("<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！");;
 					   }else{
 						   var table = $('#showproduct');
 						   table.append("<img src='img/usercheck/checkYES.png'/>");						   	   

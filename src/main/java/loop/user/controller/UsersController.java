@@ -142,7 +142,7 @@ public class UsersController {
 		
 		
 		
-		return null;	
+		return "redirect:/joinmember";	
 	}
 
 	@GetMapping("/updatemember")
