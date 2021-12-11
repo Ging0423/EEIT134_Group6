@@ -267,6 +267,25 @@
 				document.getElementById("userinsert").submit()
 			}
 		}
+		
+		   function load(indexPage){
+			   $.ajax({
+				   type:'post',
+				   url:'/joinmember',
+				   dataType:'String',
+				   contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+				   success: function(account){
+					   
+					   if(account==true){
+						   $('table').prepend("<img src='img/usercheck/checkNO.png'/> 帳號已被使用, 請重新輸入！");;
+					   }else{
+						   var table = $('#showproduct');
+						   table.append("<img src='img/usercheck/checkYES.png'/>");
+						   	   
+					   }
+				   }
+			   });
+		   }
 	</script>
 	
 </body>

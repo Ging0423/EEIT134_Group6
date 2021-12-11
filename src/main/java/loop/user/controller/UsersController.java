@@ -136,6 +136,14 @@ public class UsersController {
 		usersService.save(bean);
 		return "redirect:/login";
 	}
+	// 新增會員資料的帳號比對
+//	@PostMapping("joinmember")
+//	public String compareaccount(@ModelAttribute("usersBean") UsersBean bean) {
+//		
+//		
+//		
+//		return null;	
+//	}
 
 	@GetMapping("/updatemember")
 	public String updateMember(Model m) {
@@ -157,69 +165,4 @@ public class UsersController {
 		usersService.save(bean);
 		return "redirect:/login";
 	}
-
-//	@DeleteMapping("/users/{id}")
-//	public void delete(@PathVariable Integer id) {
-//		usersService.deleteById(id);
-//	}
-	
-	
-//	@PostMapping("/delete")
-//	public String delete(Model m, HttpServletRequest request, HttpServletResponse response) {
-//		
-//		try {
-//			if(request.getParameterValues("array") != null) {
-//				//多個刪除的參數傳過來是string陣列
-//				String[] id = request.getParameterValues("array");
-//				//但是資料都在id[0]中，所以要分割字串轉成另一個array
-//				String array[] = (id[0].split(","));
-//				usersService.delete(array);
-//				return "redirect:/admin";
-//			}
-//			else {
-//				return "redirect:/admin";
-//			}
-//		} catch (Exception e) {
-//			return "redirect:/admin";
-//		}
-//	
-//	}
-	
-	
-	// @GetMapping("/users/{id}")
-	// public ResponseEntity<UsersBean> get(@PathVariable(required = false) Integer
-	// id) {
-	// try {
-	// UsersBean product = usersService.findUserById(id);
-	// return new ResponseEntity<UsersBean>(product, HttpStatus.OK);
-	// } catch (NoSuchElementException e) {
-	// return new ResponseEntity<UsersBean>(HttpStatus.NOT_FOUND);
-	// }
-	// }
-// 列出所有的資料，回傳值為list
-	// @GetMapping("/users")
-	// public List<UsersBean> fetchUserList() {
-	// return usersService.listUserAll();
-	// }
-	// //新增資料，傳入資料庫
-	// @PostMapping("/users")
-	// public void add(@RequestBody UsersBean user) {
-	// usersService.saveUser(user);
-	// }
-	// 根據id刪除資料
-
-	// @PutMapping("/users/{id}")
-	// public ResponseEntity<?> update(@RequestBody UsersBean putuser, @PathVariable
-	// Integer id) {
-	// try {
-	// UsersBean userBean = usersService.findUserById(id);
-	// userBean.setEmail(putuser.getEmail());
-	// userBean.setUserPassword(putuser.getUserPassword());
-	// userBean.setUserName(putuser.getUserName());
-	// usersService.saveUser(userBean);
-	// return new ResponseEntity<>(HttpStatus.OK);
-	// } catch (NoSuchElementException e) {
-	// return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	// }
-	// }
 }
