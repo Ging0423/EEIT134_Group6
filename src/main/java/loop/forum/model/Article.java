@@ -56,13 +56,21 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER, mappedBy = "articleid",cascade = CascadeType.ALL)
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	
+	public UsersBean getUsers() {
+		return users;
+	}
+
+	public void setUsers(UsersBean users) {
+		this.users = users;
+	}
+
 	public Date getPostdate() {
 		return postdate;
 	}

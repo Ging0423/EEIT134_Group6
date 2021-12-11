@@ -78,11 +78,9 @@ public class UsersBean implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Article> article = new ArrayList<Article>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Reply> reply = new ArrayList<Reply>();
 

@@ -63,7 +63,7 @@ function sendArticle() {
 	});
 	
 	alert("已新增文章成功!!");
-	window.location.replace("/loop/forum");
+//	window.location.replace("/loop/forum");
 }
 
 /* 點擊下拉式選單後，出現下拉式選單*/
