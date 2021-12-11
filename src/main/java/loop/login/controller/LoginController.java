@@ -32,32 +32,15 @@ public class LoginController {
 	public String loginFailurePage(@RequestParam(value = "failure", required = false) String account,String password, Model m) {
 		try {
 			if (!account.equals(null) || !password.equals(null)) {
-				m.addAttribute("acerrorMsg", "帳號不可空白！");
-				m.addAttribute("pwerrorMsg", "密碼不可空白！");
-				return "login";
+			
 			}
-//			if(!password.equals(null)) {
-//				m.addAttribute("pwerrorMsg", "密碼不可空白！");
-//				return "login";
-//			}
+//	
 		} catch (NullPointerException e) {
 			return "login";
 		}
 		return "login";
 	}
 
-//	@GetMapping("/login")
-//	public String loginFailurePage1(@RequestParam(value = "failure", required = false) String password, Model m) {
-//		try {
-//			if (!password.equals(null)) {
-//				m.addAttribute("pwerrorMsg", "密碼不可空白！");
-//				return "login";
-//			}
-//		} catch (NullPointerException e) {
-//			return "login";
-//		}
-//		return "login";
-//	}
 
 	@GetMapping("/logout")
 	public String logOut(HttpServletRequest request, HttpServletResponse response, SessionStatus status) {
