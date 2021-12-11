@@ -61,7 +61,7 @@
 						<tr>
 							<td><button><i class="ti-control-backward"></i></button></td>
 							<td colspan="5" align="right">
-								<c:forEach var="i" items="${totalPages}" begin="1" end="${totalPages}" step="1">
+								<c:forEach var="i" begin="1" end="${totalPages}" step="1">
 									<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
 								</c:forEach>
 							</td>
