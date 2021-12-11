@@ -116,8 +116,6 @@ public class UsersController {
 	// 連結"關於"頁面
 	@GetMapping("/about")
 	public String about(Model m) {
-//		UsersBean bean = new UsersBean();
-//		m.addAttribute("usersData", bean);
 		return "about";
 	}
 
