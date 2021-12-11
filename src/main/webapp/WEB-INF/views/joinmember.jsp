@@ -271,7 +271,7 @@
 		   function load(indexPage){
 			   $.ajax({
 				   type:'post',
-				   url:'/joinmember',
+				   url:'/compareaccount',
 				   dataType:'String',
 				   contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 				   success: function(account){					   

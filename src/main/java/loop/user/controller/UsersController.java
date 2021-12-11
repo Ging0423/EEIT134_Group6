@@ -137,13 +137,13 @@ public class UsersController {
 		return "redirect:/login";
 	}
 	// 新增會員資料的帳號比對
-//	@PostMapping("joinmember")
-//	public String compareaccount(@ModelAttribute("usersBean") UsersBean bean) {
-//		
-//		
-//		
-//		return null;	
-//	}
+	@PostMapping("compareaccount")
+	public String compareaccount(@ModelAttribute("usersBean") UsersBean bean) {
+		
+		
+		
+		return null;	
+	}
 
 	@GetMapping("/updatemember")
 	public String updateMember(Model m) {
