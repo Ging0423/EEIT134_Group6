@@ -81,7 +81,7 @@
                                         <input type="checkbox" id="rememberMe" name="rememberMe">
                                         <label for="f-option">記住帳號</label>
                                     </div>
-                            	      <button class="btn_3" type="button" onclick="check();">登入</button>
+                            	      <button class="btn_3" type="button" onclick="checkok();">登入</button>
                                     <a class="lost_pass" href="#">忘記密碼？</a>
                                 </div>
                             </form>
@@ -146,11 +146,37 @@
 				description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 		}
     
-		if(count == 0) {
-			 document.getElementById("login").submit()
-		}
 	}
     
+    function checkok() {
+    	let account = document.getElementById("account").value;
+		let description1 = document.getElementById('accounterrorMsg');
+		let password = document.getElementById("password").value;
+		let description2 = document.getElementById('pwerrorMsg');
+    
+		let count = 0;
+		
+		if(account == "") {
+			description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+			count++;
+		}
+			else{
+			description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+		} 
+		
+		if(password == "") {
+			description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
+			count++;
+		}
+			else{
+				description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+		}
+    
+		if(count == 0) {
+			alert("登入成功！")
+			document.getElementById("login").submit()
+		}
+	}
     
     
     </script>

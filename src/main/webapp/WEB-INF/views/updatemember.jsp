@@ -88,7 +88,7 @@
 				
 		</div>
 		<div>
-			<button class="btn_3" type="button" onclick="check();">送出</button>
+			<button class="btn_3" type="button" onclick="checkok();">送出</button>
 		</div>
 	</form:form>
 	<br>
@@ -139,8 +139,6 @@
 		}
 		
 		function check() {
-			let account = document.getElementById("account").value;
-			let description1 = document.getElementById('accounterrorMsg');
 			let password = document.getElementById("password").value;
 			let description2 = document.getElementById('pwerrorMsg');
 			let userName = document.getElementById("userName").value;
@@ -154,14 +152,61 @@
 																										
 			let count = 0;
 			
-			if(account == "") {
-				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+
+			if(password == "") {
+				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
-				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			} 
+					description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(userName == "") {
+				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				count++;
+			}
+				else{
+					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(email == "") {
+				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				count++;
+			}
+				else{
+					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(tel == "") {
+				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				count++;
+			}
+				else{
+					description5.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
+			if(userAddress == "") {
+				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				count++;
+			}
+				else{
+					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			}
 			
+
+		}
+		
+		function checkok() {
+			let password = document.getElementById("password").value;
+			let description2 = document.getElementById('pwerrorMsg');
+			let userName = document.getElementById("userName").value;
+			let description3 = document.getElementById('userNameerrorMsg');
+			let email = document.getElementById("email").value;
+			let description4 = document.getElementById('emailerrorMsg');
+			let tel = document.getElementById("tel").value;
+			let description5 = document.getElementById('telerrorMsg');
+			let userAddress = document.getElementById("userAddress").value;
+			let description6 = document.getElementById('userAddresserrorMsg');
+																										
+			let count = 0;
+			
+
 			if(password == "") {
 				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
@@ -199,7 +244,8 @@
 			}
 			
 			if(count == 0) {
-				 document.getElementById("userupdate").submit()
+				alert("資料修改完成！")
+				document.getElementById("userupdate").submit()
 			}
 		}
 	</script>
