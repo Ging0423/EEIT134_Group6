@@ -153,8 +153,7 @@
 			let description5 = document.getElementById('telerrorMsg');
 			let userAddress = document.getElementById("userAddress").value;
 			let description6 = document.getElementById('userAddresserrorMsg');
-																							
-			
+																										
 			let count = 0;
 			
 			if(account == "") {
@@ -201,7 +200,6 @@
 					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			
-
 		}
 		
 		function checkok() {
@@ -217,8 +215,7 @@
 			let description5 = document.getElementById('telerrorMsg');
 			let userAddress = document.getElementById("userAddress").value;
 			let description6 = document.getElementById('userAddresserrorMsg');
-																							
-			
+																										
 			let count = 0;
 			
 			if(account == "") {

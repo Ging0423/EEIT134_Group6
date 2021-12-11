@@ -34,7 +34,7 @@ public class LoginController {
 			if (!account.equals(null) || !password.equals(null)) {
 			
 			}
-//	
+	
 		} catch (NullPointerException e) {
 			return "login";
 		}
