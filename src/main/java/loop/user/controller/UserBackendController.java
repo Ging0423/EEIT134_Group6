@@ -47,7 +47,7 @@ public class UserBackendController {
 		System.out.println("查詢成功");
 		long count = userService.count();
 		m.addAttribute("count", count);
-		return "backend/backend_admin";
+		return "backend/backend_users";
 	}
 	
 	
@@ -56,7 +56,7 @@ public class UserBackendController {
 	public String userStatus(@PathVariable("id") Integer userId, Model m) {
 		UsersBean user = userService.findById(userId);
 		m.addAttribute("user", user);
-		return "backend/userdata";
+		return "backend/userdetail";
 	}
 	
 	@PostMapping("/admin/delete")

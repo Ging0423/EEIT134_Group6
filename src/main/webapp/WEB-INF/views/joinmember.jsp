@@ -56,35 +56,35 @@
 		<div class="col-md-6 form-group p_star">
 			<h4>會員帳號：</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account"/><span style=color:red id="accounterrorMsg"></span>
+				name="account" path="account" onchange="check()"/><span style=color:red id="accounterrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員密碼：</h4>
 			<form:input type="password" class="form-control" name="password" id="password"
-				path="userPassword" /><span style=color:red id="pwerrorMsg"></span>
+				path="userPassword" onchange="check()"/><span style=color:red id="pwerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員名稱：</h4>
 			<form:input type="text" class="form-control" name="userName" id="userName"
-				path="userName" /><span style=color:red id="userNameerrorMsg"></span>
+				path="userName" onchange="check()"/><span style=color:red id="userNameerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email：</h4>
-			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com"/>
+			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" onchange="check()"/>
 			<span style=color:red id="emailerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話：</h4>
-			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX"/>
+			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX" onchange="check()"/>
 			<span style=color:red id="telerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員地址：</h4>
 			<form:input type="text" class="form-control" id="userAddress"
-				path="userAddress" /><span style=color:red id="userAddresserrorMsg"></span>
+				path="userAddress" onchange="check()"/><span style=color:red id="userAddresserrorMsg"></span>
 				
 		</div>
 		<div>
@@ -158,7 +158,7 @@
 			let count = 0;
 			
 			if(account == "") {
-				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
@@ -166,35 +166,35 @@
 			} 
 			
 			if(password == "") {
-				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
+				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userName == "") {
-				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 名稱不可空白";
+				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(email == "") {
-				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> email不可空白";
+				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(tel == "") {
-				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description5.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userAddress == "") {
-				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{

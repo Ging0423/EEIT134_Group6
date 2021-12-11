@@ -70,11 +70,11 @@
                             <form class="row contact_form" action="login" method="post" novalidate="novalidate" id="login">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="account" name="account" value=""
-                                        placeholder="Account"><span style=color:red id="accounterrorMsg"></span>
+                                        placeholder="Account" onchange="check()"><span style=color:red id="accounterrorMsg"></span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password"><span style=color:red id="pwerrorMsg"></span>
+                                        placeholder="Password" onchange="check()"><span style=color:red id="pwerrorMsg"></span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
