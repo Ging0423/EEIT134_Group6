@@ -177,6 +177,6 @@
 			document.getElementById("login").submit()
 		}
 	}   
-    </script>   
+    </script>
 </body>
 </html>

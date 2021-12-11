@@ -29,18 +29,18 @@ public class LoginController {
 	}
 
 	@GetMapping("/login")
-	public String loginFailurePage(@RequestParam(value = "failure", required = false) String account,String password, Model m) {
+	public String loginFailurePage(@RequestParam(value = "failure", required = false) String account, String password,
+			Model m) {
 		try {
 			if (!account.equals(null) || !password.equals(null)) {
-			
+
 			}
-	
+
 		} catch (NullPointerException e) {
 			return "login";
 		}
 		return "login";
 	}
-
 
 	@GetMapping("/logout")
 	public String logOut(HttpServletRequest request, HttpServletResponse response, SessionStatus status) {
@@ -51,4 +51,3 @@ public class LoginController {
 		return "redirect:/";
 	}
 }
-

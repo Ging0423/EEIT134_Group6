@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import loop.user.model.UsersBean;
 
 public interface LoginRepository extends JpaRepository<UsersBean, Integer> {
-	
+	/*比對資料庫*/
 	public Optional<UsersBean> findByAccount(String account);
 	
 }
