@@ -73,14 +73,17 @@
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email：</h4>
-			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" onblur="checkemailisduplicate()"/>
+			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" 
+			onblur="checkemailisduplicate()"/>
 			<span style=color:red id="emailerrorMsg"></span>
+			
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話：</h4>
 			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX" onblur="check()"/>
 			<span style=color:red id="telerrorMsg"></span>
 		</div>
+		
 		<div class="col-md-6 form-group p_star">
 			<h4>會員地址：</h4>
 			<form:input type="text" class="form-control" id="userAddress"
@@ -125,8 +128,11 @@
 	<!-- custom js -->
 	<script src="js/custom.js"></script>
 	<script>
-		var count = 0
-		function magic() {
+	
+		var count = 0;
+		var count3 = 0;	
+		
+		function magic() {			
 			var name = [ "john", "amy", "tom", "ann", "test", "who" ];
 			document.getElementById('account').value = name[count];
 			document.getElementById('userName').value = name[count];
@@ -140,69 +146,48 @@
 		}
 		
 		function check() {
-			let account = document.getElementById("account").value;
-			let description1 = document.getElementById('accounterrorMsg');
+			var count2 = 0;
+
 			let password = document.getElementById("password").value;
 			let description2 = document.getElementById('pwerrorMsg');
 			let userName = document.getElementById("userName").value;
 			let description3 = document.getElementById('userNameerrorMsg');
-			let email = document.getElementById("email").value;
-			let description4 = document.getElementById('emailerrorMsg');
 			let tel = document.getElementById("tel").value;
 			let description5 = document.getElementById('telerrorMsg');
 			let userAddress = document.getElementById("userAddress").value;
 			let description6 = document.getElementById('userAddresserrorMsg');
 																										
-			let count = 0;
-			
-			/*if(account == "") {
-				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
-			}
-				else{
-				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			} */
-			
-			if(checkaccountisduplicate()) {
-				count++;
-			}
 			
 			if(password == "") {
 				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count2++;
 			}
 				else{
 					description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userName == "") {
 				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count2++;
 			}
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			/*if(email == "") {
-				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
-			}
-				else{
-					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			}*/
+	
 			if(tel == "") {
 				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count2++;
 			}
 				else{
 					description5.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userAddress == "") {
 				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count2++;
 			}
 				else{
 					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			
+			console.log("四欄位中有"+count2+"個錯誤");
 			
 		}
 		
@@ -222,38 +207,27 @@
 																										
 			var count1 = 0;
 			
-			/* if(account == "") {
-				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+			 if(checkaccountisduplicate()) {
+				
+				count1++;
+				 console.log("帳號欄位裡面有"+count1+/*","+count3+*/"個錯誤");
+				 }else{
+					 console.log("帳號欄位裡面有"+count1+/*","+count3+*/"個錯誤");
+					 
 			}
-				else{
+		/*		else{
 				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			} */
 			
-			if(account == "") {
-				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count1++;
-			}
-				else{
-				 if($.ajax({
-					   type:'post',
-					   url:'joinmember/acisduplicate',
-					   data:account,
-					   contentType : 'application/json; charset=UTF-8',
-					   success: function(data){					   
-						   if(data==true){
-							   description1.innerHTML = "<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！";
-							   return true;
-						   }else{						   
-							   description1.innerHTML = "<img src='img/usercheck/checkYES.png'/>";
-							  	return false;
-						   }
-					   }
-				   })) {
-					 count1++;
-				 }
-			} 
-			console.log(count1);
+
+
+			
+			
+			
+			console.log("帳號欄位外面有"+count1+/*","+count3+*/"個錯誤");
+
+			
+			
 			
 			if(password == "") {
 				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
@@ -269,13 +243,22 @@
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
+			
+			
+			
+			/////////////////////////////////////////////////////////////////////////////////////////
 			if(email == "") {
 				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count1++;
+				
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
+			/////////////////////////////////////////////////////////////////////////////////////////
+			
+			
+			
 			if(tel == "") {
 				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count1++;
@@ -290,14 +273,14 @@
 				else{
 					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			//count = checkaccountisduplicate(count);
-			console.log(count1);
-			if(count1 == 0) {
+			
+			console.log("全部有"+count1+"個錯誤");
+			if( count1 == 0) {
 				alert("註冊成功！")
 				document.getElementById("userinsert").submit()
 			}
 		}
-		
+			
 		   function checkaccountisduplicate(){
 			let account = document.getElementById("account").value;
 			let description1 = document.getElementById('accounterrorMsg');
@@ -313,16 +296,23 @@
 					   contentType : 'application/json; charset=UTF-8',
 					   success: function(data){					   
 						   if(data==true){
+							   var count4 = 0;
 							   description1.innerHTML = "<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！";
+							   count4++;
+							   console.log("ajax內帳號有"+count4+"個錯誤");
 							   return true;
 						   }else{						   
 							   description1.innerHTML = "<img src='img/usercheck/checkYES.png'/>";
-							   return false;
+							  	return false;
 						   }
 					   }
 				   });
-			} 
+			  } 
 		   }
+		   
+		   
+		   
+		   
 		   
 		   function checkemailisduplicate(){
 				let email = document.getElementById("email").value;

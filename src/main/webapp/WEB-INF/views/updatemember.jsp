@@ -73,7 +73,7 @@
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email：</h4>
-			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" onchange="check()"/>
+			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" readonly="true"/>
 			<span style=color:red id="emailerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
@@ -143,8 +143,8 @@
 			let description2 = document.getElementById('pwerrorMsg');
 			let userName = document.getElementById("userName").value;
 			let description3 = document.getElementById('userNameerrorMsg');
-			let email = document.getElementById("email").value;
-			let description4 = document.getElementById('emailerrorMsg');
+			//let email = document.getElementById("email").value;
+			//let description4 = document.getElementById('emailerrorMsg');
 			let tel = document.getElementById("tel").value;
 			let description5 = document.getElementById('telerrorMsg');
 			let userAddress = document.getElementById("userAddress").value;
@@ -167,13 +167,13 @@
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			if(email == "") {
+			/*if(email == "") {
 				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			}
+			}*/
 			if(tel == "") {
 				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
