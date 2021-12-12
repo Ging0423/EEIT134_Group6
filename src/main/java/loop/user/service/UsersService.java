@@ -12,7 +12,7 @@ import loop.user.model.UsersRepository;
 
 @Service
 public class UsersService {
-	
+
 	@Autowired
 	private UsersRepository usersRepo;
 	
@@ -56,7 +56,7 @@ public class UsersService {
 	public void save(UsersBean bean) {
 		usersRepo.save(bean);
 	}
-	
+
 	public void deleteById(Integer id) {
 		usersRepo.deleteById(id);
 	}
@@ -67,4 +67,34 @@ public class UsersService {
 		}	
 	}
 			
+
+	public boolean isExistEmail(String mail) {
+		Optional<UsersBean> opt = usersRepo.findByEmail(mail);
+		if (opt.isEmpty()) {
+			return false;
+		} else
+			return true;
+	}
+
+	public UsersBean findByEmail(String mail) {
+		Optional<UsersBean> opt = usersRepo.findByEmail(mail);
+		if (opt.isEmpty()) {
+			return null;
+		} else {
+			return opt.get();
+		}
+	}
+
+	public boolean isExistAccount(String account) {
+		Optional<UsersBean> opt = usersRepo.findByAccount(account);
+		if (opt.isEmpty()) {
+			return false;
+		} else
+			return true;
+	}
+
+	public Optional<UsersBean> findByAccount(String account) {
+		Optional<UsersBean> opt = usersRepo.findByAccount(account);
+		return opt;
+	}
 }

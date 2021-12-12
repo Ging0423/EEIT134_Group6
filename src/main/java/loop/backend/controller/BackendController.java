@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 //import loop.item.allItem.service.AllItemService;
 import loop.order.model.OrderDataBean;
@@ -21,6 +22,7 @@ import loop.order.service.OrderDataService;
 
 @Controller
 @RequestMapping("/backend")
+@SessionAttributes({"totalPages", "totalElements","isLogin"})
 public class BackendController {
 	
 //	@Autowired
@@ -30,7 +32,7 @@ public class BackendController {
 	@Autowired
 	private OrderDataService orderDataService;
 	
-	@GetMapping
+	@GetMapping("")
 	public String backendIndex(Model m) {
 		Integer isSend = orderDataService.countOrderState("已出貨").size();
 		m.addAttribute("isSend", isSend);

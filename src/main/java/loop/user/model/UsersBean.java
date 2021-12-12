@@ -67,7 +67,7 @@ public class UsersBean implements Serializable {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
 	
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
 	
@@ -76,14 +76,12 @@ public class UsersBean implements Serializable {
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Article> article = new ArrayList<Article>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Reply> reply = new ArrayList<Reply>();
 

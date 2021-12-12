@@ -91,14 +91,8 @@
 									<c:otherwise>
 									</c:otherwise>
 								</c:choose>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="blog.html"
-									id="navbarDropdown_2" role="button" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false"> 討論區 </a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-										<a class="dropdown-item" href="<c:url value='/forum'/>">
-											討論區</a>
-									</div></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<c:url value='/forum'/>">討論區</a></li>
 
 								<li class="nav-item"><a class="nav-link"
 									href="<c:url value='/video'/>">教學影片</a></li>

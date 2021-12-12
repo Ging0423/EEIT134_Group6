@@ -14,10 +14,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.login.service.LoginService;
 import loop.user.model.UsersBean;
 @Component("myAuthenticationSuccessHandler")
+@SessionAttributes({"isLogin"})
 public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler{
 	
 	@Autowired
@@ -41,10 +43,6 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
         UserDetails username = (UserDetails) authentication.getPrincipal();
         UsersBean bean = loginService.findByAccount(username.getUsername()).get();
         session.setAttribute("isLogin", bean);
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null){
-//            persistentTokenBasedRememberMeServices.loginSuccess(request, response, auth);
-//        }
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

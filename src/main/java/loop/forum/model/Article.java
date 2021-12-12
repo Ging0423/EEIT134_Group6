@@ -64,6 +64,14 @@ public class Article {
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	
+	public UsersBean getUsers() {
+		return users;
+	}
+
+	public void setUsers(UsersBean users) {
+		this.users = users;
+	}
+
 	public Date getPostdate() {
 		return postdate;
 	}

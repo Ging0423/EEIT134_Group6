@@ -1,5 +1,6 @@
 package loop.forum.model;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import loop.user.model.UsersBean;
+
 
 @Repository
 @Transactional
@@ -18,6 +21,8 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
 	List<Article> findByCategoryid(int categoryid);
     List<Article> findByAuthorid(int authorid);
     
+    List<Article> findByUsers(UsersBean users);
+    
 	Page<Article> findByCategoryid(int categoryid, Pageable pageable);
 	Page<Article> findByAuthorid(int authorid, Pageable pageable);
 	Page<Article> findByTitleLike(String keyword, Pageable pageable);
@@ -25,8 +30,10 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
     
 	long countByCategoryid(int categoryid);
 	long countByCategoryidAndAuthorid(int categoryid, int authorid);
+	long countByTitleLike(String keyword);
+	long countByTitleLikeAndCategoryid(String keyword, int categoryid);
+	long countByPostdate(Date postdate);
 	
-//	@Query("select count reply from Reply r left join r. tt")
-//	long countReplyByArticleid(int articleid);
+
 }
 

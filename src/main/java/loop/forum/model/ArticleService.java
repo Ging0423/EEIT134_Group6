@@ -91,4 +91,13 @@ public class ArticleService {
 		String keyword_search = "%" + keyword + "%";
 		return aReps.findByTitleLike(keyword_search, pageable);
 	}
+	
+	public Long countArticleAmountByKeywordAndCategoryid(String keyword, int categoryid) {
+		String keyword_search = "%" + keyword + "%";
+		if(categoryid != 0) {
+			return aReps.countByTitleLikeAndCategoryid(keyword_search, categoryid);
+		} else {
+			return aReps.countByTitleLike(keyword_search);
+		}
+	}
 }

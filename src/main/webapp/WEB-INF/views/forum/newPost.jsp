@@ -64,7 +64,6 @@
 
 			<div class="editor_container">
 				<div id="editor">
-					<p>請輸入文章內容</p>
 				</div>
 			</div>
 
@@ -77,6 +76,7 @@
 
 			<div class="newPost">
 				<input type="submit" value="發表新文章" onclick="sendArticle()">
+				<input type="button" value="一鍵輸入" onclick="autoInput()">
 			</div>
 		</div>
 	</section>
