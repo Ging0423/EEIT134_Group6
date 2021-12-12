@@ -56,7 +56,7 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER, mappedBy = "articleid",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
