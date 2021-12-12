@@ -16,9 +16,41 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepo;
 	
+	public long count() {
+		return usersRepo.count();
+	}
+	
+	public List<UsersBean> findAll() {
+		return usersRepo.findAll();
+	}
+	
 	public UsersBean findById(Integer userId) {
 		Optional<UsersBean> op = usersRepo.findById(userId);
 		return op.get();
+	}
+	
+	public Optional<UsersBean> findByAccount(String account) {
+		Optional<UsersBean> op = usersRepo.findByAccount(account);		
+		return op;
+	}
+	//若帳號不是空的 回傳true(即帳號已存在, 重複
+	public boolean isDuplicateAccount(String account) {
+		if(!(usersRepo.findByAccount(account).isEmpty()))
+			return true;
+		else
+			return false;
+	}
+	
+	public Optional<UsersBean> findbyemail(String email) {
+		Optional<UsersBean> op = usersRepo.findByemail(email);		
+		return op;
+	}
+	
+	public boolean isDuplicateEmail(String email) {
+		if(!(usersRepo.findByemail(email).isEmpty()))
+			return true;
+		else
+			return false;
 	}
 	
 	public void save(UsersBean bean) {
@@ -34,24 +66,5 @@ public class UsersService {
 			usersRepo.deleteById(Integer.parseInt(i));
 		}	
 	}
-	
-	public List<UsersBean> findAll() {
-		return usersRepo.findAll();
-	}
-	
-	public long count() {
-		return usersRepo.count();
-	}
-	
-	public Optional<UsersBean> findByAccount(String account) {
-		Optional<UsersBean> op = usersRepo.findByAccount(account);		
-		return op;
-	}
-	
-	public boolean isDuplicate(String account) {
-		if(!(usersRepo.findByAccount(account).isEmpty()))
-			return true;
-		else
-			return false;
-	}
+			
 }
