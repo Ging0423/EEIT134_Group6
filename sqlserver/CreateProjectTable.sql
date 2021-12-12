@@ -28,7 +28,7 @@ account varchar(12) not null,
 userPassword varchar(max) not null,
 userIdentity int,
 userName nvarchar(50) not null,
-email varchar(20) not null,
+email varchar(50) not null,
 tel varchar(20) not null,
 userAddress nvarchar(50) not null,
 registerDate smalldatetime
@@ -186,6 +186,9 @@ userId int references users(userId) not null,
 comment nvarchar(100) not null,
 )
 
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'article')
+    drop table article;
 create table article(
 	articleId int not null primary key identity(10000,1),
 	title nvarchar(50) not null,
@@ -202,6 +205,8 @@ select * from article;
 
 Use project
 
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'reply')
+    drop table reply;
 create table reply(
 	replyId int not null primary key identity(10000,1),
 	articleId int not null,
@@ -213,6 +218,8 @@ create table reply(
 
 select * from reply;
 
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'forumCategory')
+    drop table forumCategory;
 create table forumCategory(
 	categoryId int not null primary key identity(1,1),
 	title nvarchar(10) not null

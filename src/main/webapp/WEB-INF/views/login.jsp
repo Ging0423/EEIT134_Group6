@@ -83,7 +83,7 @@
                                     <button type="submit" value="submit" class="btn_3">
                                         登入
                                     </button>
-                                    <a class="lost_pass" href="#">忘記密碼？</a>
+                                    <a class="lost_pass" href="<c:url value='/forgetpassword'/>">忘記密碼？</a>
                                 </div>
                             </form>
                         </div>
