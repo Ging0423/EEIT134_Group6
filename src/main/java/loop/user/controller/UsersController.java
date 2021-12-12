@@ -142,7 +142,7 @@ public class UsersController {
 //		usersService.
 		
 		
-		return "redirect:/joinmember";	
+		return "redirect:/";	
 	}
 
 	@GetMapping("/updatemember")
