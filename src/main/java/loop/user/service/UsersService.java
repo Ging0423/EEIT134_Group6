@@ -42,12 +42,12 @@ public class UsersService {
 	}
 	
 	public Optional<UsersBean> findbyemail(String email) {
-		Optional<UsersBean> op = usersRepo.findByemail(email);		
+		Optional<UsersBean> op = usersRepo.findByEmail(email);		
 		return op;
 	}
 	
 	public boolean isDuplicateEmail(String email) {
-		if(!(usersRepo.findByemail(email).isEmpty()))
+		if(!(usersRepo.findByEmail(email).isEmpty()))
 			return true;
 		else
 			return false;
@@ -93,8 +93,4 @@ public class UsersService {
 			return true;
 	}
 
-	public Optional<UsersBean> findByAccount(String account) {
-		Optional<UsersBean> opt = usersRepo.findByAccount(account);
-		return opt;
-	}
 }
