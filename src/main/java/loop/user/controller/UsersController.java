@@ -139,7 +139,7 @@ public class UsersController {
 	// 新增會員資料的帳號比對
 	@PostMapping("compareaccount")
 	public String compareaccount(@ModelAttribute("usersBean") UsersBean bean) {
-		
+//		usersService.
 		
 		
 		return "redirect:/joinmember";	

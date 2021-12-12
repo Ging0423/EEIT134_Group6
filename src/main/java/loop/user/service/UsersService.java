@@ -42,4 +42,16 @@ public class UsersService {
 	public long count() {
 		return usersRepo.count();
 	}
+	
+	public Optional<UsersBean> findByAccount(String account) {
+		Optional<UsersBean> op = usersRepo.findByAccount(account);		
+		return op;
+	}
+	
+	public boolean isDuplicate(String account) {
+		if(!(usersRepo.findByAccount(account).isEmpty()))
+			return true;
+		else
+			return false;
+	}
 }
