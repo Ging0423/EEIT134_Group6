@@ -82,7 +82,7 @@
 
 					<form id="myForm" action="<c:url value='/backend/admin/delete'/>" method="POST">
 						<input type='hidden' id='hiddenField' name='array' />
-						<button class="btn" type="submit" onclick="d();">多筆刪除</button>
+						<button class="btn" type="submit" onclick="d();">刪除多筆</button>
 						<a href="<c:url value='/backend'/>" class="btn">回後台管理</a>
 					</form>
 					<table class="table table-bordered border-primary">
