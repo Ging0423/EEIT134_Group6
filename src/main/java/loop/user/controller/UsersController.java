@@ -83,9 +83,13 @@ package loop.user.controller;
 
 //import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -96,6 +100,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import loop.user.model.UsersBean;
@@ -136,13 +142,28 @@ public class UsersController {
 		usersService.save(bean);
 		return "redirect:/login";
 	}
+
 	// 新增會員資料的帳號比對
-	@PostMapping("compareaccount")
-	public String compareaccount(@ModelAttribute("usersBean") UsersBean bean) {
-//		usersService.
-		
-		
-		return "redirect:/";	
+	@PostMapping("/joinmember/acisduplicate")
+	@ResponseBody
+	public boolean acisduplicate(Model model, HttpSession session, @RequestBody String account) {
+		Optional<UsersBean> opt = usersService.findByAccount(account);
+		if (!(opt.isEmpty())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@PostMapping("/joinmember/emisduplicate")
+	@ResponseBody
+	public boolean emisduplicate(Model model, HttpSession session, @RequestBody String email) {
+		Optional<UsersBean> opt = usersService.findbyemail(email);
+		if (!(opt.isEmpty())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@GetMapping("/updatemember")

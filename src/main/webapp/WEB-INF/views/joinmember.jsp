@@ -56,35 +56,35 @@
 		<div class="col-md-6 form-group p_star">
 			<h4>會員帳號：</h4>
 			<form:input type="text" class="form-control" id="account"
-				name="account" path="account" onchange="check()"/><span style=color:red id="accounterrorMsg"></span>
+				name="account" path="account" onblur="checkaccountisduplicate()"/><span style=color:red id="accounterrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員密碼：</h4>
 			<form:input type="password" class="form-control" name="password" id="password"
-				path="userPassword" onchange="check()"/><span style=color:red id="pwerrorMsg"></span>
+				path="userPassword" onblur="check()"/><span style=color:red id="pwerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員名稱：</h4>
 			<form:input type="text" class="form-control" name="userName" id="userName"
-				path="userName" onchange="check()"/><span style=color:red id="userNameerrorMsg"></span>
+				path="userName" onblur="check()"/><span style=color:red id="userNameerrorMsg"></span>
 
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>email：</h4>
-			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" onchange="check()"/>
+			<form:input type="text" class="form-control" id="email" path="email" placeholder="example@example.com" onblur="checkemailisduplicate()"/>
 			<span style=color:red id="emailerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員電話：</h4>
-			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX" onchange="check()"/>
+			<form:input type="text" class="form-control" id="tel" path="tel" placeholder="09XX-XXX-XXX" onblur="check()"/>
 			<span style=color:red id="telerrorMsg"></span>
 		</div>
 		<div class="col-md-6 form-group p_star">
 			<h4>會員地址：</h4>
 			<form:input type="text" class="form-control" id="userAddress"
-				path="userAddress" onchange="check()"/><span style=color:red id="userAddresserrorMsg"></span>
+				path="userAddress" onblur="check()"/><span style=color:red id="userAddresserrorMsg"></span>
 				
 		</div>
 		<div>
@@ -131,8 +131,7 @@
 			document.getElementById('account').value = name[count];
 			document.getElementById('userName').value = name[count];
 			document.getElementById('tel').value = "66316666";
-			document.getElementById('email').value = name[count]
-					+ "@google.com";
+			document.getElementById('email').value = "gershom82912@hotmail.com";
 			document.getElementById('userAddress').value = "台北市大安區復興南路一段390號2樓";
 			count++;
 			if (count == 6) {
@@ -156,13 +155,17 @@
 																										
 			let count = 0;
 			
-			if(account == "") {
+			/*if(account == "") {
 				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			} 
+			} */
+			
+			if(checkaccountisduplicate()) {
+				count++;
+			}
 			
 			if(password == "") {
 				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
@@ -178,13 +181,13 @@
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			if(email == "") {
+			/*if(email == "") {
 				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			}
+			}*/
 			if(tel == "") {
 				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
@@ -199,6 +202,7 @@
 				else{
 					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
+			
 			
 		}
 		
@@ -216,74 +220,133 @@
 			let userAddress = document.getElementById("userAddress").value;
 			let description6 = document.getElementById('userAddresserrorMsg');
 																										
-			let count = 0;
+			var count1 = 0;
 			
-			if(account == "") {
+			/* if(account == "") {
 				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count++;
 			}
 				else{
 				description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			} */
+			
+			if(account == "") {
+				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				count1++;
+			}
+				else{
+				 if($.ajax({
+					   type:'post',
+					   url:'joinmember/acisduplicate',
+					   data:account,
+					   contentType : 'application/json; charset=UTF-8',
+					   success: function(data){					   
+						   if(data==true){
+							   description1.innerHTML = "<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！";
+							   return true;
+						   }else{						   
+							   description1.innerHTML = "<img src='img/usercheck/checkYES.png'/>";
+							  	return false;
+						   }
+					   }
+				   })) {
+					 count1++;
+				 }
 			} 
+			console.log(count1);
 			
 			if(password == "") {
 				description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count1++;
 			}
 				else{
 					description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userName == "") {
 				description3.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count1++;
 			}
 				else{
 					description3.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(email == "") {
 				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count1++;
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(tel == "") {
 				description5.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count1++;
 			}
 				else{
 					description5.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
 			if(userAddress == "") {
 				description6.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
-				count++;
+				count1++;
 			}
 				else{
 					description6.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
 			}
-			
-			if(count == 0) {
+			//count = checkaccountisduplicate(count);
+			console.log(count1);
+			if(count1 == 0) {
 				alert("註冊成功！")
 				document.getElementById("userinsert").submit()
 			}
 		}
 		
-		   function load(indexPage){
-			   $.ajax({
-				   type:'post',
-				   url:'/compareaccount',
-				   dataType:'String',
-				   contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-				   success: function(account){					   
-					   if(account==true){
-						   $('table').prepend("<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！");;
-					   }else{
-						   var table = $('#showproduct');
-						   table.append("<img src='img/usercheck/checkYES.png'/>");						   	   
+		   function checkaccountisduplicate(){
+			let account = document.getElementById("account").value;
+			let description1 = document.getElementById('accounterrorMsg');
+			if(account == "") {
+				description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				return true;
+			}
+				else{
+				 $.ajax({
+					   type:'post',
+					   url:'joinmember/acisduplicate',
+					   data:account,
+					   contentType : 'application/json; charset=UTF-8',
+					   success: function(data){					   
+						   if(data==true){
+							   description1.innerHTML = "<img src='img/usercheck/checkNO.png'/> 此帳號已被使用, 請重新輸入！";
+							   return true;
+						   }else{						   
+							   description1.innerHTML = "<img src='img/usercheck/checkYES.png'/>";
+							   return false;
+						   }
 					   }
-				   }
-			   });
+				   });
+			} 
 		   }
+		   
+		   function checkemailisduplicate(){
+				let email = document.getElementById("email").value;
+				let description4 = document.getElementById('emailerrorMsg');
+				if(email == "") {
+					description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
+				}else{
+			    $.ajax({
+					   type:'post',
+					   url:'joinmember/emisduplicate',
+					   data:email,
+					   contentType : 'application/json; charset=UTF-8',
+					   success: function(data){					   
+						   if(data==true){
+							   description4.innerHTML = "<img src='img/usercheck/checkNO.png'/> 此email已被使用, 請重新輸入！";
+						   }else{						   
+							   description4.innerHTML = "<img src='img/usercheck/checkYES.png'/>";					   	   
+						   }
+					   }
+				   });
+				}
+				
+
+			   }
 	</script>
 	
 </body>
