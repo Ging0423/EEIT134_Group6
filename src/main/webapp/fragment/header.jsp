@@ -117,7 +117,7 @@
 						<div>
 
 							<c:if test="${isLogin != null}">
-								<h5>Hi ${isLogin.userName}</h5>
+								<h5>Hi, ${isLogin.userName}</h5>
 							</c:if>
 						</div>
 						<div class="hearer_icon d-flex align-items-center">

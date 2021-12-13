@@ -60,7 +60,7 @@ form.example::after {
 	<div class="container">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
+				<li><a href="<c:url value='/'/>"> <span class="icon"><i
 							class="fas fa-infinity" aria-hidden="true"></i></span> <!-- 							<span class="title"><h2>loop<h2></span> -->
 						<span class="title"><img
 							src="<c:url value='/img/loop.png' />"></span>

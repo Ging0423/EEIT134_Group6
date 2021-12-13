@@ -1,6 +1,6 @@
 package loop.login.service;
 
-import java.util.List;
+//import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -22,7 +22,13 @@ public class LoginService {
 	public Optional<UsersBean> findByAccount(String account) {
 		Optional<UsersBean> op = repo.findByAccount(account);		
 		return op;
-
+	}
+	/*比對資料庫*/
+	public boolean isDuplicate(String account) {
+		if(!(repo.findByAccount(account).isEmpty()))
+			return true;
+		else
+			return false;
 	}
 	
 }

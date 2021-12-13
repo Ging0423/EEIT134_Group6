@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import loop.item.allItem.service.AllItemService;
+//import loop.item.allItem.service.AllItemService;
 import loop.order.model.OrderDataBean;
 import loop.order.service.OrderDataService;
 
@@ -25,8 +25,8 @@ import loop.order.service.OrderDataService;
 @SessionAttributes({"totalPages", "totalElements","isLogin"})
 public class BackendController {
 	
-	@Autowired
-	private AllItemService allItemService;
+//	@Autowired
+//	private AllItemService allItemService;
 
 
 	@Autowired

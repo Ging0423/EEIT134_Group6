@@ -14,33 +14,43 @@ import loop.order.model.OrderDataRepository;
 import loop.user.model.UsersBean;
 import loop.user.service.UsersService;
 
+
 @Service
 @Transactional
 public class OrderDataService {
-	
+	@Autowired
 	private OrderDataRepository orderDataRepo;
 	
-	private UsersService usersService;
-	
 	@Autowired
-	public OrderDataService(OrderDataRepository orderDataRepo, UsersService usersService) {
-		super();
-		this.orderDataRepo = orderDataRepo;
-		this.usersService = usersService;
+	private UsersService usersService;
+
+	public OrderDataBean insert(OrderDataBean orderdata) {
+		return orderDataRepo.save(orderdata);
 	}
 
-	
-	public List<OrderDataBean> findByUserId(Integer userId) {
-		return orderDataRepo.findByUserId(userId);
+//	public OrderDataBean update(OrderDataBean orderdata) {
+//		return orderDataRepo.save(orderdata);
+//	}
+
+	public void deleteById(Integer id) {
+		orderDataRepo.deleteById(id);
+	}
+
+	public List<OrderDataBean> findByUserId(Integer id) {
+		
+		return orderDataRepo.findByUserId(id);
 	}
 	
-	
 	public OrderDataBean save(OrderDataBean orderData, Integer userId) {
-		UsersBean user = usersService.findById(userId);
-		orderData.setUserId(userId);
-		orderData.setUsers(user);
-		orderDataRepo.save(orderData);
-		return orderData;
+		  UsersBean user = usersService.findById(userId);
+		  orderData.setUserId(userId);
+		  orderData.setUsers(user);
+		  orderDataRepo.save(orderData);
+		  return orderData;
+		 }
+	
+	public void update(OrderDataBean bean) {
+		orderDataRepo.save(bean);
 	}
 	
 	public OrderDataBean findById(Integer orderId) {
@@ -49,10 +59,6 @@ public class OrderDataService {
 			return null;
 		}
 		return op.get();
-	}
-	
-	public void update(OrderDataBean bean) {
-		orderDataRepo.save(bean);
 	}
 	
 	public List<OrderDataBean> findAll() {

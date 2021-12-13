@@ -115,7 +115,7 @@ body{
 }
 .search{
     position: relative;
-    width: 400px;
+    width: 100px;
     margin: 0 10px;
 }
 .search label{
