@@ -12,18 +12,28 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>
-</head>
+	
 <!-- =========== -->
 <title>Yarn Create</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
+#ajaxTable {
+	margin: auto;
+	width: 70%
+}
 .single_product_img {margin:auto; width:70%}
-.a{align='center'; width:99%}
-table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%}
-tr{background-color:#F4EDF2}
+/* .a{align='center'; width:99%} */
+/* table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%} */
+/* tr{background-color:#F4EDF2} */
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+
 body {
   font-family: Arial;
 }
@@ -58,11 +68,17 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.btn {
+background-color:#B08EAD;
+color: white
+}
 </style> 
+</head>
 
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -129,44 +145,76 @@ form.example::after {
 <div style="background-color:#B08EAD"><br>
 <h1 style="color:#fff">新增紗線商品資料</h1><br>
 <hr>
-</div><br>
+</div>
 <form method="post" action="createyarn" enctype="multipart/form-data">
+   <table class="table table-bordered border-primary" id="ajaxTable">
 
-    <table>
-      <tr><td>紗線名稱:</td></tr> 
-      <tr><td><input class=a id="itemName" name="itemName" type="text" /></td></tr>
-      <tr><td>材質:</td></tr>
-      <tr><td><input class=a id="material" name="material" type="text"/></td></tr>
-      <tr><td>尺寸(直徑、規格):</td></tr>
-      <tr><td><input class=a id="size" name="size" type="text"></td></tr>
-      <tr><td>顏色:</td></tr> 
-      <tr><td><input class=a id="color" name="color" type="text"/></td></tr>
-      <tr><td>紗線描述:</td></tr>
-      <tr><td><textarea class=a id="itemDescription" name="itemDescription" rows="8" cols="20"></textarea></td></tr>
-      <tr><td>庫存數量:</td></tr> 
-      <tr><td><input class=a id="qty" name="qty" type="number" min="0"/></td></tr>
-      <tr><td>價格:</td></tr> 
-      <tr><td><input class=a id="price" name="price" type="number" min="0"/></td></tr>
-      </table>
-      <div id="imgClass"><br>
-      圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
+    <thead>
+      <tr>
+      <th>紗線名稱</th>
+      <th>材質</th>
+      <th>尺寸(直徑、規格)</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+      <td><input id="itemName" name="itemName" type="text" /></td>
+      <td><input id="material" name="material" type="text"/></td>
+      <td><input id="size" name="size" type="text"></td>
+      </tr>
+      </tbody>
+      <thead>
+      <tr>
+      <th>顏色</th>
+      <th>庫存數量</th>
+      <th>價格</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><input id="color" name="color" type="text"/></td>
+      <td><input id="qty" name="qty" type="number" min="0"/></td>
+      <td><input id="price" name="price" type="number" min="0"/></td>
+      </tr>
+      </tbody>
+      <thead>
+      <tr>
+      <th colspan="4">紗線描述</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td colspan="4"><textarea cols="190"rows="8" id="itemDescription" name="itemDescription"></textarea></td>
+      </tr>
+      </tbody>
+<!--       </table> -->
+      <thead>
+      <tr>
+      <th colspan="4">圖片</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <div align="center" id="imgClass"><br>
+      <td colspan="4" align="center">封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
 	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
 	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/><br>
 	    
       <img type="file" id="img1" accept="image/*" width=20% />
       <img type="file" id="img2" accept="image/*" width=20% />
       <img type="file" id="img3" accept="image/*" width=20% /><br>
-<!--        圖片封面:<input type="file" name="img" accept="image/*"/> -->
-<!-- 	  <input type="file" name="img" accept="image/*" multiple/>   -->
-<!-- 	  <input type="file" name="img" accept="image/*" multiple/><br> -->
-<!-- 	  <input type="submit" value="送出"></input> -->
-	  
-	  </div>
-	    <button type="submit" value="send">送出</button>
+      </td>
+      </div>
+      </tr>
+      </tbody>
+	  </table>
+	 
+	  <div align="center">
+	  <button class="btn" type="submit" value="send">送出</button>
 	  </form>
-	  <button onclick="magic();">一鍵輸入</button>
+	  <button class="btn" type="button" onclick="magic();">一鍵輸入</button><br>
 	  <a href="<c:url value='/backend/yarn' />">紗線商品資料總表</a>
-	   </div>
+	  </div>
 	  <script>
 	  function magic() {
 		  document.getElementById('itemName').value = "Soi索依(200g)";
@@ -177,12 +225,6 @@ form.example::after {
 		  document.getElementById('qty').value = "883";
 		  document.getElementById('price').value = "960";  
 	  }
-	  
-// 	  function addImg(){
-// 		  var text = $("#imgClass");
-// 		  var tr = '<input type="file" name="img" accept="image/*" onchange=""addImg();"/><br>';
-// 		  text.append(tr);
-// 	  }
 	  </script>
 	  
 	  <script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>

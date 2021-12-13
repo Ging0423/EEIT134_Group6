@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <head>
-<!-- =========== -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +15,23 @@
 
 <!-- =========== -->
 <title>Kits Create</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
+#ajaxTable {
+	margin: auto;
+	width: 70%
+}
 .single_product_img {margin:auto; width:70%}
-.a{align='center'; width:99%}
-table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%}
-tr{background-color:#F4EDF2}
+/* .a{align='center'; width:99%} */
+/* table{border:2px solid black; border-collapse:collapse; margin:auto; width:70%} */
+/* tr{background-color:#F4EDF2} */
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 body {
@@ -59,12 +68,17 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.btn {
+background-color:#B08EAD;
+color: white
+}
 </style>
 </head>
  
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -132,39 +146,61 @@ form.example::after {
 <div style="background-color:#B08EAD"><br>
 <h1 style="color:#fff">新增材料包商品資料</h1><br>
 <hr>
-</div><br>
+</div>
 <form method="post" action="createkits" enctype="multipart/form-data">
+<table class="table table-bordered border-primary" id="ajaxTable">
 
-	<table>
-      <tr><td>商品名:</td></tr> 
-      <tr><td><input class=a id="itemName" name="itemName" type="text"/></td></tr>
-      <tr><td>商品描述:</td></tr>
-      <tr><td><textarea class=a id="itemDescription" name="itemDescription" rows="8" cols="20"></textarea><td></tr>
-      <tr><td>數量:</td></tr>
-      <tr><td><input class=a id="qty" name="qty" type="number" min="0"/></td></tr>
-      <tr><td>價錢:</td></tr>
-      <tr><td><input class=a id="price" name="price" type="number" min="0"/></td></tr>
-      </table>	
-      <div id="imgClass"><br>
-      圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
-	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
-	  <input type="file" name="img" accept="image/*" multiple onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/><br>
+	  <thead>
+      <tr>
+      <th>商品名</th>
+      <th>數量</th>
+      <th>價錢</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><input id="itemName" name="itemName" type="text"/></td>
+      <td><input id="qty" name="qty" type="number" min="0"/></td>
+      <td><input id="price" name="price" type="number" min="0"/></td>
+      </tr>
+      </tbody>
+      <thead>
+      <tr>
+      <th colspan="4">商品描述</th> 
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td colspan="3"><textarea cols="190" rows="8" id="itemDescription" name="itemDescription"></textarea><td>
+      </tr>
+      </tbody>
+      <thead>
+      <tr>
+      <th colspan="4">圖片</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>	
+      <div align="center" id="imgClass"><br>
+      <td colspan="4" align="center">圖片封面:<input type="file" name="img" accept="image/*" onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"/>
+	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"/>  
+	  <input type="file" name="img" accept="image/*" onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"/><br>
 	    
       <img type="file" id="img1" accept="image/*" width=20% />
       <img type="file" id="img2" accept="image/*" width=20% />
       <img type="file" id="img3" accept="image/*" width=20% /><br>
-<!--        圖片封面:<input type="file" name="img" accept="image/*"/> -->
-<!-- 	  <input type="file" name="img" accept="image/*" multiple/>   -->
-<!-- 	  <input type="file" name="img" accept="image/*" multiple/><br> -->
-<!-- 	  <input type="submit" value="送出"></input> -->
-	  
-	  </div>
-	    <button type="submit" value="send">送出</button>
+      </td>
+      </div>
+      </tr>
+      </tbody>
+	  </table>
+	   
+	  <div align="center">
+	    <button class="btn" type="submit" value="send">送出</button>
 	  </form>
-	     <button onclick="magic();">一鍵輸入</button>
+	     <button class="btn" type="button" onclick="magic();">一鍵輸入</button><br>
 	     <a href="<c:url value='/backend/kits' />">材料包商品資料總表</a>
 	  </div>
-
 	  <script>	
 		function magic() {	
 			document.getElementById('itemName').value = "夏日網格托特包";
@@ -173,12 +209,6 @@ form.example::after {
 			document.getElementById('price').value = "1800";
 		}
 	</script>
-		
-<!--  		function addImg(){ -->
-<!--  			var text = $("#imgClass"); -->
-<!--  			var tr = '<input type="file" name="img" accept="image/*" onchange="addImg();"/><br>'; -->
-<!--  			text.append(tr); -->
-<!-- 		} -->
 		
 		<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	    <!-- popper js -->

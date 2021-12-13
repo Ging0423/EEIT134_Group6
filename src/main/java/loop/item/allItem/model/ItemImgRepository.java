@@ -16,5 +16,9 @@ public interface ItemImgRepository extends JpaRepository<ItemImgBean, Integer> {
 	@Modifying
 	@Query(value="delete from ItemImgBean where itemId = ?1")
 	public void deleteByItemId(Integer itemId);
+	
+//	@Modifying
+//	@Query(value="delete from ItemImgBean where img = ?1")
+//	public void deleteByImg(String img);
 
 }

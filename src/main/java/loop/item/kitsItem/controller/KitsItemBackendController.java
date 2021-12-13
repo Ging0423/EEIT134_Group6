@@ -94,6 +94,7 @@ public class KitsItemBackendController {
 //				files.get(i).transferTo(savePathFile);
 				i.transferTo(savePathFile);
 				imgBean.setImg(imageFile + "." +extension);
+				imgBean.setItemId(itemId);
 				imgBean.setAllItem(allItem);
 				itemImgService.save(imgBean);		
 			} catch (IllegalStateException | IOException e) {

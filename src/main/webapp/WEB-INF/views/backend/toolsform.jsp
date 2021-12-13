@@ -14,10 +14,20 @@
 	crossorigin="anonymous"></script>
 <!-- =========== -->
 <title>Tools Form</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
-table{margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse} 
-th{background-color:#F4EDF2}
+#ajaxTable { 
+margin: auto; 
+width: 95% 
+}
+/* table{margin:auto; width:70%} */
+/* table,th,td{border:2px solid black; border-collapse:collapse}  */
+/* th{background-color:#F4EDF2} */
 /* a {font-size:x-large; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
 
@@ -63,7 +73,7 @@ form.example::after {
 
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -131,21 +141,23 @@ form.example::after {
 <div style="background-color:#B08EAD"><br>
 <h1 style="color:#fff">工具商品資料</h1><br>
 <hr>
-</div><br>
+</div>
 
 <a class=a href="<c:url value='/backend/tools/create'/>">新增</a>
-
-<table border="1">
-<table>
+<form>
+<table class="table table-bordered border-primary" id="ajaxTable">
     <thead>
+    <tr>
         <th>編號</th>
         <th>工具名稱</th>
         <th>規格</th>
-        <th>工具簡介</th>
-        <th>日期</th>
+        <th>工具說明</th>
+        <th>上架日期</th>
 		<th>庫存數量</th>
 		<th>價格</th>	
+		</tr>
     </thead>
+     <tbody>
         <c:forEach var="item" items='${allItem}'>
             <tr>
                <td><a href= "<c:url value='/backend/tools/${item.itemId}'/>">${item.itemId}</a></td>
@@ -157,6 +169,7 @@ form.example::after {
                <td>${item.price}</td>
             </tr>
          </c:forEach>
+         </tbody>
       </table>
       <a href="/loop/backend/allitem">回商品資料總表</a>
       </div>
@@ -174,5 +187,26 @@ form.example::after {
 		}
 	</script>
 	<!--     ================================ -->
+	
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+			<!-- popper js -->
+			<script src="<c:url value='/js/popper.min.js'/>"></script>
+			<!-- bootstrap js -->
+			<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+			<!-- magnific popup js -->
+			<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+			<!-- carousel js -->
+			<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+			<!-- slick js -->
+			<script src="<c:url value='/js/slick.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+			<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+			<script src="<c:url value='/js/contact.js'/>"></script>
+			<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.form.js'/>"></script>
+			<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+			<script src="<c:url value='/js/mail-script.js'/>"></script>
+	
 </body>
 </html>

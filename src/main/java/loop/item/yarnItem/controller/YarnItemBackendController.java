@@ -93,6 +93,7 @@ public class YarnItemBackendController {
 			try {
 //				files.get(i).transferTo(savePathFile);
 				i.transferTo(savePathFile);
+				imgBean.setItemId(bean.getItemId());
 				imgBean.setImg(imageFile + "." + extension);
 				imgBean.setAllItem(allItem);
 				itemImgService.save(imgBean);
@@ -137,6 +138,7 @@ public class YarnItemBackendController {
 				File savePathFile = new File(savePath);
 				try {
 					i.transferTo(savePathFile);
+					imgBean.setItemId(bean.getItemId());
 					imgBean.setImg(imageFile + "." + extension);
 					itemImgService.save(imgBean);
 				} catch (IllegalStateException | IOException e) {
@@ -155,39 +157,14 @@ public class YarnItemBackendController {
 	public String deleteById(ServletRequest request) {
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
 		yarnService.deleteById(itemId);
-//		List<MultipartFile> files = mrequest.getFiles("img");
-//		List<ItemImgBean> imgs = itemImgService.findByItemId(bean.getItemId());
-//		int j = 0;
-//		for (MultipartFile i : files) {
-//			if (!i.isEmpty()) {
-//				ItemImgBean imgBean = imgs.get(j);
-//				j++;
-//				String imageFile = itemImgService.getRandomString(8);
-//				String fileName = i.getOriginalFilename();
-//				String extension = "";
-//				int index = fileName.lastIndexOf('.');
-//				if (index > 0) {
-//					extension = fileName.substring(index + 1);
-//				}
-//				String realPath = mrequest.getServletContext().getRealPath(".");
-//				String saveDirPath = realPath + "\\items\\img\\";
-//				File saveDirPathFile = new File(saveDirPath);
-//				saveDirPathFile.mkdirs();
-//				String savePath = saveDirPath + imageFile + "." + extension;
-//				File savePathFile = new File(savePath);
-//				try {
-//					i.transferTo(savePathFile);
-//					imgBean.setImg(imageFile + "." + extension);
-//					itemImgService.save(imgBean);
-//				} catch (IllegalStateException | IOException e) {
-//					e.printStackTrace();
-//				}
-//
-//			} else {
-//				j++;
-//			}
-//		}
-//		Integer id = bean.getItemId();
 		return "redirect:/backend/yarn";
 	}
+
+//	@PostMapping("/yarn/deleteimg")
+//	@ResponseBody
+//	public List<ItemImgBean> delete(@RequestBody Map<String, String> map) {	
+//		itemImgService.deleteImg(map.get("img"));
+//		Integer itemId = Integer.parseInt(map.get("itemId"));
+//		return itemImgService.findByItemId(itemId);
+//	}
 }

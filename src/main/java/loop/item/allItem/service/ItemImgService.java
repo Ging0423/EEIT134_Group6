@@ -28,6 +28,11 @@ public class ItemImgService {
 		repo.deleteByItemId(itemId);
 	}
 	
+//	public void deleteImg(String itemImg) {
+//
+//		repo.deleteByImg(itemImg);
+//	}
+	
 	public String getRandomString(int l) {
 		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random random = new Random();

@@ -60,51 +60,58 @@
 				<div class="col-md-4">
 					<div class="product_sidebar">
 						<div class="single_sedebar">
-							<form action="#">
-								<input type="text" name="#" placeholder="Search keyword">
-								<i class="ti-search"></i>
-							</form>
+							<form name="form1" action="/loop/items/search" method='GET'>
+							<input type="text" name="key" placeholder="輸入關鍵字找書">
+<!-- 								<input type="text" name="key" placeholder="Search keyword"> -->
+								<a href="javascript:document.form1.submit();"><i class="ti-search"></i></a>
+								</form>	
 						</div>
 						<div class="single_sedebar">
-							<div class="select_option">
-								<div class="select_option_list">
-									Category <i class="right fas fa-caret-down"></i>
-								</div>
-								<div class="select_option_dropdown">
-									<p>
-										<a href="#">Category 1</a>
-									</p>
-									<p>
-										<a href="#">Category 2</a>
-									</p>
-									<p>
-										<a href="#">Category 3</a>
-									</p>
-									<p>
-										<a href="#">Category 4</a>
-									</p>
-								</div>
-							</div>
-						</div>
+<!-- 							<form name="form2" action="/loop/items/searchprice" method='GET'> -->
+<!-- 								<input type="text" name="price" placeholder="Search keyword"> -->
+<!-- 								<a href="javascript:document.form2.submit();"><i class="ti-search"></i></a> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
 						<div class="single_sedebar">
-							<div class="select_option">
-								<div class="select_option_list">
-									Type <i class="right fas fa-caret-down"></i>
-								</div>
-								<div class="select_option_dropdown">
-									<p>
-										<a href="#">Type 1</a>
-									</p>
-									<p>
-										<a href="#">Type 2</a>
-									</p>
-									<p>
-										<a href="#">Type 3</a>
-									</p>
-									<p>
-										<a href="#">Type 4</a>
-									</p>
-								</div>
+<!-- 							<div class="select_option"> -->
+<!-- 								<div class="select_option_list"> -->
+<!-- 									Category <i class="right fas fa-caret-down"></i> -->
+<!-- 								</div> -->
+<!-- 								<div class="select_option_dropdown"> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Category 1</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Category 2</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Category 3</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Category 4</a> -->
+<!-- 									</p> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="single_sedebar"> -->
+<!-- 							<div class="select_option"> -->
+<!-- 								<div class="select_option_list"> -->
+<!-- 									Type <i class="right fas fa-caret-down"></i> -->
+<!-- 								</div> -->
+<!-- 								<div class="select_option_dropdown"> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Type 1</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Type 2</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Type 3</a> -->
+<!-- 									</p> -->
+<!-- 									<p> -->
+<!-- 										<a href="#">Type 4</a> -->
+<!-- 									</p> -->
+<!-- 								</div> -->
 							</div>
 						</div>
 					</div>

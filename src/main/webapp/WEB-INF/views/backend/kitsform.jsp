@@ -13,9 +13,26 @@
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- =========== -->
+<title>Kits Form</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
+#ajaxTable { 
+margin: auto; 
+width: 95% 
+}
+/* table{margin:auto; width:70%} */
+/* table,th,td{border:2px solid black; border-collapse:collapse} */
+/* th{background-color:#F4EDF2} */
+/* /* a {font-size:x-large; margin: 50px auto; text-decoration:none} */ */
+a {text-decoration:none}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 body {
   font-family: Arial;
 }
@@ -50,20 +67,12 @@ form.example::after {
   clear: both;
   display: table;
 }
-</head>
-<!-- =========== -->
-<title>Kits Form</title>
-<style>
-table{margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse}
-th{background-color:#F4EDF2}
-/* a {font-size:x-large; margin: 50px auto; text-decoration:none} */
-a {text-decoration:none}
 </style>
+</head>
 
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -131,19 +140,22 @@ a {text-decoration:none}
 <div style="background-color:#B08EAD"><br>
 <h1 style="color:#fff">材料包商品資料</h1><br>
 <hr>
-</div><br>
+</div>
 
 <a class=a href="<c:url value='/backend/kits/create'/>">新增</a>
-
-<table border='1'> 
+<form>
+<table class="table table-bordered border-primary" id="ajaxTable">
 	<thead>
+	<tr>
 		<th>編號</th>
 		<th>材料包名稱</th>
 		<th>材料包內容簡介</th>
-		<th>日期</th>
+		<th>上架日期</th>
 		<th>庫存數量</th>
 		<th>價格</th>		
+		</tr>
 	</thead>
+	 <tbody>
 		<c:forEach var="item" items='${allItem}'>
 			<tr>
 				<td><a href= "<c:url value='/backend/kits/${item.itemId}'/>">${item.itemId}</a></td>
@@ -154,6 +166,7 @@ a {text-decoration:none}
 				<td>$${item.price}</td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	<a href="/loop/backend/allitem">回商品資料總表</a>
 </div>

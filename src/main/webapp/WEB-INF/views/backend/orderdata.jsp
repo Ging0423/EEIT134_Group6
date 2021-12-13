@@ -159,9 +159,7 @@ form.example::after {
 							<td>${order.orderDate}</td>
 							<td>${order.total}</td>
 							<td>${order.payState}</td>
-							<td>
-							${order.orderState}
-							</td>
+							<td>${order.orderState}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
