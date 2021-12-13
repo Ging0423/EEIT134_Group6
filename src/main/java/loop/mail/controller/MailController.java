@@ -42,8 +42,8 @@ public class MailController {
 	@PostMapping("/forgetpassword/sendforget")
 	@ResponseBody
 	public boolean forgetPassword(Model model, HttpSession session, 
-			@RequestBody String account) {
-		Optional<UsersBean> opt = usersService.findByAccount(account);
+			@RequestBody String mail) {
+		Optional<UsersBean> opt = usersService.findByEmail(mail);
 		if(!(opt.isEmpty())) {
 			Map<String, String> map = (Map<String, String>) session.getAttribute("randomCode");
 			if (map == null) {
@@ -90,7 +90,7 @@ public class MailController {
 		String mail = request.getParameter("mail");
 		String beforePassword = request.getParameter("password");
 		String password = new BCryptPasswordEncoder().encode(beforePassword);
-		UsersBean bean = usersService.findByEmail(mail);
+		UsersBean bean = usersService.findByEmail(mail).get();
 		bean.setUserPassword(password);
 		usersService.save(bean);
 		return "redirect:/";

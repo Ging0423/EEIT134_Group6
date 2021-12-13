@@ -35,12 +35,12 @@ public class UsersService {
 			return true;
 	}
 
-	public UsersBean findByEmail(String mail) {
+	public Optional<UsersBean> findByEmail(String mail) {
 		Optional<UsersBean> opt = usersRepo.findByEmail(mail);
 		if (opt.isEmpty()) {
 			return null;
 		} else {
-			return opt.get();
+			return opt;
 		}
 	}
 
