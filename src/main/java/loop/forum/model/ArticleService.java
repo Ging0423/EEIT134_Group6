@@ -1,5 +1,7 @@
 package loop.forum.model;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,10 +65,6 @@ public class ArticleService {
 		return null;
 	}
 	
-//	public Optional<Article> findByAuthorid(int authorid){
-//		return aReps.findbyA
-//	}
-	
 	public List<Article> findByCategoryid(int categoryid){
 		return aReps.findByCategoryid(categoryid);
 	}
@@ -99,5 +97,9 @@ public class ArticleService {
 		} else {
 			return aReps.countByTitleLike(keyword_search);
 		}
+	}
+
+	public long countArticleAmountOfToday(Date today) {
+		return aReps.countByPostdateGreaterThan(today);
 	}
 }
