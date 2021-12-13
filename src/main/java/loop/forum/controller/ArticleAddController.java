@@ -43,7 +43,7 @@ public class ArticleAddController {
 
 	@RequestMapping(value = "/newArticleSuccess", method = RequestMethod.POST)
 	@ResponseBody
-	public String postSuccess(@RequestBody Map<String, String> map, Model m) {
+	public void postSuccess(@RequestBody Map<String, String> map, Model m) {
 		Article article = new Article();
 		article.setTitle(map.get("title"));
 		article.setCategoryid(Integer.parseInt(map.get("categoryid")));
