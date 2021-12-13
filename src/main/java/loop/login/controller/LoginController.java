@@ -33,7 +33,7 @@ public class LoginController {
 			Model m) {
 		try {
 			if (!account.equals("")) {
-				m.addAttribute("accountMsg", "<img src='img/usercheck/checkNO.png'/> 帳號密碼錯誤");
+				m.addAttribute("accountMsg", "<img src='img/usercheck/checkNO.png'/> 帳號或密碼錯誤！");
 			}
 
 		} catch (NullPointerException e) {
