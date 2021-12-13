@@ -25,13 +25,11 @@ import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/forum")
-@SessionAttributes({"totalPages", "totalElements", "replyName", "isLogin"})
+@SessionAttributes({"totalPages", "totalElements", "isLogin"})
 public class ArticleController {
 	
 	@Autowired
 	private ArticleService aService;
-	@Autowired
-	private UsersService uService;
 	
 	//進入討論區主頁面
 	@GetMapping("")
@@ -68,19 +66,6 @@ public class ArticleController {
 				page = aService.findAllByPage(categoryid, pageable);
 			}
 			
-			List<String> replyName = new ArrayList<String>();
-			UsersBean users = null;
-			for (int i=0; i<pageSize; i++) {
-				if(page.getContent().get(i).getReply().isEmpty()) {
-					users = uService.findById(page.getContent().get(i).getAuthorid());
-					replyName.add(users.getUserName());
-				}else {
-					users = uService.findById(page.getContent().get(i).getReply().get(0).getAuthorid());
-					replyName.add(users.getUserName());
-				}
-			}
-			
-			m.addAttribute("replyName", replyName);
 			m.addAttribute("totalPages", page.getTotalPages());
 			m.addAttribute("totalElements", page.getTotalElements());
 			

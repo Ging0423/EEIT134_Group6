@@ -2,6 +2,7 @@ package loop.forum.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,21 +26,24 @@ import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/forum/reply")
-@SessionAttributes({"totalPages", "totalElements", "isLogin"})
+@SessionAttributes({"totalPagesInArticle", "totalElements", "isLogin"})
 public class ReplyController {
 	@Autowired
 	private ReplyService rService;
-	@Autowired
-	private UsersService uService;
 	
 	//新增回應
 	@PostMapping("/newReply")
 	@ResponseBody
-	public Reply postReply(@RequestBody Reply reply) {
+	public void postReply(@RequestBody Map<String, String> map, Model m) {
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		Reply reply = new Reply();
+		reply.setAuthorid(userId);
 		reply.setReplydate(new Date());
+		reply.setContent(map.get("content"));
+		reply.setArticleid(Integer.parseInt(map.get("articleid")));
 		reply.setLikeNum(0);
 		rService.createNewReply(reply);
-		return reply;
 	}
 	
 //	@PostMapping("/deleteReply")
@@ -57,7 +61,13 @@ public class ReplyController {
 		
 		page = rService.findAllByPage(articleid, pageable);
 		
-		m.addAttribute("totalPages", page.getTotalPages());
+		int totalPages;
+		if(page.getTotalPages() == 0) {
+			totalPages = 1;
+		}else {
+			totalPages = page.getTotalPages();
+		}
+		m.addAttribute("totalPagesInArticle", totalPages);
 		m.addAttribute("totalElements", page.getTotalElements());
 		
 		return page.getContent();

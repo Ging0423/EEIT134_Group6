@@ -1,6 +1,6 @@
 package loop.forum.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +20,6 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
 
 	List<Article> findByCategoryid(int categoryid);
     List<Article> findByAuthorid(int authorid);
-    
     List<Article> findByUsers(UsersBean users);
     
 	Page<Article> findByCategoryid(int categoryid, Pageable pageable);
@@ -32,7 +31,7 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
 	long countByCategoryidAndAuthorid(int categoryid, int authorid);
 	long countByTitleLike(String keyword);
 	long countByTitleLikeAndCategoryid(String keyword, int categoryid);
-	long countByPostdate(Date postdate);
+	long countByPostdateGreaterThan(Date today);
 	
 
 }

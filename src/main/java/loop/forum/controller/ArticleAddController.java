@@ -3,6 +3,7 @@ package loop.forum.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,11 +24,18 @@ import org.springframework.web.multipart.MultipartFile;
 import loop.forum.model.Article;
 import loop.forum.model.ArticleService;
 import loop.user.model.UsersBean;
+<<<<<<< Updated upstream
 import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/forum/newPost")
 @SessionAttributes(names = {"isLogin"})
+=======
+
+@Controller
+@RequestMapping("/forum/newPost")
+@SessionAttributes(names = { "isLogin" })
+>>>>>>> Stashed changes
 public class ArticleAddController {
 	@Autowired
 	private ArticleService aService;
@@ -41,7 +49,19 @@ public class ArticleAddController {
 	}
 
 	@RequestMapping(value = "/newArticleSuccess", method = RequestMethod.POST)
+<<<<<<< Updated upstream
 	public void postSuccess(HttpServletRequest request, @RequestBody Article article) {
+=======
+	@ResponseBody
+	public String postSuccess(@RequestBody Map<String, String> map, Model m) {
+		Article article = new Article();
+		article.setTitle(map.get("title"));
+		article.setCategoryid(Integer.parseInt(map.get("categoryid")));
+		article.setContent(map.get("content"));
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		article.setAuthorid(userId);
+>>>>>>> Stashed changes
 		article.setPostdate(new Date());
 		article.setClickNum(0);
 		article.setLikeNum(0);

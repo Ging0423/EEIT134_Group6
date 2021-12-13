@@ -69,7 +69,7 @@
 				
 				<div class="showpage">
 						<table id="showpage">
-<%-- 							<input type="hidden" value="${totalPages}" id="totalPages"> --%>
+							<input type="hidden" value="${totalPages}" id="totalPages">
 							<tr>
 								<td><button id="minusPage" onclick="addPage(-1)">
 										<i class="ti-control-backward"></i>
@@ -144,8 +144,6 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-<%-- 	<script src="<c:url value='/js/forum/forum_main.js'/>"></script> --%>
-	
 	<script type="text/javascript">
 	var categoryid = 0;
 	var indexPage = 1;
@@ -178,19 +176,26 @@
 			contentType: 'application.json',	//要上傳的格式
 			success: function(data) {
 				var json = JSON.stringify(data, null, 4);
-
+				
 				if (data == null) {
 					$('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
 				} else {
 					$.each(data, function(i, n) {
-//  						console.log(${replyName});
+						var reply_name, reply_date;
+						if(n.reply.length !== 0){
+							reply_name = n.reply[0].users.userName;
+							reply_date = n.reply[0].replydate;
+						}else{
+							reply_name = n.users.userName;
+							reply_date = n.postdate;
+						}
 						
 						var tr = "<tr align='center'>" +
 							"<td>" + categoryName(n.categoryid) + "</td>" +
 							"<td><a href='/loop/forum/article/" + n.articleid + "'>" + n.title + "</a></td>" +
 							"<td>" + n.users.userName + "<br/><span style='font-size:8px; font-weight:lighter;'>" + n.postdate + "</span></td>" +
 							"<td>" + n.reply.length + "/" + n.clickNum + "</td>" +
-							"<td>" + 0 + "<br/><span style='font-size:8px; font-weight:lighter;'>" + 0 + "</span></td>" +
+							"<td>" + reply_name + "<br/><span style='font-size:8px; font-weight:lighter;'>" + reply_date + "</span></td>" +
 							"</tr>";
 						table.append(tr);
 					});
@@ -219,12 +224,21 @@
 					//$('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
 				} else {
 					$.each(data, function(i, n) {
+						var reply_name, reply_date;
+						if(n.reply.length !== 0){
+							reply_name = n.reply[0].users.userName;
+							reply_date = n.reply[0].replydate;
+						}else{
+							reply_name = n.users.userName;
+							reply_date = n.postdate;
+						}
+						
 						var tr = "<tr align='center'>" +
 							"<td>" + categoryName(n.categoryid) + "</td>" +
 							"<td><a href='/loop/forum/article/" + n.articleid + "'>" + n.title + "</a></td>" +
 							"<td>" + n.authorid + "<br/><span style='font-size:8px; font-weight:lighter;'>" + n.postdate + "</span></td>" +
 							"<td>" + n.reply.length + "/" + n.clickNum + "</td>" +
-							"<td>" + reply_authorid + "<br/><span style='font-size:8px; font-weight:lighter;'>" + reply_replydate + "</span></td>" +
+							"<td>" + reply_name + "<br/><span style='font-size:8px; font-weight:lighter;'>" + reply_date + "</span></td>" +
 							"</tr>";
 						table.append(tr);
 					});
