@@ -220,7 +220,7 @@ form.example::after {
 										+ '<tr><th>訂單編號</th><th>收件人</th><th>電話</th><th>收件地址</th><th>訂購日期</th><th>總金額</th>'
 										+ '<th>付款狀態</th><th>訂單狀態</th></tr></thead><tbody>'
 								$.each(data, function(i, n) {
-									tr += '<tr>' + '<td>' + n.orderId + '</td>'
+									tr += '<tr>' + '<td><a href="/loop/backend/order/'+ n.orderId + '">'+n.orderId+'</a></td>'
 											+ '<td>' + n.recipient
 											+ '</td>' + '<td>' + n.tel
 											+ '</td>' + '<td>'
