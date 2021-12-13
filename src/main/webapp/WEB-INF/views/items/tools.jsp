@@ -61,50 +61,50 @@
 					<div class="product_sidebar">
 						<div class="single_sedebar">
 							<form action="#">
-								<input type="text" name="#" placeholder="Search keyword">
+								<input type="text" name="#" placeholder="輸入關鍵字找工具">
 								<i class="ti-search"></i>
 							</form>
 						</div>
 						<div class="single_sedebar">
 							<div class="select_option">
-<!-- 								<div class="select_option_list"> -->
-<!-- 									Category <i class="right fas fa-caret-down"></i> -->
-<!-- 								</div> -->
-<!-- 								<div class="select_option_dropdown"> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Category 1</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Category 2</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Category 3</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Category 4</a> -->
-<!-- 									</p> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="single_sedebar"> -->
-<!-- 							<div class="select_option"> -->
-<!-- 								<div class="select_option_list"> -->
-<!-- 									Type <i class="right fas fa-caret-down"></i> -->
-<!-- 								</div> -->
-<!-- 								<div class="select_option_dropdown"> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Type 1</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Type 2</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Type 3</a> -->
-<!-- 									</p> -->
-<!-- 									<p> -->
-<!-- 										<a href="#">Type 4</a> -->
-<!-- 									</p> -->
-<!-- 								</div> -->
+								<div class="select_option_list">
+									Category <i class="right fas fa-caret-down"></i>
+								</div>
+								<div class="select_option_dropdown">
+									<p>
+										<a href="#">Category 1</a>
+									</p>
+									<p>
+										<a href="#">Category 2</a>
+									</p>
+									<p>
+										<a href="#">Category 3</a>
+									</p>
+									<p>
+										<a href="#">Category 4</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="single_sedebar">
+							<div class="select_option">
+								<div class="select_option_list">
+									Type <i class="right fas fa-caret-down"></i>
+								</div>
+								<div class="select_option_dropdown">
+									<p>
+										<a href="#">Type 1</a>
+									</p>
+									<p>
+										<a href="#">Type 2</a>
+									</p>
+									<p>
+										<a href="#">Type 3</a>
+									</p>
+									<p>
+										<a href="#">Type 4</a>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -178,36 +178,7 @@
 	    }  
 	  });  
 	  })  
-// 		function deleteById(id) {
-// 			let obj = new Object();
-// 			obj.itemId = id;
-// 			let json = JSON.stringify(obj, null, 4);
-// 			deleteAjax(json);
-// 		}
-// 		function deleteAjax(id) {
-// 			$.ajax({
-// 						type : 'post',
-// 						url : 'tools/deletetools',
-// 						data : id,
-// 						dataType : 'JSON',
-// 						contentType : 'application/json;charset=utf-8',
-// 						success : function(data) {
 
-// 							console.log('success:' + data);
-// 							var json = JSON.stringify(data, null, 4);
-// 							console.log('json:' + json);
-
-// 							$('#ajax').empty("");
-
-// 							if (data == null) {
-
-// 							} else {
-// 								window.location.href = "<c:url value='/tools'/>";			   
-										
-// 							}
-// 						}
-// 					});
-// 		}
 	</script>
 </body>
 
