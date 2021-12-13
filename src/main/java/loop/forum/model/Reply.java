@@ -48,11 +48,7 @@ public class Reply {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "articleid",insertable = false, updatable = false)
-<<<<<<< Updated upstream
-	private Article article;
-=======
 	private Article article;	
->>>>>>> Stashed changes
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)

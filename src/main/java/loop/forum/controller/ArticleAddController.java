@@ -24,18 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 import loop.forum.model.Article;
 import loop.forum.model.ArticleService;
 import loop.user.model.UsersBean;
-<<<<<<< Updated upstream
 import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/forum/newPost")
 @SessionAttributes(names = {"isLogin"})
-=======
-
-@Controller
-@RequestMapping("/forum/newPost")
-@SessionAttributes(names = { "isLogin" })
->>>>>>> Stashed changes
 public class ArticleAddController {
 	@Autowired
 	private ArticleService aService;
@@ -49,9 +42,6 @@ public class ArticleAddController {
 	}
 
 	@RequestMapping(value = "/newArticleSuccess", method = RequestMethod.POST)
-<<<<<<< Updated upstream
-	public void postSuccess(HttpServletRequest request, @RequestBody Article article) {
-=======
 	@ResponseBody
 	public String postSuccess(@RequestBody Map<String, String> map, Model m) {
 		Article article = new Article();
@@ -61,7 +51,6 @@ public class ArticleAddController {
 		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
 		Integer userId = bean.getUserId();
 		article.setAuthorid(userId);
->>>>>>> Stashed changes
 		article.setPostdate(new Date());
 		article.setClickNum(0);
 		article.setLikeNum(0);

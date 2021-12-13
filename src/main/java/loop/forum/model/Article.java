@@ -60,12 +60,8 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-<<<<<<< Updated upstream
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
-=======
 	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "articleid", insertable = false, updatable = false)
->>>>>>> Stashed changes
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
