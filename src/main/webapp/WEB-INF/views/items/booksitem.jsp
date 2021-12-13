@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 <style>
 .single_product_img {margin:auto; width:70%}
+.text{font-size:large}
 </style>
 </head>
 
@@ -65,11 +66,11 @@
 				<div class="col-lg-8">
 					<div class="single_product_text text-center">
 						<h3>${item.itemName}</h3>
-						<p>作者：${item.publisher}</p>
-				        <p>出版社：${item.author}</p>
-						<p>內容簡介</p>
+						<p class="text">作者：${item.publisher}</p>
+				        <p class="text">出版社：${item.author}</p>
+						<p class="text">內容簡介</p>
 						<hr>
-						<p>${item.itemDescription}</p>
+						<p class="text">${item.itemDescription}</p>
 						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
 						<form action="<c:url value='/cart/addToCart'/>" method="POST"
 							name="addToCart">
@@ -92,16 +93,14 @@
 								</div>
 							</div>
 						</form>
-	<!--::footer_part start::-->
-    <jsp:include page="/fragment/footer.jsp" />
-    <!--::footer_part end::-->
 					</div>
 				</div>
 			</div>
 		</div>
+	<!--::footer_part start::-->
+    <jsp:include page="/fragment/footer.jsp" />
+    <!--::footer_part end::-->
 	</div>
-	
-
 
 	<!-- jquery plugins here-->
 	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>

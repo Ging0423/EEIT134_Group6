@@ -61,7 +61,7 @@
 					<div class="product_sidebar">
 						<div class="single_sedebar">
 							<form action="#">
-								<input type="text" name="#" placeholder="Search keyword">
+								<input type="text" name="#" placeholder="輸入關鍵字找工具">
 								<i class="ti-search"></i>
 							</form>
 						</div>
@@ -178,36 +178,7 @@
 	    }  
 	  });  
 	  })  
-// 		function deleteById(id) {
-// 			let obj = new Object();
-// 			obj.itemId = id;
-// 			let json = JSON.stringify(obj, null, 4);
-// 			deleteAjax(json);
-// 		}
-// 		function deleteAjax(id) {
-// 			$.ajax({
-// 						type : 'post',
-// 						url : 'tools/deletetools',
-// 						data : id,
-// 						dataType : 'JSON',
-// 						contentType : 'application/json;charset=utf-8',
-// 						success : function(data) {
 
-// 							console.log('success:' + data);
-// 							var json = JSON.stringify(data, null, 4);
-// 							console.log('json:' + json);
-
-// 							$('#ajax').empty("");
-
-// 							if (data == null) {
-
-// 							} else {
-// 								window.location.href = "<c:url value='/tools'/>";			   
-										
-// 							}
-// 						}
-// 					});
-// 		}
 	</script>
 </body>
 

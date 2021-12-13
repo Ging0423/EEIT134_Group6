@@ -11,20 +11,28 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
-	crossorigin="anonymous"></script>
-	
+	crossorigin="anonymous"></script>	
 <!-- =========== -->
 <title>Books Form</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
-table{margin:auto; width:70%}
-table,th,td{border:2px solid black; border-collapse:collapse}
-th{background-color:#F4EDF2}
+#ajaxTable { 
+margin: auto; 
+width: 95% 
+}
+/* table{margin:auto; width:70%} */
+/* table,th,td{border:2px solid black; border-collapse:collapse} */
+/* th{background-color:#F4EDF2} */
 /* a {font-size:x-large; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
 body {
   font-family: Arial;
 }
@@ -64,7 +72,7 @@ form.example::after {
  
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -132,21 +140,23 @@ form.example::after {
 <div style="background-color:#B08EAD"><br>
 <h1 style="color:#fff">書籍商品資料總表</h1><br>
 <hr>
-</div><br>
+</div>
 
 <a class=a href="<c:url value='/backend/books/create'/>">新增</a>
-
-<table border='1'>
+<form>
+<table class="table table-bordered border-primary" id="ajaxTable">
 	<thead>
+	<tr>
 		<th>編號</th>
 		<th>書名</th>
 		<th>出版社</th>
 		<th>作者</th>
 		<th>內容簡介</th>
-		<th>日期</th>
+		<th>上架日期</th>
 		<th>庫存數量</th>
 		<th>價格</th>	
 	</thead>
+	<tbody>
 		<c:forEach var="item" items='${allItem}'>
 			<tr>
 				<td><a href= "<c:url value='/backend/books/${item.itemId}'/>">${item.itemId}</a></td>
@@ -159,7 +169,9 @@ form.example::after {
 				<td>$${item.price}</td>
 			</tr>
 		</c:forEach>
+		 </tbody>
 	</table>
+	</form>
 	<a class=a href="/loop/backend/allitem">回商品資料總表</a>
 	</div>
 	<!--     ================================ -->
@@ -176,5 +188,25 @@ form.example::after {
 		}
 	</script>
 	<!--     ================================ -->
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+			<!-- popper js -->
+			<script src="<c:url value='/js/popper.min.js'/>"></script>
+			<!-- bootstrap js -->
+			<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+			<!-- magnific popup js -->
+			<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+			<!-- carousel js -->
+			<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+			<!-- slick js -->
+			<script src="<c:url value='/js/slick.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+			<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+			<script src="<c:url value='/js/contact.js'/>"></script>
+			<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.form.js'/>"></script>
+			<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+			<script src="<c:url value='/js/mail-script.js'/>"></script>
+	
 </body>
 </html>

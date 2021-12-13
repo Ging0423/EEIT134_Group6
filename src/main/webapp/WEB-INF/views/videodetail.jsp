@@ -33,6 +33,10 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+.btn {
+background-color:#B08EAD;
+color: white
+}
 </style>
 </head>
 
@@ -83,12 +87,12 @@
 		<c:choose>
 			<c:when test="${isLogin != null}">
 				<textarea id="commentTextArea" rows="4" cols="40"></textarea>
-				<button type="button" class="btn btn-primary"
+				<button type="button" class="btn"
 					onclick="getcomment('${video.videoId}');">送出</button>
 			</c:when>
 			<c:otherwise>
 				<c:url value='/login' var="login"/>
-				<button calss="btn btn-light" onclick="location.href='${login}'">登入留言</button>
+				<button calss="btn" onclick="location.href='${login}'">登入留言</button>
 			</c:otherwise>
 		</c:choose>
 

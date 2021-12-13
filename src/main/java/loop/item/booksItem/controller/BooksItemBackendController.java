@@ -91,6 +91,7 @@ public class BooksItemBackendController {
 			try {
 				i.transferTo(savePathFile);
 				imgBean.setImg(imageFile + "." +extension);
+				imgBean.setItemId(itemId);
 				imgBean.setAllItem(allItem);
 				itemImgService.save(imgBean);		
 			} catch (IllegalStateException | IOException e) {
@@ -112,40 +113,41 @@ public class BooksItemBackendController {
 	
 	@PostMapping("updatebooks")
 //	public String update(@ModelAttribute("booksData")BooksItemBean bean, BindingResult result, ModelMap m) {
-	public String update(@ModelAttribute("booksData")BooksItemBean bean, Model m) {//, MultipartHttpServletRequest mrequest		
+	public String update(@ModelAttribute("booksData")BooksItemBean bean, Model m, MultipartHttpServletRequest mrequest) {		
 		booksService.update(bean);
-//		if(result.hasErrors()) {
-//			return "booksError";
-//		}
+		List<MultipartFile> files = mrequest.getFiles("img");
+		List<ItemImgBean> imgs = itemImgService.findByItemId(bean.getItemId());
+		int j = 0;
+		for (MultipartFile i : files) {
+			if (!i.isEmpty()) {
+				ItemImgBean imgBean = imgs.get(j);
+				j++;
+				String imageFile = itemImgService.getRandomString(8);
+				String fileName = i.getOriginalFilename();
+				String extension = "";
+				int index = fileName.lastIndexOf('.');
+				if (index > 0) {
+					extension = fileName.substring(index + 1);
+				}
+				String realPath = mrequest.getServletContext().getRealPath(".");
+				String saveDirPath = realPath + "\\items\\img\\";
+				File saveDirPathFile = new File(saveDirPath);
+				saveDirPathFile.mkdirs();
+				String savePath = saveDirPath + imageFile + "." + extension;
+				File savePathFile = new File(savePath);
+				try {
+					i.transferTo(savePathFile);
+					imgBean.setImg(imageFile + "." + extension);
+					itemImgService.save(imgBean);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				j++;
+			}
+		}
 		Integer id = bean.getItemId();
-//		AllItemBean allItem = allItemService.findById(id);
-//		
-//		
-//		List<MultipartFile> files = mrequest.getFiles("img");
-//		for(MultipartFile i : files) {			
-//			String imageFile = itemImgService.getRandomString(8);
-//			String fileName = i.getOriginalFilename();
-//			String extension = "";
-//			int index = fileName.lastIndexOf('.');
-//			if (index > 0) {
-//			    extension = fileName.substring(index+1);
-//			}
-//			String realPath = mrequest.getServletContext().getRealPath(".");
-//			String saveDirPath = realPath + "\\items\\img\\";
-//			File saveDirPathFile = new File(saveDirPath);
-//			saveDirPathFile.mkdirs();
-//			String savePath = saveDirPath + imageFile + "." + extension;
-//			File savePathFile = new File(savePath);
-//			ItemImgBean imgBean = new ItemImgBean();
-//			try {
-//				i.transferTo(savePathFile);
-//				imgBean.setImg(imageFile + "." +extension);
-//				imgBean.setAllItem(allItem);
-//				itemImgService.save(imgBean);		
-//			} catch (IllegalStateException | IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
 		return "redirect:/backend/books/" + id;		
 	}
 
@@ -153,7 +155,7 @@ public class BooksItemBackendController {
 	public String deleteById(ServletRequest request) {	
 		Integer itemId = Integer.parseInt(request.getParameter("itemId"));
 //		itemImgService.deleteByItemId(itemId);
-		booksService.deleteById(itemId);		
+		booksService.deleteById(itemId);	
 		return "redirect:/backend/books";
 	}
 }

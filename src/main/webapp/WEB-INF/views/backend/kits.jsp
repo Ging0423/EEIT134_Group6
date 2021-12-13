@@ -19,13 +19,27 @@
 
 <!-- =========== -->
 <title>Kits</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
 <style>
 #img {margin:left; width:20%} 
-table{border:2px solid black; border-collapse:collapse; margin:auto; width:90%; height: 200%}
-tr{background-color:#F4EDF2}
-.a{align='center'; width:99%}
+#ajaxTable {
+	margin: auto;
+	width: 70%
+}
+/* table{border:2px solid black; border-collapse:collapse; margin:auto; width:90%; height: 200%} */
+/* tr{background-color:#F4EDF2} */
+/* .a{align='center'; width:99%} */
 /* a {font-size:larger; margin: 50px auto; text-decoration:none} */
 a {text-decoration:none}
+
+<meta name ="viewport " content ="width =device-width, initial-scale =1 "> 
+<link rel ="stylesheet " href ="https: //cdnjs.cloudflare.com /ajax
+	/libs /font-awesome /4.7.0 /css /font-awesome.min.css "> 
 
 body {
   font-family: Arial;
@@ -61,12 +75,17 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.btn {
+	background-color: #B08EAD;
+	color: white
+}
 </style>
 </head>
 
 <body>
 <!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -135,36 +154,91 @@ form.example::after {
 <h1 style="color:#fff">材料包商品資料</h1><br>
 <hr>
 </div><br>
-<form method="post" action="<c:url value='/backend/updatekits'/>" >
+<form method="post" action="<c:url value='/backend/updatekits'/>" enctype="multipart/form-data">
+<table class="table table-bordered border-primary" id="ajaxTable">
 
-<table>
-	  <tr><td>編號:</td></tr>
-	  <tr><td><input class=a readonly name="itemId" value=${kitsData.itemId}></td></tr>
-      <tr><td>工具名稱:</td>
-      <tr><td><input class=a name="itemName" value=${kitsData.itemName}></td></tr>
-      <tr><td>工具描述:</td></tr>
-      <tr><td><textarea class=a name="itemDescription" rows="8" cols="20">${kitsData.itemDescription}</textarea><td></tr>
-      <tr><td><input class=a type="hidden" name="addDate" value="${kitsData.addDate}"></td></tr>
-      <tr><td>庫存數量:</td></tr>
-      <tr><td><input class=a name="qty" value=${kitsData.qty}></td></tr>
-      <tr><td>價格:</td></tr>
-      <tr><td><input class=a name="price" value=${kitsData.price}></td></tr>
-      <tr><td></td></tr>
+<thead>
+	  <tr>
+	  <th>編號</th>
+	  <th>材料包名稱</th>
+	  <th>上架日期</th>
+	  <th>庫存數量</th>
+	  <th>價格</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr>
+	  <td><input readonly name="itemId" value=${kitsData.itemId}></td>
+      <td><input name="itemName" value=${kitsData.itemName}></td>
+      <td><input readonly name="addDate" value=${kitsData.addDate}></td>
+      <td><input name="qty" value=${kitsData.qty}></td>
+      <td><input name="price" value=${kitsData.price}></td>
+      </tr>
+      </tbody>
+      <thead>
+	  <tr>
+	  <th colspan="5">材料包內容</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr>
+      <td colspan="5"><textarea cols="190" rows="8" name="itemDescription">${kitsData.itemDescription}</textarea></td>
+      </tr>
+      </tbody>
+      <thead>
+	<tr>
+	 <th colspan="5">圖片</th>
+	</tr>
+	</thead>
+	 <tbody>
+	 <tr>
+	  <td colspan="5" align="center"><c:forEach var="itemImg" items="${itemImg}">
+										<img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
+									</c:forEach> <br> <img type="file" id="img1" accept="image/*"
+									width=20% /> <img type="file" id="img2" accept="image/*"
+									width=20% /> <img type="file" id="img3" accept="image/*"
+									width=20% /> <br>封面:<input type="file" name="img"
+									accept="image/*"
+									onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])" />
+									<input type="file" name="img" accept="image/*"
+									onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])" />
+									<input type="file" name="img" accept="image/*"
+									onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])" />
+							</td>
+							</tr>
+						</tbody>
 	  </table>
-	  <c:forEach var="itemImg" items="${itemImg}">
-	  <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
-      </c:forEach>
-<br><button type="submit">更新</button>
+
+<br><button class="btn" type="submit">更新</button>
 </form>
 <form action= "<c:url value='/backend/deletekits'/>" method="post">
 <input type="hidden" name="itemId" value="${kitsData.itemId}">
-<input type="submit" value="刪除"><br>
+<input class="btn" type="submit" value="刪除"><br>
 <a href="<c:url value='/backend/kits' />">回材料包商品資料總表</a>
 </form>
 <%-- <c:forEach var="itemImg" items="${itemImg}"> --%>
 <%--     <img id="img" src=<c:url value="/items/img/${itemImg.img}"/> /> --%>
 <%-- </c:forEach> --%>
 </div>
+<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+			<!-- popper js -->
+			<script src="<c:url value='/js/popper.min.js'/>"></script>
+			<!-- bootstrap js -->
+			<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+			<!-- magnific popup js -->
+			<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+			<!-- carousel js -->
+			<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+			<!-- slick js -->
+			<script src="<c:url value='/js/slick.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+			<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+			<script src="<c:url value='/js/contact.js'/>"></script>
+			<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+			<script src="<c:url value='/js/jquery.form.js'/>"></script>
+			<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+			<script src="<c:url value='/js/mail-script.js'/>"></script>
 
 <!--     ================================ -->
 <script>
@@ -178,6 +252,30 @@ form.example::after {
             navigation.classList.toggle('active');
             main.classList.toggle('active');
         }
+        
+        function del(){
+			var msg = "請確定是否要刪除？";
+			if (confirm(msg)==true){
+			
+			}else{
+			
+			event.preventDefault();
+			}
+		}
+		
+		function update(){
+			var msg = "請確定是否要更新？";
+			if (confirm(msg)==true){
+			
+			}else{
+			
+			event.preventDefault();
+			}
+		}
+	</script>
+	<!--     ================================ -->
+</body>
+</html>
 
     </script>
 <!--     ================================ -->

@@ -63,6 +63,7 @@ public class BooksItemService {
 	}
 	
 	public void deleteById(Integer id) {
+		AllItemBean allItem = allItemService.findById(id);
 		allItemService.deleteByItemId(id);
 		booksRepo.deleteById(id);
 	}
@@ -79,4 +80,12 @@ public class BooksItemService {
 		return items;
 	}
 
+	public List<BooksItemBean> findBooksItemBeanSearch(String key) {
+		return booksRepo.findBooksItemBeanSearch(key);
+	}
+	
+//	public List<BooksItemBean> findBooksItemBeanPrice(Integer price) {
+//		return booksRepo.findBooksItemBeanPrice(price);
+//	}
+	
 }

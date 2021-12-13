@@ -22,8 +22,10 @@ public class ItemImgBean {
 	
 	private String img;
 	
+	private Integer itemId;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="itemId")
+	@JoinColumn(name="itemId", insertable = false, updatable = false)
 	private AllItemBean allItem;
 
 	public Integer getId() {
@@ -32,6 +34,14 @@ public class ItemImgBean {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public Integer getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
 	}
 
 	public String getImg() {

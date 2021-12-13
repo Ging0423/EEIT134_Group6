@@ -15,28 +15,39 @@
 
 <!-- =========== -->
 <title>All Item Form</title>
+<!-- ====== -->
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
+	type="text/css">
+<link rel="icon" href="img/favicon.png">
+<!-- ====== -->
+
 <style>
 .img {
 	width: 20%
 }
-
-table {
+#ajaxTable {
 	margin: auto;
-	width: 70%
+	width: 95%
 }
 
-table, th, td {
-	border: 2px solid black;
-	border-collapse: collapse
-}
+/* table { */
+/* 	margin: auto; */
+/* 	width: 70% */
+/* } */
 
-th {
-	background-color: #F4EDF2
-}
+/* table, th, td { */
+/* 	border: 2px solid black; */
+/* 	border-collapse: collapse */
+/* } */
 
-.a {
-	font-size: x-large
-}
+/* th { */
+/* 	background-color: #F4EDF2 */
+/* } */
+
+/* .a { */
+/* 	font-size: x-large */
+/* } */
 
 a { 
 text-decoration: none
@@ -89,7 +100,7 @@ form.example::after {
 
 <body>
 	<!-- =========== -->
-	<div class="container">
+	<div class="container1">
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
@@ -160,7 +171,6 @@ form.example::after {
 					<br>
 					<hr>
 				</div>
-				<br>
 
 				<div>
 					<select class=a onchange="javascript:location.href=this.value;">
@@ -178,29 +188,32 @@ form.example::after {
 				</div>
 				<br>
 
-				<table border='1'>
+				<table class="table table-bordered border-primary" id="ajaxTable">
 					<thead>
+					<tr>
 						<th>編號</th>
 						<th>商品名稱</th>
 						<th>庫存數量</th>
 						<th>價格</th>
-						<th>圖片</th>
+						<th width="800">圖片</th>
+					</tr>
 					</thead>
+					<tbody>
 					<c:forEach var="item" items='${allItem}'>
 						<tr>
 							<td><a href="<c:url value='/backend/items/${item.itemId}'/>">${item.itemId}</a></td>
 							<td>${item.itemName}</td>
 							<td>${item.qty}</td>
 							<td>$${item.price}</td>
-							<td><c:forEach var="img" items="${item.imgs}">
+							<td ><c:forEach var="img" items="${item.imgs}">
 									<img class="img" src='<c:url value="/items/img/${img.img}"/>' />
 								</c:forEach></td>
 						</tr>
 					</c:forEach>
+					</tbody>
 				</table>
 				<a class=a href="/loop/backend">回後台管理</a>
 			</div>
-
 		</div>
 	</div>
 
