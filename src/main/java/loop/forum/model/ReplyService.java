@@ -1,5 +1,6 @@
 package loop.forum.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +25,20 @@ public class ReplyService {
 		return rReps.findAll();
 	}
 	
+	public List<Reply> findAllByAuthorid(int authorid) {
+		return rReps.findByAuthorid(authorid);
+	}
+	
 	public Page<Reply> findAllByPage(Pageable pageable){
 		return rReps.findAll(pageable);
+	}
+
+	public Page<Reply> findAllByPage(int articleid, Pageable pageable) {
+		return rReps.findByArticleid(articleid, pageable);
+	}
+	
+	public Page<Reply> findPageByAuthorid(int authorid, Pageable pageable){
+		return rReps.findByAuthorid(authorid, pageable);
 	}
 	
 	public void deleteReply(List<Reply> reply) {
@@ -38,33 +51,15 @@ public class ReplyService {
 		return rReps.findByArticleid(articleid);
 	}
 	
-//	public Page<Reply> findAllByPage(Pageable pageable, int categoryid) {
-//		List<Article> op1 = aReps.findByCategoryid(categoryid);
-//		//return aReps.findByCategoryid(categoryid);
-//		
-//		return null;
-//	}
-	
 	public Reply updateReply(Reply reply){
 		return rReps.save(reply);
 	}
-
-	public Page<Reply> findAllByPage(int articleid, Pageable pageable) {
-		return rReps.findByArticleid(articleid, pageable);
+	
+	public int countReplyAmountByCategoryidAndAuthorid(int authorid) {
+		return (int)rReps.countByAuthorid(authorid);
 	}
 
-//	public Reply findById(int articleid) {
-//		Optional<Article> op1 = rReps.findById(articleid);
-//		
-//		if(op1.isPresent()) {
-//			return op1.get();
-//		}
-//		
-//		return null;
-//	}
-	
-//	public Optional<Article> findByAuthorid(int authorid){
-//		return aReps.findbyA
-//	}
-
+	public long countReplyAmountOfToday(Date today) {
+		return rReps.countByReplydateGreaterThan(today);
+	}
 }

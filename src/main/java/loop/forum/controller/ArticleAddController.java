@@ -3,6 +3,7 @@ package loop.forum.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,15 @@ public class ArticleAddController {
 	}
 
 	@RequestMapping(value = "/newArticleSuccess", method = RequestMethod.POST)
-	public void postSuccess(HttpServletRequest request, @RequestBody Article article) {
+	@ResponseBody
+	public void postSuccess(@RequestBody Map<String, String> map, Model m) {
+		Article article = new Article();
+		article.setTitle(map.get("title"));
+		article.setCategoryid(Integer.parseInt(map.get("categoryid")));
+		article.setContent(map.get("content"));
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		article.setAuthorid(userId);
 		article.setPostdate(new Date());
 		article.setClickNum(0);
 		article.setLikeNum(0);

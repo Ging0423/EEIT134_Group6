@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import loop.user.model.UsersBean;
 
@@ -46,7 +48,7 @@ public class Reply {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "articleid",insertable = false, updatable = false)
-	private Article article;
+	private Article article;	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
@@ -108,4 +110,13 @@ public class Reply {
 		this.likeNum = likeNum;
 	}
 
+//	public Article getArticle() {
+//		return article;
+//	}
+//
+//	public void setArticle(Article article) {
+//		this.article = article;
+//	}
+
+	
 }

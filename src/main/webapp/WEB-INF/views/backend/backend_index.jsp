@@ -197,9 +197,11 @@ form.example::after {
 				</div>
 				<table>
 					<tbody>
+					<c:forEach var="user" items="${users}">
 						<tr>
-							<td><h4>æabc</h4> <span>A00001</span></td>
+							<td><h4>${user.userName}</h4> <span>${user.userId}</span></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -244,7 +246,7 @@ form.example::after {
 	function load(indexPage) {
 		$.ajax({
 					type : 'post',
-					url :   'backend/page/'+indexPage,
+					url :   'page/'+indexPage,
 					dataType : 'JSON',
 					contentType : 'application/json',
 					success : function(data) {
