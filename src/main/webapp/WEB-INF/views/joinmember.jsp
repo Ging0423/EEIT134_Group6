@@ -133,14 +133,14 @@
 		var count3 = 0;	
 		
 		function magic() {			
-			var name = [ "john", "amy", "tom", "ann", "test", "who" ];
+			var name = ["john"];
 			document.getElementById('account').value = name[count];
 			document.getElementById('userName').value = name[count];
 			document.getElementById('tel').value = "66316666";
-			document.getElementById('email').value = "gershom82912@hotmail.com";
+			document.getElementById('email').value = "eeitloopdemo@gmail.com";
 			document.getElementById('userAddress').value = "台北市大安區復興南路一段390號2樓";
 			count++;
-			if (count == 6) {
+			if (count == 1) {
 				count = 0;
 			}
 		}
@@ -247,14 +247,23 @@
 			
 			
 			/////////////////////////////////////////////////////////////////////////////////////////
-			if(email == "") {
+			/*if(email == "") {
 				description4.innerHTML="<img src='img/usercheck/checkNO.png'/> 必填欄位";
 				count1++;
 				
 			}
 				else{
 					description4.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-			}
+			}*/
+			
+			 if(checkemailisduplicate()) {
+					
+					count1++;
+					 console.log("email欄位裡面有"+count1+/*","+count3+*/"個錯誤");
+					 }else{
+						 console.log("email欄位裡面有"+count1+/*","+count3+*/"個錯誤");
+						 
+				}
 			/////////////////////////////////////////////////////////////////////////////////////////
 			
 			

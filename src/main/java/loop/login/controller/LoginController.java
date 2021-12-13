@@ -32,8 +32,8 @@ public class LoginController {
 	public String loginFailurePage(@RequestParam(value = "failure", required = false) String account, String password,
 			Model m) {
 		try {
-			if (!account.equals(null) || !password.equals(null)) {
-
+			if (!account.equals("")) {
+				m.addAttribute("accountMsg", "<img src='img/usercheck/checkNO.png'/> 帳號密碼錯誤");
 			}
 
 		} catch (NullPointerException e) {

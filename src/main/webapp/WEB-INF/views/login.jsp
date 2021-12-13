@@ -70,11 +70,11 @@
                             <form class="row contact_form" action="login" method="post" novalidate="novalidate" id="login">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="account" name="account" value=""
-                                        placeholder="Account" onchange="check()"><span style=color:red id="accounterrorMsg"></span>
+                                        placeholder="Account" onchange="check()"><span style=color:red id="accounterrorMsg">${accountMsg}</span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password" onchange="check()"><span style=color:red id="pwerrorMsg"></span>
+                                        placeholder="Password" onchange="check()"><span style=color:red id="pwerrorMsg">${accountMsg}</span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
@@ -137,15 +137,15 @@
 			count++;
 		}
 			else{
-			description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
-		} 
+			description1.innerHTML="";	
+		}
 		
 		if(password == "") {
 			description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
 			count++;
 		}
 			else{
-				description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+				description2.innerHTML="";	
 		}
     
 	}
@@ -163,7 +163,7 @@
 			count++;
 		}
 			else{
-			description1.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+			description1.innerHTML="";	
 		} 
 		
 		if(password == "") {
@@ -171,11 +171,11 @@
 			count++;
 		}
 			else{
-				description2.innerHTML="<img src='img/usercheck/checkYES.png'/>";	
+				description2.innerHTML="";	
 		}
     
 		if(count == 0) {
-			alert("登入成功！")
+			//alert("登入成功！")
 			document.getElementById("login").submit()
 		}
 	}   
