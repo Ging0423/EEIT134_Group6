@@ -60,7 +60,7 @@ form.example::after {
 	<div class="container">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/'/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
 							class="fas fa-infinity" aria-hidden="true"></i></span> <!-- 							<span class="title"><h2>loop<h2></span> -->
 						<span class="title"><img
 							src="<c:url value='/img/loop.png' />"></span>
@@ -162,51 +162,51 @@ form.example::after {
 				</div>
 			</div>
 
-		<div class="details">
-			<div class="recentOrders">
-				<div class="cardHeader">
-					<h2>訂單資訊</h2>
-					<a href="<c:url value='/backend/order'/>" class="btn">View All</a>
-				</div>
-				<table>
-					<thead>
+			<div class="details">
+				<div class="recentOrders">
+					<div class="cardHeader">
+						<h2>訂單資訊</h2>
+						<a href="<c:url value='/backend/order'/>" class="btn">View All</a>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<td>訂單編號</td>
+								<td>價錢</td>
+								<td>客戶名稱</td>
+								<td>訂單狀態</td>
+							</tr>
+						</thead>
+						<tbody id="order">
+						</tbody>
+					</table>
+					<table id="showpage">
 						<tr>
-							<td>訂單編號</td>
-							<td>價錢</td>
-							<td>客戶名稱</td>
-							<td>訂單狀態</td>
+							<td>總頁數:${totalPages} 總訂單數:${totalElements}</td>
+							<td colspan="3" align="right"><c:forEach var="i" begin="1"
+									end="${totalPages}" step="1">
+									<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
+								</c:forEach></td>
 						</tr>
-					</thead>
-					<tbody id="order">
-					</tbody>
-				</table>
-				<table id="showpage">
-					<tr>
-						<td>總頁數:${totalPages} 總訂單數:${totalElements}</td>
-						<td colspan="3" align="right"><c:forEach var="i" begin="1"
-								end="${totalPages}" step="1">
-								<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
-							</c:forEach></td>
-					</tr>
-				</table>
-			</div>
-			<div class="recentCustomers">
-				<div class="cardHeader">
-					<h2>新加入會員</h2>
-					<a href="<c:url value='/backend/admin'/>" class="btn">View All</a>
+					</table>
 				</div>
-				<table>
-					<tbody>
-					<c:forEach var="user" items="${users}">
-						<tr>
-							<td><h4>${user.userName}</h4> <span>${user.userId}</span></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				<div class="recentCustomers">
+					<div class="cardHeader">
+						<h2>新加入會員</h2>
+						<a href="<c:url value='/backend/admin'/>" class="btn">View All</a>
+					</div>
+					<table>
+						<tbody>
+							<c:forEach var="user" items="${users}">
+								<tr>
+									<td><h4>${user.userName}</h4> <span>${user.userId}</span></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
@@ -246,7 +246,7 @@ form.example::after {
 	function load(indexPage) {
 		$.ajax({
 					type : 'post',
-					url :   'page/'+indexPage,
+					url :   'backend/page/'+indexPage,
 					dataType : 'JSON',
 					contentType : 'application/json',
 					success : function(data) {

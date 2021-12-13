@@ -22,7 +22,7 @@
 	<div class="container">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/'/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend/admin'/>"> <span class="icon"><i
 							class="fas fa-infinity" aria-hidden="true"></i></span> <span
 						class="title"><h2>loop</h2></span>
 				</a></li>

@@ -84,7 +84,7 @@
 													class="dropdown-item" href="<c:url value='updatemember'/>">會員資料修改</a>
 												<c:if
 													test="${isLogin != null && isLogin.userIdentity == '0'}">
-													<a class="dropdown-item" href="<c:url value='/backend'/>">後台管理</a>
+													<a class="dropdown-item" target="_blank" href="<c:url value='/backend'/>">後台管理</a>
 												</c:if>
 											</div></li>
 									</c:when>

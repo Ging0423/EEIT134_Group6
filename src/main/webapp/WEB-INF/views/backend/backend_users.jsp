@@ -21,7 +21,7 @@
 	<div class="container1">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/'/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
 							class="fas fa-infinity" aria-hidden="true"></i></span> <span
 						class="title"><h2>Loop</h2></span>
 				</a></li>
