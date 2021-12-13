@@ -5,6 +5,7 @@
 <html lang="zxx">
 
 <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner">
-                        <h2>登入會員</h2>
+                        <h2>會員登入</h2>
                     </div>
                 </div>
             </div>
@@ -66,24 +67,24 @@
                         <div class="login_part_form_iner">
                             <h3>歡迎回來~ <br>
                                 請先登入</h3>
-                            <form class="row contact_form" action="login" method="post" novalidate="novalidate">
+                            <form class="row contact_form" action="login" method="post" novalidate="novalidate" id="login">
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="account" value=""
-                                        placeholder="Account"><font color="red">${acerrorMsg}</font>
+                                    <input type="text" class="form-control" id="account" name="account" value=""
+                                        placeholder="Account" onchange="check()"><span style=color:red id="accounterrorMsg">${accountMsg}</span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password"><font color="red">${pwerrorMsg}</font>
+                                        placeholder="Password" onchange="check()"><span style=color:red id="pwerrorMsg">${accountMsg}</span>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="rememberMe" name="rememberMe">
                                         <label for="f-option">記住帳號</label>
                                     </div>
-                                    <button type="submit" value="submit" class="btn_3">
+                                    <button type="button" onclick="checkok()" class="btn_3">
                                         登入
                                     </button>
-                                    <a class="lost_pass" href="#">忘記密碼？</a>
+                                    <a class="lost_pass" href="<c:url value='/forgetpassword'/>">忘記密碼？</a>
                                 </div>
                             </form>
                         </div>
@@ -122,6 +123,62 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
-</body>
+    <script>
+    function check() {
+    	let account = document.getElementById("account").value;
+		let description1 = document.getElementById('accounterrorMsg');
+		let password = document.getElementById("password").value;
+		let description2 = document.getElementById('pwerrorMsg');
     
+		let count = 0;
+		
+		if(account == "") {
+			description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+			count++;
+		}
+			else{
+			description1.innerHTML="";	
+		}
+		
+		if(password == "") {
+			description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
+			count++;
+		}
+			else{
+				description2.innerHTML="";	
+		}
+    
+	}
+    
+    function checkok() {
+    	let account = document.getElementById("account").value;
+		let description1 = document.getElementById('accounterrorMsg');
+		let password = document.getElementById("password").value;
+		let description2 = document.getElementById('pwerrorMsg');
+    
+		let count = 0;
+		
+		if(account == "") {
+			description1.innerHTML="<img src='img/usercheck/checkNO.png'/> 帳號不可空白";
+			count++;
+		}
+			else{
+			description1.innerHTML="";	
+		} 
+		
+		if(password == "") {
+			description2.innerHTML="<img src='img/usercheck/checkNO.png'/> 密碼不可空白";
+			count++;
+		}
+			else{
+				description2.innerHTML="";	
+		}
+    
+		if(count == 0) {
+			//alert("登入成功！")
+			document.getElementById("login").submit()
+		}
+	}   
+    </script>
+</body>
 </html>

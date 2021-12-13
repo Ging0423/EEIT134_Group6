@@ -134,7 +134,7 @@ form.example::after {
 				onchange="payState();">
 				<option>全部</option>
 				<option>未付款</option>
-				<option>已付款</option>
+				<option>付款成功</option>
 			</select>
 			<table class="table table-bordered border-primary" id="ajaxTable">
 				<thead>
@@ -152,7 +152,7 @@ form.example::after {
 				<tbody>
 					<c:forEach var="order" items="${allOrders}">
 						<tr>
-							<td><a href="<c:url value='/backend/order/${order.orderId}'/>" target="_blank" onclick="orderWindow(${order.orderId});"/>${order.orderId}</a></td>
+							<td><a href="<c:url value='/backend/order/${order.orderId}'/>" target="_blank" onclick="orderWindow(${order.orderId});">${order.orderId}</a></td>
 							<td>${order.recipient}</td>
 							<td>${order.tel}</td>
 							<td>${order.shippingAddress}</td>
@@ -203,7 +203,7 @@ form.example::after {
 
 			$.ajax({
 						type : 'post',
-						url : 'searchState',
+						url : 'order/searchState',
 						data : state,
 						dataType : 'JSON',
 						contentType : 'application/json;charset=utf-8',

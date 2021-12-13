@@ -46,10 +46,10 @@ function sendArticle() {
 
 	//確認資料ok，送出資料到後端
 	var article = {
-		"title": title,
-		"authorid": 1,
-		"categoryid": categoryid,
-		"content": myEditor.getData()
+		title: title,
+		authorid: 1,
+		categoryid: categoryid,
+		content: myEditor.getData()
 	}
 	
 	$.ajax({
@@ -61,9 +61,9 @@ function sendArticle() {
 		success: function(data) {
 		}
 	});
-	
+
 	alert("已新增文章成功!!");
-	window.location.replace("/loop/forum");
+//	window.location.replace("/loop/forum");
 }
 
 /* 點擊下拉式選單後，出現下拉式選單*/
@@ -163,7 +163,7 @@ class MyUploadAdapter {
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
-			console.log(xhr);
+			console.log(response);
 
             // This example assumes the XHR server's "response" object will come with
             // an "error" which has its own "message" that can be passed to reject()
@@ -219,4 +219,12 @@ function MyCustomUploadAdapterPlugin( editor ) {
         // Configure the URL to the upload script in your back-end here!
         return new MyUploadAdapter( loader );
     };
+}
+
+function autoInput(){
+	changeCategoryid(1);
+	document.getElementById('title').value = "測試用的標題";
+	titlecheck();
+	CKEDITOR.instances.Content.setData( '<p>Some other editor data</P>')
+	document.getElementById('editor').setData("<p>這是一篇測試用的文章</p>");
 }

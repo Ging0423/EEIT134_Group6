@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html lang="zxx">
 
@@ -9,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Loop 討論區</title>
+<title>loop</title>
 <link rel="icon" href="<c:url value='/img/favicon.png'/>">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
@@ -28,8 +30,6 @@
 <link rel="stylesheet" href="<c:url value='/css/slick.css'/>">
 <!-- style CSS -->
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-<!-- forum CSS -->
-<link rel="stylesheet" href="<c:url value='/css/forumstyle.css'/>">
 </head>
 
 <body>
@@ -37,54 +37,41 @@
 	<jsp:include page="/fragment/header.jsp" />
 	<!-- Header part end-->
 
-	<!-- Forum content start here -->
-	<section class="forum">
-		<div class="banner">
-			<h2>討論區</h2>
-			<span>你，與世界的對話</span>
-		</div>
-
-		<div class="forum_container">
-			<div class="title">
-				<div class="dropdown">
-				  <input type="button" id="category_btn" onclick="selectCategory()" class="dropbtn" value="請選擇主題類別">
-				  <div id="category" class="dropdown-content">
-					    <a onclick="changeCategoryid(0)">請選擇主題類別</a>
-					    <a onclick="changeCategoryid(1)">成品分享</a>
-					    <a onclick="changeCategoryid(2)">手作教學</a>
-					    <a onclick="changeCategoryid(3)">材料心得</a>
-					    <a onclick="changeCategoryid(4)">店家評點</a>
-					    <a onclick="changeCategoryid(5)">活動分享</a>
-					    <a onclick="changeCategoryid(6)">二手交易</a>
-				  </div>
+	<!-- breadcrumb part start-->
+	<section class="breadcrumb_part">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb_iner">
+						<h2>變更密碼</h2>
+					</div>
 				</div>
-				<input type="text" size="25" id="title" onkeyup="titlecheck()">
-				<span id="titlecheck">尚可輸入25個字元</span>
-			</div>
-
-			<div class="editor_container">
-				<div id="editor">
-				</div>
-			</div>
-
-			<span id="contenttest"></span>
-
-<!-- 			<div> -->
-<!-- 				<label id="articletag"><span>主題標籤</span></label> <label -->
-<!-- 					id="pubdate_set"><span>定時發布</span></label> -->
-<!-- 			</div> -->
-
-			<div class="newPost">
-				<input type="submit" value="發表新文章" onclick="sendArticle()">
-				<input type="button" value="一鍵輸入" onclick="autoInput()">
 			</div>
 		</div>
 	</section>
-	<!-- Forum content end -->
+	<!-- breadcrumb part end-->
 
-	
-
-	<!--::footer_part start::-->
+	<!--================login_part Area =================-->
+	<div class="container">
+		<form method="POST" id="myform" action="<c:url value='/changepassword'/>">
+			<table>
+				<tr>
+					<td></td>
+					<td><input type="hidden" id="mail" name="mail" value="${mail}" /></td>
+				</tr>
+				<tr>
+					<td>請輸入新密碼</td>
+					<td><input type="password" id="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><span id="msg">${result}</span></td>
+				</tr>
+			</table>
+			<button type="button" class="btn btn-primary" onclick="change();">變更密碼</button>
+		</form>
+	</div>
+	<!--================login_part end =================-->
 	<jsp:include page="/fragment/footer.jsp" />
 	<!--::footer_part end::-->
 
@@ -110,9 +97,25 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
-	<script src="<c:url value='/js/ckeditor.js'/>"></script>
-	<script src="<c:url value='/js/translations/zh.js'/>"></script>
-	<script src="<c:url value='/js/forum/forum_newPost.js'/>"></script>
+	<script>
+		function change() {
+			alert("變更成功");
+			document.getElementById("myform").submit()
+		}
+
+		function change() {
+			let password = document.getElementById("password").value;
+			let count = 0;
+			if (password == "") {
+				alert("密碼不可為空");
+				count++;
+			}
+			if (count == 0) {
+				alert("變更成功");
+				document.getElementById("myform").submit();
+			}
+		}
+	</script>
 </body>
 
 </html>

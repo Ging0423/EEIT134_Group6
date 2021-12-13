@@ -3,6 +3,7 @@ package loop.forum.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,13 +56,21 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId",insertable = false, updatable = false)
+	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	
+	public UsersBean getUsers() {
+		return users;
+	}
+
+	public void setUsers(UsersBean users) {
+		this.users = users;
+	}
+
 	public Date getPostdate() {
 		return postdate;
 	}

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,7 +46,7 @@ public class UserArticleController {
 	
 	//進入修改文章頁面
 	@GetMapping("/update/{articleid}")
-	public String updateArticle(@PathVariable("articleid") int articleid, Model m) {
+	public String updateArticlePage(@PathVariable("articleid") int articleid, Model m) {
 		Article article = aService.findById(articleid);
 		m.addAttribute("article", article);
 		
@@ -87,20 +88,10 @@ public class UserArticleController {
 		rService.deleteReply(reply);
 	}
 	
-	//	// 搜尋文章功能
-//	@PostMapping("/search/{keyword}/{pageNo}")
-//	@ResponseBody
-//	public List<Article> searchArticleByPage(@PathVariable("keyword") String keyword,
-//			@PathVariable("pageNo") int pageNo, Model m) {
-//		int pageSize = 10;
-//		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-//		Page<Article> page = null;
-//
-//		page = aService.findAllByKeyword(keyword, pageable);
-//
-//		m.addAttribute("totalPages", page.getTotalPages());
-//		m.addAttribute("totalElements", page.getTotalElements());
-//
-//		return page.getContent();
-//	}
+	//優改文章
+	@PostMapping("/updateArticleSuccess")
+	@ResponseBody
+	public void updateArticle(@RequestBody Article article) {
+		System.out.println(article.getArticleid());
+	}
 }

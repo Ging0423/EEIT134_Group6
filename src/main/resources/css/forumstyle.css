@@ -41,6 +41,11 @@
 	padding-block: 5px;
 }
 
+.search_dropdown{
+	color: black;
+	font-size: 30px;
+}
+
 .search_btn {
 	font-size: 10px;
 	border-radius: 20px;
@@ -193,6 +198,27 @@
 	margin-top: 15px;
 	text-align: center;
 }
+.sortType_select button{
+	font-size: 12px;
+	padding-inline: 5px;
+	background-color: #fff;
+	color: black;
+	border: none;
+	font-weight: normal;
+	margin-left: 0px;
+}
+.sortType_select i{
+	font-size: 12px;
+	color: black;
+	margin-left: 0px;
+}
+.sortType_select .dropdown-content{
+	min-width: 80px;
+}
+.dropdown-content a{
+	font-size: 12px;
+	text-align: center;
+}
 /* forum頁面結束 */
 
 /* newPost頁面開始 */
@@ -228,9 +254,10 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
+  margin-left: 30px;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }

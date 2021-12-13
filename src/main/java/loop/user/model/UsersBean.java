@@ -29,9 +29,10 @@ import loop.order.model.OrderDataBean;
 import loop.shoppingCart.model.ShoppingCartBean;
 import loop.video.model.VideoCommentBean;
 
-@Component
+
 @Entity
 @Table(name = "users")
+@Component
 public class UsersBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -66,23 +67,21 @@ public class UsersBean implements Serializable {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	private Date registerDate;
 	
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<OrderDataBean> orderData = new LinkedHashSet<OrderDataBean>();
 	
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users",cascade = CascadeType.ALL)
 	private Set<ShoppingCartBean> shoppingCart = new LinkedHashSet<ShoppingCartBean>();
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<VideoCommentBean> videoComment = new ArrayList<VideoCommentBean>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Article> article = new ArrayList<Article>();
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users",cascade = CascadeType.ALL)
 	private List<Reply> reply = new ArrayList<Reply>();
 
@@ -162,21 +161,21 @@ public class UsersBean implements Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Set<OrderDataBean> getOrderData() {
-		return orderData;
-	}
-
-	public void setOrderData(Set<OrderDataBean> orderData) {
-		this.orderData = orderData;
-	}
-
-	public Set<ShoppingCartBean> getShoppingCart() {
-		return shoppingCart;
-	}
-
-	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
+//	public Set<OrderDataBean> getOrderData() {
+//		return orderData;
+//	}
+//
+//	public void setOrderData(Set<OrderDataBean> orderData) {
+//		this.orderData = orderData;
+//	}
+//
+//	public Set<ShoppingCartBean> getShoppingCart() {
+//		return shoppingCart;
+//	}
+//
+//	public void setShoppingCart(Set<ShoppingCartBean> shoppingCart) {
+//		this.shoppingCart = shoppingCart;
+//	}
 
 	
 	
@@ -209,14 +208,13 @@ public class UsersBean implements Serializable {
 		builder.append(userAddress);
 		builder.append(", registerDate=");
 		builder.append(registerDate);
-		builder.append(", orderData=");
-		builder.append(orderData);
-		builder.append(", shoppingCart=");
-		builder.append(shoppingCart);
+//		builder.append(", orderData=");
+//		builder.append(orderData);
+//		builder.append(", shoppingCart=");
+//		builder.append(shoppingCart);
 		builder.append("]");
 		return builder.toString();
 	}
 
-	
 
 }
