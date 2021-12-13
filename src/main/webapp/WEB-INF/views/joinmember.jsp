@@ -224,7 +224,7 @@
 			
 			
 			
-			console.log("帳號欄位外面有"+count1+/*","+count3+*/"個錯誤");
+			//console.log("帳號欄位外面有"+count1+/*","+count3+*/"個錯誤");
 
 			
 			
