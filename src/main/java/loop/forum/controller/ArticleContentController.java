@@ -15,23 +15,36 @@ import loop.forum.model.ArticleService;
 import loop.forum.model.ReplyService;
 
 @Controller
-@RequestMapping("/forum")
+@RequestMapping("/forum/article")
+@SessionAttributes(names = {"isLogin"})
 public class ArticleContentController {
 	@Autowired
 	private ArticleService aService;
-	@Autowired
-	private ReplyService rService;
 	
 	//進入文章內容的頁面
-	@GetMapping("/article/{articleid}")
+	@GetMapping("/{articleid}")
 	public String articleContent(@PathVariable("articleid") int articleid, Model m) {
 		Article article = aService.findById(articleid);
 		article.setClickNum(article.getClickNum()+1);
 		aService.updateArticle(article);
 		
+		boolean checkLogin = false;
+		
+		if(m.getAttribute("isLogin") != null) {
+			checkLogin = true;
+		}
+		m.addAttribute("checkLogin", checkLogin);
 		m.addAttribute("article", article);
 		
 		return "/forum/articleContent";
+	}
+	
+	@PostMapping("/{articleid}")
+	@ResponseBody
+	public void processArticleContent(@PathVariable("articleid") int articleid, Model m) {
+		Article article = aService.findById(articleid);
+		Article article_update = addClickNum(article);
+		m.addAttribute("title", article_update.getTitle());
 	}
 	
 	public Article addLikeNum(Article article) {
@@ -48,14 +61,6 @@ public class ArticleContentController {
 		Article article_update = aService.updateArticle(article);
 		System.out.println("addShareNum Success");
 		return article_update;
-	}
-	
-	@PostMapping("/article/{articleid}")
-	@ResponseBody
-	public void processArticleContent(@PathVariable("articleid") int articleid, Model m) {
-		Article article = aService.findById(articleid);
-		Article article_update = addClickNum(article);
-		m.addAttribute("title", article_update.getTitle());
 	}
 	
 	public Article addClickNum(Article article) {

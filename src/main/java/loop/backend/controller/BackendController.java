@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 //import loop.item.allItem.service.AllItemService;
 import loop.order.model.OrderDataBean;
 import loop.order.service.OrderDataService;
+import loop.user.model.UsersBean;
+import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/backend")
@@ -32,6 +34,9 @@ public class BackendController {
 	@Autowired
 	private OrderDataService orderDataService;
 	
+	@Autowired
+	private UsersService usersService;
+	
 	@GetMapping("")
 	public String backendIndex(Model m) {
 		Integer isSend = orderDataService.countOrderState("已出貨").size();
@@ -40,7 +45,8 @@ public class BackendController {
 		m.addAttribute("totalOrder", totalOrder);
 		long notSend = totalOrder - isSend;
 		m.addAttribute("notSend", notSend);
-		
+		List<UsersBean> users = usersService.listDesc5();
+		m.addAttribute("users", users);
 		return "backend/backend_index";
 	}
 	

@@ -92,5 +92,9 @@ public class UsersService {
 		} else
 			return true;
 	}
+	
+	public List<UsersBean> listDesc5() {
+		return usersRepo.findTop5ByOrderByUserIdDesc();
+	}
 
 }

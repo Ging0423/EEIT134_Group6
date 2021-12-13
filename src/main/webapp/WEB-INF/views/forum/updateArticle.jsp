@@ -67,10 +67,13 @@
 				</div>
 				<input type="text" size="25" id="title" onkeyup="titlecheck()"
 					value="${article.getTitle()}"> <span id="titlecheck">尚可輸入25個字元</span>
-				<div style="float: right; margin-right: 50px; padding-inline: 10px; background-color: #B08EAD;"><a style="color: #fff;" href="/loop/forum/myforum">返回列表</a></div>
+				<div
+					style="float: right; margin-right: 50px; padding-inline: 10px; background-color: #B08EAD;">
+					<a style="color: #fff;" href="/loop/forum/myforum">返回列表</a>
+				</div>
 			</div>
-			
-			
+
+
 			<div class="editor_container">
 				<textarea id="editor">
 					${article.getContent()}
@@ -184,31 +187,24 @@ function sendArticle() {
 	}
 
 	//確認資料ok，送出資料到後端
-	var article = {
-		"articleid": ${article.getArticleid()},
-		"title": title,
-		"authorid": ${article.getAuthorid()},
-		"clickNum": ${article.getClickNum()},
-		"likeNum": ${article.getLikeNum()},
-		"shareNum": ${article.getShareNum()},
-		"categoryid": categoryid,
-		"content": myEditor.getData()
-	}
-
-	console.log(JSON.stringify(article));
+	var obj = new Object();
+	obj.title = title;
+	obj.categoryid = categoryid;
+	obj.content = myEditor.getData();
+	obj.articleid = ${article.getArticleid()}
 	
 	$.ajax({
 		type: 'post',
 		url: "/loop/forum/myforum/updateArticleSuccess",
 		dataType: 'JSON',
 		contentType: 'application/json',
-		data: JSON.stringify(article),
+		data: JSON.stringify(obj),
 		success: function(data) {
 		}
 	});
 	
 	window.alert("已成功修改文章!!");
-// 	window.location.replace("/loop/forum/myforum");
+	window.location.replace("/loop/forum/myforum");
 }
 
 /* 點擊下拉式選單後，出現下拉式選單*/

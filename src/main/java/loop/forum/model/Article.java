@@ -17,7 +17,11 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import loop.user.model.UsersBean;
 
@@ -56,7 +60,8 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "article",cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "articleid", insertable = false, updatable = false)
 	private List<Reply> reply;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
