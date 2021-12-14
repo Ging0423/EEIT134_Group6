@@ -56,19 +56,32 @@
 			<div class="function_list">
 				<div class="newPost_btn">
 					<a href="<c:url value='/forum/newPost'/>"> <input type="button"	value="發文"></a>
-					<a onclick="gotoReply()"> <input type="button" value="回覆"></a>
 				</div>
+
+
+				<div class="showpage">
+					<table id="showpage">
+						<tr>
+							<td><a href="<c:url value='/forum'/>">返回列表</a></td>
+							<td><button onclick="addPage(1)">
+									<i class="ti-control-backward"></i>
+								</button></td>
+							<td colspan="5" align="right"><c:forEach var="i" begin="1"
+									end="5" step="1">
+									<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
 
 <div class="showpage">
 						<table id="showpage">
 							<input type="hidden" value="${totalPagesInArticle}" id="totalPages">
 							<tr>
+								<td><a href="/loop/forum">返回列表</a></td>
 								<td><button id="minusPage" onclick="addPage(-1)">
 										<i class="ti-control-backward"></i>
 									</button></td>
 								<td id="page_btn" colspan="5" align="right">
 								<c:forEach var="i" begin="1" end="${totalPagesInArticle}" step="1">
 									<button id="myPage${i}" value="${i}" onclick="changePage(${i})">${i}</button>
+
 								</c:forEach></td>
 								<td style="width:40px;"><button id="plusPage" onclick="addPage(1)">
 										<i class="ti-control-forward"></i>
@@ -87,12 +100,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td style="width: 300px;">
-								<img src="<c:url value='/img/author/author_1.png'/>">
-								<br/>
+							<td style="width: 300px;" valign="top">
 								<h4>${article.getUsers().getUserName()}</h4>
 								<hr>
-								<h6>發表於:${article.getPostdate()}</h6>
+								<h6>發表於:${article_date}</h6>
 							</td>
 							<td class="article_content">${article.getContent()}</td>
 						</tr>
@@ -149,13 +160,18 @@
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	<script src="<c:url value='/js/ckeditor.js'/>"></script>
+	<script src="<c:url value='/js/forum/forum_article.js'/>"></script>
+
 	<script type="text/javascript">
 	var indexPage = 1;
 	var replyEditor;
 	var articleid = $("#articleid").val()
 
 	ClassicEditor
-		.create(document.querySelector('#replyEditor'))
+		.create(document.querySelector('#replyEditor'), {
+			toolbar: ["heading", "|", "alignment:left", "alignment:center", "alignment:right", "alignment:adjust", "|", "bold", "italic", "blockQuote", "link", "|", "bulletedList", "numberedList", "imageUpload", "|", "undo", "redo"],
+			language: 'zh'
+		})
 		.then(editor => {
 			replyEditor = editor;
 		})
@@ -200,12 +216,10 @@
 				var json = JSON.stringify(data);
 
 				if (data == null) {
-					//$('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
 				} else {
 					$.each(data, function(i, n) {
 						var tr = "<tr align='center'>" +
-							"<td style='width: 300px;'>" +
-							"<img src='/img/author/author_2.png'>" +
+							"<td style='width: 300px;', valign='top'>" +
 							"<br/>" + n.users.userName +
 							"<hr/>" + "發表於:" + n.replydate + "</td>" +
 							"<td>" + n.content + "</td>" +
@@ -249,13 +263,31 @@
 	}
 
 	function addLikeNum() {
-
+		$.ajax({
+			type: 'get',
+			url: '/loop/forum/article/' + articleid + '/addLikeNum',	//要連結的網址
+			dataType: 'JSON',	//要下載的格式
+			contentType: 'application.json',	//要上傳的格式
+			success: function(data) {
+			}
+		});
+		
+		window.location.reload();
 	}
 
 	function addShareNum() {
-		//console.log($(fb-share-button).data('href'));
+		$.ajax({
+			type: 'get',
+			url: '/loop/forum/article/' + articleid + '/addShareNum',	//要連結的網址
+			dataType: 'JSON',	//要下載的格式
+			contentType: 'application.json',	//要上傳的格式
+			success: function(data) {
+			}
+		});
+		
+		window.open('https://www.facebook.com/sharer/sharer.php?u=' + window.location);
+		window.location.reload();
 	}
-
 	function replyArticle() {
 		var obj = new Object();
 		obj.articleid = articleid;

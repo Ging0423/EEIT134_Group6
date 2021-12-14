@@ -103,7 +103,11 @@ public class ArticleService {
 		return aReps.countByPostdateGreaterThan(today);
 	}
 	
-	public List<Article> findByAuthorid (Integer authorid) {
-		return aReps.findByAuthorid(authorid);
+	public long countArticleAmountBetweenDate(Date today, Date tomorrow) {
+		return aReps.countByPostdateBetween(today, tomorrow);
+	}
+	
+	public int findMostPostAuthor() {
+		return aReps.countMaxAuthor();
 	}
 }

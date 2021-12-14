@@ -1,5 +1,6 @@
 package loop.forum.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -104,7 +105,6 @@ public class UserArticleController {
 		Integer userId = bean.getUserId();
 		int pageSize = 10;
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-
 		Page<Article> page = null;
 		if (categoryid == 0) {
 			page = aService.findAllByPageUsingAuthorid(userId, pageable);
@@ -112,6 +112,23 @@ public class UserArticleController {
 			page = aService.findAllByPage(userId, categoryid, pageable);
 		}
 
+
+		m.addAttribute("totalPagesOfUser", page.getTotalPages());
+
+		return page.getContent();
+	}
+	
+	// 文章分頁生成
+	@PostMapping("/type=reply/{pageNo}")
+	@ResponseBody
+	public List<Reply> processReplyForumByPage(@PathVariable("pageNo") int pageNo, Model m) {
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		int pageSize = 10;
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+		Page<Reply> page = null;
+		page = rService.findPageByAuthorid(userId, pageable);
 		m.addAttribute("totalPagesOfUser", page.getTotalPages());
 
 		return page.getContent();
@@ -134,7 +151,9 @@ public class UserArticleController {
 		int[] replyNumList = new int[page.getContent().size()];
 		String[] titleList = new String[page.getContent().size()];
 		String[] replyNameList = new String[page.getContent().size()];
-		Date[] replyDateList = new Date[page.getContent().size()];
+		String[] replyDateList = new String[page.getContent().size()];
+		SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		
 		for (int i=0; i<page.getContent().size(); i++) {
 			int articleid = page.getContent().get(i).getArticleid();
 			Article article = aService.findById(articleid);
@@ -143,7 +162,9 @@ public class UserArticleController {
 			clickNumList[i] = article.getClickNum();
 			replyNumList[i] = article.getReply().size();
 			replyNameList[i] = article.getReply().get(replyNumList[i]-1).getUsers().getUserName();
-			replyDateList[i] = article.getReply().get(replyNumList[i]-1).getReplydate();
+			Date date = article.getReply().get(replyNumList[i]-1).getReplydate();
+			String stringDate = DateFor.format(date);
+			replyDateList[i] = stringDate;
 		}
 		
 		m.addAttribute("titleList", titleList);

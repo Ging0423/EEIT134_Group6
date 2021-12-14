@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import loop.forum.model.Article;
 import loop.forum.model.Reply;
 import loop.forum.model.ReplyService;
-import loop.user.model.UsersBean;
-import loop.user.service.UsersService;
 
 @Controller
 @RequestMapping("/forum/reply")

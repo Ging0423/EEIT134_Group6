@@ -62,17 +62,14 @@
 				<span id="titlecheck">尚可輸入25個字元</span>
 			</div>
 
-			<div class="editor_container">
-				<div id="editor">
-				</div>
+			<div id="editor1" class="editor_container">
+				<div id="editor"></div>
+			</div>
+			<div id="editor2" class="editor_container">
+				<div id="editor_auto"></div>
 			</div>
 
 			<span id="contenttest"></span>
-
-<!-- 			<div> -->
-<!-- 				<label id="articletag"><span>主題標籤</span></label> <label -->
-<!-- 					id="pubdate_set"><span>定時發布</span></label> -->
-<!-- 			</div> -->
 
 			<div class="newPost">
 				<input type="submit" value="發表新文章" onclick="sendArticle()">
@@ -114,6 +111,7 @@
 	<script src="<c:url value='/js/translations/zh.js'/>"></script>
 	<script type="text/javascript">
 var myEditor;
+var myEditor2;
 var categoryid = 0;
 
 ClassicEditor.create( document.querySelector( '#editor' ), {
@@ -163,7 +161,13 @@ function sendArticle() {
 	var obj = new Object();
 	obj.title = title;
 	obj.categoryid = categoryid;
-	obj.content = myEditor.getData();
+	if(document.getElementById('editor1').style.display == "none"){
+		obj.content = myEditor2.getData();
+		
+	}else{
+		obj.content = myEditor2.getData();
+		console.log(myEditor.getData());
+	}
 	
 	$.ajax({
 		type: 'post',
@@ -332,6 +336,25 @@ function MyCustomUploadAdapterPlugin( editor ) {
         // Configure the URL to the upload script in your back-end here!
         return new MyUploadAdapter( loader );
     };
+}
+
+function autoInput(){
+	changeCategoryid(1);
+	document.getElementById('title').value = "我做了一隻針織熊熊";
+	titlecheck();
+	document.getElementById('editor1').style.display="none";
+	ClassicEditor.create( document.querySelector( '#editor_auto' ), {
+		extraPlugins: [ MyCustomUploadAdapterPlugin ],
+		toolbar: ["heading", "|", "alignment:left", "alignment:center", "alignment:right", "alignment:adjust", "|", "bold", "italic", "blockQuote", "link", "|", "bulletedList", "numberedList", "imageUpload", "|", "undo", "redo"],
+		language: 'zh'
+	})
+	.then( editor => {
+		myEditor2 = editor;
+		myEditor2.setData("<p>我做了一隻熊熊</p><img src='https://tshop.r10s.com/251ef580-ec8c-11e4-8128-005056b73023/New/202102/6983164-118511a.jpg?_ex=486x486'>");
+	 })
+	 .catch( err => {
+		console.error( err.stack );
+	 });
 }
 	</script>
 </body>

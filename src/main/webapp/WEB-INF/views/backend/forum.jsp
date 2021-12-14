@@ -108,23 +108,23 @@
 				<div class="card">
 					<div>
 						<div class="numbers">${todayReply}</div>
-						<div class="cardName">今日新增回覆</div>
+						<div class="cardName">今日新增回覆</div>
 					</div>
 					<div class="iconBox">
-						<i class="fas fa-dollar-sign" aria-hidden="true"></i>
+						<i class="far fa-comment" aria-hidden="true"></i>
 					</div>
 				</div>
 				<div class="card">
 					<div>
-						<div class="numbers">${isSend}</div>
-						<div class="cardName"></div>
+						<div class="numbers">${mostAuthorName}</div>
+						<div class="cardName">最多發文作者</div>
 					</div>
 					<div class="iconBox">
-						<i class="fas fa-dollar-sign" aria-hidden="true"></i>
+						<i class="fas fa-user-alt" aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>
-
+			
 			<div class="details">
 				<div class="recentOrders">
 					<div class="cardHeader">
@@ -156,18 +156,15 @@
 					<div class="cardHeader">
 						<h2>文章分析</h2>
 					</div>
-					<table>
-						<tbody>
-							<tr>
-							</tr>
-						</tbody>
-					</table>
+					<h4>單周發文數量</h4>
+					<canvas id="articleInWeek" width="400" height="200"></canvas>
+					<h4>單周回覆數量</h4>
+					<canvas id="replyInWeek" width="400" height="200"></canvas>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script
-		src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
 	<!-- popper js -->
 	<script src="<c:url value='/js/popper.min.js'/>"></script>
 	<!-- bootstrap js -->
@@ -190,8 +187,6 @@
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	<script src="<c:url value='/js/forum/forum_backend.js'/>"></script>
 	<script>
-		
-	
         window.onload(toggleMenu());
 
         function toggleMenu(){
@@ -203,5 +198,52 @@
             main.classList.toggle('active');
         }
     </script>
+    
+	<script>
+	console.log(${weekDate[0]});
+  	var ctx = document.getElementById( "articleInWeek" ),
+  		example = new Chart(ctx, {
+  			type: "bar", // 圖表類型
+  			data: {
+  				labels: [ '${weekDate[0]}', '${weekDate[1]}', '${weekDate[2]}', '${weekDate[3]}', '${weekDate[4]}', '${weekDate[5]}', '${weekDate[6]}' ], // 標題
+  				datasets: [{
+  					label: "發文數量", // 標籤
+  					data: [ ${weekArticle[0]}, ${weekArticle[1]}, ${weekArticle[2]}, ${weekArticle[3]}, ${weekArticle[4]}, ${weekArticle[5]}, ${weekArticle[6]} ], // 資料
+  					backgroundColor: [ // 背景色
+  					"#03a9f4",
+  					"#03a9f4",
+  					"#03a9f4",
+  					"#03a9f4",
+  					"#03a9f4",
+  					"#03a9f4",
+  					"#03a9f4"
+  					],
+  					borderWidth: 1 // 外框寬度
+  				}]
+  			}
+  		});
+  	
+  	var ctx = document.getElementById( "replyInWeek" ),
+		example = new Chart(ctx, {
+			type: "bar", // 圖表類型
+			data: {
+  				labels: [ '${weekDate[0]}', '${weekDate[1]}', '${weekDate[2]}', '${weekDate[3]}', '${weekDate[4]}', '${weekDate[5]}', '${weekDate[6]}' ], // 標題
+				datasets: [{
+					label: "回覆數量", // 標籤
+					data: [ ${weekReply[0]}, ${weekReply[1]}, ${weekReply[2]}, ${weekReply[3]}, ${weekReply[4]}, ${weekReply[5]}, ${weekReply[6]} ], // 資料
+					backgroundColor: [ // 背景色
+					"#c6e8f7",
+					"#c6e8f7",
+					"#c6e8f7",
+					"#c6e8f7",
+					"#c6e8f7",
+					"#c6e8f7",
+					"#c6e8f7"
+					],
+					borderWidth: 1 // 外框寬度
+				}]
+			}
+		});
+  </script>
 </body>
 </html>

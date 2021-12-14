@@ -32,7 +32,14 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
 	long countByTitleLike(String keyword);
 	long countByTitleLikeAndCategoryid(String keyword, int categoryid);
 	long countByPostdateGreaterThan(Date today);
-	
+	long countByPostdateBetween(Date today, Date tomorrow);
+	@Query(value = "SELECT top 1 authorid\r\n"
+			+ "FROM ( SELECT authorid, COUNT(*) mycount \r\n"
+			+ "FROM article \r\n"
+			+ "GROUP BY authorid\r\n"
+			+ ") as temp \r\n"
+			+ "ORDER BY temp.mycount DESC", nativeQuery=true)
+	int countMaxAuthor();
 
 }
 

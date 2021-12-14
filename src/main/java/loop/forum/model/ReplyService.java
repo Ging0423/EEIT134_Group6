@@ -66,4 +66,22 @@ public class ReplyService {
 	public List<Reply> findByAuthorid (Integer authorid) {
 		return rReps.findByAuthorid(authorid);
 	}
+
+//	public Reply findById(int articleid) {
+//		Optional<Article> op1 = rReps.findById(articleid);
+//		
+//		if(op1.isPresent()) {
+//			return op1.get();
+//		}
+//		
+//		return null;
+//	}
+	
+//	public Optional<Article> findByAuthorid(int authorid){
+//		return aReps.findbyA
+//	}
+
+	public long countReplyAmountBetweenDate(Date today, Date tomorrow) {
+		return rReps.countByReplydateBetween(today, tomorrow);
+	}
 }

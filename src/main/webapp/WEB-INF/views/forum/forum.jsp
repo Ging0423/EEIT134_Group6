@@ -67,6 +67,8 @@
 					</div>
 				</div>
 				
+				<input type="button" value="${totalPages}">
+				
 				<div class="showpage">
 						<table id="showpage">
 							<input type="hidden" value="${totalPages}" id="totalPages">
@@ -144,6 +146,8 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
+	<script src="<c:url value='/js/forum/forum_main.js'/>"></script>
+
 	<script type="text/javascript">
 	var categoryid = 0;
 	var indexPage = 1;
@@ -154,6 +158,11 @@
 	})
 
 	function load(sortType, categoryid, indexPage) {
+		if(document.URL.indexOf("#")!=-1){
+			url = document.URL.substring(0, document.URL.length-1);
+			
+		}
+		
 		if (indexPage == '1') {
 			$('#minusPage').hide();
 		} else {
@@ -183,8 +192,8 @@
 					$.each(data, function(i, n) {
 						var reply_name, reply_date;
 						if(n.reply.length !== 0){
-							reply_name = n.reply[0].users.userName;
-							reply_date = n.reply[0].replydate;
+							reply_name = n.reply[n.reply.length-1].users.userName;
+							reply_date = n.reply[n.reply.length-1].replydate;
 						}else{
 							reply_name = n.users.userName;
 							reply_date = n.postdate;
@@ -202,6 +211,17 @@
 				}
 			}
 		});
+		
+		
+			//Check if the current URL contains '#'
+			if(document.URL.indexOf("#")==-1){
+				//Set the URL to whatever it was plus "#""
+				url = document.URL + "#";
+				location = "#"
+				//reload the page
+				location.reload();
+			}
+
 		
 		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
 		document.getElementById('myPage' + indexPage).style.color = "#fff";
@@ -226,8 +246,8 @@
 					$.each(data, function(i, n) {
 						var reply_name, reply_date;
 						if(n.reply.length !== 0){
-							reply_name = n.reply[0].users.userName;
-							reply_date = n.reply[0].replydate;
+							reply_name = n.reply[n.reply.length-1].users.userName;
+							reply_date = n.reply[n.reply.length-1].replydate;
 						}else{
 							reply_name = n.users.userName;
 							reply_date = n.postdate;

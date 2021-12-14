@@ -51,7 +51,7 @@ public class Reply {
 	@JoinColumn(name = "articleid",insertable = false, updatable = false)
 	private Article article;	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 

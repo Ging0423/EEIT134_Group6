@@ -168,7 +168,7 @@
 		}
 		
 		var table = $('#forum_table > tbody');
-
+		
 		$.ajax({
 			type: 'post',
 			url: '/loop/forum/myforum/type=article/' + categoryid + '/' + indexPage,	//要連結的網址
@@ -184,8 +184,8 @@
 					$.each(data, function(i, n) {
 						var reply_name, reply_date;
 						if (n.reply.length !== 0) {
-							reply_name = n.reply[0].users.userName;
-							reply_date = n.reply[0].replydate;
+							reply_name = n.reply[n.reply.length-1].users.userName;
+							reply_date = n.reply[n.reply.length-1].replydate;
 						} else {
 							reply_name = n.users.userName;
 							reply_date = n.postdate;
@@ -204,7 +204,7 @@
 				}
 			}
 		});
-
+		
 		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
 		document.getElementById('myPage' + indexPage).style.color = "#fff";
 	}
