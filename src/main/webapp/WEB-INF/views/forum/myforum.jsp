@@ -34,7 +34,87 @@
 
 <body>
 	<!--::header part start::-->
-	<jsp:include page="/fragment/header.jsp" />
+	<header class="main_menu home_menu">
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				<div class="col-lg-12">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<a class="navbar-brand" href="index.jsp"> <img
+							src="img/logo.png" alt="logo">
+						</a>
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#navbarSupportedContent"
+							aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="menu_icon"><i class="fas fa-bars"></i></span>
+						</button>
+
+						<div class="collapse navbar-collapse main-menu-item"
+							id="navbarSupportedContent">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link"
+									href="<c:url value='/'/>">首頁</a></li>
+								<li class="nav-item"><a class="nav-link" href="about.jsp">關於</a>
+								</li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="blog.html"
+									id="navbarDropdown_1" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> 商品 </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a>
+										<a class="dropdown-item" href="<c:url value='/items/toold'/>">工具</a>
+										<a class="dropdown-item"
+											href="<c:url value='/items/package'/>">套組</a> <a
+											class="dropdown-item" href="<c:url value='/items/books'/>">工具書</a>
+
+									</div></li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="blog.jsp"
+									id="navbarDropdown_3" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> 會員 </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+										<a class="dropdown-item" href="login.jsp"> 登錄 </a> <a
+											class="dropdown-item" href="checkout.jsp">商品結帳</a> <a
+											class="dropdown-item" href="<c:url value='/cart'/>">購物車</a> <a
+											class="dropdown-item" href="confirmation.jsp">我的訂單</a> <a
+											class="dropdown-item" href="<c:url value='/forum/myforum'/>">我的文章</a>
+									</div></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="blog.html"
+									id="navbarDropdown_2" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> 討論區 </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+										<a class="dropdown-item" href="<c:url value='/forum'/>">
+											討論區</a> <a class="dropdown-item" href="single-blog.html">Single
+											blog</a>
+									</div></li>
+
+								<li class="nav-item"><a class="nav-link"
+									href="contact.html">教學影片</a></li>
+							</ul>
+						</div>
+						<div class="hearer_icon d-flex align-items-center">
+							<a id="search_1" href="javascript:void(0)"><i
+								class="ti-search"></i></a> <a href="<c:url value='/cart'/>"> <i
+								class="flaticon-shopping-cart-black-shape"></i>
+							</a>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container ">
+				<form class="d-flex justify-content-between search-inner">
+					<input type="text" class="form-control" id="search_input"
+						placeholder="Search Here">
+					<button type="submit" class="btn"></button>
+					<span class="ti-close" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
+	</header>
 	<!-- Header part end-->
 
 	<!-- Forum content start here -->
@@ -47,54 +127,56 @@
 				<button onclick="searchArticle()" class="search_btn">搜尋</button>
 			</div>
 		</div>
-
+		
 		<div class="forum_container">
 			<div class="function_list">
 				<div class="newPost_btn">
-					<a href="<c:url value='/forum/newPost'/>"> <input type="button"
-						value="發文">
+					<a href="<c:url value='/forum/newPost'/>">
+					<input type="button" value="發文">
 					</a>
-					<div class="dropdown sortType_select">
-						<span>
-							<button id="sortType_btn" onclick="selectSortType()" class="dropbtn">
-								發文列表<i class="ti-angle-down"></i>
-							</button>
-						</span>
-						<div id="sortType" class="dropdown-content">
-							<a href="/loop/forum/myforum">發文列表</a>
-							<a href="/loop/forum/myforum/reply">留言列表</a> 
-						</div>
-					</div>
+<!-- 					<li class="nav-item dropdown"><a -->
+<!-- 									class="nav-link dropdown-toggle" href="blog.html" -->
+<!-- 									id="navbarDropdown_1" role="button" data-toggle="dropdown" -->
+<!-- 									aria-haspopup="true" aria-expanded="false"> 商品 </a> -->
+<!-- 									<div class="dropdown-menu" aria-labelledby="navbarDropdown_1"> -->
+<%-- 										<a class="dropdown-item" href="<c:url value='/items/yarn'/>">線材</a> --%>
+<%-- 										<a class="dropdown-item" href="<c:url value='/items/toold'/>">工具</a> --%>
+<!-- 										<a class="dropdown-item" -->
+<%-- 											href="<c:url value='/items/package'/>">套組</a> <a --%>
+<%-- 											class="dropdown-item" href="<c:url value='/items/books'/>">工具書</a> --%>
+
+<!-- 									</div></li> -->
+<!-- 					<li>文章列表</li> -->
+<!-- 					<li>統計資料</li> -->
+<!-- 					<li>留言</li> -->
+				</div>
+				
+				<div class="showpage">
+					<table id="showpage">
+						<tr>
+							<td><button><i class="ti-control-backward"></i></button></td>
+							<td colspan="5" align="right">
+								<c:forEach var="i" begin="1" end="${totalPages}" step="1">
+									<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
+								</c:forEach>
+							</td>
+							<td>
+								<input type="text" id="pageGo" placeholder="1" size="2">/${totalPages}
+							</td>
+							<td><button><i class="ti-control-forward"></i></button></td>
+						</tr>
+					</table>
 				</div>
 
-				<div class="showpage">
-						<table id="showpage">
-							<input type="hidden" value="${totalPagesOfUser}" id="totalPagesOfUser">
-							<input type="hidden" value="${totalPagesOfReply}" id="totalPagesOfReply">
-							<tr>
-								<td><button id="minusPage" onclick="addPage(-1)">
-										<i class="ti-control-backward"></i>
-									</button></td>
-								<td id="page_btn" colspan="5" align="right">
-								<c:forEach var="i" begin="1" end="${totalPagesOfUser}" step="1">
-									<button id="myPage${i}" value="${i}" onclick="changePage(${i})">${i}</button>
-								</c:forEach></td>
-								<td style="width:40px;"><button id="plusPage" onclick="addPage(1)">
-										<i class="ti-control-forward"></i>
-									</button></td>
-							</tr>
-						</table>
-					</div>
-
-				<div id="category_list" class="category_list">
+				<div class="category_list">
 					<ul>
-						<li><a onclick="load(0,1)">全部<span>${articleAmountOfUser[0]}</span></a></li>
-						<li><a onclick="load(1,1)">成品分享<span>${articleAmountOfUser[1]}</span></a></li>
-						<li><a onclick="load(2,1)">手作教學<span>${articleAmountOfUser[2]}</span></a></li>
-						<li><a onclick="load(3,1)">材料心得<span>${articleAmountOfUser[3]}</span></a></li>
-						<li><a onclick="load(4,1)">店家評點<span>${articleAmountOfUser[4]}</span></a></li>
-						<li><a onclick="load(5,1)">活動分享<span>${articleAmountOfUser[5]}</span></a></li>
-						<li><a onclick="load(6,1)">二手交易<span>${articleAmountOfUser[6]}</span></a></li>
+						<li><a onclick="load(0,1)">全部<span>${articleAmount[0]}</span></a></li>
+						<li><a onclick="load(1,1)">成品分享<span>${articleAmount[1]}</span></a></li>
+						<li><a onclick="load(2,1)">手作教學<span>${articleAmount[2]}</span></a></li>
+						<li><a onclick="load(3,1)">材料心得<span>${articleAmount[3]}</span></a></li>
+						<li><a onclick="load(4,1)">店家評點<span>${articleAmount[4]}</span></a></li>
+						<li><a onclick="load(5,1)">活動分享<span>${articleAmount[5]}</span></a></li>
+						<li><a onclick="load(6,1)">二手交易<span>${articleAmount[6]}</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -103,8 +185,8 @@
 				<table id="forum_table" class="forum_table">
 					<thead>
 						<tr>
-							<td>文章分類</td>
-							<td>標題</td>
+							<td>分類</td>
+							<td>文章標題</td>
 							<td>回覆/查看</td>
 							<td>最後發表</td>
 							<td>修改文章</td>
@@ -117,10 +199,81 @@
 	</section>
 	<!-- Forum content end -->
 
-
+	<!-- subscribe part here -->
+	<section class="subscribe_part section_padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="subscribe_part_content">
+						<h2>Get promotions & updates!</h2>
+						<p>Seamlessly empower fully researched growth strategies and
+							interoperable internal or “organic” sources credibly innovate
+							granular internal .</p>
+						<div class="subscribe_form">
+							<input type="email" placeholder="Enter your mail"> <a
+								href="#" class="btn_1">Subscribe</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- subscribe part end -->
 
 	<!--::footer_part start::-->
-	<jsp:include page="/fragment/footer.jsp" />
+	<footer class="footer_part">
+		<div class="footer_iner">
+			<div class="container">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-8">
+						<div class="footer_menu">
+							<div class="footer_logo">
+								<a href="index.html"><img src="img/logo.png" alt="#"></a>
+							</div>
+							<div class="footer_menu_item">
+								<a href="index.html">Home</a> <a href="about.html">About</a> <a
+									href="product_list.html">Products</a> <a href="#">Pages</a> <a
+									href="blog.html">Blog</a> <a href="contact.html">Contact</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="social_icon">
+							<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+								class="fab fa-instagram"></i></a> <a href="#"><i
+								class="fab fa-google-plus-g"></i></a> <a href="#"><i
+								class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="copyright_part">
+			<div class="container">
+				<div class="row ">
+					<div class="col-lg-12">
+						<div class="copyright_text">
+							<P>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;
+								<script>
+									document.write(new Date().getFullYear());
+								</script>
+								All rights reserved | This template is made with <i
+									class="ti-heart" aria-hidden="true"></i> by <a
+									href="https://colorlib.com" target="_blank">Colorlib</a>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</P>
+							<div class="copyright_link">
+								<a href="#">Turms & Conditions</a> <a href="#">FAQ</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 	<!--::footer_part end::-->
 
 	<!-- jquery plugins here-->
@@ -145,12 +298,16 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
+<<<<<<< Updated upstream
+	<script src="<c:url value='/js/forum/forum_myArticle.js'/>"></script>
+=======
 	<script type="text/javascript">
 	var categoryid = 0;
 	var indexPage = 1;
 	var type = 'article';
 
 	$(document).ready(function() {
+		load(categoryid, indexPage);
 		load(categoryid, indexPage);
 	})
 
@@ -168,7 +325,7 @@
 		}
 		
 		var table = $('#forum_table > tbody');
-
+		
 		$.ajax({
 			type: 'post',
 			url: '/loop/forum/myforum/type=article/' + categoryid + '/' + indexPage,	//要連結的網址
@@ -184,8 +341,8 @@
 					$.each(data, function(i, n) {
 						var reply_name, reply_date;
 						if (n.reply.length !== 0) {
-							reply_name = n.reply[0].users.userName;
-							reply_date = n.reply[0].replydate;
+							reply_name = n.reply[n.reply.length-1].users.userName;
+							reply_date = n.reply[n.reply.length-1].replydate;
 						} else {
 							reply_name = n.users.userName;
 							reply_date = n.postdate;
@@ -204,7 +361,7 @@
 				}
 			}
 		});
-
+		
 		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
 		document.getElementById('myPage' + indexPage).style.color = "#fff";
 	}
@@ -319,6 +476,7 @@
 // 	}
 
 	</script>
+>>>>>>> Stashed changes
 </body>
 
 </html>

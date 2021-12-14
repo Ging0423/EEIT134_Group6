@@ -147,6 +147,7 @@
 
 	$(document).ready(function() {
 		load(indexPage);
+		load(indexPage);
 	})
 
 	function load(indexPage) {

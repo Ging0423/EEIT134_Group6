@@ -1,7 +1,5 @@
 package loop.forum.model;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,6 +63,10 @@ public class ArticleService {
 		return null;
 	}
 	
+//	public Optional<Article> findByAuthorid(int authorid){
+//		return aReps.findbyA
+//	}
+	
 	public List<Article> findByCategoryid(int categoryid){
 		return aReps.findByCategoryid(categoryid);
 	}
@@ -89,6 +91,8 @@ public class ArticleService {
 		String keyword_search = "%" + keyword + "%";
 		return aReps.findByTitleLike(keyword_search, pageable);
 	}
+<<<<<<< Updated upstream
+=======
 	
 	public Long countArticleAmountByKeywordAndCategoryid(String keyword, int categoryid) {
 		String keyword_search = "%" + keyword + "%";
@@ -102,4 +106,13 @@ public class ArticleService {
 	public long countArticleAmountOfToday(Date today) {
 		return aReps.countByPostdateGreaterThan(today);
 	}
+	
+	public long countArticleAmountBetweenDate(Date today, Date tomorrow) {
+		return aReps.countByPostdateBetween(today, tomorrow);
+	}
+	
+	public int findMostPostAuthor() {
+		return aReps.countMaxAuthor();
+	}
+>>>>>>> Stashed changes
 }
