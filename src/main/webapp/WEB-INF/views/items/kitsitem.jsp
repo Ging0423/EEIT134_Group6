@@ -70,7 +70,7 @@
 						<hr>
 						<p class="text">${item.itemDescription}</p>
 						<%--            <form action="<c:url value='/addToCart'/>" method="POST"> --%>
-						<form action="<c:url value='/cart'/>" method="POST"
+						<form action="<c:url value='/cart/addToCart'/>" method="POST"
 							name="addToCart">
 							<input type="hidden" name="itemId" value="${item.itemId}">
 							<div class="card_area">

@@ -14,7 +14,7 @@
 	crossorigin="anonymous"></script>
 
 <!-- =========== -->
-<title>All Item Form</title>
+<title>loop</title>
 <!-- ====== -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
@@ -159,7 +159,7 @@ form.example::after {
 </form>
 				</div>
 				<div class="user">
-					<img src="image/user.jpg">
+<!-- 					<img src="image/user.jpg"> -->
 				</div>
 			</div>
 <!-- ========================= -->

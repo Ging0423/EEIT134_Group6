@@ -27,4 +27,8 @@ public class VideoCommentService {
 	public void delete(Integer id) {
 		videoCommentRepo.deleteById(id);
 	}
+	
+	public List<VideoCommentBean> findByUserId(Integer userId) {
+		return videoCommentRepo.findByUserId(userId);
+	}
 }

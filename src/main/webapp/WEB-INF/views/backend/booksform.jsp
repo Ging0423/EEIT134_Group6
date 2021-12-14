@@ -13,7 +13,7 @@
 	integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
 	crossorigin="anonymous"></script>	
 <!-- =========== -->
-<title>Books Form</title>
+<title>loop</title>
 <!-- ====== -->
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
@@ -131,7 +131,7 @@ form.example::after {
 </form>
 				</div>
 				<div class="user">
-					<img src="image/user.jpg">
+<!-- 					<img src="image/user.jpg"> -->
 				</div>
 			</div>
 <!-- ========================= -->

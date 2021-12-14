@@ -59,11 +59,18 @@
 				<div class="col-md-4">
 					<div class="product_sidebar">
 						<div class="single_sedebar">
-							<form action="#">
-								<input type="text" name="#" placeholder="輸入關鍵字找紗線">
+							<form name="form1" action="/loop/items/search" method='GET'>
+							<input type="text" name="key" placeholder="輸入關鍵字找紗線">
+<!-- 								<input type="text" name="key" placeholder="Search keyword"> -->
 								<i class="ti-search"></i>
-							</form>
+								</form>	
 						</div>
+						<div class="single_sedebar">
+<!-- 							<form name="form2" action="/loop/items/searchprice" method='GET'> -->
+<!-- 								<input type="text" name="price" placeholder="Search keyword"> -->
+<!-- 								<a href="javascript:document.form2.submit();"><i class="ti-search"></i></a> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
 						<div class="single_sedebar">
 <!-- 							<div class="select_option"> -->
 <!-- 								<div class="select_option_list"> -->

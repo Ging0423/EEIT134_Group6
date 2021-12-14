@@ -121,7 +121,7 @@ form.example::after {
 </form>
 				</div>
 				<div class="user">
-					<img src="image/user.jpg">
+<!-- 					<img src="image/user.jpg"> -->
 				</div>
 			</div>
 			

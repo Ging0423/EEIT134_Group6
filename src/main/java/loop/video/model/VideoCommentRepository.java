@@ -10,4 +10,6 @@ public interface VideoCommentRepository extends JpaRepository<VideoCommentBean, 
 	@Query(value="from VideoCommentBean where videoId = ?1")
 	List<VideoCommentBean> findByVideoId(Integer videoId);
 
+	List<VideoCommentBean> findByUserId(Integer userId);
+
 }

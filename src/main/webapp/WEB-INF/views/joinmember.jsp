@@ -133,7 +133,7 @@
 		var count3 = 0;	
 		
 		function magic() {			
-			var name = ["john"];
+			var name = ["sam","dam"];
 			document.getElementById('account').value = name[count];
 			document.getElementById('userName').value = name[count];
 			document.getElementById('tel').value = "66316666";

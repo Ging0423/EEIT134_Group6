@@ -6,15 +6,35 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import loop.forum.model.Article;
+import loop.forum.model.ArticleService;
+import loop.forum.model.Reply;
+import loop.forum.model.ReplyService;
+import loop.order.model.OrderDataBean;
+import loop.order.service.OrderDataService;
 //import loop.order.model.OrderDataBean;
 import loop.user.model.UsersBean;
 import loop.user.model.UsersRepository;
+import loop.video.model.VideoCommentBean;
+import loop.video.service.VideoCommentService;
 
 @Service
 public class UsersService {
 
 	@Autowired
 	private UsersRepository usersRepo;
+	
+	@Autowired
+	ArticleService articleService;
+
+	@Autowired
+	ReplyService replyService;
+	
+	@Autowired
+	OrderDataService orderDataService;
+	
+	@Autowired
+	VideoCommentService videoCommentService;
 	
 	public long count() {
 		return usersRepo.count();
@@ -63,7 +83,27 @@ public class UsersService {
 	
 	public void delete(String[] array) {
 		for(String i:array) {
-			usersRepo.deleteById(Integer.parseInt(i));
+			List<Article> article = articleService.findByAuthorid(Integer.parseInt(i));
+			for(Article a: article) {
+				a.setUsers(null);
+				articleService.updateArticle(a);
+			}
+			List<Reply> reply = replyService.findByAuthorid(Integer.parseInt(i));
+			for(Reply r: reply) {
+				r.setUsers(null);
+				replyService.updateReply(r);
+			}
+			List<OrderDataBean> orderData = orderDataService.findByUserId(Integer.parseInt(i));
+			for(OrderDataBean o: orderData) {
+				o.setUsers(null);
+				orderDataService.update(o);
+			}
+			List<VideoCommentBean> comment = videoCommentService.findByVideoId(Integer.parseInt(i));
+			for(VideoCommentBean v: comment) {
+				v.setUsers(null);
+				videoCommentService.save(v);
+			}
+			deleteById(Integer.parseInt(i));
 		}	
 	}
 			

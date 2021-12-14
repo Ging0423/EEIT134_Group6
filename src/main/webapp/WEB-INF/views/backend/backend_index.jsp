@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>後臺管理系統-商家版</title>
+<title>loop</title>
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
 	type="text/css">
 <script
@@ -119,7 +119,7 @@ form.example::after {
 					</form>
 				</div>
 				<div class="user">
-					<img src="image/user.jpg">
+<!-- 					<img src="image/user.jpg"> -->
 				</div>
 			</div>
 

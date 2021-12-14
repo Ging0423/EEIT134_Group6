@@ -62,4 +62,8 @@ public class ReplyService {
 	public long countReplyAmountOfToday(Date today) {
 		return rReps.countByReplydateGreaterThan(today);
 	}
+	
+	public List<Reply> findByAuthorid (Integer authorid) {
+		return rReps.findByAuthorid(authorid);
+	}
 }

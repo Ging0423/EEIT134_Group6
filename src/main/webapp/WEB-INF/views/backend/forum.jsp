@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>後臺管理系統-商家版</title>
+<title>loop</title>
 <link rel="stylesheet" href="<c:url value='/backend/css/style.css'/>"
 	type="text/css">
 <script
@@ -23,38 +23,42 @@
 </style>
 </head>
 <body>
-	<div class="container">
+<!-- =========== -->
+	<div class="container1">
 		<div class="navigation">
 			<ul>
-				<li><a href="<c:url value='/'/>"> <span class="icon"><i
-							class="fas fa-infinity" aria-hidden="true"></i></span> <span
-						class="title"><h2>loop</h2></span>
+				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
+							class="fas fa-infinity" aria-hidden="true"></i></span> 
+<!-- 							<span class="title"><h2>loop<h2></span> -->
+	<span class="title"><img src= "<c:url value='/img/loop.png' />"></span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+				<li><a href="<c:url value='/backend/admin'/>"> <span class="icon"><i
 							class="fas fa-users-cog" aria-hidden="true"></i></span> <span
-						class="title">管理員專區</span>
+						class="title">會員專區</span>
 				</a></li>
 				<li><a href="<c:url value='/backend/allitem'/>"> <span
 						class="icon"><i class="fas fa-shopping-bag"
 							aria-hidden="true"></i></span> <span class="title">商品管理</span>
 				</a></li>
-				<!--                 ================== -->
-				<li><a href="<c:url value='/backend/useritem'/>"> <span
-						class="icon"><i class="fas fa-shopping-bag"
-							aria-hidden="true"></i></span> <span class="title">會員手作商品管理</span>
-				</a></li>
-				<!--                 ================== -->
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
+<!--                 ================== -->
+<!--                 <li> -->
+<%--                     <a href="<c:url value='/backend/useritems'/>"> --%>
+<!--                         <span class="icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span> -->
+<!--                         <span class="title">會員手作商品管理</span> -->
+<!--                     </a> -->
+<!--                 </li> -->
+<!--                 ================== -->
+				<li><a href="<c:url value='/backend/order'/>"> <span class="icon"><i
 							class="fas fa-cart-arrow-down" aria-hidden="true"></i></span> <span
 						class="title">訂單管理</span>
 				</a></li>
-				<li><a href="<c:url value=''/>"> <span class="icon"><i
-							class="fas fa-comments" aria-hidden="true"></i></span> <span
-						class="title">訊息管理</span>
-				</a></li>
-				<li><a href="<c:url value='/backend/video'/>"> <span
-						class="icon"><i class="far fa-file-video"
-							aria-hidden="true"></i></span> <span class="title">教學影片管理</span>
+<%-- 				<li><a href="<c:url value=''/>"> <span class="icon"><i --%>
+<!-- 							class="fas fa-comments" aria-hidden="true"></i></span> <span -->
+<!-- 						class="title">訊息管理</span> -->
+<!-- 				</a></li> -->
+				<li><a href="<c:url value='/backend/video'/>"> <span class="icon"><i
+							class="far fa-file-video" aria-hidden="true"></i></span> <span
+						class="title">教學影片管理</span>
 				</a></li>
 				<li><a href="<c:url value='/backend/forum'/>"> <span class="icon"><i
 							class="far fa-newspaper" aria-hidden="true"></i></span> <span
@@ -66,7 +70,7 @@
 				</a></li>
 			</ul>
 		</div>
-
+		
 		<div class="main">
 			<div class="topbar">
 				<div class="toggle" onclick="toggleMenu();">
@@ -78,7 +82,7 @@
 					</label>
 				</div>
 				<div class="user">
-					<img src="image/user.jpg">
+<!-- 					<img src="image/user.jpg"> -->
 				</div>
 			</div>
 

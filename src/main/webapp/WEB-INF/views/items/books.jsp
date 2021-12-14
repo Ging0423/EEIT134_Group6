@@ -31,6 +31,27 @@
 	.single_product_item {
 	display: none;
 }
+
+/* =========回頂部========= */
+.back-to-top {
+display: none; /* 默認是隱藏的，這樣在第一屏才不顯示 */
+position: fixed; /* 位置是固定的 */
+bottom: 20px; /* 顯示在頁面底部 */
+right: 30px; /* 顯示在頁面的右邊 */
+z-index: 99; /* 確保不被其他功能覆蓋 */
+border: 1px solid #B08EAD; /* 顯示邊框 */
+outline: none; /* 不顯示外框 */
+background-color: #fff; /* 設置背景背景顏色 */
+color: #B08EAD; /* 設置文本顏色 */
+cursor: pointer; /* 滑鼠移到按鈕上顯示手型 */
+padding: 10px 15px 15px 15px; /* 增加一些內邊距 */
+border-radius: 10px; /* 增加圓角 */
+}
+.back-to-top:hover {
+background-color: #B08EAD; /* 滑鼠移上去時，反轉顏色 */
+color: #fff;
+}
+/* =========回頂部========= */
 </style>
 </head>
 
@@ -61,7 +82,7 @@
 					<div class="product_sidebar">
 						<div class="single_sedebar">
 							<form name="form1" action="/loop/items/search" method='GET'>
-							<input type="text" name="key" placeholder="輸入關鍵字找書">
+							<input type="text" name="key" placeholder="輸入關鍵字找書籍">
 <!-- 								<input type="text" name="key" placeholder="Search keyword"> -->
 								<a href="javascript:document.form1.submit();"><i class="ti-search"></i></a>
 								</form>	
@@ -187,5 +208,35 @@ $(document).ready (function () {
   });  
   })  
 </script> 	
+<!-- 			=============回頂部======================== -->
+<button class="js-back-to-top back-to-top">︽</button>
+
+
+<!-- <div style="background-color:#5cb85c;color:white;padding:20px">固定到底部</div> -->
+<!-- <div style="background-color:#f6f6f6;padding:20px 20px 1000px"> -->
+<!-- 該實例演示了如何創建一個「回到頂部」按鈕。請往下滾動，體驗效果。</div> -->
+<button class="js-back-to-top back-to-top" title="回到頭部">&#65085;</button>
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+<script>
+
+$(function () {
+var $win = $(window);
+var $backToTop = $('.js-back-to-top');
+// 當用戶滾動到離頂部100像素時，展示回到頂部按鈕
+$win.scroll(function () {
+if ($win.scrollTop() > 10) {
+$backToTop.show();
+} else {
+$backToTop.hide();
+}
+});
+//當用戶點擊按鈕時，通過動畫效果返回頭部
+$backToTop.click(function () {
+$('html, body').animate({scrollTop: 0}, 200);
+});
+});
+</script>
+		=============回頂部======================== -->
+ 	
 </body>
 </html>
