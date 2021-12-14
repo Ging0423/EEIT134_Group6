@@ -2,6 +2,7 @@ package loop.forum.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Reply {
 	@JoinColumn(name = "articleid",insertable = false, updatable = false)
 	private Article article;	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 

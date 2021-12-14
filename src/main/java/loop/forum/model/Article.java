@@ -60,11 +60,11 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(name = "articleid", insertable = false, updatable = false)
 	private List<Reply> reply;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	

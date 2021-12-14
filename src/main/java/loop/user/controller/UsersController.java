@@ -175,15 +175,16 @@ public class UsersController {
 
 	// 會員資料修改
 	@PostMapping("updatemember")
-	public String update(@ModelAttribute("isLogin") UsersBean userBean, Model m, HttpServletRequest request,
+	public String update(@ModelAttribute("usersData") UsersBean userBean, Model m, HttpServletRequest request,
 			HttpServletResponse response) {
 		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-		String password = new BCryptPasswordEncoder().encode(bean.getUserPassword());
-		bean.setUserPassword(password);
-		bean.setUserIdentity("1");
-		Date current = new Date();
-		bean.setRegisterDate(current);
-		usersService.save(bean);
-		return "redirect:/login";
+		String password = "";
+		if(!userBean.getUserPassword().equals(bean.getUserPassword())) {
+			password = new BCryptPasswordEncoder().encode(userBean.getUserPassword());
+			userBean.setUserPassword(password);
+		}
+		userBean.setRegisterDate(bean.getRegisterDate());
+		usersService.save(userBean);
+		return "redirect:/updatemember";
 	}
 }

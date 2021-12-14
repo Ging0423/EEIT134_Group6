@@ -111,8 +111,7 @@ form.example::after {
 		<div class="navigation">
 			<ul>
 				<li><a href="<c:url value='/backend'/>"> <span class="icon"><i
-							class="fas fa-infinity" aria-hidden="true"></i></span> 
-<!-- 							<span class="title"><h2>loop<h2></span> -->
+							class="fas fa-infinity" aria-hidden="true"></i></span> <!-- 							<span class="title"><h2>loop<h2></span> -->
 						<span class="title"><img
 							src="<c:url value='/img/loop.png' />"></span>
 				</a></li>
@@ -183,7 +182,8 @@ form.example::after {
 					<hr>
 				</div>
 				<br>
-				<form method="post" action="<c:url value='/backend/updatebooks'/>" enctype="multipart/form-data">
+				<form method="post" action="<c:url value='/backend/updatebooks'/>"
+					enctype="multipart/form-data">
 					<table class="table table-bordered border-primary" id="ajaxTable">
 						<thead>
 							<tr>
@@ -196,7 +196,8 @@ form.example::after {
 						<tbody>
 							<tr>
 								<td><input readonly name="itemId" value=${booksData.itemId}></td>
-								<td><input readonly name="addDate" value=${booksData.addDate}></td>
+								<td><input readonly name="addDate"
+									value=${booksData.addDate}></td>
 								<td><input name="qty" value=${booksData.qty}></td>
 								<td><input name="price" value=${booksData.price}></td>
 							</tr>
@@ -219,18 +220,19 @@ form.example::after {
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="4"><textarea cols="190" rows="8" 
+								<td colspan="4"><textarea cols="190" rows="8"
 										name="itemDescription">${booksData.itemDescription}</textarea></td>
 							</tr>
 						</tbody>
 						<thead>
-						<tr>
-							<th colspan="4">圖片</th>
-						</tr>
+							<tr>
+								<th colspan="4">圖片</th>
+							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="4" align="center"><c:forEach var="itemImg" items="${itemImg}">
+								<td colspan="4" align="center"><c:forEach var="itemImg"
+										items="${itemImg}">
 										<img id="img" src=<c:url value="/items/img/${itemImg.img}"/> />
 									</c:forEach> <br> <img type="file" id="img1" accept="image/*"
 									width=20% /> <img type="file" id="img2" accept="image/*"
@@ -253,64 +255,66 @@ form.example::after {
 
 				<form action="<c:url value='/backend/deletebooks'/>" method="post">
 					<input type="hidden" name="itemId" value="${booksData.itemId}">
-					<input class="btn" type="submit" value="刪除" onclick='del()'><br> 
+					<input class="btn" type="submit" value="刪除" onclick='del()'><br>
 					<a href="<c:url value='/backend/books' />">回書籍商品資料總表</a>
 				</form>
 			</div>
+		</div>
+	</div>
+	
+	<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
+	<!-- popper js -->
+	<script src="<c:url value='/js/popper.min.js'/>"></script>
+	<!-- bootstrap js -->
+	<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+	<!-- magnific popup js -->
+	<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
+	<!-- carousel js -->
+	<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
+	<!-- slick js -->
+	<script src="<c:url value='/js/slick.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
+	<script src="<c:url value='/js/waypoints.min.js'/>"></script>
+	<script src="<c:url value='/js/contact.js'/>"></script>
+	<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery.form.js'/>"></script>
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script src="<c:url value='/js/mail-script.js'/>"></script>
 
-			<script src="<c:url value='/js/jquery-1.12.1.min.js'/>"></script>
-			<!-- popper js -->
-			<script src="<c:url value='/js/popper.min.js'/>"></script>
-			<!-- bootstrap js -->
-			<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
-			<!-- magnific popup js -->
-			<script src="<c:url value='/js/jquery.magnific-popup.js'/>"></script>
-			<!-- carousel js -->
-			<script src="<c:url value='/js/owl.carousel.min.js'/>"></script>
-			<script src="<c:url value='/js/jquery.nice-select.min.js'/>"></script>
-			<!-- slick js -->
-			<script src="<c:url value='/js/slick.min.js'/>"></script>
-			<script src="<c:url value='/js/jquery.counterup.min.js'/>"></script>
-			<script src="<c:url value='/js/waypoints.min.js'/>"></script>
-			<script src="<c:url value='/js/contact.js'/>"></script>
-			<script src="<c:url value='/js/jquery.ajaxchimp.min.js'/>"></script>
-			<script src="<c:url value='/js/jquery.form.js'/>"></script>
-			<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-			<script src="<c:url value='/js/mail-script.js'/>"></script>
+	<!--     ================================ -->
+	<script>
+		window.onload(toggleMenu());
 
-			<!--     ================================ -->
-			<script>
-				window.onload(toggleMenu());
+		function toggleMenu() {
+			let toggle = document.querySelector('.toggle');
+			let navigation = document.querySelector('.navigation');
+			let main = document.querySelector('.main');
+			toggle.classList.toggle('active');
+			navigation.classList.toggle('active');
+			main.classList.toggle('active');
+		}
 
-				function toggleMenu() {
-					let toggle = document.querySelector('.toggle');
-					let navigation = document.querySelector('.navigation');
-					let main = document.querySelector('.main');
-					toggle.classList.toggle('active');
-					navigation.classList.toggle('active');
-					main.classList.toggle('active');
-				}
-				
-				function del(){
-					var msg = "請確定是否要刪除？";
-					if (confirm(msg)==true){
-					
-					}else{
-					
-					event.preventDefault();
-					}
-				}
-				
-				function update(){
-					var msg = "請確定是否要更新？";
-					if (confirm(msg)==true){
-					
-					}else{
-					
-					event.preventDefault();
-					}
-				}
-			</script>
-			<!--     ================================ -->
+		function del() {
+			var msg = "請確定是否要刪除？";
+			if (confirm(msg) == true) {
+
+			} else {
+
+				event.preventDefault();
+			}
+		}
+
+		function update() {
+			var msg = "請確定是否要更新？";
+			if (confirm(msg) == true) {
+
+			} else {
+
+				event.preventDefault();
+			}
+		}
+	</script>
+	<!--     ================================ -->
 </body>
 </html>

@@ -88,6 +88,10 @@
 				
 		</div>
 		<div>
+			<form:hidden path="userIdentity"/>
+		</div>
+			<form:hidden path="userId"/>
+		<div>
 			<button class="btn_3" type="button" onclick="checkok();">送出</button>
 		</div>
 	</form:form>

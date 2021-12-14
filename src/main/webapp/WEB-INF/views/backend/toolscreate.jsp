@@ -158,7 +158,7 @@ color: white
       </tr>
       </thead>
       <tbody>
-     <td><input id="itemName" name="itemName" type="text" /></td>
+     <td><input size="50" id="itemName" name="itemName" type="text" /></td>
      <td><input id="specification" name="specification" type="text" /></td>
      <td><input id="qty" name="qty" type="number" min="0"/></td>
      <td><input id="price" name="price" type="number" min="0"/></td>

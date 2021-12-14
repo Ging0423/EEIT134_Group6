@@ -267,6 +267,7 @@ form.example::after {
 								   table.append(tr);
 							   });
 						}
+						
 					}
 				});
 	}   
@@ -280,6 +281,7 @@ form.example::after {
             navigation.classList.toggle('active');
             main.classList.toggle('active');
         }
+        window.location.reload();
     </script>
 </body>
 </html>

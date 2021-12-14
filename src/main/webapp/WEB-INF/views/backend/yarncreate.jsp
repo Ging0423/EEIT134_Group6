@@ -158,7 +158,7 @@ color: white
      </thead>
      <tbody>
       <tr>
-      <td><input id="itemName" name="itemName" type="text" /></td>
+      <td><input size="50" id="itemName" name="itemName" type="text" /></td>
       <td><input id="material" name="material" type="text"/></td>
       <td><input id="size" name="size" type="text"></td>
       </tr>
