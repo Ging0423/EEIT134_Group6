@@ -53,6 +53,7 @@ public class ReplyService {
 		return rReps.findByArticleid(articleid, pageable);
 	}
 
+<<<<<<< Updated upstream
 //	public Reply findById(int articleid) {
 //		Optional<Article> op1 = rReps.findById(articleid);
 //		
@@ -67,4 +68,9 @@ public class ReplyService {
 //		return aReps.findbyA
 //	}
 
+=======
+	public long countReplyAmountBetweenDate(Date today, Date tomorrow) {
+		return rReps.countByReplydateBetween(today, tomorrow);
+	}
+>>>>>>> Stashed changes
 }

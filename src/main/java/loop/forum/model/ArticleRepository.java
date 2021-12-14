@@ -25,8 +25,23 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>{
     
 	long countByCategoryid(int categoryid);
 	long countByCategoryidAndAuthorid(int categoryid, int authorid);
+<<<<<<< Updated upstream
 	
 //	@Query("select count reply from Reply r left join r. tt")
 //	long countReplyByArticleid(int articleid);
+=======
+	long countByTitleLike(String keyword);
+	long countByTitleLikeAndCategoryid(String keyword, int categoryid);
+	long countByPostdateGreaterThan(Date today);
+	long countByPostdateBetween(Date today, Date tomorrow);
+	@Query(value = "SELECT top 1 authorid\r\n"
+			+ "FROM ( SELECT authorid, COUNT(*) mycount \r\n"
+			+ "FROM article \r\n"
+			+ "GROUP BY authorid\r\n"
+			+ ") as temp \r\n"
+			+ "ORDER BY temp.mycount DESC", nativeQuery=true)
+	int countMaxAuthor();
+
+>>>>>>> Stashed changes
 }
 

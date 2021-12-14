@@ -50,6 +50,7 @@ public class ArticleController {
 		return "/forum/forum";
 	}
 	
+<<<<<<< Updated upstream
 	//文章分頁生成
 	@PostMapping("/{categoryid}/{pageNo}")
 	@ResponseBody
@@ -62,6 +63,30 @@ public class ArticleController {
 			page = aService.findAllByPage(pageable);
 		} else {
 			page = aService.findAllByPage(categoryid, pageable);
+=======
+	// 文章分頁生成
+		@PostMapping("/sortType={sortType}/{categoryid}/{pageNo}")
+		@ResponseBody
+		public List<Article> processForumByPage(@PathVariable("sortType") String sortType, @PathVariable("categoryid") int categoryid, @PathVariable("pageNo") int pageNo, Model m){
+			int pageSize = 10;
+			Pageable pageable = null;
+			Page<Article> page = null;
+			if(sortType.equals("replyid")) {
+				pageable = PageRequest.of(pageNo-1, pageSize, Sort.Direction.DESC, "reply");
+			}else {
+				pageable = PageRequest.of(pageNo-1, pageSize, Sort.by(sortType).descending());
+			}
+			
+			if(categoryid == 0) {
+				page = aService.findAllByPage(pageable);
+			} else {
+				page = aService.findAllByPage(categoryid, pageable);
+			}
+			
+			m.addAttribute("totalPages", page.getTotalPages());
+			m.addAttribute("totalElements", page.getTotalElements());
+			return page.getContent();
+>>>>>>> Stashed changes
 		}
 		
 		setPages(m, page.getTotalPages());

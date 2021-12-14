@@ -1,5 +1,6 @@
 package loop.forum.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,6 +67,10 @@ public class UserArticleController {
 			@PathVariable("pageNo") int pageNo, Model m) {
 		int pageSize = 10;
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+<<<<<<< Updated upstream
+=======
+		
+>>>>>>> Stashed changes
 		Page<Article> page = null;
 
 		if (categoryid == 0) {
@@ -74,11 +79,51 @@ public class UserArticleController {
 			System.out.println(authorid + "," + categoryid);
 			page = aService.findAllByPage(authorid, categoryid, pageable);
 		}
+<<<<<<< Updated upstream
 		
 		System.out.println(page.getContent());
 		
 		m.addAttribute("totalPages", page.getTotalPages());
 		m.addAttribute("totalElements", page.getTotalElements());
+=======
+		m.addAttribute("totalPagesOfUser", page.getTotalPages());
+
+		return page.getContent();
+	}
+	
+	// 文章分頁生成
+	@PostMapping("/type=reply/{pageNo}")
+	@ResponseBody
+	public List<Reply> processReplyForumByPage(@PathVariable("pageNo") int pageNo, Model m) {
+		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
+		Integer userId = bean.getUserId();
+		int pageSize = 10;
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+		Page<Reply> page = null;
+		page = rService.findPageByAuthorid(userId, pageable);
+		
+		int[] categoryList = new int[page.getContent().size()];
+		int[] clickNumList = new int[page.getContent().size()];
+		int[] replyNumList = new int[page.getContent().size()];
+		String[] titleList = new String[page.getContent().size()];
+		String[] replyNameList = new String[page.getContent().size()];
+		String[] replyDateList = new String[page.getContent().size()];
+		SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		
+		for (int i=0; i<page.getContent().size(); i++) {
+			int articleid = page.getContent().get(i).getArticleid();
+			Article article = aService.findById(articleid);
+			categoryList[i] = article.getCategoryid();
+			titleList[i] = article.getTitle();
+			clickNumList[i] = article.getClickNum();
+			replyNumList[i] = article.getReply().size();
+			replyNameList[i] = article.getReply().get(replyNumList[i]-1).getUsers().getUserName();
+			Date date = article.getReply().get(replyNumList[i]-1).getReplydate();
+			String stringDate = DateFor.format(date);
+			replyDateList[i] = stringDate;
+		}
+>>>>>>> Stashed changes
 		
 		return page.getContent();
 	}

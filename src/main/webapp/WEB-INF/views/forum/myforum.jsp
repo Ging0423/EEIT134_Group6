@@ -298,7 +298,185 @@
 	<script src="<c:url value='/js/mail-script.js'/>"></script>
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
+<<<<<<< Updated upstream
 	<script src="<c:url value='/js/forum/forum_myArticle.js'/>"></script>
+=======
+	<script type="text/javascript">
+	var categoryid = 0;
+	var indexPage = 1;
+	var type = 'article';
+
+	$(document).ready(function() {
+		load(categoryid, indexPage);
+		load(categoryid, indexPage);
+	})
+
+	function load(categoryid, indexPage) {
+		if (indexPage == '1') {
+			$('#minusPage').hide();
+		} else {
+			$('#minusPage').show();
+		}
+
+		if (indexPage == $('#totalPagesOfUser').val()) {
+			$('#plusPage').hide();
+		} else {
+			$('#plusPage').show();
+		}
+		
+		var table = $('#forum_table > tbody');
+		
+		$.ajax({
+			type: 'post',
+			url: '/loop/forum/myforum/type=article/' + categoryid + '/' + indexPage,	//要連結的網址
+			dataType: 'JSON',	//要下載的格式
+			contentType: 'application.json',	//要上傳的格式
+			success: function(data) {
+				table.empty("");
+				var json = JSON.stringify(data, null, 4);
+
+				if (data == null) {
+					$('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
+				} else {
+					$.each(data, function(i, n) {
+						var reply_name, reply_date;
+						if (n.reply.length !== 0) {
+							reply_name = n.reply[n.reply.length-1].users.userName;
+							reply_date = n.reply[n.reply.length-1].replydate;
+						} else {
+							reply_name = n.users.userName;
+							reply_date = n.postdate;
+						}
+
+						var tr = "<tr align='center'>" +
+							"<td>" + categoryName(n.categoryid) + "</td>" +
+							"<td><a href='/loop/forum/article/" + n.articleid + "'>" + n.title + "</a></td>" +
+							"<td>" + n.reply.length + "/" + n.clickNum + "</td>" +
+							"<td>" + reply_name + "<br/><span style='font-size:8px; font-weight:lighter;'>" + reply_date + "</span></td>" +
+							"<td><a href='/loop/forum/myforum/update/" + n.articleid + "'><i class='ti-pencil'></i></a>" + "/" +
+							"<a onclick='checkDelete(" + n.articleid + ")'><i class='ti-trash'></i></a></td>" +
+							"</tr>";
+						table.append(tr);
+					});
+				}
+			}
+		});
+		
+		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
+		document.getElementById('myPage' + indexPage).style.color = "#fff";
+	}
+
+
+	function changePage(page) {
+		document.getElementById('myPage' + indexPage).style.backgroundColor = "#fff";
+		document.getElementById('myPage' + indexPage).style.color = "black";
+
+		indexPage = page;
+		
+		if(type == 'article'){
+			load(categoryid, indexPage);
+		}else if(type == 'reply'){
+			load(categoryid, indexPage);
+		}
+	};
+
+	function addPage(page) {
+		document.getElementById('myPage' + indexPage).style.backgroundColor = "#fff";
+		document.getElementById('myPage' + indexPage).style.color = "black";
+
+		if (page > 0) {
+			indexPage = indexPage + 1;
+		} else if (page < 0) {
+			indexPage = indexPage - 1;
+		}
+		
+		if(type == 'article'){
+			load(categoryid, indexPage);
+		}else if(type == 'reply'){
+			loadReply(indexPage);
+		}
+	}
+
+	function categoryName(categoryid) {
+		switch (categoryid) {
+			case 1:
+				return '成品分享';
+				break;
+			case 2:
+				return '手作教學';
+				break;
+			case 3:
+				return '材料心得';
+				break;
+			case 4:
+				return '店家評點';
+				break;
+			case 5:
+				return '活動分享';
+				break;
+			case 6:
+				return '二手交易';
+		}
+	}
+
+	function checkDelete(articleid) {
+		var deleteArticle = confirm("確定刪除文章嗎?");
+
+		if (deleteArticle == true) {
+			$.ajax({
+				type: 'post',
+				url: '/loop/forum/myforum/delete/' + articleid,	//要連結的網址
+				dataType: 'JSON',	//要下載的格式
+				contentType: 'application.json',	//要上傳的格式
+				success: function(data) {
+					window.alert("已成功刪除文章!!");
+				}
+			});
+		}
+
+		window.location.reload();
+	}
+
+	/* 點擊下拉式選單後，出現下拉式選單*/
+	function selectSortType() {
+		document.getElementById("sortType").classList.toggle("show");
+	}
+
+	// 點擊下拉式選單外後，關閉選單
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+
+// 	function changeSortType(sortType) {
+// 		switch (sortType) {
+// 			case 1:
+// 				document.getElementById("category_list").style.visibility = '';
+// 				$('#sortType_btn').html("發文列表 <i class='ti-angle-down'></i>");
+// 				indexPage = 1;
+// 				type = 'article';
+// 				load(categoryid, indexPage);
+// 				break;
+// 			case 2:
+// 				document.getElementById("category_list").style.visibility = 'hidden';
+// 				$('#sortType_btn').html("留言列表 <i class='ti-angle-down'></i>");
+// 				indexPage = 1;
+// 				type = 'reply';
+// 				loadReply(indexPage);
+// 				break;
+// 		}
+// 	}
+
+	</script>
+>>>>>>> Stashed changes
 </body>
 
 </html>

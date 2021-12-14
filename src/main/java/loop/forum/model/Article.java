@@ -54,7 +54,12 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
+<<<<<<< Updated upstream
 	@OneToMany(targetEntity = Reply.class, mappedBy = "articleid")
+=======
+	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "articleid", insertable = false, updatable = false)
+>>>>>>> Stashed changes
 	private List<Reply> reply;
 	
 	public Date getPostdate() {

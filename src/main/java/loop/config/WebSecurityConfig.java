@@ -24,7 +24,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
+<<<<<<< Updated upstream
 		.antMatchers(HttpMethod.GET, "/users/**").authenticated()
+=======
+		.antMatchers(HttpMethod.GET, "/cart/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/order/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/forum/newPost/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/backend/**").authenticated()
+		.antMatchers(HttpMethod.GET, "/backend/**").hasAuthority("ROLE_ADMIN")
+>>>>>>> Stashed changes
 		.antMatchers(HttpMethod.GET).permitAll()
 		.antMatchers(HttpMethod.POST, "/users/**").authenticated()
 		.antMatchers(HttpMethod.POST).permitAll()

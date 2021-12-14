@@ -91,4 +91,28 @@ public class ArticleService {
 		String keyword_search = "%" + keyword + "%";
 		return aReps.findByTitleLike(keyword_search, pageable);
 	}
+<<<<<<< Updated upstream
+=======
+	
+	public Long countArticleAmountByKeywordAndCategoryid(String keyword, int categoryid) {
+		String keyword_search = "%" + keyword + "%";
+		if(categoryid != 0) {
+			return aReps.countByTitleLikeAndCategoryid(keyword_search, categoryid);
+		} else {
+			return aReps.countByTitleLike(keyword_search);
+		}
+	}
+
+	public long countArticleAmountOfToday(Date today) {
+		return aReps.countByPostdateGreaterThan(today);
+	}
+	
+	public long countArticleAmountBetweenDate(Date today, Date tomorrow) {
+		return aReps.countByPostdateBetween(today, tomorrow);
+	}
+	
+	public int findMostPostAuthor() {
+		return aReps.countMaxAuthor();
+	}
+>>>>>>> Stashed changes
 }
