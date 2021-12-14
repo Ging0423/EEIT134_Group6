@@ -15,4 +15,6 @@ public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 	long countByAuthorid(int authorid);
 	long countByReplydateGreaterThan(Date today);
 	long countByReplydateBetween(Date today, Date tomorrow);
+	List<Reply> findByAuthorid(int authorid);
+	Page<Reply> findByAuthorid(int authorid, Pageable pageable);
 }

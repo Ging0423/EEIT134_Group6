@@ -117,23 +117,7 @@ public class UserArticleController {
 
 		return page.getContent();
 	}
-	
-	// 文章分頁生成
-	@PostMapping("/type=reply/{pageNo}")
-	@ResponseBody
-	public List<Reply> processReplyForumByPage(@PathVariable("pageNo") int pageNo, Model m) {
-		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-		Integer userId = bean.getUserId();
-		int pageSize = 10;
-		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-
-		Page<Reply> page = null;
-		page = rService.findPageByAuthorid(userId, pageable);
-		m.addAttribute("totalPagesOfUser", page.getTotalPages());
-
-		return page.getContent();
-	}
-	
+		
 	// 文章分頁生成
 	@PostMapping("/type=reply/{pageNo}")
 	@ResponseBody

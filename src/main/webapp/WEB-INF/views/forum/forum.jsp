@@ -67,7 +67,7 @@
 					</div>
 				</div>
 				
-				<input type="button" value="${totalPages}">
+<%-- 				<input type="button" value="${totalPages}"> --%>
 				
 				<div class="showpage">
 						<table id="showpage">

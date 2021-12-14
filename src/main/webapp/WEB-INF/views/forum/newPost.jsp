@@ -163,10 +163,8 @@ function sendArticle() {
 	obj.categoryid = categoryid;
 	if(document.getElementById('editor1').style.display == "none"){
 		obj.content = myEditor2.getData();
-		
 	}else{
-		obj.content = myEditor2.getData();
-		console.log(myEditor.getData());
+		obj.content = myEditor.getData();
 	}
 	
 	$.ajax({

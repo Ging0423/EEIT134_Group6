@@ -110,4 +110,8 @@ public class ArticleService {
 	public int findMostPostAuthor() {
 		return aReps.countMaxAuthor();
 	}
+
+	public List<Article> findByAuthorid(int parseInt) {
+		return aReps.findByAuthorid(parseInt);
+	}
 }

@@ -60,17 +60,6 @@
 
 
 				<div class="showpage">
-					<table id="showpage">
-						<tr>
-							<td><a href="<c:url value='/forum'/>">返回列表</a></td>
-							<td><button onclick="addPage(1)">
-									<i class="ti-control-backward"></i>
-								</button></td>
-							<td colspan="5" align="right"><c:forEach var="i" begin="1"
-									end="5" step="1">
-									<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
-
-<div class="showpage">
 						<table id="showpage">
 							<input type="hidden" value="${totalPagesInArticle}" id="totalPages">
 							<tr>

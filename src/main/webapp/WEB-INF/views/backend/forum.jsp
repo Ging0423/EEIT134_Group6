@@ -186,6 +186,7 @@
 	<!-- custom js -->
 	<script src="<c:url value='/js/custom.js'/>"></script>
 	<script src="<c:url value='/js/forum/forum_backend.js'/>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 	<script>
         window.onload(toggleMenu());
 
@@ -200,7 +201,6 @@
     </script>
     
 	<script>
-	console.log(${weekDate[0]});
   	var ctx = document.getElementById( "articleInWeek" ),
   		example = new Chart(ctx, {
   			type: "bar", // 圖表類型

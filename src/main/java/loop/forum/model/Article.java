@@ -64,7 +64,7 @@ public class Article {
 	@JoinColumn(name = "articleid", insertable = false, updatable = false)
 	private List<Reply> reply;
 	
-	@ManyToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorid",insertable = false, updatable = false)
 	private UsersBean users;
 	
