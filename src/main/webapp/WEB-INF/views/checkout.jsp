@@ -89,7 +89,7 @@
 								<c:forEach var="item" items="${items}">
 									<li><a href="#">${item.itemName} <span class="middle">x
 												${item.qty}</span> <c:set var="total"
-												value="${item.qty*item.price}" /> <span class="last">${total}</span>
+												value="${item.qty*item.price}" /> <span class="last">  ${total}</span>
 									</a></li>
 									<c:set var="subTotal" value="${subTotal + total}" />
 								</c:forEach>

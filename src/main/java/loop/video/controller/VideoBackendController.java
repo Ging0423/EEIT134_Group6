@@ -57,7 +57,7 @@ public class VideoBackendController {
 	public String videoCreate(ServletRequest request, Model m) {
 		AllVideoBean bean = new AllVideoBean();
 		bean.setHref(request.getParameter("href"));
-		bean.setVideoDescription(request.getParameter("description"));
+		bean.setVideoDescription(request.getParameter("videoDescription"));
 		bean.setVideoLink(request.getParameter("videoLink"));
 		bean.setVideoName(request.getParameter("videoName"));
 		allVideoService.save(bean);

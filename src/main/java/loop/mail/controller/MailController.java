@@ -76,12 +76,13 @@ public class MailController {
 		String result = null;
 		Map<String, String> map = (Map<String, String>) session.getAttribute("randomCode");
 		if (map == null) {
-			result = "電子郵件地址認證失敗，不存在";
+			result = "電子郵件地址認證失敗，不存在，請重新申請";
+			m.addAttribute("result", result);
+			return "changepassworderror";
 		} else {
 			String mail = map.get(random);
 			m.addAttribute("mail", mail);
 		}
-		m.addAttribute("result", result);
 		return "changepassword";
 	}
 	
@@ -90,9 +91,16 @@ public class MailController {
 		String mail = request.getParameter("mail");
 		String beforePassword = request.getParameter("password");
 		String password = new BCryptPasswordEncoder().encode(beforePassword);
-		UsersBean bean = usersService.findByEmail(mail).get();
-		bean.setUserPassword(password);
-		usersService.save(bean);
+		
+		UsersBean bean;
+		try {
+			bean = usersService.findByEmail(mail).get();
+			bean.setUserPassword(password);
+			usersService.save(bean);
+		} catch (Exception e) {		
+			e.printStackTrace();
+			return "redirect:/";
+		}	
 		return "redirect:/";
 	}
 }

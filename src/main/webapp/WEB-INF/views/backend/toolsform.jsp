@@ -171,7 +171,7 @@ form.example::after {
          </c:forEach>
          </tbody>
       </table>
-      <a href="/loop/backend/allitem">回商品資料總表</a>
+      <a href="/loop/backend/allitem">回商品管理</a>
       </div>
       <!--     ================================ -->
 	<script>

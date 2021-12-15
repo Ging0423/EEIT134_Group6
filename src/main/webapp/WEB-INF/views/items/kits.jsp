@@ -134,7 +134,7 @@
 
 						</div>
 						<div class="load_more_btn text-center">
-							<a href="#" class="btn_3">Load More</a>
+							<a href="#" class="btn_3">更多商品</a>
 						</div>
 					</div>
 				</div>

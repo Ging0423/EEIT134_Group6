@@ -36,12 +36,12 @@ public class VideoCommentBean implements Serializable{
 	private String comment;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId",insertable = false, updatable = false)
 	private UsersBean users;
 	
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "videoId",insertable = false, updatable = false)
 	private AllVideoBean allVideo;
 

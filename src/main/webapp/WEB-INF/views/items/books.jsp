@@ -157,7 +157,7 @@ color: #fff;
 							</c:forEach>
 						</div>
 						<div class="load_more_btn text-center">
-							<a href="#" class="btn_3" id="loadmore">Load More</a>
+							<a href="#" class="btn_3" id="loadmore">更多商品</a>
 						</div>
 					</div>
 				</div>
