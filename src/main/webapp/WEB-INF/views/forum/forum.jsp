@@ -210,18 +210,17 @@
 					});
 				}
 			}
+		
+		
 		});
-		
-		
-			//Check if the current URL contains '#'
-			if(document.URL.indexOf("#")==-1){
-				//Set the URL to whatever it was plus "#""
-				url = document.URL + "#";
-				location = "#"
-				//reload the page
-				location.reload();
-			}
-
+		//Check if the current URL contains '#'
+		if(document.URL.indexOf("#")==-1){
+			//Set the URL to whatever it was plus "#""
+			url = document.URL + "#";
+			location = "#"
+			//reload the page
+			location.reload();
+		}
 		
 		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
 		document.getElementById('myPage' + indexPage).style.color = "#fff";
@@ -233,7 +232,7 @@
 
 		$.ajax({
 			type: 'post',
-			url: '/loop/forum/search/' + categoryid + '/' + keyword + '/' + indexPage,	//要連結的網址
+			url: '/loop/forum/search/' + keyword + '/' + indexPage,	//要連結的網址
 			dataType: 'JSON',	//要下載的格式
 			contentType: 'application.json',	//要上傳的格式
 			success: function(data) {
@@ -256,7 +255,7 @@
 						var tr = "<tr align='center'>" +
 							"<td>" + categoryName(n.categoryid) + "</td>" +
 							"<td><a href='/loop/forum/article/" + n.articleid + "'>" + n.title + "</a></td>" +
-							"<td>" + n.authorid + "<br/><span style='font-size:8px; font-weight:lighter;'>" + n.postdate + "</span></td>" +
+							"<td>" + n.users.userName + "<br/><span style='font-size:8px; font-weight:lighter;'>" + n.postdate + "</span></td>" +
 							"<td>" + n.reply.length + "/" + n.clickNum + "</td>" +
 							"<td>" + reply_name + "<br/><span style='font-size:8px; font-weight:lighter;'>" + reply_date + "</span></td>" +
 							"</tr>";
@@ -266,7 +265,14 @@
 			}
 		});
 
-
+		//Check if the current URL contains '#'
+		if(document.URL.indexOf("#")==-1){
+			//Set the URL to whatever it was plus "#""
+			url = document.URL + "#";
+			location = "#"
+			//reload the page
+			location.reload();
+		}
 	}
 
 	function changePage(page) {

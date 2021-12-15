@@ -58,11 +58,13 @@ public class ArticleContentController {
 //	}
 	
 	@GetMapping("/{articleid}/addLikeNum")
-	public Article addLikeNum(@PathVariable("articleid") int articleid) {
+	public Article addLikeNum(@PathVariable("articleid") int articleid, Model m) {
 		Article article = aService.findById(articleid);
 		int likeNum = article.getLikeNum();
 		article.setLikeNum(likeNum+1);
 		Article article_update = aService.updateArticle(article);
+		
+		m.addAttribute("likeNum", article_update.getLikeNum());
 		return article_update;
 	}
 	

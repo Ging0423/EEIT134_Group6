@@ -84,6 +84,7 @@
                                     <button type="button" onclick="checkok()" class="btn_3">
                                         登入
                                     </button>
+                                    <button type="button" class="btn_3" onclick="magic();">神奇小按鍵</button>
                                     <a class="lost_pass" href="<c:url value='/forgetpassword'/>">忘記密碼？</a>
                                 </div>
                             </form>
@@ -179,6 +180,11 @@
 			document.getElementById("login").submit()
 		}
 	}   
+    
+    function magic() {
+    	document.getElementById("account").value = "test";
+    	document.getElementById("password").value = "test";
+    }
     </script>
 </body>
 </html>

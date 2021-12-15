@@ -147,6 +147,7 @@
 
 	$(document).ready(function() {
 		load(indexPage);
+		
 	})
 
 	function load(indexPage) {
@@ -201,6 +202,15 @@
 			}
 		});
 
+		//Check if the current URL contains '#'
+		if(document.URL.indexOf("#")==-1){
+			//Set the URL to whatever it was plus "#""
+			url = document.URL + "#";
+			location = "#"
+			//reload the page
+			location.reload();
+		}
+		
 		document.getElementById('myPage' + indexPage).style.backgroundColor = "#B08EAD";
 		document.getElementById('myPage' + indexPage).style.color = "#fff";
 	}

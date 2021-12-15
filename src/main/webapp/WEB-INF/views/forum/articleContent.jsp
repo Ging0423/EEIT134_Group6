@@ -100,8 +100,7 @@
 				</table>
 
 				<div class="like_function_list">
-					<a onclick="addLikeNum()"><i class="ti-heart">按讚${likeNum}</i></a> <a
-						onclick="addShareNum()"><i class="ti-facebook">分享</i></a>
+					<a onclick="addLikeNum()"><i class="ti-heart">按讚${likeNum}</i></a> 
 				</div>
 			
 				<table id="reply_table" class="reply_table">
@@ -247,10 +246,6 @@
 		}
 	}
 
-	function addPage(page) {
-
-	}
-
 	function addLikeNum() {
 		$.ajax({
 			type: 'get',
@@ -261,7 +256,6 @@
 			}
 		});
 		
-		window.location.reload();
 	}
 
 	function addShareNum() {
