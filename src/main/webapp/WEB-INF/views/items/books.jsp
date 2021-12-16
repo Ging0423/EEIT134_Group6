@@ -208,7 +208,6 @@ $(document).ready (function () {
   });  
   })  
 </script> 	
-<!-- 			=============回頂部======================== -->
 <button class="js-back-to-top back-to-top">︽</button>
 
 
@@ -236,7 +235,6 @@ $('html, body').animate({scrollTop: 0}, 200);
 });
 });
 </script>
-		=============回頂部======================== -->
  	
 </body>
 </html>

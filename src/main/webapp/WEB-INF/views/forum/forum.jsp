@@ -158,10 +158,6 @@
 	})
 
 	function load(sortType, categoryid, indexPage) {
-		if(document.URL.indexOf("#")!=-1){
-			url = document.URL.substring(0, document.URL.length-1);
-			
-		}
 		
 		if (indexPage == '1') {
 			$('#minusPage').hide();

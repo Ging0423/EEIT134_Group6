@@ -43,7 +43,7 @@
                             <h1>圈在一起!</h1> 
                             <h2>鉤針、棒針DIY材料</h2>
                             <h2>優質紗線商店</h2>
-                            <a href="product_list.html" class="btn_1">shop now</a>
+                            <a href="<c:url value='/items/yarn'/>" class="btn_1">shop now</a>
                         </div>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                                 <div class="single_product_content">
 <!--                                     <h5>Started from $10</h5> -->
 <!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a> </h2> -->
-                                    <h2> <a href="single-product.html">鉤針、棒針工具</a> </h2>
-                                    <a href="product_list.html" class="btn_3">Explore Now</a>
+                                    <h2> <a href="<c:url value='/items/tools'/>">鉤針、棒針工具</a> </h2>
+                                    <a href="<c:url value='/items/tools'/>" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
 <!--                                     <h5>Started from $10</h5> -->
 <!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a> </h2> -->
                                     <h2> <a href="single-product.html">鉤針、棒針書籍</a> </h2>
-                                    <a href="product_list.html" class="btn_3">Explore Now</a>
+                                    <a href="<c:url value='/items/books'/>" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
 <!--                                     <h5>Started from $10</h5> -->
 <!--                                     <h2> <a href="single-product.html">Printed memory foam brief modern throw pillow case</a></h2> -->
                                     <h2> <a href="single-product.html">DIY材料包</a></h2> 
-                                    <a href="product_list.html" class="btn_3">Explore Now</a>
+                                    <a href="<c:url value='/items/kits'/>" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
                         </div>
