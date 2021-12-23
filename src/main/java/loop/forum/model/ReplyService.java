@@ -2,6 +2,7 @@ package loop.forum.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -61,7 +62,10 @@ public class ReplyService {
 	public long countReplyAmountOfToday(Date today) {
 		return rReps.countByReplydateGreaterThan(today);
 	}
-
+	
+	public List<Reply> findByAuthorid (Integer authorid) {
+		return rReps.findByAuthorid(authorid);
+	}
 
 //	public Reply findById(int articleid) {
 //		Optional<Article> op1 = rReps.findById(articleid);
@@ -79,9 +83,5 @@ public class ReplyService {
 
 	public long countReplyAmountBetweenDate(Date today, Date tomorrow) {
 		return rReps.countByReplydateBetween(today, tomorrow);
-	}
-
-	public List<Reply> findByAuthorid(int parseInt) {
-		return rReps.findByAuthorid(parseInt);
 	}
 }
