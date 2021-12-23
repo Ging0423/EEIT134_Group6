@@ -2,7 +2,6 @@ package loop.forum.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,15 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import loop.forum.model.Article;
 import loop.forum.model.Reply;
 import loop.forum.model.ReplyService;
-import loop.user.model.UsersBean;
 
 @Controller
-@RequestMapping("/forum/reply")
-@SessionAttributes({"totalPagesInArticle", "totalElements", "isLogin"})
+@RequestMapping("/forum")
 public class ReplyController {
 	@Autowired
 	private ReplyService rService;
@@ -31,16 +28,11 @@ public class ReplyController {
 	//新增回應
 	@PostMapping("/newReply")
 	@ResponseBody
-	public void postReply(@RequestBody Map<String, String> map, Model m) {
-		UsersBean bean = (UsersBean) m.getAttribute("isLogin");
-		Integer userId = bean.getUserId();
-		Reply reply = new Reply();
-		reply.setAuthorid(userId);
+	public Reply postReply(@RequestBody Reply reply) {
 		reply.setReplydate(new Date());
-		reply.setContent(map.get("content"));
-		reply.setArticleid(Integer.parseInt(map.get("articleid")));
 		reply.setLikeNum(0);
 		rService.createNewReply(reply);
+		return reply;
 	}
 	
 //	@PostMapping("/deleteReply")
@@ -49,7 +41,7 @@ public class ReplyController {
 //		rService.deleteReply(reply);
 //	}
 	
-	@PostMapping("/{articleid}/{pageNo}")
+	@PostMapping("/reply/{articleid}/{pageNo}")
 	@ResponseBody
 	public List<Reply> processForumByPage(@PathVariable("articleid") int articleid, @PathVariable("pageNo") int pageNo, Model m){
 		int pageSize = 10;
@@ -58,13 +50,7 @@ public class ReplyController {
 		
 		page = rService.findAllByPage(articleid, pageable);
 		
-		int totalPages;
-		if(page.getTotalPages() == 0) {
-			totalPages = 1;
-		}else {
-			totalPages = page.getTotalPages();
-		}
-		m.addAttribute("totalPagesInArticle", totalPages);
+		m.addAttribute("totalPages", page.getTotalPages());
 		m.addAttribute("totalElements", page.getTotalElements());
 		
 		return page.getContent();
