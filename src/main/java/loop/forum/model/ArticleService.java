@@ -1,5 +1,6 @@
 package loop.forum.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,5 +111,9 @@ public class ArticleService {
 	
 	public int findMostPostAuthor() {
 		return aReps.countMaxAuthor();
+	}
+
+	public List<Article> findByAuthorid(int parseInt) {
+		return aReps.findByAuthorid(parseInt);
 	}
 }
