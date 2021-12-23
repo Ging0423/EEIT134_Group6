@@ -1,6 +1,5 @@
 package loop.forum.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,12 +11,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import loop.user.model.UsersBean;
 
 @Component
 @Table(name = "article")
@@ -54,10 +60,22 @@ public class Article {
 	@Column(name = "SHARENUM")
 	private int shareNum;
 
-	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Reply.class, fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(name = "articleid", insertable = false, updatable = false)
 	private List<Reply> reply;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "authorid",insertable = false, updatable = false)
+	private UsersBean users;
+	
+	public UsersBean getUsers() {
+		return users;
+	}
+
+	public void setUsers(UsersBean users) {
+		this.users = users;
+	}
+
 	public Date getPostdate() {
 		return postdate;
 	}

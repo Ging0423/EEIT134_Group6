@@ -1,5 +1,7 @@
 package loop.forum.model;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,10 +65,6 @@ public class ArticleService {
 		return null;
 	}
 	
-//	public Optional<Article> findByAuthorid(int authorid){
-//		return aReps.findbyA
-//	}
-	
 	public List<Article> findByCategoryid(int categoryid){
 		return aReps.findByCategoryid(categoryid);
 	}
@@ -90,7 +88,8 @@ public class ArticleService {
 	public Page<Article> findAllByKeyword(String keyword, Pageable pageable) {
 		String keyword_search = "%" + keyword + "%";
 		return aReps.findByTitleLike(keyword_search, pageable);
-	}	
+	}
+	
 	public Long countArticleAmountByKeywordAndCategoryid(String keyword, int categoryid) {
 		String keyword_search = "%" + keyword + "%";
 		if(categoryid != 0) {
@@ -110,5 +109,9 @@ public class ArticleService {
 	
 	public int findMostPostAuthor() {
 		return aReps.countMaxAuthor();
+	}
+
+	public List<Article> findByAuthorid(int parseInt) {
+		return aReps.findByAuthorid(parseInt);
 	}
 }
