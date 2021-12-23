@@ -185,6 +185,7 @@ public class UsersController {
 		}
 		userBean.setRegisterDate(bean.getRegisterDate());
 		usersService.save(userBean);
+		m.addAttribute("isLogin", userBean);
 		return "redirect:/updatemember";
 	}
 }
